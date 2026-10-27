@@ -169,6 +169,7 @@ fileNameText.textContent = file.name;
 fileSizeText.textContent = `${sizeInMB.toFixed(1)} MB`;
 dropZone.classList.add('hidden');
 processPanel.classList.remove('hidden');
+saasUpsell.classList.add('hidden');
 saasUpsell.style.display = 'none';
 heavyIntercept.style.display = 'none';
 engineStatusText.textContent = "Core Local Engine Standby";
@@ -250,6 +251,7 @@ instance.FS('unlink', outputName);
 } catch(e) {}
 engineStatusText.textContent = "Success! Wiping local file trace caches...";
 saasUpsell.classList.remove('hidden');
+saasUpsell.style.display = 'block';
 setTimeout(() => {
 selectedFile = null;
 filePicker.value = "";
