@@ -9,13 +9,13 @@
         header { border-bottom: 1px solid #1e293b; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; background-color: #020617; }
         .logo { font-size: 1.5rem; font-weight: 900; color: #22d3ee; }
         .status-badge { font-size: 0.75rem; color: #34d399; font-weight: 500; }
-        main { flex: 1; max-w: 800px; width: 90%; margin: 4rem auto; display: flex; flex-direction: column; justify-content: center; }
-        .hero { text-align: center; margin-bottom: 2.5rem; }
+        main { flex: 1; max-width: 800px; width: 90%; margin: 3rem auto; display: flex; flex-direction: column; justify-content: center; }
+        .hero { text-align: center; margin-bottom: 2rem; }
         .hero h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 0.75rem; margin-top: 0; }
         .hero p { color: #94a3b8; font-size: 1.1rem; margin: 0; }
         .highlight { color: #22d3ee; }
-        .card { background-color: #020617; border: 1px solid #1e293b; border-radius: 16px; padding: 2rem; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); }
-        .dropzone { border: 2px dashed #1e293b; border-radius: 12px; padding: 4rem 1rem; text-align: center; cursor: pointer; background-color: rgba(15, 23, 42, 0.3); transition: all 0.2s; position: relative; }
+        .card { background-color: #020617; border: 1px solid #1e293b; border-radius: 16px; padding: 2rem; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); position: relative; }
+        .dropzone { border: 2px dashed #1e293b; border-radius: 12px; padding: 4rem 1rem; text-align: center; cursor: pointer; background-color: rgba(15, 23, 42, 0.3); transition: all 0.2s; }
         .dropzone:hover { border-color: #06b6d4; background-color: rgba(6, 182, 212, 0.05); }
         .dropzone h3 { margin: 0 0 0.5rem 0; font-size: 1.25rem; font-weight: 600; pointer-events: none; }
         .dropzone p { margin: 0; font-size: 0.85rem; color: #64748b; pointer-events: none; }
@@ -25,9 +25,7 @@
         @media (min-width: 640px) { .file-info { flex-direction: row; justify-content: space-between; align-items: center; } }
         .file-name { font-weight: 600; font-size: 0.9rem; margin-bottom: 0.25rem; color: #f1f5f9; word-break: break-all; }
         .file-size { font-size: 0.75rem; color: #64748b; }
-        .select-group { display: flex; flex-direction: column; gap: 0.25rem; }
-        .select-group label { font-size: 0.75rem; color: #94a3b8; font-weight: 500; }
-        select { background-color: #1e293b; border: 1px solid #334155; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; font-size: 0.9rem; outline: none; cursor: pointer; min-width: 180px; }
+        select { background-color: #1e293b; border: 1px solid #334155; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; font-size: 0.9rem; outline: none; cursor: pointer; }
         .progress-container { display: flex; flex-direction: column; gap: 0.5rem; }
         .progress-text { display: flex; justify-content: space-between; font-size: 0.75rem; color: #94a3b8; }
         .bar-bg { width: 100%; background-color: #1e293b; height: 8px; border-radius: 9999px; overflow: hidden; }
@@ -35,8 +33,17 @@
         button { background: linear-gradient(90deg, #06b6d4, #2563eb); color: white; font-weight: 700; border: none; padding: 1rem; border-radius: 12px; font-size: 1rem; cursor: pointer; transition: opacity 0.2s; width: 100%; }
         button:hover { opacity: 0.9; }
         button:disabled { opacity: 0.5; cursor: not-allowed; }
+        
+        .revenue-banner-space { border: 1px dashed #334155; border-radius: 12px; padding: 1rem; text-align: center; background-color: rgba(2, 6, 23, 0.6); margin-top: 1.5rem; min-height: 90px; display: flex; align-items: center; justify-content: center; }
+        .saas-upsell-box { background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(37, 99, 235, 0.1)); border: 1px solid rgba(6, 182, 212, 0.3); border-radius: 12px; padding: 1.25rem; text-align: center; display: none; margin-top: 1rem; animation: fadeInUp 0.4s ease forwards; }
+        .saas-upsell-box h4 { margin: 0 0 0.25rem 0; color: #22d3ee; font-size: 1rem; }
+        .saas-upsell-box p { margin: 0 0 0.75rem 0; font-size: 0.8rem; color: #94a3b8; }
+        .saas-btn { background: #1e293b; border: 1px solid #334155; color: #22d3ee; padding: 0.5rem 1rem; border-radius: 6px; text-decoration: none; font-size: 0.8rem; font-weight: 600; display: inline-block; }
+        .saas-btn:hover { background: #2563eb; color: white; }
+        .intercept-overlay { display: none; position: absolute; inset: 0; background: #020617; border-radius: 16px; padding: 2rem; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+        .intercept-btn { background: #eab308; color: #020617; font-weight: 700; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; display: inline-block; margin-top: 1rem; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ffmpeg/0.11.6/ffmpeg.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
     <header>
@@ -49,7 +56,7 @@
             <p>Runs entirely inside your browser framework. No data leaves your machine.</p>
         </div>
         <div class="card">
-            <input type="file" id="filePicker" class="hidden" />
+            <input type="file" id="filePicker" class="hidden" accept="video/*,audio/*,image/gif,.mkv,.avi,.mov,.webm,.flac" />
             
             <div id="dropZone" class="dropzone">
                 <h3>Drag & Drop your media here</h3>
@@ -63,29 +70,23 @@
                         <div class="file-name" id="fileNameText">video.mov</div>
                         <div class="file-size" id="fileSizeText">0.0 MB</div>
                     </div>
-                    <div class="select-group">
-                        <label for="outputFormatSelect">Target Format:</label>
-                        <select id="outputFormatSelect">
-                            <optgroup label="Video Formats">
-                                <option value="mp4">MP4 Video (.mp4)</option>
-                                <option value="mkv">MKV Video (.mkv)</option>
-                                <option value="avi">AVI Video (.avi)</option>
-                                <option value="mov">MOV Video (.mov)</option>
-                                <option value="webm">WEBM Video (.webm)</option>
-                                <option value="flv">FLV Video (.flv)</option>
-                                <option value="wmv">WMV Video (.wmv)</option>
-                            </optgroup>
-                            <optgroup label="Audio Formats">
-                                <option value="mp3">MP3 Audio (.mp3)</option>
-                                <option value="wav">WAV Audio (.wav)</option>
-                                <option value="m4a">M4A Audio (.m4a)</option>
-                                <option value="flac">FLAC Audio (.flac)</option>
-                            </optgroup>
-                            <optgroup label="Animations">
-                                <option value="gif">GIF Animation (.gif)</option>
-                            </optgroup>
-                        </select>
-                    </div>
+                    <select id="outputFormatSelect">
+                        <optgroup label="Video Formats">
+                            <option value="mp4">MP4 Video (.mp4)</option>
+                            <option value="mkv">MKV Video (.mkv)</option>
+                            <option value="avi">AVI Video (.avi)</option>
+                            <option value="mov">MOV Video (.mov)</option>
+                            <option value="webm">WEBM Video (.webm)</option>
+                        </optgroup>
+                        <optgroup label="Audio Formats">
+                            <option value="mp3">MP3 Audio (.mp3)</option>
+                            <option value="wav">WAV Audio (.wav)</option>
+                            <option value="flac">FLAC Audio (.flac)</option>
+                        </optgroup>
+                        <optgroup label="Animations">
+                            <option value="gif">GIF Animation (.gif)</option>
+                        </optgroup>
+                    </select>
                 </div>
                 <div class="progress-container">
                     <div class="progress-text">
@@ -97,9 +98,28 @@
                     </div>
                 </div>
                 <button id="startConvertBtn">Start Local Conversion</button>
+                
+                <div id="saasUpsell" class="saas-upsell-box">
+                    <h4>🚀 Need to share or send this converted file?</h4>
+                    <p>Upload and deliver heavy media instantly with our secure cloud partner. Get 10GB storage free.</p>
+                    <a href="https://pcloud.com" target="_blank" class="saas-btn">Secure Free Cloud Storage Link</a>
+                </div>
+            </div>
+
+            <div id="heavyIntercept" class="intercept-overlay">
+                <h3 style="color: #eab308; margin: 0 0 0.5rem 0; font-size: 1.5rem;">File Triggers Browser Allocation Threshold</h3>
+                <p style="color: #94a3b8; font-size: 0.9rem; max-width: 420px; margin: 0 0 1rem 0;">
+                    Browsers frequently throttle hardware rendering for files larger than 1.5GB. Use our dedicated pro desktop client partner to convert massive assets seamlessly with zero speed limits.
+                </p>
+                <a href="https://impact.com" target="_blank" class="intercept-btn">Download Pro Converter Suite</a>
             </div>
         </div>
+
+        <div class="revenue-banner-space">
+            <div id="global-ad-slot" style="color: #475569; font-size: 0.75rem;">Programmatic Global Publisher Marketplace Active</div>
+        </div>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.11.6/dist/ffmpeg.min.js"></script>
     <script>
         const { createFFmpeg, fetchFile } = FFmpeg;
         let ffmpeg = null;
@@ -114,126 +134,130 @@
         const startConvertBtn = document.getElementById('startConvertBtn');
         const engineStatusText = document.getElementById('engineStatusText');
         const percentProgressText = document.getElementById('percentProgressText');
-        const progressBarFill = document.getElementById('progressBarFill');
+const progressBarFill = document.getElementById('progressBarFill');
+const saasUpsell = document.getElementById('saasUpsell');
+const heavyIntercept = document.getElementById('heavyIntercept');
+dropZone.addEventListener('click', (e) => {
+e.preventDefault();
+filePicker.click();
+});
+dropZone.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    dropZone.style.borderColor = '#06b6d4';
+});
+dropZone.addEventListener('dragleave', () => { dropZone.style.borderColor = ''; });
+dropZone.addEventListener('drop', (e) => {
+e.preventDefault();
+if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+assignSelectedFile(e.dataTransfer.files[0]); // FIXED: Direct target index selection unblocks freeze
+}
+});
+filePicker.addEventListener('change', () => {
+if (filePicker.files && filePicker.files.length > 0) {
+assignSelectedFile(filePicker.files[0]); // FIXED: Direct target index selection unblocks freeze
+}
+});
+function assignSelectedFile(file) {
+if (!file) return;
+const sizeInMB = file.size / (1024 * 1024);
+if (sizeInMB > 1500) {
+    selectedFile = null;
+    filePicker.value = ""; 
+dropZone.classList.add('hidden');
+processPanel.classList.add('hidden');
+heavyIntercept.style.display = 'flex';
+return;
+}
+selectedFile = file;
+fileNameText.textContent = file.name;
+fileSizeText.textContent = `${sizeInMB.toFixed(1)} MB`;
+dropZone.classList.add('hidden');
+processPanel.classList.remove('hidden');
+saasUpsell.style.display = 'none';
+heavyIntercept.style.display = 'none';
+engineStatusText.textContent = "Core Local Engine Standby";
+percentProgressText.textContent = "0%";
+progressBarFill.style.width = "0%";
+startConvertBtn.disabled = false;
+}
+async function loadEngine() {
+if (ffmpeg) return ffmpeg;
+ffmpeg = createFFmpeg({
+log: true,
+corePath: 'https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.11.0/dist/ffmpeg-core.js'
+});
+ffmpeg.setProgress(({ ratio }) => {
+const pct = Math.min(Math.round(ratio * 100), 99);
+percentProgressText.textContent = `${pct}%`;
+progressBarFill.style.width = `${pct}%`;
+});
+engineStatusText.textContent = "Booting secure browser engine core...";
+await ffmpeg.load();
+return ffmpeg;
+}
+startConvertBtn.addEventListener('click', async () => {
+if (!selectedFile) return;
+try {
+startConvertBtn.disabled = true;
+const instance = await loadEngine();
+engineStatusText.textContent = "Staging media inside local sandbox memory...";
+const fileExt = (selectedFile.name.split('.').pop() || 'bin').replace(/[^a-z0-9]/gi, '').toLowerCase();
+const inputName = `input.${(fileExt || 'bin').toLowerCase()}`;
+instance.FS('writeFile', inputName, await fetchFile(selectedFile));
+const fmt = outputFormatSelect.value;
+const outputName = `output.${fmt}`;
+engineStatusText.textContent = "Converting completely offline...";
+if (['mp3', 'wav', 'flac'].includes(fmt)) {
+    const audioArgs = {
+        mp3: ['-vn', '-c:a', 'libmp3lame', '-q:a', '2'],
+        wav: ['-vn', '-c:a', 'pcm_s16le'],
+        flac: ['-vn', '-c:a', 'flac']
+    }[fmt];
+    await instance.run('-i', inputName, '-map', '0:a:0', ...audioArgs, outputName);
+} else if (fmt === 'gif') {
+    await instance.run('-i', inputName, '-vf', 'fps=10,scale=480:-1:flags=lanczos', '-an', outputName);
+} else if (fmt === 'webm') {
+    await instance.run('-i', inputName, '-c:v', 'libvpx', '-b:v', '1M', '-c:a', 'libvorbis', outputName);
+} else {
+    const videoArgs = ['-c:v', 'libx264', '-preset', 'ultrafast', '-crf', '28', '-c:a', 'aac'];
+    await instance.run('-i', inputName, ...videoArgs, outputName);
+}
+engineStatusText.textContent = "Assembling download files...";
+percentProgressText.textContent = "100%";
+progressBarFill.style.width = "100%";
+const data = instance.FS('readFile', outputName);
+let mimeType = ({
+    mp4: 'video/mp4', mkv: 'video/x-matroska', avi: 'video/x-msvideo',
+    mov: 'video/quicktime', webm: 'video/webm',
+    mp3: 'audio/mpeg', wav: 'audio/wav', flac: 'audio/flac', gif: 'image/gif'
+})[fmt] || 'application/octet-stream';
 
-        // Click routing handle
-        dropZone.addEventListener('click', () => filePicker.click());
-        dropZone.addEventListener('dragover', (e) => e.preventDefault());
-        
-        // Fixed file mapping hooks
-        dropZone.addEventListener('drop', (e) => {
-            e.preventDefault();
-            if (e.dataTransfer && e.dataTransfer.files.length > 0) {
-                assignSelectedFile(e.dataTransfer.files[0]);
-            }
-        });
-        
-        filePicker.addEventListener('change', () => {
-            if (filePicker.files && filePicker.files.length > 0) {
-                assignSelectedFile(filePicker.files[0]);
-            }
-        });
-        
-        function assignSelectedFile(file) {
-            if (!file) return;
-            selectedFile = file;
-            fileNameText.textContent = file.name;
-            fileSizeText.textContent = `${(file.size / (1024 * 1024)).toFixed(1)} MB`;
-            dropZone.classList.add('hidden');
-            processPanel.classList.remove('hidden');
-            
-            engineStatusText.textContent = "Core Local Engine Standby";
-            percentProgressText.textContent = "0%";
-            progressBarFill.style.width = "0%";
-            startConvertBtn.disabled = false;
-        }
+const blob = new Blob([data.buffer], { type: mimeType });
+const url = URL.createObjectURL(blob);
+const a = document.createElement('a');
+a.href = url;
+const rawName = selectedFile.name.substring(0, selectedFile.name.lastIndexOf('.'));
+a.download = `${rawName || 'converted'}_new.${fmt}`;
+document.body.appendChild(a);
+a.click();
+document.body.removeChild(a);
+setTimeout(() => URL.revokeObjectURL(url), 1000);
+try {
+instance.FS('unlink', inputName);
+instance.FS('unlink', outputName);
+} catch(e) {}
+engineStatusText.textContent = "Success! Wiping local file trace caches...";
+saasUpsell.style.display = 'block';
+setTimeout(() => {
+selectedFile = null;
+filePicker.value = "";
+processPanel.classList.add('hidden');
+dropZone.classList.remove('hidden');
+}, 8000);
+} catch (err) {
+console.error(err);
+engineStatusText.textContent = "Processing failed. Refresh tab and retry.";
+startConvertBtn.disabled = false;
+}
+});
 
-        async function loadEngine() {
-            if (ffmpeg) return ffmpeg;
-            
-            ffmpeg = createFFmpeg({ 
-                log: true,
-                corePath: 'https://cdnjs.cloudflare.com/ajax/libs/ffmpeg-core/0.11.0/ffmpeg-core.js'
-            });
-            
-            ffmpeg.setProgress(({ ratio }) => {
-                const pct = Math.min(Math.round(ratio * 100), 99);
-                percentProgressText.textContent = pct + "%";
-                progressBarFill.style.width = pct + "%";
-            });
-            
-            engineStatusText.textContent = "Booting secure browser engine core...";
-            await ffmpeg.load();
-            return ffmpeg;
-        }
-
-        startConvertBtn.addEventListener('click', async () => {
-            if (!selectedFile) return;
-            try {
-                startConvertBtn.disabled = true;
-                const instance = await loadEngine();
-                
-                engineStatusText.textContent = "Staging media inside local sandbox memory...";
-                const fileExt = selectedFile.name.split('.').pop();
-                const inputName = "input." + fileExt;
-                
-                instance.FS('writeFile', inputName, await fetchFile(selectedFile));
-                
-                const fmt = outputFormatSelect.value;
-                const outputName = "output." + fmt;
-                
-                engineStatusText.textContent = "Converting completely offline...";
-                
-                if (fmt === 'mp3') {
-                    await instance.run('-i', inputName, '-q:a', '0', '-map', 'a', outputName);
-                } else if (fmt === 'gif') {
-                    await instance.run('-i', inputName, '-vf', 'fps=10,scale=480:-1:flags=lanczos', outputName);
-                } else {
-                    await instance.run('-i', inputName, '-c:v', 'libx264', '-preset', 'ultrafast', '-crf', '28', '-c:a', 'aac', outputName);
-                }
-                
-                engineStatusText.textContent = "Assembling download files...";
-                percentProgressText.textContent = "100%";
-                progressBarFill.style.width = "100%";
-                
-                const data = instance.FS('readFile', outputName);
-                
-                let mimeType = 'video/mp4';
-                if (['mp3', 'wav', 'm4a', 'flac'].includes(fmt)) mimeType = "audio/" + fmt;
-                if (fmt === 'gif') mimeType = 'image/gif';
-                
-                const blob = new Blob([data.buffer], { type: mimeType });
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                
-                const lastDot = selectedFile.name.lastIndexOf('.');
-                const rawName = lastDot !== -1 ? selectedFile.name.substring(0, lastDot) : selectedFile.name;
-                a.download = (rawName || 'converted') + "_new." + fmt;
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-                
-                try {
-                    instance.FS('unlink', inputName);
-                    instance.FS('unlink', outputName);
-                } catch(e) {}
-
-                engineStatusText.textContent = "Success! Wiping local file trace caches...";
-                
-                setTimeout(() => {
-                    selectedFile = null;
-                    filePicker.value = "";
-                    processPanel.classList.add('hidden');
-                    dropZone.classList.remove('hidden');
-                }, 3000);
-
-            } catch (err) {
-                console.error(err);
-                engineStatusText.textContent = "Processing failed. Refresh tab and retry.";
-                startConvertBtn.disabled = false;
-            }
-        });
-    </script>
-</body>
-</html>
