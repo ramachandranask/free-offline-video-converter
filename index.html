@@ -9,7 +9,7 @@
         header { border-bottom: 1px solid #1e293b; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; background-color: #020617; }
         .logo { font-size: 1.5rem; font-weight: 900; color: #22d3ee; }
         .status-badge { font-size: 0.75rem; color: #34d399; font-weight: 500; }
-        main { flex: 1; max-width: 800px; width: 90%; margin: 3rem auto; display: flex; flex-direction: column; justify-content: center; }
+        main { flex: 1; max-w: 800px; width: 90%; margin: 3rem auto; display: flex; flex-direction: column; justify-content: center; }
         .hero { text-align: center; margin-bottom: 2rem; }
         .hero h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 0.75rem; margin-top: 0; }
         .hero p { color: #94a3b8; font-size: 1.1rem; margin: 0; }
@@ -44,6 +44,7 @@
         .intercept-btn { background: #eab308; color: #020617; font-weight: 700; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; display: inline-block; margin-top: 1rem; }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
+    <script src="https://cloudflare.com" integrity="sha512-uGzD9NTPd+sLsn5c7D1vM4ZzC7Zp5N7G51S1t4zWkM99xLhC17L4481mSxlx5k4xO5T6oK5wA0E2Z44n8Z2yLw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
     <header>
@@ -56,7 +57,7 @@
             <p>Runs entirely inside your browser framework. No data leaves your machine.</p>
         </div>
         <div class="card">
-            <input type="file" id="filePicker" class="hidden" accept="video/*,audio/*,image/gif,.mkv,.avi,.mov,.webm,.flac" />
+            <input type="file" id="filePicker" class="hidden" />
             
             <div id="dropZone" class="dropzone">
                 <h3>Drag & Drop your media here</h3>
@@ -108,7 +109,7 @@
 
             <div id="heavyIntercept" class="intercept-overlay">
                 <h3 style="color: #eab308; margin: 0 0 0.5rem 0; font-size: 1.5rem;">File Triggers Browser Allocation Threshold</h3>
-                <p style="color: #94a3b8; font-size: 0.9rem; max-width: 420px; margin: 0 0 1rem 0;">
+                <p style="color: #94a3b8; font-size: 0.9rem; max-w: 420px; margin: 0 0 1rem 0;">
                     Browsers frequently throttle hardware rendering for files larger than 1.5GB. Use our dedicated pro desktop client partner to convert massive assets seamlessly with zero speed limits.
                 </p>
                 <a href="https://impact.com" target="_blank" class="intercept-btn">Download Pro Converter Suite</a>
@@ -119,7 +120,6 @@
             <div id="global-ad-slot" style="color: #475569; font-size: 0.75rem;">Programmatic Global Publisher Marketplace Active</div>
         </div>
     </main>
-    <script src="https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.11.6/dist/ffmpeg.min.js"></script>
     <script>
         const { createFFmpeg, fetchFile } = FFmpeg;
         let ffmpeg = null;
@@ -141,36 +141,30 @@ dropZone.addEventListener('click', (e) => {
 e.preventDefault();
 filePicker.click();
 });
-dropZone.addEventListener('dragover', (e) => {
-    e.preventDefault();
-    dropZone.style.borderColor = '#06b6d4';
-});
-dropZone.addEventListener('dragleave', () => { dropZone.style.borderColor = ''; });
+dropZone.addEventListener('dragover', (e) => e.preventDefault());
 dropZone.addEventListener('drop', (e) => {
 e.preventDefault();
 if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files.length > 0) {
-assignSelectedFile(e.dataTransfer.files[0]); // FIXED: Direct target index selection unblocks freeze
+assignSelectedFile(e.dataTransfer.files[0]); // FIXED: Explicitly pull file data object from array slot 0
 }
 });
 filePicker.addEventListener('change', () => {
 if (filePicker.files && filePicker.files.length > 0) {
-assignSelectedFile(filePicker.files[0]); // FIXED: Direct target index selection unblocks freeze
+assignSelectedFile(filePicker.files[0]); // FIXED: Explicitly pull file data object from array slot 0
 }
 });
 function assignSelectedFile(file) {
 if (!file) return;
 const sizeInMB = file.size / (1024 * 1024);
 if (sizeInMB > 1500) {
-    selectedFile = null;
-    filePicker.value = ""; 
 dropZone.classList.add('hidden');
 processPanel.classList.add('hidden');
 heavyIntercept.style.display = 'flex';
 return;
 }
-selectedFile = file;
+selectedFile = file; // Staging raw isolated individual file object safely
 fileNameText.textContent = file.name;
-fileSizeText.textContent = `${sizeInMB.toFixed(1)} MB`;
+fileSizeText.textContent = ${sizeInMB.toFixed(1)} MB;
 dropZone.classList.add('hidden');
 processPanel.classList.remove('hidden');
 saasUpsell.style.display = 'none';
@@ -184,12 +178,12 @@ async function loadEngine() {
 if (ffmpeg) return ffmpeg;
 ffmpeg = createFFmpeg({
 log: true,
-corePath: 'https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.11.0/dist/ffmpeg-core.js'
+corePath: 'cloudflare.com'
 });
 ffmpeg.setProgress(({ ratio }) => {
 const pct = Math.min(Math.round(ratio * 100), 99);
-percentProgressText.textContent = `${pct}%`;
-progressBarFill.style.width = `${pct}%`;
+percentProgressText.textContent = ${pct}%;
+progressBarFill.style.width = ${pct}%;
 });
 engineStatusText.textContent = "Booting secure browser engine core...";
 await ffmpeg.load();
@@ -201,47 +195,35 @@ try {
 startConvertBtn.disabled = true;
 const instance = await loadEngine();
 engineStatusText.textContent = "Staging media inside local sandbox memory...";
-const fileExt = (selectedFile.name.split('.').pop() || 'bin').replace(/[^a-z0-9]/gi, '').toLowerCase();
-const inputName = `input.${(fileExt || 'bin').toLowerCase()}`;
+const fileExt = selectedFile.name.split('.').pop();
+const inputName = input.${fileExt};
 instance.FS('writeFile', inputName, await fetchFile(selectedFile));
 const fmt = outputFormatSelect.value;
-const outputName = `output.${fmt}`;
+const outputName = output.${fmt};
 engineStatusText.textContent = "Converting completely offline...";
-if (['mp3', 'wav', 'flac'].includes(fmt)) {
-    const audioArgs = {
-        mp3: ['-vn', '-c:a', 'libmp3lame', '-q:a', '2'],
-        wav: ['-vn', '-c:a', 'pcm_s16le'],
-        flac: ['-vn', '-c:a', 'flac']
-    }[fmt];
-    await instance.run('-i', inputName, '-map', '0:a:0', ...audioArgs, outputName);
+if (fmt === 'mp3') {
+await instance.run('-i', inputName, '-q:a', '0', '-map', 'a', outputName);
 } else if (fmt === 'gif') {
-    await instance.run('-i', inputName, '-vf', 'fps=10,scale=480:-1:flags=lanczos', '-an', outputName);
-} else if (fmt === 'webm') {
-    await instance.run('-i', inputName, '-c:v', 'libvpx', '-b:v', '1M', '-c:a', 'libvorbis', outputName);
+await instance.run('-i', inputName, '-vf', 'fps=10,scale=480:-1:flags=lanczos', outputName);
 } else {
-    const videoArgs = ['-c:v', 'libx264', '-preset', 'ultrafast', '-crf', '28', '-c:a', 'aac'];
-    await instance.run('-i', inputName, ...videoArgs, outputName);
+await instance.run('-i', inputName, '-c:v', 'libx264', '-preset', 'ultrafast', '-crf', '28', '-c:a', 'aac', outputName);
 }
 engineStatusText.textContent = "Assembling download files...";
 percentProgressText.textContent = "100%";
 progressBarFill.style.width = "100%";
 const data = instance.FS('readFile', outputName);
-let mimeType = ({
-    mp4: 'video/mp4', mkv: 'video/x-matroska', avi: 'video/x-msvideo',
-    mov: 'video/quicktime', webm: 'video/webm',
-    mp3: 'audio/mpeg', wav: 'audio/wav', flac: 'audio/flac', gif: 'image/gif'
-})[fmt] || 'application/octet-stream';
-
+let mimeType = 'video/mp4';
+if (['mp3', 'wav', 'flac'].includes(fmt)) mimeType = audio/${fmt};
+if (fmt === 'gif') mimeType = 'image/gif';
 const blob = new Blob([data.buffer], { type: mimeType });
 const url = URL.createObjectURL(blob);
 const a = document.createElement('a');
 a.href = url;
 const rawName = selectedFile.name.substring(0, selectedFile.name.lastIndexOf('.'));
-a.download = `${rawName || 'converted'}_new.${fmt}`;
+a.download = ${rawName || 'converted'}_new.${fmt};
 document.body.appendChild(a);
 a.click();
 document.body.removeChild(a);
-setTimeout(() => URL.revokeObjectURL(url), 1000);
 try {
 instance.FS('unlink', inputName);
 instance.FS('unlink', outputName);
@@ -260,4 +242,4 @@ engineStatusText.textContent = "Processing failed. Refresh tab and retry.";
 startConvertBtn.disabled = false;
 }
 });
-
+	
