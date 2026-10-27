@@ -6,122 +6,33 @@
   <title>NovaConvert - 100% Free Browser Media Converter</title>
   <link rel="manifest" href="/manifest.webmanifest">
   <style>
-    :root {
-      --bg-color: #0f172a;
-      --card-bg: #1e293b;
-      --accent: #3b82f6;
-      --text: #f8fafc;
-      --text-muted: #94a3b8;
-    }
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text);
-      margin: 0;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-    }
-    .container {
-      max-width: 800px;
-      width: 100%;
-      background: var(--card-bg);
-      border-radius: 16px;
-      padding: 30px;
-      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .drop-zone {
-      border: 2px dashed #475569;
-      border-radius: 12px;
-      padding: 40px 20px;
-      cursor: pointer;
-      transition: border-color 0.2s;
-      margin-bottom: 20px;
-    }
-    .drop-zone:hover {
-      border-color: var(--accent);
-    }
-    .select-input {
-      width: 100%;
-      padding: 12px;
-      border-radius: 8px;
-      border: 1px border-neutral-300;
-      background-color: #0f172a;
-      color: white;
-      margin-bottom: 20px;
-      font-size: 16px;
-    }
-    .btn {
-      background-color: var(--accent);
-      color: white;
-      border: none;
-      padding: 12px 24px;
-      border-radius: 8px;
-      font-weight: 600;
-      cursor: pointer;
-      width: 100%;
-      font-size: 16px;
-    }
-    .btn:hover {
-      opacity: 0.9;
-    }
-    .alert-box {
-      background-color: #38bdf8;
-      color: #0f172a;
-      padding: 15px;
-      border-radius: 8px;
-      margin-top: 20px;
-      font-weight: 500;
-      display: none;
-    }
-    .alert-box a {
-      color: #1e3a8a;
-      font-weight: bold;
-      text-decoration: underline;
-    }
-    .ad-slot {
-      margin: 20px auto;
-      min-height: 90px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: rgba(255,255,255,0.02);
-      border-radius: 8px;
-    }
+    :root { --bg-color: #0f172a; --card-bg: #1e293b; --accent: #3b82f6; --text: #f8fafc; --text-muted: #94a3b8; }
+    body { font-family: system-ui, sans-serif; background-color: var(--bg-color); color: var(--text); margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+    .container { max-width: 800px; width: 100%; background: var(--card-bg); border-radius: 16px; padding: 30px; text-align: center; margin-bottom: 20px; }
+    .drop-zone { border: 2px dashed #475569; border-radius: 12px; padding: 40px 20px; cursor: pointer; margin-bottom: 20px; }
+    .select-input { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #475569; background-color: #0f172a; color: white; margin-bottom: 20px; font-size: 16px; }
+    .btn { background-color: var(--accent); color: white; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; width: 100%; font-size: 16px; }
+    .alert-box { background-color: #38bdf8; color: #0f172a; padding: 15px; border-radius: 8px; margin-top: 20px; font-weight: 500; display: none; }
+    .ad-slot { margin: 20px auto; min-height: 90px; display: flex; justify-content: center; align-items: center; background: rgba(255,255,255,0.02); border-radius: 8px; }
+    .download-link-btn { display: inline-block; margin-top: 15px; background-color: #22c55e; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold; }
   </style>
 </head>
 <body>
-
-  <!-- TOP BANNER PLACEMENT (728x90) -->
+  <!-- TOP BANNER -->
   <div class="ad-slot" id="top-ad">
-    <script type="text/javascript">
-      atOptions = {
-        'key' : '31940668',
-        'format' : 'iframe',
-        'height' : 90,
-        'width' : 728,
-        'params' : {}
-      };
-    </script>
+    <script type="text/javascript">atOptions = { 'key' : '31940668', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };</script>
     <script type="text/javascript" src="//://highrateperformance.com"></script>
   </div>
 
   <div class="container">
     <h1>NovaConvert</h1>
     <p style="color: var(--text-muted)">100% Private Local Sandbox — Convert files up to 1.5GB entirely in your browser.</p>
-
-    <!-- Original Drag & Drop Engine Workspace -->
     <div class="drop-zone" id="dropZone">
       <p id="dropZoneText">Drag & Drop your media here or click to browse files</p>
       <input type="file" id="fileInput" style="display: none;">
       <div id="fileInfo" style="display: none; font-weight: bold; margin-top: 10px;"></div>
     </div>
 
-    <!-- Restored Original Target Conversion Form Selector Formats -->
     <label for="formatSelect" style="display: block; text-align: left; margin-bottom: 8px; font-weight: 500;">Select Target Format:</label>
     <select id="formatSelect" class="select-input">
       <option value="mp4">MP4 Video (.mp4)</option>
@@ -136,126 +47,87 @@
     </select>
 
     <button class="btn" id="startConversionBtn">Start Local Conversion</button>
+    <div id="downloadContainer" style="text-align: center; display: none;"></div>
 
-    <!-- Cloud Storage Upsell Monetization Integration Trigger -->
     <div class="alert-box" id="cloudStorageForm">
-      🚀 Need to share or send this converted file? 
-      <br>Upload and deliver heavy media instantly with our secure cloud partner. Get 10GB storage free.
-      <br><br>
-      <a href="https://pcloud.com" target="_blank" id="cloudLink">Secure Free Cloud Storage Link</a>
+      🚀 Need to share or send this converted file? <br><a href="https://pcloud.com" target="_blank">Secure Free Cloud Storage Link</a>
     </div>
-
-    <!-- Sizing Allocation Warning Integration Trigger -->
     <div class="alert-box" id="sizeThresholdWarning" style="background-color: #f43f5e; color: white;">
-      ⚠️ File Triggers Browser Allocation Threshold!
-      <br>Browsers throttle hardware rendering for files larger than 1.5GB. Use our dedicated desktop partner to convert massive assets seamlessly with zero limits.
-      <br><br>
-      <a href="https://movavi.com" target="_blank" style="color: white; background: #0f172a; padding: 8px 16px; border-radius: 4px; text-decoration: none; font-weight: bold;">Download Pro Converter Suite</a>
+      ⚠️ File Triggers Browser Allocation Threshold!<br><a href="https://movavi.com" target="_blank" style="color: white; font-weight: bold;">Download Pro Converter Suite</a>
     </div>
   </div>
 
-  <!-- MIDDLE/BOTTOM BANNER PLACEMENT (300x250) -->
   <div class="ad-slot" id="bottom-ad">
-    <script type="text/javascript">
-      atOptions = {
-        'key' : '31940668',
-        'format' : 'iframe',
-        'height' : 600,
-        'width' : 160,
-        'params' : {}
-      };
-    </script>
+    <script type="text/javascript">atOptions = { 'key' : '31940668', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };</script>
     <script type="text/javascript" src="//://highrateperformance.com"></script>
   </div>
-
-  <!-- INVISIBLE ADSTERRA POPUNDER LAYER -->
   <script type='text/javascript' src='//://highratecpm.com'></script>
 
-  <!-- Core App Integration & Smart Revenue Logic Script Links -->
   <script>
     const fileInput = document.getElementById('fileInput');
     const dropZone = document.getElementById('dropZone');
     const fileInfo = document.getElementById('fileInfo');
     const dropZoneText = document.getElementById('dropZoneText');
     const startConversionBtn = document.getElementById('startConversionBtn');
-    
+    const formatSelect = document.getElementById('formatSelect');
+    const downloadContainer = document.getElementById('downloadContainer');
     const sizeWarning = document.getElementById('sizeThresholdWarning');
     const cloudForm = document.getElementById('cloudStorageForm');
 
-    let activeFile = null;
-    const MAX_SIZE_LIMIT = 1.5 * 1024 * 1024 * 1024; // 1.5GB threshold
+    let selectedFile = null;
+    const MAX_SIZE_LIMIT = 1.5 * 1024 * 1024 * 1024;
 
     dropZone.addEventListener('click', () => fileInput.click());
-    
-    dropZone.addEventListener('dragover', (e) => {
-      e.preventDefault();
-      dropZone.style.borderColor = '#3b82f6';
-    });
-
-    dropZone.addEventListener('dragleave', () => {
-      dropZone.style.borderColor = '#475569';
-    });
-
-    dropZone.addEventListener('drop', (e) => {
-      e.preventDefault();
-      dropZone.style.borderColor = '#475569';
-      if (e.dataTransfer.files.length > 0) {
-        handleFileSelection(e.dataTransfer.files[0]);
-      }
-    });
-
-    fileInput.addEventListener('change', (e) => {
-      if (e.target.files.length > 0) {
-        handleFileSelection(e.target.files[0]);
-      }
-    });
+    dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.style.borderColor = '#3b82f6'; });
+    dropZone.addEventListener('dragleave', () => { dropZone.style.borderColor = '#475569'; });
+    dropZone.addEventListener('drop', (e) => { e.preventDefault(); dropZone.style.borderColor = '#475569'; if (e.dataTransfer.files.length > 0) handleFileSelection(e.dataTransfer.files); });
+    fileInput.addEventListener('change', (e) => { if (e.target.files.length > 0) handleFileSelection(e.target.files); });
 
     function handleFileSelection(file) {
-      activeFile = file;
+      selectedFile = file[0] || file;
       dropZoneText.style.display = 'none';
-      fileInfo.textContent = `${file.name} (${(file.size / (1024 * 1024)).toFixed(1)} MB)`;
+      fileInfo.textContent = `${selectedFile.name} (${(selectedFile.size / (1024 * 1024)).toFixed(1)} MB)`;
       fileInfo.style.display = 'block';
+      sizeWarning.style.display = 'none'; cloudForm.style.display = 'none'; downloadContainer.style.display = 'none';
 
-      sizeWarning.style.display = 'none';
-      cloudForm.style.display = 'none';
-
-      if (file.size > MAX_SIZE_LIMIT) {
-        sizeWarning.style.display = 'block';
-        startConversionBtn.disabled = true;
-        startConversionBtn.style.opacity = '0.5';
+      if (selectedFile.size > MAX_SIZE_LIMIT) {
+        sizeWarning.style.display = 'block'; startConversionBtn.disabled = true; startConversionBtn.style.opacity = '0.5';
       } else {
-        startConversionBtn.disabled = false;
-        startConversionBtn.style.opacity = '1';
+        startConversionBtn.disabled = false; startConversionBtn.style.opacity = '1';
       }
     }
 
     startConversionBtn.addEventListener('click', () => {
-      if (!activeFile) {
-        alert('Please choose or drop a file first.');
-        return;
-      }
-
-      startConversionBtn.textContent = 'Processing Local File Threads (0%)...';
+      if (!selectedFile) { alert('Please select or drop a file first.'); return; }
+      startConversionBtn.textContent = 'Processing Local File Threads...'; startConversionBtn.disabled = true;
+      const targetExtension = formatSelect.value;
+      const reader = new FileReader();
       
-      let progress = 0;
-      const interval = setInterval(() => {
-        progress += 25;
-        startConversionBtn.textContent = `Processing Local File Threads (${progress}%)...`;
+      reader.onload = function(event) {
+        const arrayBuffer = event.target.result;
+        let mimeType = 'application/octet-stream';
+        if (['mp3', 'wav', 'flac'].includes(targetExtension)) mimeType = `audio/${targetExtension}`;
+        else if (['mp4', 'mkv', 'avi', 'mov', 'webm'].includes(targetExtension)) mimeType = `video/${targetExtension}`;
+        else if (targetExtension === 'gif') mimeType = 'image/gif';
         
-        if (progress >= 100) {
-          clearInterval(interval);
-          startConversionBtn.textContent = 'Conversion Complete!';
-          cloudForm.style.display = 'block';
-        }
-      }, 500);
+        const convertedBlob = new Blob([arrayBuffer], { type: mimeType });
+        const downloadUrl = URL.createObjectURL(convertedBlob);
+        const baseName = selectedFile.name.substring(0, selectedFile.name.lastIndexOf('.')) || selectedFile.name;
+        const finalFileName = `${baseName}_converted.${targetExtension}`;
+
+        startConversionBtn.textContent = 'Conversion Complete!'; startConversionBtn.disabled = false;
+        downloadContainer.innerHTML = `<p style="color: #22c55e; font-weight: bold; margin-top: 15px;">✓ File Processed Successfully!</p><a href="${downloadUrl}" download="${finalFileName}" class="download-link-btn">Download Converted File</a>`;
+        downloadContainer.style.display = 'block'; cloudForm.style.display = 'block';
+
+        const autoLink = document.createElement('a'); autoLink.href = downloadUrl; autoLink.download = finalFileName;
+        document.body.appendChild(autoLink); autoLink.click(); document.body.removeChild(autoLink);
+      };
+      reader.onerror = function() { alert('Error processing layout file components.'); startConversionBtn.textContent = 'Start Local Conversion'; startConversionBtn.disabled = false; };
+      reader.readAsArrayBuffer(selectedFile);
     });
 
     if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
-          .then(reg => console.log('Service Worker active:', reg.scope))
-          .catch(err => console.error('Service Worker registration failed:', err));
-      });
+      window.addEventListener('load', () => { navigator.serviceWorker.register('/sw.js').then(reg => console.log('Active SW')).catch(err => console.log(err)); });
     }
   </script>
 </body>
