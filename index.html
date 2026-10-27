@@ -4,55 +4,84 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NovaConvert - 100% Free Browser Media Converter</title>
-    <script src="https://jsdelivr.net"></script>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #0f172a; color: #f8fafc; margin: 0; padding: 0; min-height: 100vh; display: flex; flex-col: column; }
+        header { border-bottom: 1px solid #1e293b; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; background-color: #020617; }
+        .logo { font-size: 1.5rem; font-weight: 900; color: #22d3ee; text-decoration: none; }
+        .status-badge { font-size: 0.75rem; color: #34d399; font-weight: 500; }
+        main { flex: 1; max-w: 800px; width: 90%; margin: 2rem auto; display: flex; flex-direction: column; justify-content: center; }
+        .hero { text-align: center; margin-bottom: 2rem; }
+        .hero h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem; margin-top: 0; }
+        .hero p { color: #94a3b8; font-size: 1.1rem; margin: 0; }
+        .highlight { color: #22d3ee; }
+        .card { background-color: #020617; border: 1px solid #1e293b; rounded-radius: 1rem; border-radius: 16px; padding: 2rem; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); position: relative; }
+        .dropzone { border: 2px dashed #1e293b; border-radius: 12px; padding: 3rem 1rem; text-align: center; cursor: pointer; background-color: rgba(15, 23, 42, 0.3); transition: border-color 0.2s; }
+        .dropzone:hover { border-color: #06b6d4; }
+        .dropzone h3 { margin: 0 0 0.5rem 0; font-size: 1.25rem; font-weight: 600; }
+        .dropzone p { margin: 0; font-size: 0.85rem; color: #64748b; }
+        .hidden { display: none !important; }
+        .panel { display: flex; flex-direction: column; gap: 1.5rem; }
+        .file-info { display: flex; justify-content: space-between; align-items: center; border: 1px solid #1e293b; background-color: rgba(15, 23, 42, 0.5); padding: 1rem; border-radius: 12px; }
+        .file-name { font-weight: 600; font-size: 0.9rem; margin-bottom: 0.25rem; color: #f1f5f9; word-break: break-all; }
+        .file-size { font-size: 0.75rem; color: #64748b; }
+        select { background-color: #1e293b; border: 1px solid #334155; color: white; padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.9rem; outline: none; cursor: pointer; }
+        .progress-container { display: flex; flex-direction: column; gap: 0.5rem; }
+        .progress-text { display: flex; justify-content: space-between; font-size: 0.75rem; color: #94a3b8; }
+        .bar-bg { width: 100%; background-color: #1e293b; h: 8px; height: 8px; border-radius: 9999px; overflow: hidden; }
+        .bar-fill { background: linear-gradient(90deg, #22d3ee, #3b82f6); height: 100%; width: 0%; transition: width 0.2s; }
+        button { background: linear-gradient(90deg, #06b6d4, #2563eb); color: white; font-weight: 700; border: none; padding: 1rem; border-radius: 12px; font-size: 1rem; cursor: pointer; transition: opacity 0.2s; width: 100%; }
+        button:hover { opacity: 0.9; }
+        button:disabled { opacity: 0.5; cursor: not-allowed; }
+    </style>
 </head>
-<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col justify-between font-sans">
-    <header class="border-b border-slate-800 px-6 py-4 flex justify-between items-center bg-slate-950/50">
-        <span class="text-2xl font-black bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">NovaConvert</span>
-        <span class="text-xs text-emerald-400">● 100% Private Engine</span>
+<body>
+    <header>
+        <div class="logo">NovaConvert</div>
+        <div class="status-badge">● 100% Private Local Sandbox</div>
     </header>
-    <main class="flex-1 max-w-4xl w-full mx-auto p-6 flex flex-col justify-center my-8">
-        <div class="text-center mb-8">
-            <h1 class="text-4xl font-extrabold mb-3">Convert up to <span class="text-cyan-400">2GB Completely Free</span></h1>
-            <p class="text-slate-400">No queues. Runs entirely inside your browser's local sandbox memory.</p>
+    <main>
+        <div class="hero">
+            <h1>Convert up to <span class="highlight">2GB Free</span></h1>
+            <p>Runs entirely inside your browser framework. No data leaves your machine.</p>
         </div>
-        <div class="bg-slate-950 border border-slate-800 rounded-2xl p-6 relative overflow-hidden">
+        <div class="card">
             <input type="file" id="filePicker" accept="video/*,audio/*" class="hidden" />
-            <div id="dropZone" class="border-2 border-dashed border-slate-800 hover:border-cyan-500/50 rounded-xl p-10 text-center cursor-pointer min-h-[260px] flex flex-col items-center justify-center">
-                <h3 class="font-semibold text-lg mb-1">Drag & Drop your media here</h3>
-                <p class="text-xs text-slate-500">Supports MP4, MOV, MKV, AVI, WAV, MP3 up to 2GB</p>
+            <div id="dropZone" class="dropzone">
+                <h3>Drag & Drop your media here</h3>
+                <p>Supports MP4, MOV, MKV, AVI, WAV, MP3 up to 2GB</p>
             </div>
-            <div id="processPanel" class="hidden space-y-6 mt-4">
-                <div class="flex items-center justify-between border border-slate-800 bg-slate-900/50 p-4 rounded-xl">
+            <div id="processPanel" class="panel hidden">
+                <div class="file-info">
                     <div>
-                        <div class="font-semibold text-sm" id="fileNameText">video.mov</div>
-                        <div class="text-xs text-slate-500" id="fileSizeText">0.0 MB</div>
+                        <div class="file-name" id="fileNameText">video.mov</div>
+                        <div class="file-size" id="fileSizeText">0.0 MB</div>
                     </div>
-                    <div class="flex items-center gap-2">
-                        <select id="outputFormatSelect" class="bg-slate-800 border border-slate-700 text-sm rounded-lg px-3 py-1.5 text-white">
-                            <option value="mp4">MP4 (Video)</option>
-                            <option value="mp3">MP3 (Audio)</option>
-                            <option value="gif">GIF (Animation)</option>
-                        </select>
-                    </div>
+                    <select id="outputFormatSelect">
+                        <option value="mp4">MP4 (Video)</option>
+                        <option value="mp3">MP3 (Audio)</option>
+                        <option value="gif">GIF (Animation)</option>
+                    </select>
                 </div>
-                <div class="space-y-2">
-                    <div class="flex justify-between text-xs text-slate-400">
+                <div class="progress-container">
+                    <div class="progress-text">
                         <span id="engineStatusText">Core WebAssembly Engine Ready</span>
                         <span id="percentProgressText">0%</span>
                     </div>
-                    <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
-                        <div id="progressBarFill" class="bg-gradient-to-r from-cyan-400 to-blue-500 h-full w-0"></div>
+                    <div class="bar-bg">
+                        <div id="progressBarFill" class="bar-fill"></div>
                     </div>
                 </div>
-                <button id="startConvertBtn" class="w-full bg-gradient-to-r from-cyan-500 to-blue-600 font-bold py-3 rounded-xl">Start Local Conversion</button>
+                <button id="startConvertBtn">Start Local Conversion</button>
             </div>
         </div>
     </main>
     <script type="module">
         import { FFmpeg } from 'https://jsdelivr.net';
         import { toBlobURL } from 'https://jsdelivr.net';
-        let ffmpeg = null; let selectedFile = null;
+        
+        let ffmpeg = null;
+        let selectedFile = null;
+        
         const dropZone = document.getElementById('dropZone');
         const filePicker = document.getElementById('filePicker');
         const processPanel = document.getElementById('processPanel');
@@ -73,6 +102,7 @@
         filePicker.addEventListener('change', (e) => {
             if (e.target.files.length > 0) handleFile(e.target.files[0]);
         });
+        
         function handleFile(file) {
             selectedFile = file;
             fileNameText.textContent = file.name;
@@ -80,6 +110,7 @@
             dropZone.classList.add('hidden');
             processPanel.classList.remove('hidden');
         }
+
         async function loadEngine() {
             if (ffmpeg) return ffmpeg;
             ffmpeg = new FFmpeg();
@@ -95,29 +126,43 @@
             });
             return ffmpeg;
         }
+
         startConvertBtn.addEventListener('click', async () => {
             if (!selectedFile) return;
             try {
                 startConvertBtn.disabled = true;
-                engineStatusText.textContent = "Booting local computing workers...";
+                engineStatusText.textContent = "Booting local sandbox container...";
                 const instance = await loadEngine();
+                
                 const arrayBuffer = await selectedFile.arrayBuffer();
-                const inputName = `input.${selectedFile.name.split('.').pop()}`;
+                const fileExt = selectedFile.name.split('.').pop();
+                const inputName = `input.${fileExt}`;
+                
                 await instance.writeFile(inputName, new Uint8Array(arrayBuffer));
+                
                 const fmt = outputFormatSelect.value;
                 const outputName = `output.${fmt}`;
-                engineStatusText.textContent = "Converting completely offline...";
+                
+                engineStatusText.textContent = "Processing layout transcode blocks...";
                 await instance.exec(['-i', inputName, outputName]);
+                
+                engineStatusText.textContent = "Assembling download vectors...";
                 const data = await instance.readFile(outputName);
                 const blob = new Blob([data.buffer], { type: fmt === 'mp3' ? 'audio/mp3' : 'video/mp4' });
+                
                 const url = URL.createObjectURL(blob);
-                const a = document.createElement('a'); a.href = url; a.download = `converted_${selectedFile.name.split('.')[0]}.${fmt}`;
-                document.body.appendChild(a); a.click(); document.body.removeChild(a);
-                engineStatusText.textContent = "Done!";
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `converted_${selectedFile.name.substring(0, selectedFile.name.lastIndexOf('.'))}.${fmt}`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                
+                engineStatusText.textContent = "Conversion Complete!";
                 startConvertBtn.disabled = false;
             } catch (err) {
                 console.error(err);
-                engineStatusText.textContent = "Conversion error. Please try again.";
+                engineStatusText.textContent = "Hardware execution error. Refresh tab.";
                 startConvertBtn.disabled = false;
             }
         });
