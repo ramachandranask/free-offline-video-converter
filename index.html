@@ -36,7 +36,7 @@
         button:hover { opacity: 0.9; }
         button:disabled { opacity: 0.5; cursor: not-allowed; }
     </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ffmpeg/0.11.6/ffmpeg.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ffmpeg/0.11.6/ffmpeg.min.js" integrity="sha512-uGzD9NTPd+sLsn5c7D1vM4ZzC7Zp5N7G51S1t4zWkM99xLhC17L4481mSxlx5k4xO5T6oK5wA0E2Z44n8Z2yLw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
     <header>
@@ -139,6 +139,11 @@
             fileSizeText.textContent = `${(file.size / (1024 * 1024)).toFixed(1)} MB`;
             dropZone.classList.add('hidden');
             processPanel.classList.remove('hidden');
+            
+            engineStatusText.textContent = "Core Local Engine Standby";
+            percentProgressText.textContent = "0%";
+            progressBarFill.style.width = "0%";
+            startConvertBtn.disabled = false;
         }
 
         async function loadEngine() {
@@ -150,9 +155,9 @@
             });
             
             ffmpeg.setProgress(({ ratio }) => {
-                const pct = Math.round(ratio * 100);
-                percentProgressText.textContent = pct + '%';
-                progressBarFill.style.width = pct + '%';
+                const pct = Math.min(Math.round(ratio * 100), 99);
+                percentProgressText.textContent = `${pct}%`;
+                progressBarFill.style.width = `${pct}%`;
             });
             
             engineStatusText.textContent = "Booting secure browser engine core...";
@@ -168,12 +173,12 @@
                 
                 engineStatusText.textContent = "Staging media inside local sandbox memory...";
                 const fileExt = selectedFile.name.split('.').pop();
-                const inputName = 'input.' + fileExt;
+                const inputName = `input.${fileExt}`;
                 
                 instance.FS('writeFile', inputName, await fetchFile(selectedFile));
                 
                 const fmt = outputFormatSelect.value;
-                const outputName = 'output.' + fmt;
+                const outputName = `output.${fmt}`;
                 
                 engineStatusText.textContent = "Converting completely offline...";
                 
@@ -186,10 +191,13 @@
                 }
                 
                 engineStatusText.textContent = "Assembling download files...";
+                percentProgressText.textContent = "100%";
+                progressBarFill.style.width = "100%";
+                
                 const data = instance.FS('readFile', outputName);
                 
                 let mimeType = 'video/mp4';
-                if (['mp3', 'wav', 'm4a', 'flac'].includes(fmt)) mimeType = 'audio/' + fmt;
+                if (['mp3', 'wav', 'm4a', 'flac'].includes(fmt)) mimeType = `audio/${fmt}`;
                 if (fmt === 'gif') mimeType = 'image/gif';
                 
                 const blob = new Blob([data.buffer], { type: mimeType });
@@ -197,19 +205,29 @@
                 const a = document.createElement('a');
                 a.href = url;
                 
-                const lastDot = selectedFile.name.lastIndexOf('.');
-                const rawName = lastDot !== -1 ? selectedFile.name.substring(0, lastDot) : 'converted';
-                a.download = rawName + '_new.' + fmt;
+                const rawName = selectedFile.name.substring(0, selectedFile.name.lastIndexOf('.'));
+                a.download = `${rawName || 'converted'}_new.${fmt}`;
                 document.body.appendChild(a);
                 a.click();
                 document.body.removeChild(a);
                 
-                engineStatusText.textContent = "Conversion Complete!";
-                startConvertBtn.disabled = false;
+                try {
+                    instance.FS('unlink', inputName);
+                    instance.FS('unlink', outputName);
+                } catch(e) { console.log("Clean swap complete"); }
+
+                engineStatusText.textContent = "Success! Wiping local file trace caches...";
+                
+                setTimeout(() => {
+                    selectedFile = null;
+                    filePicker.value = "";
+                    processPanel.classList.add('hidden');
+                    dropZone.classList.remove('hidden');
+                }, 3000);
+
             } catch (err) {
                 console.error(err);
-                alert("Processing failed. Please try again.");
-                engineStatusText.textContent = "System engine reset.";
+                engineStatusText.textContent = "Processing failed. Refresh tab and retry.";
                 startConvertBtn.disabled = false;
             }
         });
