@@ -121,7 +121,8 @@
         </div>
     </main>
     <script>
-        const { createFFmpeg, fetchFile } = FFmpeg;
+        let createFFmpeg = null;
+        let fetchFile = null;
         let ffmpeg = null;
         let selectedFile = null;
         
@@ -181,9 +182,11 @@ startConvertBtn.disabled = false;
 }
 async function loadEngine() {
 if (ffmpeg) return ffmpeg;
-if (!window.FFmpeg || !window.FFmpeg.createFFmpeg) {
+if (!window.FFmpeg || !window.FFmpeg.createFFmpeg || !window.FFmpeg.fetchFile) {
     throw new Error('FFmpeg engine could not be loaded. Check your internet connection and CDN access.');
 }
+createFFmpeg = window.FFmpeg.createFFmpeg;
+fetchFile = window.FFmpeg.fetchFile;
 ffmpeg = createFFmpeg({
     log: true,
 corePath: 'https://unpkg.com/@ffmpeg/core@0.11.0/dist/ffmpeg-core.js'
@@ -207,7 +210,7 @@ const fileExt = (selectedFile.name.includes('.') ? selectedFile.name.split('.').
 const inputName = `input.${fileExt}`;
 instance.FS('writeFile', inputName, await fetchFile(selectedFile));
 const fmt = outputFormatSelect.value;
-const outputName = output.${fmt};
+const outputName = `output.${fmt}`;
 engineStatusText.textContent = "Converting completely offline...";
 if (fmt === 'mp3') {
     await instance.run('-i', inputName, '-vn', '-codec:a', 'libmp3lame', '-q:a', '2', outputName);
