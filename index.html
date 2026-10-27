@@ -45,11 +45,10 @@
             <p>Runs entirely inside your browser framework. No data leaves your machine.</p>
         </div>
         <div class="card">
-            <!-- Explicit visible type handler to guarantee clicks work across all browsers -->
             <input type="file" id="filePicker" accept="video/*,audio/*" class="hidden" />
             <div id="dropZone" class="dropzone">
                 <h3>Drag & Drop your media here</h3>
-                <p>or click to browse your files</p>
+                <p>or click anywhere in this box to browse files</p>
                 <p style="margin-top: 0.5rem; font-size: 0.75rem; color: #475569;">Supports MP4, MOV, MKV, AVI, WAV, MP3 up to 2GB</p>
             </div>
             <div id="processPanel" class="panel hidden">
@@ -95,34 +94,36 @@
         const percentProgressText = document.getElementById('percentProgressText');
         const progressBarFill = document.getElementById('progressBarFill');
 
-        // Simple and robust click routing logic
-        dropZone.onclick = function() {
+        // Force browser selector popup on click
+        dropZone.addEventListener('click', () => {
             filePicker.click();
-        };
+        });
         
-        // Universal drag and drop hooks without functional listing errors
-        dropZone.ondragover = function(e) {
+        // Handle drag over styling safely
+        dropZone.addEventListener('dragover', (e) => {
             e.preventDefault();
             dropZone.style.borderColor = "#06b6d4";
-        };
+        });
         
-        dropZone.ondragleave = function() {
+        dropZone.addEventListener('dragleave', () => {
             dropZone.style.borderColor = "#1e293b";
-        };
+        });
         
-        dropZone.ondrop = function(e) {
+        // Fixed drop handler extract file correctly out of lists
+        dropZone.addEventListener('drop', (e) => {
             e.preventDefault();
             dropZone.style.borderColor = "#1e293b";
             if (e.dataTransfer && e.dataTransfer.files.length > 0) {
                 handleFile(e.dataTransfer.files[0]);
             }
-        };
+        });
         
-        filePicker.onchange = function() {
-            if (filePicker.files.length > 0) {
+        // Fixed click explorer extraction selector code
+        filePicker.addEventListener('change', () => {
+            if (filePicker.files && filePicker.files.length > 0) {
                 handleFile(filePicker.files[0]);
             }
-        };
+        });
         
         function handleFile(file) {
             if (!file) return;
@@ -149,7 +150,7 @@
             return ffmpeg;
         }
 
-        startConvertBtn.onclick = async function() {
+        startConvertBtn.addEventListener('click', async () => {
             if (!selectedFile) return;
             try {
                 startConvertBtn.disabled = true;
@@ -180,5 +181,12 @@
                 a.download = `converted_${rawName || 'file'}.${fmt}`;
                 document.body.appendChild(a);
                 a.click();
-                document.body.removeChild(a);
-                
+document.body.removeChild(a);
+engineStatusText.textContent = "Conversion Complete!";
+startConvertBtn.disabled = false;
+} catch (err) {
+console.error(err);
+engineStatusText.textContent = "Hardware execution error. Refresh tab.";
+startConvertBtn.disabled = false;
+}
+});
