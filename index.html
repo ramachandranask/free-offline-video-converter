@@ -36,7 +36,7 @@
         button:hover { opacity: 0.9; }
         button:disabled { opacity: 0.5; cursor: not-allowed; }
     </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ffmpeg/0.11.6/ffmpeg.min.js" integrity="sha512-uGzD9NTPd+sLsn5c7D1vM4ZzC7Zp5N7G51S1t4zWkM99xLhC17L4481mSxlx5k4xO5T6oK5wA0E2Z44n8Z2yLw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ffmpeg/0.11.6/ffmpeg.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
     <header>
@@ -116,9 +116,11 @@
         const percentProgressText = document.getElementById('percentProgressText');
         const progressBarFill = document.getElementById('progressBarFill');
 
+        // Click routing handle
         dropZone.addEventListener('click', () => filePicker.click());
         dropZone.addEventListener('dragover', (e) => e.preventDefault());
         
+        // Fixed file mapping hooks
         dropZone.addEventListener('drop', (e) => {
             e.preventDefault();
             if (e.dataTransfer && e.dataTransfer.files.length > 0) {
@@ -156,8 +158,8 @@
             
             ffmpeg.setProgress(({ ratio }) => {
                 const pct = Math.min(Math.round(ratio * 100), 99);
-                percentProgressText.textContent = `${pct}%`;
-                progressBarFill.style.width = `${pct}%`;
+                percentProgressText.textContent = pct + "%";
+                progressBarFill.style.width = pct + "%";
             });
             
             engineStatusText.textContent = "Booting secure browser engine core...";
@@ -173,12 +175,12 @@
                 
                 engineStatusText.textContent = "Staging media inside local sandbox memory...";
                 const fileExt = selectedFile.name.split('.').pop();
-                const inputName = `input.${fileExt}`;
+                const inputName = "input." + fileExt;
                 
                 instance.FS('writeFile', inputName, await fetchFile(selectedFile));
                 
                 const fmt = outputFormatSelect.value;
-                const outputName = `output.${fmt}`;
+                const outputName = "output." + fmt;
                 
                 engineStatusText.textContent = "Converting completely offline...";
                 
@@ -197,7 +199,7 @@
                 const data = instance.FS('readFile', outputName);
                 
                 let mimeType = 'video/mp4';
-                if (['mp3', 'wav', 'm4a', 'flac'].includes(fmt)) mimeType = `audio/${fmt}`;
+                if (['mp3', 'wav', 'm4a', 'flac'].includes(fmt)) mimeType = "audio/" + fmt;
                 if (fmt === 'gif') mimeType = 'image/gif';
                 
                 const blob = new Blob([data.buffer], { type: mimeType });
@@ -205,8 +207,9 @@
                 const a = document.createElement('a');
                 a.href = url;
                 
-                const rawName = selectedFile.name.substring(0, selectedFile.name.lastIndexOf('.'));
-                a.download = `${rawName || 'converted'}_new.${fmt}`;
+                const lastDot = selectedFile.name.lastIndexOf('.');
+                const rawName = lastDot !== -1 ? selectedFile.name.substring(0, lastDot) : selectedFile.name;
+                a.download = (rawName || 'converted') + "_new." + fmt;
                 document.body.appendChild(a);
                 a.click();
                 document.body.removeChild(a);
@@ -214,7 +217,7 @@
                 try {
                     instance.FS('unlink', inputName);
                     instance.FS('unlink', outputName);
-                } catch(e) { console.log("Clean swap complete"); }
+                } catch(e) {}
 
                 engineStatusText.textContent = "Success! Wiping local file trace caches...";
                 
