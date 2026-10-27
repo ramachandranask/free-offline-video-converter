@@ -102,11 +102,12 @@
                 </div>
                 <button id="startConvertBtn">Start Local Conversion</button>
                 
-                <div id="saasUpsell" class="saas-upsell-box">
-                    <h4>🚀 Need to share or send this converted file?</h4>
-                    <p>Upload and deliver heavy media instantly with our secure cloud partner. Get 10GB storage free.</p>
-                    <a href="https://pcloud.com" target="_blank" class="saas-btn">Secure Free Cloud Storage Link</a>
-                </div>
+            </div>
+
+            <div id="saasUpsell" class="saas-upsell-box hidden">
+                <h4>🚀 Need to share or send this converted file?</h4>
+                <p>Upload and deliver heavy media instantly with our secure cloud partner. Get 10GB storage free.</p>
+                <a href="https://pcloud.com" target="_blank" class="saas-btn">Secure Free Cloud Storage Link</a>
             </div>
 
             <div id="heavyIntercept" class="intercept-overlay">
@@ -248,13 +249,19 @@ instance.FS('unlink', inputName);
 instance.FS('unlink', outputName);
 } catch(e) {}
 engineStatusText.textContent = "Success! Wiping local file trace caches...";
-saasUpsell.style.display = 'block';
+saasUpsell.classList.remove('hidden');
 setTimeout(() => {
 selectedFile = null;
 filePicker.value = "";
 processPanel.classList.add('hidden');
 dropZone.classList.remove('hidden');
-}, 8000);
+fileNameText.textContent = "";
+fileSizeText.textContent = "";
+progressBarFill.style.width = "0%";
+percentProgressText.textContent = "0%";
+engineStatusText.textContent = "Core Local Engine Standby";
+startConvertBtn.disabled = false;
+}, 1500);
 } catch (err) {
 console.error(err);
 engineStatusText.textContent = "Processing failed. Refresh tab and retry.";
