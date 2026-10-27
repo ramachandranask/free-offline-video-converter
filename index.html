@@ -9,7 +9,7 @@
         header { border-bottom: 1px solid #1e293b; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; background-color: #020617; }
         .logo { font-size: 1.5rem; font-weight: 900; color: #22d3ee; }
         .status-badge { font-size: 0.75rem; color: #34d399; font-weight: 500; }
-        main { flex: 1; max-width: 800px; width: 90%; margin: 4rem auto; display: flex; flex-direction: column; justify-content: center; }
+        main { flex: 1; max-w: 800px; width: 90%; margin: 4rem auto; display: flex; flex-direction: column; justify-content: center; }
         .hero { text-align: center; margin-bottom: 2.5rem; }
         .hero h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 0.75rem; margin-top: 0; }
         .hero p { color: #94a3b8; font-size: 1.1rem; margin: 0; }
@@ -36,6 +36,7 @@
         button:hover { opacity: 0.9; }
         button:disabled { opacity: 0.5; cursor: not-allowed; }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ffmpeg/0.11.6/ffmpeg.min.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <header>
@@ -99,191 +100,119 @@
             </div>
         </div>
     </main>
-    <script type="module">
-      import { FFmpeg } from 'https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.10/dist/esm/index.js';
-      import { toBlobURL } from 'https://cdn.jsdelivr.net/npm/@ffmpeg/util@0.12.1/dist/esm/index.js';
+    <script>
+        const { createFFmpeg, fetchFile } = FFmpeg;
+        let ffmpeg = null;
+        let selectedFile = null;
+        
+        const dropZone = document.getElementById('dropZone');
+        const filePicker = document.getElementById('filePicker');
+        const processPanel = document.getElementById('processPanel');
+        const fileNameText = document.getElementById('fileNameText');
+        const fileSizeText = document.getElementById('fileSizeText');
+        const outputFormatSelect = document.getElementById('outputFormatSelect');
+        const startConvertBtn = document.getElementById('startConvertBtn');
+        const engineStatusText = document.getElementById('engineStatusText');
+        const percentProgressText = document.getElementById('percentProgressText');
+        const progressBarFill = document.getElementById('progressBarFill');
 
-      const MAX_FILE_SIZE = 2 * 1024 * 1024 * 1024;
-      let ffmpeg = null;
-      let selectedFile = null;
-      let converting = false;
-
-      const $ = (id) => document.getElementById(id);
-      const dropZone = $('dropZone');
-      const filePicker = $('filePicker');
-      const processPanel = $('processPanel');
-      const fileNameText = $('fileNameText');
-      const fileSizeText = $('fileSizeText');
-      const outputFormatSelect = $('outputFormatSelect');
-      const startConvertBtn = $('startConvertBtn');
-      const engineStatusText = $('engineStatusText');
-      const percentProgressText = $('percentProgressText');
-      const progressBarFill = $('progressBarFill');
-
-      filePicker.accept = 'video/*,audio/*,.mkv,.avi,.mov,.mp4,.mp3,.wav,.m4a,.webm,.flac,.ogg,.flv,.wmv';
-
-      function setProgress(progress) {
-        const pct = Math.max(0, Math.min(100, Math.round(progress)));
-        percentProgressText.textContent = `${pct}%`;
-        progressBarFill.style.width = `${pct}%`;
-      }
-
-      function assignSelectedFile(file) {
-        if (!file) return;
-        const supportedExtension = /\.(mp4|mkv|avi|mov|webm|flv|wmv|mp3|wav|m4a|flac|ogg|aac|mpeg|mpg)$/i.test(file.name);
-        if (!file.type.startsWith('audio/') && !file.type.startsWith('video/') && !supportedExtension) {
-          alert('Please choose a supported audio or video file.');
-          return;
-        }
-        if (file.size > MAX_FILE_SIZE) {
-          alert('This file is larger than 2 GB. Try a smaller file. Actual conversion limits depend on available browser memory.');
-          return;
-        }
-        selectedFile = file;
-        fileNameText.textContent = file.name;
-        fileSizeText.textContent = `${(file.size / (1024 * 1024)).toFixed(1)} MB`;
-        dropZone.classList.add('hidden');
-        processPanel.classList.remove('hidden');
-        engineStatusText.textContent = 'Local engine ready when you are';
-        setProgress(0);
-      }
-
-      dropZone.addEventListener('click', () => { if (!converting) filePicker.click(); });
-      dropZone.addEventListener('keydown', (event) => {
-        if (!converting && (event.key === 'Enter' || event.key === ' ')) {
-          event.preventDefault();
-          filePicker.click();
-        }
-      });
-      dropZone.setAttribute('role', 'button');
-      dropZone.setAttribute('tabindex', '0');
-      dropZone.setAttribute('aria-label', 'Choose or drop a media file');
-
-      dropZone.addEventListener('dragover', (event) => {
-        event.preventDefault();
-        if (!converting) dropZone.style.borderColor = '#06b6d4';
-      });
-      dropZone.addEventListener('dragleave', () => { dropZone.style.borderColor = ''; });
-      dropZone.addEventListener('drop', (event) => {
-        event.preventDefault();
-        dropZone.style.borderColor = '';
-        if (!converting && event.dataTransfer?.files?.length) assignSelectedFile(event.dataTransfer.files[0]);
-      });
-      filePicker.addEventListener('change', () => {
-        if (filePicker.files?.length) assignSelectedFile(filePicker.files[0]);
-        filePicker.value = '';
-      });
-
-      async function loadEngine() {
-        if (ffmpeg?.loaded) return ffmpeg;
-        if (!ffmpeg) {
-          ffmpeg = new FFmpeg();
-          ffmpeg.on('progress', ({ progress }) => setProgress(progress * 100));
-          ffmpeg.on('log', ({ message }) => console.debug('[FFmpeg]', message));
-        }
-        engineStatusText.textContent = 'Downloading conversion engine…';
-        const coreBase = 'https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.6/dist/umd';
-        await ffmpeg.load({
-          coreURL: await toBlobURL(`${coreBase}/ffmpeg-core.js`, 'text/javascript'),
-          wasmURL: await toBlobURL(`${coreBase}/ffmpeg-core.wasm`, 'application/wasm')
+        dropZone.addEventListener('click', () => filePicker.click());
+        dropZone.addEventListener('dragover', (e) => e.preventDefault());
+        
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            if (e.dataTransfer && e.dataTransfer.files.length > 0) {
+                assignSelectedFile(e.dataTransfer.files[0]);
+            }
         });
-        return ffmpeg;
-      }
-
-      function safeBaseName(filename) {
-        const dot = filename.lastIndexOf('.');
-        const base = dot > 0 ? filename.slice(0, dot) : filename;
-        return base.replace(/[\\/:*?"<>|]/g, '_').slice(0, 120) || 'converted';
-      }
-
-      function buildArgs(inputName, outputName, format, inputIsAudio) {
-        if (format === 'gif') {
-          if (inputIsAudio) throw new Error('GIF output requires a video file.');
-          return ['-i', inputName, '-vf', 'fps=10,scale=480:-1:flags=lanczos', '-loop', '0', '-y', outputName];
+        
+        filePicker.addEventListener('change', () => {
+            if (filePicker.files && filePicker.files.length > 0) {
+                assignSelectedFile(filePicker.files[0]);
+            }
+        });
+        
+        function assignSelectedFile(file) {
+            if (!file) return;
+            selectedFile = file;
+            fileNameText.textContent = file.name;
+            fileSizeText.textContent = `${(file.size / (1024 * 1024)).toFixed(1)} MB`;
+            dropZone.classList.add('hidden');
+            processPanel.classList.remove('hidden');
         }
-        if (['mp3', 'wav', 'm4a', 'flac'].includes(format)) {
-          const codec = {
-            mp3: ['-c:a', 'libmp3lame', '-q:a', '2'],
-            wav: ['-c:a', 'pcm_s16le'],
-            m4a: ['-c:a', 'aac', '-b:a', '192k'],
-            flac: ['-c:a', 'flac']
-          }[format];
-          return ['-i', inputName, '-vn', ...codec, '-y', outputName];
+
+        async function loadEngine() {
+            if (ffmpeg) return ffmpeg;
+            
+            ffmpeg = createFFmpeg({ 
+                log: true,
+                corePath: 'https://cdnjs.cloudflare.com/ajax/libs/ffmpeg-core/0.11.0/ffmpeg-core.js'
+            });
+            
+            ffmpeg.setProgress(({ ratio }) => {
+                const pct = Math.round(ratio * 100);
+                percentProgressText.textContent = pct + '%';
+                progressBarFill.style.width = pct + '%';
+            });
+            
+            engineStatusText.textContent = "Booting secure browser engine core...";
+            await ffmpeg.load();
+            return ffmpeg;
         }
-        if (inputIsAudio) throw new Error('Choose an audio output format for an audio-only input.');
-        const videoArgs = {
-          mp4: ['-c:v', 'libx264', '-preset', 'ultrafast', '-crf', '28', '-c:a', 'aac', '-b:a', '128k', '-movflags', '+faststart'],
-          mkv: ['-c:v', 'libx264', '-preset', 'ultrafast', '-crf', '28', '-c:a', 'aac'],
-          mov: ['-c:v', 'libx264', '-preset', 'ultrafast', '-crf', '28', '-c:a', 'aac'],
-          avi: ['-c:v', 'mpeg4', '-q:v', '5', '-c:a', 'libmp3lame', '-q:a', '4'],
-          webm: ['-c:v', 'libvpx', '-b:v', '1M', '-c:a', 'libvorbis', '-q:a', '4'],
-          flv: ['-c:v', 'flv', '-c:a', 'libmp3lame', '-q:a', '5'],
-          wmv: ['-c:v', 'wmv2', '-c:a', 'wmav2']
-        }[format];
-        if (!videoArgs) throw new Error('That output format is not supported.');
-        return ['-i', inputName, ...videoArgs, '-y', outputName];
-      }
 
-      startConvertBtn.addEventListener('click', async () => {
-        if (!selectedFile || converting) return;
-        converting = true;
-        startConvertBtn.disabled = true;
-        outputFormatSelect.disabled = true;
-        let inputName = '';
-        let outputName = '';
-        try {
-          const instance = await loadEngine();
-          const extension = selectedFile.name.includes('.')
-            ? selectedFile.name.split('.').pop().replace(/[^a-z0-9]/gi, '').toLowerCase()
-            : 'bin';
-          inputName = `input.${extension || 'bin'}`;
-          const format = outputFormatSelect.value;
-          outputName = `converted.${format}`;
-          const inputIsAudio = selectedFile.type.startsWith('audio/') ||
-            /\.(mp3|wav|m4a|flac|ogg|aac)$/i.test(selectedFile.name);
-
-          engineStatusText.textContent = 'Reading input file into browser memory…';
-          await instance.writeFile(inputName, new Uint8Array(await selectedFile.arrayBuffer()));
-
-          engineStatusText.textContent = `Converting to ${format.toUpperCase()}…`;
-          const args = buildArgs(inputName, outputName, format, inputIsAudio);
-          await instance.exec(args);
-
-          engineStatusText.textContent = 'Preparing your download…';
-          const data = await instance.readFile(outputName);
-          const mimeTypes = {
-            mp4: 'video/mp4', mkv: 'video/x-matroska', avi: 'video/x-msvideo',
-            mov: 'video/quicktime', webm: 'video/webm', flv: 'video/x-flv',
-            wmv: 'video/x-ms-wmv', mp3: 'audio/mpeg', wav: 'audio/wav',
-            m4a: 'audio/mp4', flac: 'audio/flac', gif: 'image/gif'
-          };
-          const blob = new Blob([data], { type: mimeTypes[format] || 'application/octet-stream' });
-          const url = URL.createObjectURL(blob);
-          const link = document.createElement('a');
-          link.href = url;
-          link.download = `${safeBaseName(selectedFile.name)}_converted.${format}`;
-          document.body.appendChild(link);
-          link.click();
-          link.remove();
-          setTimeout(() => URL.revokeObjectURL(url), 60_000);
-          setProgress(100);
-          engineStatusText.textContent = 'Conversion complete — your download should begin shortly.';
-        } catch (error) {
-          console.error(error);
-          engineStatusText.textContent = error?.message || 'Conversion failed. Try another file or format.';
-          alert(`Conversion failed: ${error?.message || 'Unknown error'}`);
-        } finally {
-          if (ffmpeg && inputName) {
-            try { await ffmpeg.deleteFile(inputName); } catch {}
-          }
-          if (ffmpeg && outputName) {
-            try { await ffmpeg.deleteFile(outputName); } catch {}
-          }
-          converting = false;
-          startConvertBtn.disabled = false;
-          outputFormatSelect.disabled = false;
-        }
-      });
+        startConvertBtn.addEventListener('click', async () => {
+            if (!selectedFile) return;
+            try {
+                startConvertBtn.disabled = true;
+                const instance = await loadEngine();
+                
+                engineStatusText.textContent = "Staging media inside local sandbox memory...";
+                const fileExt = selectedFile.name.split('.').pop();
+                const inputName = 'input.' + fileExt;
+                
+                instance.FS('writeFile', inputName, await fetchFile(selectedFile));
+                
+                const fmt = outputFormatSelect.value;
+                const outputName = 'output.' + fmt;
+                
+                engineStatusText.textContent = "Converting completely offline...";
+                
+                if (fmt === 'mp3') {
+                    await instance.run('-i', inputName, '-q:a', '0', '-map', 'a', outputName);
+                } else if (fmt === 'gif') {
+                    await instance.run('-i', inputName, '-vf', 'fps=10,scale=480:-1:flags=lanczos', outputName);
+                } else {
+                    await instance.run('-i', inputName, '-c:v', 'libx264', '-preset', 'ultrafast', '-crf', '28', '-c:a', 'aac', outputName);
+                }
+                
+                engineStatusText.textContent = "Assembling download files...";
+                const data = instance.FS('readFile', outputName);
+                
+                let mimeType = 'video/mp4';
+                if (['mp3', 'wav', 'm4a', 'flac'].includes(fmt)) mimeType = 'audio/' + fmt;
+                if (fmt === 'gif') mimeType = 'image/gif';
+                
+                const blob = new Blob([data.buffer], { type: mimeType });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                
+                const lastDot = selectedFile.name.lastIndexOf('.');
+                const rawName = lastDot !== -1 ? selectedFile.name.substring(0, lastDot) : 'converted';
+                a.download = rawName + '_new.' + fmt;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                
+                engineStatusText.textContent = "Conversion Complete!";
+                startConvertBtn.disabled = false;
+            } catch (err) {
+                console.error(err);
+                alert("Processing failed. Please try again.");
+                engineStatusText.textContent = "System engine reset.";
+                startConvertBtn.disabled = false;
+            }
+        });
     </script>
 </body>
 </html>
