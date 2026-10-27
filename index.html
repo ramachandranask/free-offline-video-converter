@@ -5,18 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NovaConvert - 100% Free Browser Media Converter</title>
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #0f172a; color: #f8fafc; margin: 0; padding: 0; min-height: 100vh; display: flex; flex-col: column; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #0f172a; color: #f8fafc; margin: 0; padding: 0; min-height: 100vh; display: flex; flex-direction: column; }
         header { border-bottom: 1px solid #1e293b; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; background-color: #020617; }
-        .logo { font-size: 1.5rem; font-weight: 900; color: #22d3ee; text-decoration: none; }
+        .logo { font-size: 1.5rem; font-weight: 900; color: #22d3ee; }
         .status-badge { font-size: 0.75rem; color: #34d399; font-weight: 500; }
-        main { flex: 1; max-w: 800px; width: 90%; margin: 2rem auto; display: flex; flex-direction: column; justify-content: center; }
-        .hero { text-align: center; margin-bottom: 2rem; }
-        .hero h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem; margin-top: 0; }
+        main { flex: 1; max-w: 800px; width: 90%; margin: 4rem auto; display: flex; flex-direction: column; justify-content: center; }
+        .hero { text-align: center; margin-bottom: 2.5rem; }
+        .hero h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 0.75rem; margin-top: 0; }
         .hero p { color: #94a3b8; font-size: 1.1rem; margin: 0; }
         .highlight { color: #22d3ee; }
-        .card { background-color: #020617; border: 1px solid #1e293b; rounded-radius: 1rem; border-radius: 16px; padding: 2rem; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); position: relative; }
-        .dropzone { border: 2px dashed #1e293b; border-radius: 12px; padding: 3rem 1rem; text-align: center; cursor: pointer; background-color: rgba(15, 23, 42, 0.3); transition: border-color 0.2s; }
-        .dropzone:hover { border-color: #06b6d4; }
+        .card { background-color: #020617; border: 1px solid #1e293b; border-radius: 16px; padding: 2rem; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); }
+        .dropzone { border: 2px dashed #1e293b; border-radius: 12px; padding: 4rem 1rem; text-align: center; cursor: pointer; background-color: rgba(15, 23, 42, 0.3); transition: all 0.2s; }
+        .dropzone:hover { border-color: #06b6d4; background-color: rgba(6, 182, 212, 0.05); }
         .dropzone h3 { margin: 0 0 0.5rem 0; font-size: 1.25rem; font-weight: 600; }
         .dropzone p { margin: 0; font-size: 0.85rem; color: #64748b; }
         .hidden { display: none !important; }
@@ -27,7 +27,7 @@
         select { background-color: #1e293b; border: 1px solid #334155; color: white; padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.9rem; outline: none; cursor: pointer; }
         .progress-container { display: flex; flex-direction: column; gap: 0.5rem; }
         .progress-text { display: flex; justify-content: space-between; font-size: 0.75rem; color: #94a3b8; }
-        .bar-bg { width: 100%; background-color: #1e293b; h: 8px; height: 8px; border-radius: 9999px; overflow: hidden; }
+        .bar-bg { width: 100%; background-color: #1e293b; height: 8px; border-radius: 9999px; overflow: hidden; }
         .bar-fill { background: linear-gradient(90deg, #22d3ee, #3b82f6); height: 100%; width: 0%; transition: width 0.2s; }
         button { background: linear-gradient(90deg, #06b6d4, #2563eb); color: white; font-weight: 700; border: none; padding: 1rem; border-radius: 12px; font-size: 1rem; cursor: pointer; transition: opacity 0.2s; width: 100%; }
         button:hover { opacity: 0.9; }
@@ -93,12 +93,24 @@
         const percentProgressText = document.getElementById('percentProgressText');
         const progressBarFill = document.getElementById('progressBarFill');
 
+        // Simple and secure trigger for the file search overlay panel
         dropZone.addEventListener('click', () => filePicker.click());
-        dropZone.addEventListener('dragover', (e) => e.preventDefault());
+        
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.style.borderColor = "#06b6d4";
+        });
+        
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.style.borderColor = "#1e293b";
+        });
+        
         dropZone.addEventListener('drop', (e) => {
             e.preventDefault();
+            dropZone.style.borderColor = "#1e293b";
             if (e.dataTransfer.files.length > 0) handleFile(e.dataTransfer.files[0]);
         });
+        
         filePicker.addEventListener('change', (e) => {
             if (e.target.files.length > 0) handleFile(e.target.files[0]);
         });
@@ -153,7 +165,9 @@
                 const url = URL.createObjectURL(blob);
                 const a = document.createElement('a');
                 a.href = url;
-                a.download = `converted_${selectedFile.name.substring(0, selectedFile.name.lastIndexOf('.'))}.${fmt}`;
+                
+                const rawName = selectedFile.name.substring(0, selectedFile.name.lastIndexOf('.'));
+                a.download = `converted_${rawName || selectedFile.name}.${fmt}`;
                 document.body.appendChild(a);
                 a.click();
                 document.body.removeChild(a);
@@ -166,6 +180,3 @@
                 startConvertBtn.disabled = false;
             }
         });
-    </script>
-</body>
-</html>
