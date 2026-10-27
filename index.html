@@ -15,10 +15,10 @@
         .hero p { color: #94a3b8; font-size: 1.1rem; margin: 0; }
         .highlight { color: #22d3ee; }
         .card { background-color: #020617; border: 1px solid #1e293b; border-radius: 16px; padding: 2rem; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); }
-        .dropzone { border: 2px dashed #1e293b; border-radius: 12px; padding: 4rem 1rem; text-align: center; cursor: pointer; background-color: rgba(15, 23, 42, 0.3); transition: all 0.2s; }
+        .dropzone { border: 2px dashed #1e293b; border-radius: 12px; padding: 4rem 1rem; text-align: center; cursor: pointer; background-color: rgba(15, 23, 42, 0.3); transition: all 0.2s; position: relative; }
         .dropzone:hover { border-color: #06b6d4; background-color: rgba(6, 182, 212, 0.05); }
-        .dropzone h3 { margin: 0 0 0.5rem 0; font-size: 1.25rem; font-weight: 600; }
-        .dropzone p { margin: 0; font-size: 0.85rem; color: #64748b; }
+        .dropzone h3 { margin: 0 0 0.5rem 0; font-size: 1.25rem; font-weight: 600; pointer-events: none; }
+        .dropzone p { margin: 0; font-size: 0.85rem; color: #64748b; pointer-events: none; }
         .hidden { display: none !important; }
         .panel { display: flex; flex-direction: column; gap: 1.5rem; }
         .file-info { display: flex; justify-content: space-between; align-items: center; border: 1px solid #1e293b; background-color: rgba(15, 23, 42, 0.5); padding: 1rem; border-radius: 12px; }
@@ -77,8 +77,8 @@
         </div>
     </main>
     <script type="module">
-        import { FFmpeg } from 'https://jsdelivr.net';
-        import { toBlobURL } from 'https://jsdelivr.net';
+        import { FFmpeg } from 'https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.7/+esm';
+        import { toBlobURL } from 'https://cdn.jsdelivr.net/npm/@ffmpeg/util@0.12.1/+esm';
         
         let ffmpeg = null;
         let selectedFile = null;
@@ -94,31 +94,21 @@
         const percentProgressText = document.getElementById('percentProgressText');
         const progressBarFill = document.getElementById('progressBarFill');
 
-        // Force browser selector popup on click
         dropZone.addEventListener('click', () => {
             filePicker.click();
         });
         
-        // Handle drag over styling safely
         dropZone.addEventListener('dragover', (e) => {
             e.preventDefault();
-            dropZone.style.borderColor = "#06b6d4";
         });
         
-        dropZone.addEventListener('dragleave', () => {
-            dropZone.style.borderColor = "#1e293b";
-        });
-        
-        // Fixed drop handler extract file correctly out of lists
         dropZone.addEventListener('drop', (e) => {
             e.preventDefault();
-            dropZone.style.borderColor = "#1e293b";
             if (e.dataTransfer && e.dataTransfer.files.length > 0) {
                 handleFile(e.dataTransfer.files[0]);
             }
         });
         
-        // Fixed click explorer extraction selector code
         filePicker.addEventListener('change', () => {
             if (filePicker.files && filePicker.files.length > 0) {
                 handleFile(filePicker.files[0]);
@@ -139,13 +129,13 @@
             ffmpeg = new FFmpeg();
             ffmpeg.on('progress', ({ progress }) => {
                 const pct = Math.round(progress * 100);
-                percentProgressText.textContent = `${pct}%`;
-                progressBarFill.style.width = `${pct}%`;
+                percentProgressText.textContent = pct + '%';
+                progressBarFill.style.width = pct + '%';
             });
-            const base = 'https://jsdelivr.net';
+            const base = 'https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.6/dist/esm';
             await ffmpeg.load({
-                coreJSHeadlessURL: await toBlobURL(`${base}/ffmpeg-core.js`, 'text/javascript'),
-                wasmHeadlessURL: await toBlobURL(`${base}/ffmpeg-core.wasm`, 'application/wasm'),
+                coreJSHeadlessURL: await toBlobURL(base + '/ffmpeg-core.js', 'text/javascript'),
+                wasmHeadlessURL: await toBlobURL(base + '/ffmpeg-core.wasm', 'application/wasm'),
             });
             return ffmpeg;
         }
@@ -159,12 +149,12 @@
                 
                 const arrayBuffer = await selectedFile.arrayBuffer();
                 const fileExt = selectedFile.name.split('.').pop();
-                const inputName = `input.${fileExt}`;
+                const inputName = 'input.' + fileExt;
                 
                 await instance.writeFile(inputName, new Uint8Array(arrayBuffer));
                 
                 const fmt = outputFormatSelect.value;
-                const outputName = `output.${fmt}`;
+                const outputName = 'output.' + fmt;
                 
                 engineStatusText.textContent = "Processing layout transcode blocks...";
                 await instance.exec(['-i', inputName, outputName]);
@@ -178,15 +168,19 @@
                 a.href = url;
                 
                 const rawName = selectedFile.name.substring(0, selectedFile.name.lastIndexOf('.'));
-                a.download = `converted_${rawName || 'file'}.${fmt}`;
+                a.download = 'converted_' + (rawName || 'file') + '.' + fmt;
                 document.body.appendChild(a);
                 a.click();
-document.body.removeChild(a);
-engineStatusText.textContent = "Conversion Complete!";
-startConvertBtn.disabled = false;
-} catch (err) {
-console.error(err);
-engineStatusText.textContent = "Hardware execution error. Refresh tab.";
-startConvertBtn.disabled = false;
-}
-});
+                document.body.removeChild(a);
+                
+                engineStatusText.textContent = "Conversion Complete!";
+                startConvertBtn.disabled = false;
+            } catch (err) {
+                console.error(err);
+                engineStatusText.textContent = "Hardware execution error. Refresh tab.";
+                startConvertBtn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
