@@ -15,7 +15,9 @@
         .hero p { color: #94a3b8; font-size: 1.1rem; margin: 0; }
         .highlight { color: #22d3ee; }
         .card { background-color: #020617; border: 1px solid #1e293b; border-radius: 16px; padding: 2rem; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); position: relative; }
-        .dropzone { border: 2px dashed #1e293b; border-radius: 12px; padding: 4rem 1rem; text-align: center; cursor: pointer; background-color: rgba(15, 23, 42, 0.3); transition: all 0.2s; }
+        #filePicker { display: block; width: 100%; margin: 0 0 1rem; color: #cbd5e1; font-size: 0.9rem; }
+        #filePicker::file-selector-button { background: #1e293b; color: #f8fafc; border: 1px solid #334155; border-radius: 8px; padding: 0.65rem 0.9rem; margin-right: 0.75rem; cursor: pointer; }
+        .dropzone { display: block; border: 2px dashed #1e293b; border-radius: 12px; padding: 4rem 1rem; text-align: center; cursor: pointer; background-color: rgba(15, 23, 42, 0.3); transition: all 0.2s; }
         .dropzone:hover { border-color: #06b6d4; background-color: rgba(6, 182, 212, 0.05); }
         .dropzone h3 { margin: 0 0 0.5rem 0; font-size: 1.25rem; font-weight: 600; pointer-events: none; }
         .dropzone p { margin: 0; font-size: 0.85rem; color: #64748b; pointer-events: none; }
@@ -57,13 +59,13 @@
             <p>Runs entirely inside your browser framework. No data leaves your machine.</p>
         </div>
         <div class="card">
-            <input type="file" id="filePicker" class="hidden" accept="video/*,audio/*,image/gif,image/webp,image/apng" />
+            <input type="file" id="filePicker" accept="video/*,audio/*,image/*" aria-label="Choose a media file" />
             
-            <div id="dropZone" class="dropzone" role="button" tabindex="0" aria-label="Choose a media file">
+            <label id="dropZone" class="dropzone" for="filePicker">
                 <h3>Drag & Drop your media here</h3>
                 <p>or click anywhere in this box to browse files</p>
-                <p style="margin-top: 0.5rem; font-size: 0.75rem; color: #475569;">Supports video, audio, and animations up to 1.5GB</p>
-            </div>
+                <p style="margin-top: 0.5rem; font-size: 0.75rem; color: #475569;">Choose a video, audio, or image file (up to 1.5GB), or drag it here</p>
+            </label>
             
             <div id="processPanel" class="panel hidden">
                 <div class="file-info">
@@ -138,13 +140,6 @@
 const progressBarFill = document.getElementById('progressBarFill');
 const saasUpsell = document.getElementById('saasUpsell');
 const heavyIntercept = document.getElementById('heavyIntercept');
-dropZone.addEventListener('click', () => filePicker.click());
-dropZone.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        filePicker.click();
-    }
-});
 dropZone.addEventListener('dragover', (e) => e.preventDefault());
 dropZone.addEventListener('drop', (e) => {
 e.preventDefault();
@@ -163,7 +158,7 @@ if (!fileList || fileList.length === 0) return;
 const file = fileList[0];
 const sizeInMB = file.size / (1024 * 1024);
 if (sizeInMB > 1500) {
-dropZone.classList.add('hidden');
+selectedFile = null;
 processPanel.classList.add('hidden');
 heavyIntercept.style.display = 'flex';
 return;
@@ -265,4 +260,6 @@ console.error(err);
 engineStatusText.textContent = "Processing failed. Refresh tab and retry.";
 startConvertBtn.disabled = false;
 }
-});
+});    </script>
+</body>
+</html>
