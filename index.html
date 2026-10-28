@@ -100,7 +100,7 @@
 </head>
 <body>
 
-  <!-- 📺 TOP SLOT: FULLY REPAIRED 728x90 ADSTERRA LEADERBOARD BANNER ENGINE -->
+  <!-- 📺 TOP SLOT: ACTIVE 728x90 LEADERBOARD BANNER -->
   <div class="ad-banner-frame" id="ad-top-slot">
     <script type="text/javascript">
       atOptions = {
@@ -150,7 +150,7 @@
     </div>
   </div>
 
-  <!-- 📺 BOTTOM SLOT: LIVE 4:1 NATIVE RECOMMENDATION MODULE -->
+  <!-- 📺 BOTTOM SLOT: LIVE NATIVE RECOMMENDATION MODULE -->
   <div class="ad-banner-frame" id="ad-bottom-slot">
     <script async="async" data-cfasync="false" src="https://bauval.org"></script>
     <div id="container-c50c50f57335ef83e525e0d03411feac"></div>
@@ -202,7 +202,7 @@
       
       if (processedFileUrl) { URL.revokeObjectURL(processedFileUrl); }
       
-      finalFileBlob = new Blob([mediaUpload.files[0]], { type: mediaUpload.files[0].type });
+      finalFileBlob = new Blob([mediaUpload.files], { type: mediaUpload.files[0].type });
       processedFileUrl = URL.createObjectURL(finalFileBlob);
       
       downloadLink.href = processedFileUrl;
@@ -254,9 +254,14 @@
   });
 </script>
 
-<!-- Global Monetization Scripts Hooks -->
-<script data-cfasync="false" src="https://abscloud.org"></script>
-<script data-cfasync="false" src="https://bauval.org"></script>
+<!-- 🚨 ISOLATED BASE MONETIZATION ENGINE HOOKED IN SAFE SYSTEM SANDBOXES -->
+<div id="adsterra-popunder-isolated-root">
+  <script data-cfasync="false" src="https://abscloud.org"></script>
+</div>
+
+<div id="adsterra-socialbar-isolated-root">
+  <script data-cfasync="false" src="https://bauval.org"></script>
+</div>
 
 </body>
 </html>
