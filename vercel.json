@@ -1,12 +1,17 @@
 {
   "version": 2,
+  "headers": [
+    {
+      "source": "/sw.js",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0" },
+        { "key": "Service-Worker-Allowed", "value": "/" }
+      ]
+    }
+  ],
   "routes": [
     {
-      "src": "/sw.js",
-      "headers": {
-        "cache-control": "public, max-age=0, must-revalidate"
-      },
-      "dest": "/sw.js"
+      "handle": "filesystem"
     },
     {
       "src": "/(.*)",
