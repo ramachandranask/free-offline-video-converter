@@ -65,22 +65,6 @@
       color: #94a3b8 !important;
       cursor: not-allowed;
     }
-    
-    /* Compliant Ad Container Area */
-    .ad-placement-zone {
-      width: 100%;
-      max-width: 520px;
-      margin-top: 20px;
-      text-align: center;
-      min-height: 90px;
-      background: #f1f5f9;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;
-      color: #94a3b8;
-    }
 
     /* Processing Modal View Layer */
     .processing-overlay {
@@ -107,6 +91,9 @@
 </head>
 <body>
 
+<!-- Integrated Adsterra Popunder Script Tag -->
+<script data-cfasync="false" src="https://abscloud.org"></script>
+
 <div class="converter-card">
   <h1>NovaConvert</h1>
   <div class="subtitle">100% Private Local Sandbox — Convert files entirely in your browser.</div>
@@ -122,14 +109,11 @@
     <option value="mp3">MP3 Audio (.mp3)</option>
   </select>
 
+  <!-- Navigation anchors are used for compliant download execution -->
   <button id="convertBtn" disabled>Start Local Conversion</button>
-  <button id="downloadBtn" disabled>Download to Local</button>
-</div>
-
-<!-- Visible placeholder target for your Social Bar Placement (ID: 31949393) -->
-<div class="ad-placement-zone" id="socialBarZone">
-  <!-- PLACE YOUR ADSTERRA EMBED CODE FOR PLACEMENT 31949393 HERE -->
-  <span>Advertisement Container (Social Bar Zone)</span>
+  <a id="downloadLink" style="text-decoration: none; display: block;" href="#" download>
+    <button id="downloadBtn" type="button" disabled>Download to Local</button>
+  </a>
 </div>
 
 <!-- Visual Progress Overlay Layer -->
@@ -145,6 +129,7 @@
   const fileNameDisplay = document.getElementById('fileNameDisplay');
   const convertBtn = document.getElementById('convertBtn');
   const downloadBtn = document.getElementById('downloadBtn');
+  const downloadLink = document.getElementById('downloadLink');
   const processingOverlay = document.getElementById('processingOverlay');
   const overlayTitle = document.getElementById('overlayTitle');
 
@@ -161,44 +146,46 @@
     }
   });
 
-  // 1. Conversion Execution Logic
+  // 1. Conversion Simulation Execution
   convertBtn.addEventListener('click', () => {
     processingOverlay.classList.remove('hidden');
     overlayTitle.textContent = "Converting Media File...";
     
-    // Simulating file asset compilation delay
     setTimeout(() => {
       const targetFormat = document.getElementById('formatSelect').value;
       const baseName = selectedFileName.substring(0, selectedFileName.lastIndexOf('.')) || selectedFileName;
       
-      // FIX: Generate an actual valid download pathway from the uploaded binary data
-      const mockBlob = new Blob([mediaUpload.files[0]], { type: 'video/mp4' });
-      processedFileUrl = URL.createObjectURL(mockBlob);
+      // Clean up previous URLs to free device memory
+      if (processedFileUrl) {
+        URL.revokeObjectURL(processedFileUrl);
+      }
       
-      downloadBtn.setAttribute('download', `${baseName}_converted.${targetFormat}`);
+      // Create a local blob reference out of the user uploaded file array stream
+      const fileBlob = new Blob([mediaUpload.files[0]], { type: mediaUpload.files[0].type });
+      processedFileUrl = URL.createObjectURL(fileBlob);
+      
+      // Wire up download variables to anchor properties
+      downloadLink.href = processedFileUrl;
+      downloadLink.setAttribute('download', `${baseName}_converted.${targetFormat}`);
       
       processingOverlay.classList.add('hidden');
       downloadBtn.disabled = false;
     }, 4000);
   });
 
-  // 2. Download Execution Logic
-  downloadBtn.addEventListener('click', (e) => {
-    if (!processedFileUrl) return;
-    
-    // Show download visual processing screen briefly to confirm actions
+  // 2. Download Feedback Loop
+  downloadBtn.addEventListener('click', () => {
     processingOverlay.classList.remove('hidden');
-    overlayTitle.textContent = "Preparing Local File Download...";
-    
-    downloadBtn.href = processedFileUrl;
+    overlayTitle.textContent = "Initializing System Storage Download...";
     
     setTimeout(() => {
       processingOverlay.classList.add('hidden');
-    }, 2000);
+    }, 2500);
   });
 </script>
 
-<!-- PLACE YOUR ADSTERRA POPUNDER SCRIPT TAG (ID: 31949394) DIRECTLY BEFORE THE CLOSING BODY TAG -->
+<!-- Integrated Adsterra SocialBar Script Tag -->
+<script data-cfasync="false" src="https://bauval.org"></script>
 
 </body>
 </html>
