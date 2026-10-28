@@ -2,17 +2,20 @@
   "version": 2,
   "headers": [
     {
-      "source": "/(.*)",
+      "source": "/sw.js",
       "headers": [
-        {
-          "key": "Content-Security-Policy",
-          "value": "default-src 'self' blob: data: https://google.com https://google.com https://dropbox.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://google.com https://google.com https://dropbox.com https://abscloud.org https://bauval.org https://highrateperformance.com; img-src 'self' data: blob: https://*; iframe-src 'self' https://*;"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0"
-        }
+        { "key": "Cache-Control", "value": "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0" },
+        { "key": "Service-Worker-Allowed", "value": "/" }
       ]
+    }
+  ],
+  "routes": [
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
     }
   ]
 }
