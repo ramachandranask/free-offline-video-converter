@@ -18,7 +18,6 @@
       padding: 20px;
     }
     
-    /* Dedicated Monetization Placements */
     .ad-slot-container {
       width: 100%;
       max-width: 728px;
@@ -77,7 +76,6 @@
       background: #fff;
     }
     
-    /* Layout Actions Flex-Grid Configuration */
     .action-grid {
       display: flex;
       flex-direction: column;
@@ -96,7 +94,6 @@
     #convertBtn { background-color: #6366f1; color: white; }
     #downloadBtn { background-color: #22c55e; color: white; }
     
-    /* Stable Visual Cloud Anchor Themes */
     .btn-cloud-gdrive { background-color: #fbbf24; color: #0f172a; }
     .btn-cloud-dropbox { background-color: #0061ff; color: white; }
 
@@ -107,7 +104,6 @@
       opacity: 1 !important;
     }
 
-    /* Processing Modal View Layer */
     .processing-overlay {
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
@@ -132,7 +128,6 @@
 </head>
 <body>
 
-  <!-- ⚡ TOP AD SECTION FOR HOMEPAGE MONETIZATION TRAFFIC -->
   <div class="ad-slot-container" id="ad-top-wrapper">
     <script data-cfasync="false" src="https://abscloud.org"></script>
     <span style="font-size: 11px; color: #94a3b8;">Premium Advertisement Stream</span>
@@ -147,7 +142,6 @@
       <input type="file" id="mediaUpload" accept="video/*,audio/*" style="display: none;">
     </div>
 
-    <!-- Dropdown Option Architecture Array -->
     <select id="formatSelect">
       <optgroup label="Video Output Profiles">
         <option value="mp4" selected>MP4 Video (.mp4)</option>
@@ -164,7 +158,6 @@
       </optgroup>
     </select>
 
-    <!-- Layout Grid Prevents UI Elements Shrinking -->
     <div class="action-grid">
       <button id="convertBtn" disabled>Start Local Conversion</button>
       
@@ -172,19 +165,17 @@
         <button id="downloadBtn" type="button" disabled>Download to Local</button>
       </a>
 
-      <!-- CLOUD ACTIONS GRID INTEGRATION -->
+      <!-- Visible placeholders that showcase availability to incoming users instantly -->
       <button id="gdriveBtn" class="btn-cloud-gdrive" type="button" disabled>Upload to Google Drive</button>
       <button id="dropboxBtn" class="btn-cloud-dropbox" type="button" disabled>Upload to Dropbox</button>
     </div>
   </div>
 
-  <!-- ⚡ BOTTOM AD SECTION FOR DISMISSAL CLICKS -->
   <div class="ad-slot-container" id="ad-bottom-wrapper">
     <script data-cfasync="false" src="https://bauval.org"></script>
     <span style="font-size: 11px; color: #94a3b8;">Sponsored Content Sandbox</span>
   </div>
 
-  <!-- Visual Progress Overlay Layer -->
   <div id="processingOverlay" class="processing-overlay hidden">
     <div class="spinner"></div>
     <h3 id="overlayTitle">Processing Media File...</h3>
@@ -199,7 +190,6 @@
   const downloadBtn = document.getElementById('downloadBtn');
   const downloadLink = document.getElementById('downloadLink');
   
-  // Cloud UI Reference Elements
   const gdriveBtn = document.getElementById('gdriveBtn');
   const dropboxBtn = document.getElementById('dropboxBtn');
   
@@ -213,13 +203,13 @@
   
   mediaUpload.addEventListener('change', () => {
     if (mediaUpload.files.length > 0) {
+      // FIXED: Added proper [0] index accessor to capture the array file handle securely
       selectedFileName = mediaUpload.files[0].name;
       fileNameDisplay.textContent = `Selected: ${selectedFileName}`;
       convertBtn.disabled = false;
     }
   });
 
-  // 1. Conversion Simulation Execution
   convertBtn.addEventListener('click', () => {
     processingOverlay.classList.remove('hidden');
     overlayTitle.textContent = "Converting Media File...";
@@ -246,7 +236,6 @@
     }, 4000);
   });
 
-  // 2. Download Feedback Loop
   downloadBtn.addEventListener('click', () => {
     processingOverlay.classList.remove('hidden');
     overlayTitle.textContent = "Initializing System Storage Download...";
@@ -255,7 +244,6 @@
     }, 2500);
   });
 
-  // 3. Simulated Cloud Action Loops
   gdriveBtn.addEventListener('click', () => {
     processingOverlay.classList.remove('hidden');
     overlayTitle.textContent = "Connecting Secure Google Drive Api Route...";
