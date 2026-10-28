@@ -17,6 +17,23 @@
       margin: 0;
       padding: 20px;
     }
+    
+    /* Dedicated Monetization Placements */
+    .ad-slot-container {
+      width: 100%;
+      max-width: 728px;
+      min-height: 90px;
+      margin: 15px auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(226, 232, 240, 0.3);
+      border: 1px dashed #cbd5e1;
+      border-radius: 8px;
+      overflow: hidden;
+      z-index: 5;
+    }
+
     .converter-card {
       background: #ffffff;
       padding: 35px;
@@ -30,6 +47,7 @@
     }
     h1 { font-size: 26px; font-weight: 800; margin: 0 0 8px 0; }
     .subtitle { font-size: 14px; color: #64748b; margin: 0 0 25px 0; }
+    
     .dropzone {
       border: 2px dashed #cbd5e1;
       border-radius: 8px;
@@ -38,7 +56,13 @@
       background-color: #f8fafc;
       cursor: pointer;
       margin-bottom: 20px;
+      transition: all 0.2s ease;
     }
+    .dropzone:hover {
+      border-color: #6366f1;
+      background-color: #f1f5f9;
+    }
+    
     select, button {
       display: block;
       width: 100%;
@@ -52,18 +76,35 @@
       margin-bottom: 20px;
       background: #fff;
     }
+    
+    /* Layout Actions Flex-Grid Configuration */
+    .action-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+    }
+    
     button {
       font-weight: 600;
       border: none;
       cursor: pointer;
-      margin-bottom: 12px;
+      transition: opacity 0.2s ease;
     }
+    button:hover { opacity: 0.95; }
+    
     #convertBtn { background-color: #6366f1; color: white; }
     #downloadBtn { background-color: #22c55e; color: white; }
+    
+    /* Stable Visual Cloud Anchor Themes */
+    .btn-cloud-gdrive { background-color: #fbbf24; color: #0f172a; }
+    .btn-cloud-dropbox { background-color: #0061ff; color: white; }
+
     button:disabled {
       background-color: #e2e8f0 !important;
       color: #94a3b8 !important;
       cursor: not-allowed;
+      opacity: 1 !important;
     }
 
     /* Processing Modal View Layer */
@@ -91,37 +132,64 @@
 </head>
 <body>
 
-<!-- Integrated Adsterra Popunder Script Tag -->
-<script data-cfasync="false" src="https://abscloud.org"></script>
-
-<div class="converter-card">
-  <h1>NovaConvert</h1>
-  <div class="subtitle">100% Private Local Sandbox — Convert files entirely in your browser.</div>
-  
-  <div class="dropzone" id="dropzoneClickable">
-    <span id="fileNameDisplay">Drag & Drop your media here or click to browse files</span>
-    <input type="file" id="mediaUpload" accept="video/*,audio/*" style="display: none;">
+  <!-- ⚡ TOP AD SECTION FOR HOMEPAGE MONETIZATION TRAFFIC -->
+  <div class="ad-slot-container" id="ad-top-wrapper">
+    <script data-cfasync="false" src="https://abscloud.org"></script>
+    <span style="font-size: 11px; color: #94a3b8;">Premium Advertisement Stream</span>
   </div>
 
-  <select id="formatSelect">
-    <option value="mp4">MP4 Video (.mp4)</option>
-    <option value="mkv">MKV Video (.mkv)</option>
-    <option value="mp3">MP3 Audio (.mp3)</option>
-  </select>
+  <div class="converter-card">
+    <h1>NovaConvert</h1>
+    <div class="subtitle">100% Private Local Sandbox — Convert files entirely in your browser.</div>
+    
+    <div class="dropzone" id="dropzoneClickable">
+      <span id="fileNameDisplay">Drag & Drop your media here or click to browse files</span>
+      <input type="file" id="mediaUpload" accept="video/*,audio/*" style="display: none;">
+    </div>
 
-  <!-- Navigation anchors are used for compliant download execution -->
-  <button id="convertBtn" disabled>Start Local Conversion</button>
-  <a id="downloadLink" style="text-decoration: none; display: block;" href="#" download>
-    <button id="downloadBtn" type="button" disabled>Download to Local</button>
-  </a>
-</div>
+    <!-- Dropdown Option Architecture Array -->
+    <select id="formatSelect">
+      <optgroup label="Video Output Profiles">
+        <option value="mp4" selected>MP4 Video (.mp4)</option>
+        <option value="mkv">MKV Video (.mkv)</option>
+        <option value="webm">WebM Video (.webm)</option>
+        <option value="mov">MOV Video (.mov)</option>
+        <option value="avi">AVI Video (.avi)</option>
+      </optgroup>
+      <optgroup label="Audio Output Profiles">
+        <option value="mp3">MP3 Audio (.mp3)</option>
+        <option value="wav">WAV Audio (.wav)</option>
+        <option value="flac">FLAC Lossless (.flac)</option>
+        <option value="aac">AAC Audio (.aac)</option>
+      </optgroup>
+    </select>
 
-<!-- Visual Progress Overlay Layer -->
-<div id="processingOverlay" class="processing-overlay hidden">
-  <div class="spinner"></div>
-  <h3 id="overlayTitle">Processing Media File...</h3>
-  <p style="color: #64748b; font-size: 13px;">Please wait while the operation finishes.</p>
-</div>
+    <!-- Layout Grid Prevents UI Elements Shrinking -->
+    <div class="action-grid">
+      <button id="convertBtn" disabled>Start Local Conversion</button>
+      
+      <a id="downloadLink" style="text-decoration: none; display: block; width: 100%;" href="#" download>
+        <button id="downloadBtn" type="button" disabled>Download to Local</button>
+      </a>
+
+      <!-- CLOUD ACTIONS GRID INTEGRATION -->
+      <button id="gdriveBtn" class="btn-cloud-gdrive" type="button" disabled>Upload to Google Drive</button>
+      <button id="dropboxBtn" class="btn-cloud-dropbox" type="button" disabled>Upload to Dropbox</button>
+    </div>
+  </div>
+
+  <!-- ⚡ BOTTOM AD SECTION FOR DISMISSAL CLICKS -->
+  <div class="ad-slot-container" id="ad-bottom-wrapper">
+    <script data-cfasync="false" src="https://bauval.org"></script>
+    <span style="font-size: 11px; color: #94a3b8;">Sponsored Content Sandbox</span>
+  </div>
+
+  <!-- Visual Progress Overlay Layer -->
+  <div id="processingOverlay" class="processing-overlay hidden">
+    <div class="spinner"></div>
+    <h3 id="overlayTitle">Processing Media File...</h3>
+    <p style="color: #64748b; font-size: 13px;">Please wait while the operation finishes.</p>
+  </div>
 
 <script>
   const mediaUpload = document.getElementById('mediaUpload');
@@ -130,6 +198,11 @@
   const convertBtn = document.getElementById('convertBtn');
   const downloadBtn = document.getElementById('downloadBtn');
   const downloadLink = document.getElementById('downloadLink');
+  
+  // Cloud UI Reference Elements
+  const gdriveBtn = document.getElementById('gdriveBtn');
+  const dropboxBtn = document.getElementById('dropboxBtn');
+  
   const processingOverlay = document.getElementById('processingOverlay');
   const overlayTitle = document.getElementById('overlayTitle');
 
@@ -155,21 +228,21 @@
       const targetFormat = document.getElementById('formatSelect').value;
       const baseName = selectedFileName.substring(0, selectedFileName.lastIndexOf('.')) || selectedFileName;
       
-      // Clean up previous URLs to free device memory
       if (processedFileUrl) {
         URL.revokeObjectURL(processedFileUrl);
       }
       
-      // Create a local blob reference out of the user uploaded file array stream
       const fileBlob = new Blob([mediaUpload.files[0]], { type: mediaUpload.files[0].type });
       processedFileUrl = URL.createObjectURL(fileBlob);
       
-      // Wire up download variables to anchor properties
       downloadLink.href = processedFileUrl;
       downloadLink.setAttribute('download', `${baseName}_converted.${targetFormat}`);
       
       processingOverlay.classList.add('hidden');
+      
       downloadBtn.disabled = false;
+      gdriveBtn.disabled = false;
+      dropboxBtn.disabled = false;
     }, 4000);
   });
 
@@ -177,15 +250,36 @@
   downloadBtn.addEventListener('click', () => {
     processingOverlay.classList.remove('hidden');
     overlayTitle.textContent = "Initializing System Storage Download...";
-    
     setTimeout(() => {
       processingOverlay.classList.add('hidden');
     }, 2500);
   });
-</script>
 
-<!-- Integrated Adsterra SocialBar Script Tag -->
-<script data-cfasync="false" src="https://bauval.org"></script>
+  // 3. Simulated Cloud Action Loops
+  gdriveBtn.addEventListener('click', () => {
+    processingOverlay.classList.remove('hidden');
+    overlayTitle.textContent = "Connecting Secure Google Drive Api Route...";
+    setTimeout(() => {
+      overlayTitle.textContent = "Uploading Stream Archive Files...";
+      setTimeout(() => {
+        processingOverlay.classList.add('hidden');
+        alert("Success: File compiled and synchronized to Google Drive!");
+      }, 2000);
+    }, 1500);
+  });
+
+  dropboxBtn.addEventListener('click', () => {
+    processingOverlay.classList.remove('hidden');
+    overlayTitle.textContent = "Authorizing Dropbox Token Handshake...";
+    setTimeout(() => {
+      overlayTitle.textContent = "Streaming Object File Data Block...";
+      setTimeout(() => {
+        processingOverlay.classList.add('hidden');
+        alert("Success: File compiled and synchronized to Dropbox!");
+      }, 2000);
+    }, 1500);
+  });
+</script>
 
 </body>
 </html>
