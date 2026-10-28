@@ -16,11 +16,10 @@
       color: #0f172a;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
       min-height: 100vh;
       margin: 0;
-      padding: 20px;
+      padding: 15px;
       box-sizing: border-box;
     }
     
@@ -37,44 +36,47 @@
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
       overflow: hidden;
     }
-    
-    #ad-top-slot { margin-bottom: 25px; }
-    #ad-bottom-slot { margin-top: 25px; }
 
+    #ad-top-slot {
+      margin-bottom: 20px;
+    }
+
+    #ad-bottom-slot {
+      margin-top: 20px;
+    }
+    
     .converter-card {
       background: #ffffff;
-      padding: 35px;
+      padding: 30px 25px;
       border-radius: 12px;
       box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
       width: 100%;
-      max-width: 520px;
+      max-width: 480px;
       box-sizing: border-box;
-      position: relative;
-      z-index: 10;
     }
-    h1 { font-size: 26px; font-weight: 800; margin: 0 0 8px 0; text-align: center; }
-    .subtitle { font-size: 14px; color: #64748b; margin: 0 0 25px 0; text-align: center; }
+    h1 { font-size: 24px; font-weight: 800; margin: 0 0 6px 0; text-align: center; }
+    .subtitle { font-size: 13px; color: #64748b; margin: 0 0 20px 0; text-align: center; }
     .dropzone {
       border: 2px dashed #cbd5e1;
       border-radius: 8px;
-      padding: 30px 20px;
+      padding: 25px 15px;
       text-align: center;
       background-color: #f8fafc;
       cursor: pointer;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
       transition: all 0.2s ease;
     }
     .dropzone:hover { border-color: #6366f1; background-color: #f1f5f9; }
     select, button {
       display: block;
       width: 100%;
-      padding: 14px;
-      font-size: 15px;
+      padding: 12px;
+      font-size: 14px;
       border-radius: 6px;
       box-sizing: border-box;
     }
-    select { border: 1px solid #cbd5e1; margin-bottom: 20px; background: #fff; }
-    .action-grid { display: flex; flex-direction: column; gap: 12px; width: 100%; }
+    select { border: 1px solid #cbd5e1; margin-bottom: 15px; background: #fff; }
+    .action-grid { display: flex; flex-direction: column; gap: 10px; width: 100%; }
     button { font-weight: 600; border: none; cursor: pointer; transition: opacity 0.2s ease; }
     button:hover { opacity: 0.95; }
     #convertBtn { background-color: #6366f1; color: white; }
@@ -98,18 +100,10 @@
 </head>
 <body>
 
-  <!-- 📺 TOP SLOT: LIVE 728x90 LEADERBOARD BANNER -->
+  <!-- 📺 TOP SLOT: NATIVE GRID MODULE (Bypasses classic script crashes) -->
   <div class="ad-banner-frame" id="ad-top-slot">
-    <script type="text/javascript">
-      atOptions = {
-        'key' : '88032a6e282fe35647ad2826fccb53c3',
-        'format' : 'iframe',
-        'height' : 90,
-        'width' : 728,
-        'params' : {}
-      };
-    </script>
-    <script type="text/javascript" src="https://bauval.org"></script>
+    <script async="async" data-cfasync="false" src="https://bauval.org"></script>
+    <div id="container-c50c50f57335ef83e525e0d03411feac"></div>
   </div>
   <div class="converter-card">
     <h1>NovaConvert</h1>
@@ -148,10 +142,17 @@
     </div>
   </div>
 
-  <!-- 📺 BOTTOM SLOT: LIVE NATIVE RECOMMENDATION MODULE -->
+  <!-- 📺 BOTTOM SLOT: SECOND CLEAN NATIVE GRID LAYOUT MODULE -->
   <div class="ad-banner-frame" id="ad-bottom-slot">
     <script async="async" data-cfasync="false" src="https://bauval.org"></script>
-    <div id="container-c50c50f57335ef83e525e0d03411feac"></div>
+    <div id="container-c50c50f57335ef83e525e0d03411feac_2"></div>
+    <script type="text/javascript">
+      (sc_adv_out = window.sc_adv_out || []).push({
+        id: "c50c50f57335ef83e525e0d03411feac",
+        domain: "bauval.org",
+        target: "container-c50c50f57335ef83e525e0d03411feac_2"
+      });
+    </script>
   </div>
 
   <div id="processingOverlay" class="processing-overlay hidden">
@@ -184,7 +185,6 @@
   
   mediaUpload.addEventListener('change', () => {
     if (mediaUpload.files && mediaUpload.files.length > 0) {
-      // FIXED: Added strict array index point 0 to block runtime compilation loops
       selectedFileName = mediaUpload.files[0].name;
       fileNameDisplay.textContent = `Selected: ${selectedFileName}`;
       convertBtn.disabled = false;
@@ -193,7 +193,7 @@
 
   convertBtn.addEventListener('click', () => {
     processingOverlay.classList.remove('hidden');
-    overlayTitle.textContent = "Converting Media File...";
+    overlayTitle.textContent = "Converting Media File... (Processing sponsored streaming buffers)";
     
     setTimeout(() => {
       currentTargetFormat = document.getElementById('formatSelect').value;
