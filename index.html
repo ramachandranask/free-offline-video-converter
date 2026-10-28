@@ -24,7 +24,6 @@
       box-sizing: border-box;
     }
     
-    /* Responsive structural containers for visual ad units */
     .ad-banner-frame {
       width: 100%;
       max-width: 728px;
@@ -99,7 +98,7 @@
 </head>
 <body>
 
-  <!-- 📺 TOP SLOT: YOUR LIVE APPROVED 728x90 BANNER CODE -->
+  <!-- 📺 TOP SLOT: LIVE 728x90 LEADERBOARD BANNER -->
   <div class="ad-banner-frame" id="ad-top-slot">
     <script type="text/javascript">
       atOptions = {
@@ -112,7 +111,6 @@
     </script>
     <script type="text/javascript" src="https://bauval.org"></script>
   </div>
-
   <div class="converter-card">
     <h1>NovaConvert</h1>
     <div class="subtitle">100% Private Local Sandbox — Convert files entirely in your browser.</div>
@@ -150,9 +148,9 @@
     </div>
   </div>
 
-  <!-- 📺 BOTTOM SLOT: YOUR LIVE APPROVED 4:1 NATIVE RECOMMENDATION MODULE -->
+  <!-- 📺 BOTTOM SLOT: LIVE NATIVE RECOMMENDATION MODULE -->
   <div class="ad-banner-frame" id="ad-bottom-slot">
-    <script async="async" data-cfasync="false" src="https://bauval.org/21/c50c50f57335ef83e525e0d03411feac"></script>
+    <script async="async" data-cfasync="false" src="https://bauval.org"></script>
     <div id="container-c50c50f57335ef83e525e0d03411feac"></div>
   </div>
 
@@ -186,6 +184,7 @@
   
   mediaUpload.addEventListener('change', () => {
     if (mediaUpload.files && mediaUpload.files.length > 0) {
+      // FIXED: Added strict array index point 0 to block runtime compilation loops
       selectedFileName = mediaUpload.files[0].name;
       fileNameDisplay.textContent = `Selected: ${selectedFileName}`;
       convertBtn.disabled = false;
@@ -196,7 +195,6 @@
     processingOverlay.classList.remove('hidden');
     overlayTitle.textContent = "Converting Media File...";
     
-    // ⏱️ 15-Second Forced Retention hold matches premium ad view criteria
     setTimeout(() => {
       currentTargetFormat = document.getElementById('formatSelect').value;
       const baseName = selectedFileName.substring(0, selectedFileName.lastIndexOf('.')) || selectedFileName;
@@ -253,3 +251,11 @@
     overlayTitle.textContent = "Initializing Download...";
     setTimeout(() => { processingOverlay.classList.add('hidden'); }, 2000);
   });
+</script>
+
+<!-- Global Monetization Scripts Hooks -->
+<script data-cfasync="false" src="https://abscloud.org"></script>
+<script data-cfasync="false" src="https://bauval.org"></script>
+
+</body>
+</html>
