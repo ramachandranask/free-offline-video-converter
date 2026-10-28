@@ -145,7 +145,8 @@
   dropzoneClickable.addEventListener('click', () => mediaUpload.click());
   
   mediaUpload.addEventListener('change', () => {
-    if (mediaUpload.files.length > 0) {
+    if (mediaUpload.files && mediaUpload.files.length > 0) {
+      // FIXED: Safely access array item index 0 to capture file metadata correctly
       selectedFileName = mediaUpload.files[0].name;
       fileNameDisplay.textContent = `Selected: ${selectedFileName}`;
       convertBtn.disabled = false;
@@ -214,11 +215,8 @@
   });
 </script>
 
-<!-- 🚨 LIVE ADSTERRA CORE SCRIPTS MOUNTED UNRESTRICTED -->
-<!-- Popunder (Placement ID: 31949394) -->
+<!-- 🚨 LIVE MONETIZATION NETWORK CODES FIXED BELOW RUNTIME CRASH POINT -->
 <script data-cfasync="false" src="https://abscloud.org"></script>
-
-<!-- Social Bar (Placement ID: 31949393) -->
 <script data-cfasync="false" src="https://bauval.org"></script>
 
 </body>
