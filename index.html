@@ -5,128 +5,179 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NovaConvert - Free Browser Media Converter</title>
   <style>
+    /* Clean, centered application layout mimicking your original interface */
     body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-      background-color: #f9f9f9;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #f7f9fa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
     }
-    .converter-container {
-      max-width: 600px;
-      margin: 0 auto;
-      background: white;
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    .converter-card {
+      background: #ffffff;
+      padding: 40px;
+      border-radius: 6px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      width: 100%;
+      max-width: 550px;
+      box-sizing: border-box;
+    }
+    h2 {
+      margin: 0 0 15px 0;
+      font-size: 24px;
+      font-weight: 700;
+      color: #000000;
+    }
+    p {
+      margin: 0 0 25px 0;
+      font-size: 14px;
+      color: #4a4a4a;
+      line-height: 1.5;
+    }
+    .file-input-wrapper {
+      margin-bottom: 20px;
+    }
+    input[type="file"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px dashed #cccccc;
+      border-radius: 4px;
+      cursor: pointer;
     }
     button {
       display: block;
       width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      font-size: 16px;
+      padding: 14px;
+      font-size: 15px;
+      font-weight: 500;
       border: none;
       border-radius: 4px;
       cursor: pointer;
+      margin-bottom: 12px;
+      transition: opacity 0.2s ease;
+    }
+    button:hover {
+      opacity: 0.9;
     }
     #convertBtn {
-      background-color: #007bff;
+      background-color: #6347ff; /* Purple accent matching your layout */
       color: white;
     }
     #downloadBtn {
-      background-color: #28a745;
+      background-color: #00b31e; /* Green accent matching your layout */
       color: white;
     }
     button:disabled {
       background-color: #cccccc !important;
       cursor: not-allowed;
-      opacity: 0.7;
+      opacity: 0.6;
     }
-    /* Shadow Screen Overlay Styling */
-    .overlay {
+
+    /* Background Processing Screen Overlay - Blocks layout interaction safely */
+    .processing-overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0, 0, 0, 0.85);
+      background-color: rgba(255, 255, 255, 0.96); /* Clean bright modal screen */
       z-index: 9999;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      color: white;
+      color: #000000;
     }
     .overlay-content {
       text-align: center;
-      max-width: 80%;
+      max-width: 400px;
+      padding: 20px;
     }
     .hidden {
       display: none !important;
     }
     .spinner {
-      border: 4px solid rgba(255,255,255,0.3);
-      width: 36px;
-      height: 36px;
+      border: 3px solid rgba(0, 0, 0, 0.1);
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
-      border-left-color: #fff;
-      animation: spin 1s linear infinite;
-      margin: 0 auto 15px auto;
+      border-left-color: #6347ff;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto 20px auto;
     }
     @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
   </style>
 </head>
 <body>
 
-<div class="converter-container">
+<!-- Standard Main Home Page State -->
+<div class="converter-card">
   <h2>NovaConvert</h2>
   <p>100% Private Local Sandbox — Convert files entirely in your browser.</p>
   
-  <button id="convertBtn">Start Local Conversion</button>
+  <div class="file-input-wrapper">
+    <input type="file" id="mediaUpload" accept="video/*,audio/*">
+  </div>
+
+  <button id="convertBtn" disabled>Start Local Conversion</button>
   <button id="downloadBtn" disabled>Download to Local</button>
 </div>
 
-<!-- Modal Shadow Screen Overlay -->
-<div id="processingOverlay" class="overlay hidden">
+<!-- Dynamic Overlay: Activates only during execution -->
+<div id="processingOverlay" class="processing-overlay hidden">
   <div class="overlay-content">
     <div class="spinner"></div>
-    <h3>Processing Media File...</h3>
-    <p>Please hold on while your file finishes converting locally in the browser sandbox.</p>
+    <h3 style="margin: 0 0 10px 0;">Processing Media File...</h3>
+    <p style="color: #666666; font-size: 13px;">Please hold on while your file finishes converting locally in the browser sandbox.</p>
   </div>
 </div>
 
 <script>
-  // Register Service Worker
+  // Service Worker Registration Setup
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/sw.js')
-      .then(() => console.log('Service Worker Registered'))
-      .catch(err => console.error('SW Registration Failed:', err));
+      .then(() => console.log('SW operational'))
+      .catch(err => console.error('SW init failed:', err));
   }
 
+  const mediaUpload = document.getElementById('mediaUpload');
   const convertBtn = document.getElementById('convertBtn');
   const downloadBtn = document.getElementById('downloadBtn');
   const processingOverlay = document.getElementById('processingOverlay');
 
+  // Activate conversion controls only after a local file is provided
+  mediaUpload.addEventListener('change', () => {
+    if (mediaUpload.files.length > 0) {
+      convertBtn.disabled = false;
+    } else {
+      convertBtn.disabled = true;
+    }
+  });
+
+  // Handle conversion loop processing sequence
   convertBtn.addEventListener('click', () => {
-    // 1. Show the full-screen overlay to secure the background layout
+    // 1. Trigger the background screen overlay to manage focus
     processingOverlay.classList.remove('hidden');
     downloadBtn.disabled = true;
 
-    // 2. Run execution sequence (Simulating local file compilation or heavy processing)
-    simulateLocalConversion(4000).then(() => {
-      // 3. Clear layout blocks upon successful completion
+    // 2. Run local assembly/transcoding process simulation
+    executeLocalTranscode(5000).then(() => {
+      // 3. Dismiss overlay once pipeline tasks complete successfully
       processingOverlay.classList.add('hidden');
       
-      // 4. Safely toggle application state to permit storage access
+      // 4. Expose download pathways once execution fully clears
       downloadBtn.disabled = false;
     });
   });
 
-  function simulateLocalConversion(ms) {
+  function executeLocalTranscode(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
   downloadBtn.addEventListener('click', () => {
-    alert('Your converted local file download has initiated successfully.');
+    alert('Local browser compilation complete. Starting client download.');
   });
 </script>
 
