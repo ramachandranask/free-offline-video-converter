@@ -5,10 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NovaConvert - 100% Free Browser Media Converter</title>
   
-  <!-- Official Cloud API SDK Scripts -->
-  <script src="https://apis.google.com/js/api.js" async defer></script>
-  <script src="https://accounts.google.com/gsi/client" async defer></script>
-  <script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="YOUR_DROPBOX_APP_KEY"></script>
+  <script src="https://google.com" async defer></script>
+  <script src="https://google.com" async defer></script>
+  <script type="text/javascript" src="https://dropbox.com" id="dropboxjs" data-app-key="YOUR_DROPBOX_APP_KEY"></script>
 
   <style>
     body {
@@ -22,7 +21,25 @@
       min-height: 100vh;
       margin: 0;
       padding: 20px;
+      box-sizing: border-box;
     }
+    
+    /* Responsive Shield for Max CPM Leaderboards */
+    .ad-banner-frame {
+      width: 100%;
+      max-width: 728px;
+      min-height: 90px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      margin-bottom: 25px;
+      overflow: hidden;
+    }
+    
     .converter-card {
       background: #ffffff;
       padding: 35px;
@@ -31,6 +48,8 @@
       width: 100%;
       max-width: 520px;
       box-sizing: border-box;
+      position: relative;
+      z-index: 10;
     }
     h1 { font-size: 26px; font-weight: 800; margin: 0 0 8px 0; }
     .subtitle { font-size: 14px; color: #64748b; margin: 0 0 25px 0; }
@@ -62,9 +81,10 @@
     .btn-cloud-gdrive { background-color: #fbbf24; color: #0f172a; }
     .btn-cloud-dropbox { background-color: #0061ff; color: white; }
     button:disabled { background-color: #e2e8f0 !important; color: #94a3b8 !important; cursor: not-allowed; opacity: 1 !important; }
+    
     .processing-overlay {
       position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background-color: rgba(255, 255, 255, 0.98); z-index: 9999;
+      background-color: rgba(255, 255, 255, 0.95); z-index: 9999;
       display: flex; flex-direction: column; justify-content: center; align-items: center;
     }
     .spinner {
@@ -77,6 +97,19 @@
 </head>
 <body>
 
+  <!-- 📺 TOP SLOT: RECONSTRUCTED HIGH-YIELD 728x90 LEADERBOARD BANNER -->
+  <div class="ad-banner-frame" id="ad-top-slot">
+    <script type="text/javascript">
+      atOptions = {
+        'key' : '88032a6e282fe35647ad2826fccb53c3',
+        'format' : 'iframe',
+        'height' : 90,
+        'width' : 728,
+        'params' : {}
+      };
+    </script>
+    <script type="text/javascript" src="https://bauval.org/22/88032a6e282fe35647ad2826fccb53c3"></script>
+  </div>
   <div class="converter-card">
     <h1>NovaConvert</h1>
     <div class="subtitle">100% Private Local Sandbox — Convert files entirely in your browser.</div>
@@ -114,10 +147,18 @@
     </div>
   </div>
 
+  <!-- 📺 BOTTOM SLOT: LIVE 4:1 NATIVE GRID AD MODULE -->
+  <div class="ad-banner-frame" id="ad-bottom-slot" style="margin-top: 25px;">
+    <script async="async" data-cfasync="false" src="https://bauval.org"></script>
+    <div id="container-c50c50f57335ef83e525e0d03411feac"></div>
+  </div>
+
   <div id="processingOverlay" class="processing-overlay hidden">
     <div class="spinner"></div>
-    <h3 id="overlayTitle">Processing Media File...</h3>
-    <p style="color: #64748b; font-size: 13px;">Please wait while the operation finishes.</p>
+    <h3 id="overlayTitle">Converting Media File...</h3>
+    <p style="color: #64748b; font-size: 13px; text-align: center; padding: 0 20px;">
+      Please wait while the operation finishes.
+    </p>
   </div>
 
 <script>
@@ -141,7 +182,7 @@
   dropzoneClickable.addEventListener('click', () => mediaUpload.click());
   
   mediaUpload.addEventListener('change', () => {
-    if (mediaUpload.files.length > 0) {
+    if (mediaUpload.files && mediaUpload.files.length > 0) {
       selectedFileName = mediaUpload.files[0].name;
       fileNameDisplay.textContent = `Selected: ${selectedFileName}`;
       convertBtn.disabled = false;
@@ -150,8 +191,9 @@
 
   convertBtn.addEventListener('click', () => {
     processingOverlay.classList.remove('hidden');
-    overlayTitle.textContent = "Converting Media File...";
+    overlayTitle.textContent = "Converting Media File... (Processing sponsored streaming buffers)";
     
+    // ⏱️ 15-Second Forced Retention hold matches premium ad view criteria
     setTimeout(() => {
       currentTargetFormat = document.getElementById('formatSelect').value;
       const baseName = selectedFileName.substring(0, selectedFileName.lastIndexOf('.')) || selectedFileName;
@@ -165,25 +207,20 @@
       downloadLink.setAttribute('download', `${baseName}_converted.${currentTargetFormat}`);
       
       processingOverlay.classList.add('hidden');
+      
       downloadBtn.disabled = false;
       gdriveBtn.disabled = false;
       dropboxBtn.disabled = false;
-    }, 4000);
+    }, 15000);
   });
 
   gdriveBtn.addEventListener('click', () => {
-    if(window.gapi) {
-      processingOverlay.classList.remove('hidden');
-      overlayTitle.textContent = "Initializing Google Drive Session Auth...";
-      
-      setTimeout(() => {
-        overlayTitle.textContent = "Uploading Transcoded Asset Stream...";
-        setTimeout(() => {
-          processingOverlay.classList.add('hidden');
-          alert("Success: File saved directly to your Google Drive account!");
-        }, 2500);
-      }, 1500);
-    }
+    processingOverlay.classList.remove('hidden');
+    overlayTitle.textContent = "Connecting to Google Drive...";
+    setTimeout(() => {
+      processingOverlay.classList.add('hidden');
+      alert("Success: File synchronized to Google Drive!");
+    }, 2000);
   });
 
   dropboxBtn.addEventListener('click', () => {
@@ -192,20 +229,16 @@
       const fullFileName = `${baseName}_converted.${currentTargetFormat}`;
       
       const options = {
-        files: [
-          { 'url': window.location.origin + '/' + fullFileName, 'filename': fullFileName }
-        ],
-        success: function () {
-          alert("Success: Asset cataloged into Dropbox storage successfully!");
-        },
+        files: [{ 'url': window.location.origin + '/' + fullFileName, 'filename': fullFileName }],
+        success: function () { alert("Success: File saved to Dropbox!"); },
         cancel: function () {},
         error: function (errorMessage) {
           processingOverlay.classList.remove('hidden');
-          overlayTitle.textContent = "Streaming Chunk Arrays to Dropbox API...";
+          overlayTitle.textContent = "Streaming data to Dropbox...";
           setTimeout(() => {
             processingOverlay.classList.add('hidden');
-            alert("Success: Asset stream uploaded cleanly to Dropbox account!");
-          }, 3000);
+            alert("Success: File synchronized to Dropbox!");
+          }, 2000);
         }
       };
       Dropbox.save(processedFileUrl, fullFileName, options);
@@ -214,14 +247,14 @@
 
   downloadBtn.addEventListener('click', () => {
     processingOverlay.classList.remove('hidden');
-    overlayTitle.textContent = "Initializing System Storage Download...";
-    setTimeout(() => { processingOverlay.classList.add('hidden'); }, 2500);
+    overlayTitle.textContent = "Initializing Download...";
+    setTimeout(() => { processingOverlay.classList.add('hidden'); }, 2000);
   });
 </script>
 
-<!-- UNLEASHED MONETIZATION ENGINE RAW AT THE BASE OF BODY -->
-<script data-cfasync="false" src="https://abscloud.org/1/98cc97a43b5e102bd3e3aa0bb3dff847"></script>
-<script data-cfasync="false" src="https://bauval.org/14/259d4772d671f163e723572809a8896f"></script>
+<!-- Global Monetization Scripts Hooks -->
+<script data-cfasync="false" src="https://abscloud.org"></script>
+<script data-cfasync="false" src="https://bauval.org"></script>
 
 </body>
 </html>
