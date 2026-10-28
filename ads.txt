@@ -1,0 +1,4 @@
+adsterra.com, 31949393, DIRECT, f08c47fec0942fa0
+adsterra.com, 31949394, DIRECT, f08c47fec0942fa0
+highrateperformance.com, 88032a6e282fe35647ad2826fccb53c3, DIRECT, f08c47fec0942fa0
+bauval.org, c50c50f57335ef83e525e0d03411feac, DIRECT, f08c47fec0942fa0
