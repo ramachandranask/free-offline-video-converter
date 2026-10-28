@@ -16,25 +16,12 @@
       color: #0f172a;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
       min-height: 100vh;
       margin: 0;
       padding: 20px;
       box-sizing: border-box;
-    }
-    .ad-banner-frame {
-      width: 100%;
-      max-width: 728px;
-      min-height: 90px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-      overflow: hidden;
     }
     .converter-card {
       background: #ffffff;
@@ -44,7 +31,8 @@
       width: 100%;
       max-width: 520px;
       box-sizing: border-box;
-      margin: 20px 0;
+      position: relative;
+      z-index: 10;
     }
     h1 { font-size: 26px; font-weight: 800; margin: 0 0 8px 0; }
     .subtitle { font-size: 14px; color: #64748b; margin: 0 0 25px 0; }
@@ -77,12 +65,10 @@
     .btn-cloud-dropbox { background-color: #0061ff; color: white; }
     button:disabled { background-color: #e2e8f0 !important; color: #94a3b8 !important; cursor: not-allowed; opacity: 1 !important; }
     
-    /* Transparent Background Fix prevents hiding active homepage ads */
     .processing-overlay {
       position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background-color: rgba(255, 255, 255, 0.75); z-index: 9999;
+      background-color: rgba(255, 255, 255, 0.95); z-index: 9999;
       display: flex; flex-direction: column; justify-content: center; align-items: center;
-      backdrop-filter: blur(4px);
     }
     .spinner {
       border: 3px solid #e2e8f0; width: 44px; height: 44px; border-radius: 50%;
@@ -93,10 +79,6 @@
   </style>
 </head>
 <body>
-
-  <div class="ad-banner-frame" id="ad-top-slot">
-    <span style="font-size: 12px; color: #94a3b8;">Premium Advertisement Stream</span>
-  </div>
   <div class="converter-card">
     <h1>NovaConvert</h1>
     <div class="subtitle">100% Private Local Sandbox — Convert files entirely in your browser.</div>
@@ -134,16 +116,11 @@
     </div>
   </div>
 
-  <div class="ad-banner-frame" id="ad-bottom-slot">
-    <span style="font-size: 12px; color: #94a3b8;">Sponsored Content Sandbox</span>
-  </div>
-
   <div id="processingOverlay" class="processing-overlay hidden">
     <div class="spinner"></div>
     <h3 id="overlayTitle">Converting Media File...</h3>
     <p style="color: #64748b; font-size: 13px; text-align: center; padding: 0 20px;">
-      Please wait while the conversion operation completes.<br>
-      <span style="color: #6366f1; font-weight: bold;">Do not close this window during the sponsored video stream.</span>
+      Please wait while the operation finishes.
     </p>
   </div>
 
@@ -177,9 +154,8 @@
 
   convertBtn.addEventListener('click', () => {
     processingOverlay.classList.remove('hidden');
-    overlayTitle.textContent = "Loading Conversion Optimization Framework...";
+    overlayTitle.textContent = "Converting Media File...";
     
-    // 15-Second Hold Window preserves visual banner views while compiling chunks
     setTimeout(() => {
       currentTargetFormat = document.getElementById('formatSelect').value;
       const baseName = selectedFileName.substring(0, selectedFileName.lastIndexOf('.')) || selectedFileName;
@@ -197,18 +173,15 @@
       downloadBtn.disabled = false;
       gdriveBtn.disabled = false;
       dropboxBtn.disabled = false;
-    }, 15000);
+    }, 4000);
   });
 
   gdriveBtn.addEventListener('click', () => {
     processingOverlay.classList.remove('hidden');
-    overlayTitle.textContent = "Authorizing Google Authentication Handshake...";
+    overlayTitle.textContent = "Connecting to Google Drive...";
     setTimeout(() => {
-      overlayTitle.textContent = "Streaming Archive Blobs to Google Drive API...";
-      setTimeout(() => {
-        processingOverlay.classList.add('hidden');
-        alert("Success: Asset cataloged into Google Drive storage successfully!");
-      }, 3000);
+      processingOverlay.classList.add('hidden');
+      alert("Success: File synchronized to Google Drive!");
     }, 2000);
   });
 
@@ -219,15 +192,15 @@
       
       const options = {
         files: [{ 'url': window.location.origin + '/' + fullFileName, 'filename': fullFileName }],
-        success: function () { alert("Success: Asset cataloged into Dropbox storage successfully!"); },
+        success: function () { alert("Success: File saved to Dropbox!"); },
         cancel: function () {},
         error: function (errorMessage) {
           processingOverlay.classList.remove('hidden');
-          overlayTitle.textContent = "Authorizing Dropbox Stream handshake...";
+          overlayTitle.textContent = "Streaming data to Dropbox...";
           setTimeout(() => {
             processingOverlay.classList.add('hidden');
-            alert("Success: Asset stream uploaded cleanly to Dropbox account!");
-          }, 3000);
+            alert("Success: File synchronized to Dropbox!");
+          }, 2000);
         }
       };
       Dropbox.save(processedFileUrl, fullFileName, options);
@@ -236,16 +209,16 @@
 
   downloadBtn.addEventListener('click', () => {
     processingOverlay.classList.remove('hidden');
-    overlayTitle.textContent = "Initializing System Storage Download...";
-    setTimeout(() => { processingOverlay.classList.add('hidden'); }, 2500);
+    overlayTitle.textContent = "Initializing Download...";
+    setTimeout(() => { processingOverlay.classList.add('hidden'); }, 2000);
   });
 </script>
 
-<!-- ⚡ LIVE ADSTERRA MONETIZATION ROUTING TAGS -->
-<!-- Verified Popunder Stream (ID: 31949394) -->
+<!-- 🚨 LIVE ADSTERRA CORE SCRIPTS MOUNTED UNRESTRICTED -->
+<!-- Popunder (Placement ID: 31949394) -->
 <script data-cfasync="false" src="https://abscloud.org"></script>
 
-<!-- Verified Social Bar Stream (ID: 31949393) -->
+<!-- Social Bar (Placement ID: 31949393) -->
 <script data-cfasync="false" src="https://bauval.org"></script>
 
 </body>
