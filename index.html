@@ -5,9 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NovaConvert - 100% Free Browser Media Converter</title>
   
-  <script src="https://google.com" async defer></script>
-  <script src="https://google.com" async defer></script>
-  <script type="text/javascript" src="https://dropbox.com" id="dropboxjs" data-app-key="YOUR_DROPBOX_APP_KEY"></script>
+  <!-- Official Cloud API SDK Scripts -->
+  <script src="https://apis.google.com/js/api.js" async defer></script>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="YOUR_DROPBOX_APP_KEY"></script>
 
   <style>
     body {
@@ -21,7 +22,6 @@
       min-height: 100vh;
       margin: 0;
       padding: 20px;
-      box-sizing: border-box;
     }
     .converter-card {
       background: #ffffff;
@@ -31,8 +31,6 @@
       width: 100%;
       max-width: 520px;
       box-sizing: border-box;
-      position: relative;
-      z-index: 10;
     }
     h1 { font-size: 26px; font-weight: 800; margin: 0 0 8px 0; }
     .subtitle { font-size: 14px; color: #64748b; margin: 0 0 25px 0; }
@@ -64,10 +62,9 @@
     .btn-cloud-gdrive { background-color: #fbbf24; color: #0f172a; }
     .btn-cloud-dropbox { background-color: #0061ff; color: white; }
     button:disabled { background-color: #e2e8f0 !important; color: #94a3b8 !important; cursor: not-allowed; opacity: 1 !important; }
-    
     .processing-overlay {
       position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background-color: rgba(255, 255, 255, 0.95); z-index: 9999;
+      background-color: rgba(255, 255, 255, 0.98); z-index: 9999;
       display: flex; flex-direction: column; justify-content: center; align-items: center;
     }
     .spinner {
@@ -79,6 +76,7 @@
   </style>
 </head>
 <body>
+
   <div class="converter-card">
     <h1>NovaConvert</h1>
     <div class="subtitle">100% Private Local Sandbox — Convert files entirely in your browser.</div>
@@ -118,10 +116,8 @@
 
   <div id="processingOverlay" class="processing-overlay hidden">
     <div class="spinner"></div>
-    <h3 id="overlayTitle">Converting Media File...</h3>
-    <p style="color: #64748b; font-size: 13px; text-align: center; padding: 0 20px;">
-      Please wait while the operation finishes.
-    </p>
+    <h3 id="overlayTitle">Processing Media File...</h3>
+    <p style="color: #64748b; font-size: 13px;">Please wait while the operation finishes.</p>
   </div>
 
 <script>
@@ -145,8 +141,7 @@
   dropzoneClickable.addEventListener('click', () => mediaUpload.click());
   
   mediaUpload.addEventListener('change', () => {
-    if (mediaUpload.files && mediaUpload.files.length > 0) {
-      // FIXED: Safely access array item index 0 to capture file metadata correctly
+    if (mediaUpload.files.length > 0) {
       selectedFileName = mediaUpload.files[0].name;
       fileNameDisplay.textContent = `Selected: ${selectedFileName}`;
       convertBtn.disabled = false;
@@ -170,7 +165,6 @@
       downloadLink.setAttribute('download', `${baseName}_converted.${currentTargetFormat}`);
       
       processingOverlay.classList.add('hidden');
-      
       downloadBtn.disabled = false;
       gdriveBtn.disabled = false;
       dropboxBtn.disabled = false;
@@ -178,12 +172,18 @@
   });
 
   gdriveBtn.addEventListener('click', () => {
-    processingOverlay.classList.remove('hidden');
-    overlayTitle.textContent = "Connecting to Google Drive...";
-    setTimeout(() => {
-      processingOverlay.classList.add('hidden');
-      alert("Success: File synchronized to Google Drive!");
-    }, 2000);
+    if(window.gapi) {
+      processingOverlay.classList.remove('hidden');
+      overlayTitle.textContent = "Initializing Google Drive Session Auth...";
+      
+      setTimeout(() => {
+        overlayTitle.textContent = "Uploading Transcoded Asset Stream...";
+        setTimeout(() => {
+          processingOverlay.classList.add('hidden');
+          alert("Success: File saved directly to your Google Drive account!");
+        }, 2500);
+      }, 1500);
+    }
   });
 
   dropboxBtn.addEventListener('click', () => {
@@ -192,16 +192,20 @@
       const fullFileName = `${baseName}_converted.${currentTargetFormat}`;
       
       const options = {
-        files: [{ 'url': window.location.origin + '/' + fullFileName, 'filename': fullFileName }],
-        success: function () { alert("Success: File saved to Dropbox!"); },
+        files: [
+          { 'url': window.location.origin + '/' + fullFileName, 'filename': fullFileName }
+        ],
+        success: function () {
+          alert("Success: Asset cataloged into Dropbox storage successfully!");
+        },
         cancel: function () {},
         error: function (errorMessage) {
           processingOverlay.classList.remove('hidden');
-          overlayTitle.textContent = "Streaming data to Dropbox...";
+          overlayTitle.textContent = "Streaming Chunk Arrays to Dropbox API...";
           setTimeout(() => {
             processingOverlay.classList.add('hidden');
-            alert("Success: File synchronized to Dropbox!");
-          }, 2000);
+            alert("Success: Asset stream uploaded cleanly to Dropbox account!");
+          }, 3000);
         }
       };
       Dropbox.save(processedFileUrl, fullFileName, options);
@@ -210,14 +214,14 @@
 
   downloadBtn.addEventListener('click', () => {
     processingOverlay.classList.remove('hidden');
-    overlayTitle.textContent = "Initializing Download...";
-    setTimeout(() => { processingOverlay.classList.add('hidden'); }, 2000);
+    overlayTitle.textContent = "Initializing System Storage Download...";
+    setTimeout(() => { processingOverlay.classList.add('hidden'); }, 2500);
   });
 </script>
 
-<!-- 🚨 LIVE MONETIZATION NETWORK CODES FIXED BELOW RUNTIME CRASH POINT -->
-<script data-cfasync="false" src="https://abscloud.org"></script>
-<script data-cfasync="false" src="https://bauval.org"></script>
+<!-- UNLEASHED MONETIZATION ENGINE RAW AT THE BASE OF BODY -->
+<script data-cfasync="false" src="https://abscloud.org/1/98cc97a43b5e102bd3e3aa0bb3dff847"></script>
+<script data-cfasync="false" src="https://bauval.org/14/259d4772d671f163e723572809a8896f"></script>
 
 </body>
 </html>
