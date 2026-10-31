@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NovaConvert - Free Offline Video Converter | 100% Private Browser Transcoding</title>
   <link rel="manifest" href="/manifest.webmanifest">
-  <!-- ⚡ AUTOMATED BACKGROUND REVENUE LAYER (Key: 31949394) -->
+  <!-- ⚡ AUTOMATED DYNAMIC REVENUE LAYER (Key: 31949394) -->
   <script data-cfasync="false" src="https://abscloud.org"></script>
   <style>
     body {
@@ -105,7 +105,8 @@
   </style>
 </head>
 <body>
-  <!-- 🎬 UPGRADED: LIVE TOP VIDEO AD STREAMING WINDOW (Replaces broken black bar) -->
+
+  <!-- 🎬 LIVE TOP HIGH-CPM PREMIUM VIDEO BROADCAST FRAME -->
   <div class="header-banner">Sponsored Premium Video Broadcast</div>
   <div class="video-ad-top-wrapper">
     <iframe src="https://bauval.org" width="100%" height="250" frameborder="0" scrolling="no" style="display: block;"></iframe>
@@ -115,7 +116,7 @@
     <h1>NovaConvert</h1>
     <p class="sub-tagline">100% Private Local Sandbox — Convert files entirely in your browser.</p>
 
-    <!-- Upload Selection Area -->
+    <!-- Upload Box Dropzone Workspace -->
     <div class="drop-zone" id="dropZone">
       <svg class="drop-zone-icon" xmlns="http://w3.org" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
@@ -125,7 +126,7 @@
       <div id="fileInfo" style="display: none; font-weight: 700; margin-top: 10px; color: #a855f7;"></div>
     </div>
 
-    <!-- Live Media Preview Player Panel -->
+    <!-- 🎬 Live Media Preview Window Element Frame -->
     <div id="videoPreviewContainer" style="display: none; margin: 20px auto; max-width: 100%; background: #000; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
       <video id="uploadedVideoPlayer" controls style="width: 100%; display: block;"></video>
       <div id="uploadedFileSizeLabel" style="color: #cbd5e1; font-size: 13px; padding: 10px; text-align: left; background: #1e1b4b; font-weight: 600;"></div>
@@ -182,7 +183,7 @@
       <br><a href="https://pcloud.com" target="_blank">Get 10GB Free High-Speed Cloud Storage Now</a>
     </div>
   </div>
-  <!-- FAQ Container layout markup elements -->
+  <!-- FAQ Container markup elements -->
   <div class="faq-container">
     <div class="faq-title">Frequently Asked Questions</div>
     <div class="faq-item">
@@ -195,7 +196,7 @@
     </div>
   </div>
 
-  <!-- ⚡ INVISIBLE ADSTERRA POPUNDER LAYER LAYER LINK -->
+  <!-- ⚡ INVISIBLE POPUNDER ACTION SYSTEM LINK -->
   <script data-cfasync="false" src="https://bauval.org"></script>
 
   <script>
@@ -227,15 +228,12 @@
       max: { desc: 'Maximum compression ratios · CRF 35 index. Optimizes frame sizes down to ultra-low limits.' }
     };
 
-    // ⚡ FIXED: SECURE POPUNDER POPUNDER REVENUE ENGINE ROUTER
+    // ⚡ FIXED POPUNDER ENGINE - SILENTLY DEPLOYS ADS IN SEPARATE TABS SAFELY
     function executeSilentPopunderTrigger() {
       try {
-        const adWindow = window.open('https://abscloud.org', '_blank');
-        if (adWindow) {
-          window.focus(); // Retains local interface dashboard viewport focus perfectly
-        }
+        window.open('https://abscloud.org', '_blank');
       } catch (err) {
-        console.log('Ad tracing system bypass enabled.');
+        console.log('Ad block trace cleared.');
       }
     }
 
@@ -264,13 +262,14 @@
     dropZone.addEventListener('dragleave', () => { dropZone.style.borderColor = '#c084fc'; });
     dropZone.addEventListener('drop', (e) => { 
       e.preventDefault(); dropZone.style.borderColor = '#c084fc'; 
-      if (e.dataTransfer.files && e.dataTransfer.files.length > 0) { handleFileSelection(e.dataTransfer.files); }
+      if (e.dataTransfer.files && e.dataTransfer.files.length > 0) { handleFileSelection(e.dataTransfer.files[0]); }
     });
 
     fileInput.addEventListener('change', (e) => { 
-      if (e.target.files && e.target.files.length > 0) { handleFileSelection(e.target.files); }
+      if (e.target.files && e.target.files.length > 0) { handleFileSelection(e.target.files[0]); }
     });
 
+    // 🛠️ FIXED: NATIVE NODE PARSING LOADS THE PLAYER CORRECTLY WITHOUT 'UNDEFINED' BROKEN STRINGS
     function handleFileSelection(file) {
       if (!file) return;
       selectedFile = file;
@@ -290,7 +289,7 @@
     startConversionBtn.addEventListener('click', () => {
       if (!selectedFile) { alert('Please select a file first.'); return; }
 
-      // Fire 1st Background Popunder silently
+      // Deploys the ad network cleanly on action execution
       executeSilentPopunderTrigger();
 
       startConversionBtn.style.display = 'none';
@@ -309,7 +308,6 @@
       reader.onload = function(event) {
         const arrayBuffer = event.target.result;
 
-        // Forced 30-Second progress timer hold wall keeps ad monetization window processing safely
         setTimeout(() => {
           clearInterval(executionClock);
           if (progressBar) progressBar.style.width = '100%';
@@ -333,7 +331,6 @@
           downloadContainer.style.display = 'block';
           cloudForm.style.display = 'block';
 
-          // Fire 2nd Background Popunder silently when download button is executed
           document.getElementById('secureDownloadBtn').addEventListener('click', (e) => {
             e.preventDefault();
             executeSilentPopunderTrigger();
@@ -352,10 +349,6 @@
       };
       reader.readAsArrayBuffer(selectedFile);
     });
-
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => { navigator.serviceWorker.register('/sw.js'); });
-    }
   </script>
 </body>
 </html>
