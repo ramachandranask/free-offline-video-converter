@@ -1,11 +1,10 @@
-const CACHE_NAME = 'video-engine-v2';
+const CACHE_NAME = 'novaconvert-v2';
 
 const ASSETS = [
   '/',
   '/index.html'
 ];
 
-// Force active updates as soon as new code reaches Vercel
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
@@ -30,41 +29,29 @@ self.addEventListener('activate', (event) => {
   self.clients.claim();
 });
 
-// Network Interceptor - Correctly routes monetization networks and app scripts
+// ⚡ REVENUE PROTECTION NETWORK INTERCEPTOR
 self.addEventListener('fetch', (event) => {
   const url = new URL(event.request.url);
-  
-  // ⚡ LIVE PASSTHROUGH RULES (Ads, Cloud Services, Blobs, Forms)
+
+  // Broad-spectrum whitelist to allow all anti-adblock delivery network assets pass
   if (
-    url.hostname.includes('adsterra') || 
-    url.hostname.includes('display-ads') || 
-    url.hostname.includes('exoclick') ||
+    url.hostname.includes('bauval.org') || 
+    url.hostname.includes('abscloud.org') ||
+    url.hostname.includes('adsterra') ||
     url.hostname.includes('highratecpm') ||
-    url.hostname.includes('highrateperformance') ||
-    url.hostname.includes('ypncdn') ||
-    event.request.method !== 'GET' || 
-    url.protocol === 'blob:'
+    url.hostname.includes('highrateperformance')
   ) {
-    // FIX: Using event.respondWith(fetch()) ensures data passes live without being dropped by the worker
-    event.respondWith(fetch(event.request));
+    return; // Stop interception completely and let the browser fetch fresh live ads online
+  }
+
+  // Handle local processing blobs seamlessly
+  if (event.request.method !== 'GET' || url.protocol === 'blob:') {
     return;
   }
 
-  // Network-first strategy for UI assets ensures layout code updates flawlessly 
   event.respondWith(
-    fetch(event.request)
-      .then((response) => {
-        // Cache valid app pages for absolute safety
-        if (response.status === 200 && ASSETS.includes(url.pathname)) {
-          const responseClone = response.clone();
-          caches.open(CACHE_NAME).then((cache) => {
-            cache.put(event.request, responseClone);
-          });
-        }
-        return response;
-      })
-      .catch(() => {
-        return caches.match(event.request);
-      })
+    fetch(event.request).catch(() => {
+      return caches.match(event.request);
+    })
   );
 });
