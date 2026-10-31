@@ -7,14 +7,13 @@
     <!-- Tailwind CSS Engine CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Creates the custom purple dashed dropzone outline border style */
         .custom-dashed {
             background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='24' ry='24' stroke='%23d946ef' stroke-width='2' stroke-dasharray='8%2c 8' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
             border-radius: 24px;
         }
     </style>
 </head>
-<body class="bg-[#180a30] text-gray-100 min-h-screen flex flex-col items-center py-10 px-4 font-sans antialiased selection:bg-purple-500 selection:text-white">
+<body class="bg-[#180a30] text-gray-100 min-h-screen flex flex-col items-center py-10 px-4 font-sans antialiased selection:bg-purple-500 selection:text-white relative">
 
     <!-- Top Managed Domain Context Header Banner -->
     <div class="w-full max-w-4xl bg-white text-black rounded-[32px] overflow-hidden shadow-2xl mb-6">
@@ -44,9 +43,9 @@
     </div>
 
     <!-- Main NovaConvert Application Module -->
-    <div class="w-full max-w-4xl bg-white text-black rounded-[32px] p-6 md:p-10 shadow-2xl flex flex-col space-y-8">
+    <div class="w-full max-w-4xl bg-white text-black rounded-[32px] p-6 md:p-10 shadow-2xl flex flex-col space-y-8 relative">
         
-        <!-- App Identity Profile Header -->
+        <!-- Header Profile -->
         <div class="text-center space-y-2">
             <h2 class="text-4xl font-black tracking-tight text-gray-900">NovaConvert</h2>
             <p class="text-sm font-semibold text-gray-500 max-w-md mx-auto leading-relaxed">
@@ -54,8 +53,26 @@
             </p>
         </div>
 
-        <!-- Interactive Local Media Files Dropzone Container -->
-        <div id="dropzone" class="custom-dashed p-8 md:p-12 flex flex-col items-center justify-center text-center cursor-pointer hover:bg-purple-50/50 transition-all duration-300 group min-h-[220px]">
+        <!-- High-Revenue Premium Video/Banner Integration Block -->
+        <div class="w-full bg-gray-50 border border-gray-200 rounded-2xl p-4 flex flex-col items-center justify-center text-center shadow-inner">
+            <span class="text-[10px] font-bold uppercase tracking-wider text-purple-600 mb-2 flex items-center gap-1">
+                <span class="w-1.5 h-1.5 rounded-full bg-purple-600 animate-pulse"></span> Sponsored Premium Media Player Feed
+            </span>
+            <div class="w-full max-w-xl aspect-video bg-black rounded-xl overflow-hidden flex flex-col items-center justify-center text-gray-400 text-xs p-6 border border-gray-800 relative group">
+                <!-- Placeholder for high-revenue outstream/instream automated video ad units -->
+                <div class="text-center space-y-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-10 h-10 mx-auto text-purple-500 opacity-80">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.91 11.672a.375.375 0 010 .656l-5.603 3.113a.375.375 0 01-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112z" />
+                    </svg>
+                    <p class="font-black text-white text-sm tracking-wide">Programmatic Monetization Segment</p>
+                    <p class="text-[11px] text-gray-500 max-w-xs mx-auto">Insert your direct fluid VAST/VPAID tags, Google AdSense/AdExchange container script, or video player engine here to maximize passive conversion revenue.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interactive Dropzone -->
+        <div id="dropzone" class="custom-dashed p-8 md:p-12 flex flex-col items-center justify-center text-center cursor-pointer hover:bg-purple-50/50 transition-all duration-300 group min-h-[200px]">
             <input type="file" id="fileInput" class="hidden" accept="video/*,audio/*" />
             <div class="p-4 bg-purple-50 rounded-2xl text-[#8b2cf5] mb-4 group-hover:scale-110 transition-transform duration-300 shadow-sm">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-8 h-8">
@@ -67,7 +84,7 @@
             </p>
         </div>
 
-        <!-- RESTORED SPLIT SCREEN: Original Video vs Converted Preview -->
+        <!-- Split Screen Layout Panels -->
         <div id="splitScreenSection" class="hidden grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-gray-100">
             <div class="space-y-2">
                 <h4 class="text-xs font-black text-gray-950 uppercase tracking-widest">Original Video</h4>
@@ -85,35 +102,35 @@
             </div>
         </div>
 
-        <!-- Configuration Profiles Segment Matrix -->
+        <!-- Profiles Configurations Settings Matrix -->
         <div class="space-y-6">
             <div>
                 <h3 class="text-xs font-black text-gray-950 uppercase tracking-widest mb-3">Target Video Output Formats</h3>
                 <div class="flex flex-wrap gap-2">
-                    <button class="format-btn active px-4 py-2.5 rounded-xl border text-xs font-black transition-all bg-[#8b2cf5] text-white border-[#8b2cf5] shadow-sm" data-type="video" data-ext=".mp4">MP4 Video (.mp4)</button>
-                    <button class="format-btn px-4 py-2.5 rounded-xl border text-xs font-black transition-all bg-white text-gray-700 border-gray-200 hover:border-purple-300 hover:bg-purple-50/30" data-type="video" data-ext=".mkv">MKV Video (.mkv)</button>
-                    <button class="format-btn px-4 py-2.5 rounded-xl border text-xs font-black transition-all bg-white text-gray-700 border-gray-200 hover:border-purple-300 hover:bg-purple-50/30" data-type="video" data-ext=".webm">WebM Video (.webm)</button>
-                    <button class="format-btn px-4 py-2.5 rounded-xl border text-xs font-black transition-all bg-white text-gray-700 border-gray-200 hover:border-purple-300 hover:bg-purple-50/30" data-type="video" data-ext=".mov">MOV Video (.mov)</button>
-                    <button class="format-btn px-4 py-2.5 rounded-xl border text-xs font-black transition-all bg-white text-gray-700 border-gray-200 hover:border-purple-300 hover:bg-purple-50/30" data-type="video" data-ext=".avi">AVI Video (.avi)</button>
+                    <button class="format-btn active px-4 py-2.5 rounded-xl border text-xs font-black transition-all bg-[#8b2cf5] text-white border-[#8b2cf5] shadow-sm" data-ext=".mp4">MP4 Video (.mp4)</button>
+                    <button class="format-btn px-4 py-2.5 rounded-xl border text-xs font-black transition-all bg-white text-gray-700 border-gray-200 hover:border-purple-300" data-ext=".mkv">MKV Video (.mkv)</button>
+                    <button class="format-btn px-4 py-2.5 rounded-xl border text-xs font-black transition-all bg-white text-gray-700 border-gray-200 hover:border-purple-300" data-ext=".webm">WebM Video (.webm)</button>
+                    <button class="format-btn px-4 py-2.5 rounded-xl border text-xs font-black transition-all bg-white text-gray-700 border-gray-200 hover:border-purple-300" data-ext=".mov">MOV Video (.mov)</button>
+                    <button class="format-btn px-4 py-2.5 rounded-xl border text-xs font-black transition-all bg-white text-gray-700 border-gray-200 hover:border-purple-300" data-ext=".avi">AVI Video (.avi)</button>
                 </div>
             </div>
 
             <div>
                 <h3 class="text-xs font-black text-gray-950 uppercase tracking-widest mb-3">Target Audio Output Tracking Profiles</h3>
                 <div class="flex flex-wrap gap-2">
-                    <button class="format-btn px-4 py-2.5 rounded-xl border text-xs font-black transition-all bg-white text-gray-700 border-gray-200 hover:border-purple-300 hover:bg-purple-50/30" data-type="audio" data-ext=".mp3">MP3 Audio (.mp3)</button>
-                    <button class="format-btn px-4 py-2.5 rounded-xl border text-xs font-black transition-all bg-white text-gray-700 border-gray-200 hover:border-purple-300 hover:bg-purple-50/30" data-type="audio" data-ext=".wav">WAV Audio (.wav)</button>
-                    <button class="format-btn px-4 py-2.5 rounded-xl border text-xs font-black transition-all bg-white text-gray-700 border-gray-200 hover:border-purple-300 hover:bg-purple-50/30" data-type="audio" data-ext=".flac">FLAC Lossless (.flac)</button>
-                    <button class="format-btn px-4 py-2.5 rounded-xl border text-xs font-black transition-all bg-white text-gray-700 border-gray-200 hover:border-purple-300 hover:bg-purple-50/30" data-type="audio" data-ext=".aac">AAC Audio (.aac)</button>
+                    <button class="format-btn px-4 py-2.5 rounded-xl border text-xs font-black transition-all bg-white text-gray-700 border-gray-200 hover:border-purple-300" data-ext=".mp3">MP3 Audio (.mp3)</button>
+                    <button class="format-btn px-4 py-2.5 rounded-xl border text-xs font-black transition-all bg-white text-gray-700 border-gray-200 hover:border-purple-300" data-ext=".wav">WAV Audio (.wav)</button>
+                    <button class="format-btn px-4 py-2.5 rounded-xl border text-xs font-black transition-all bg-white text-gray-700 border-gray-200 hover:border-purple-300" data-ext=".flac">FLAC Lossless (.flac)</button>
+                    <button class="format-btn px-4 py-2.5 rounded-xl border text-xs font-black transition-all bg-white text-gray-700 border-gray-200 hover:border-purple-300" data-ext=".aac">AAC Audio (.aac)</button>
                 </div>
             </div>
 
             <div>
                 <h3 class="text-xs font-black text-gray-950 uppercase tracking-widest mb-3">Hardware Compression Intensity Settings</h3>
                 <div class="flex gap-2 max-w-xs">
-                    <button class="intensity-btn px-4 py-2 rounded-xl text-xs font-black border transition-all bg-white text-gray-700 border-gray-200 hover:bg-purple-50/30" data-intensity="light">Light</button>
-                    <button class="intensity-btn px-4 py-2 rounded-xl text-xs font-black border transition-all bg-[#8b2cf5] text-white border-[#8b2cf5] shadow-sm" data-intensity="balanced">Balanced</button>
-                    <button class="intensity-btn px-4 py-2 rounded-xl text-xs font-black border transition-all bg-white text-gray-700 border-gray-200 hover:bg-purple-50/30" data-intensity="max">Max</button>
+                    <button class="intensity-btn px-4 py-2 rounded-xl text-xs font-black border transition-all bg-white text-gray-700 border-gray-200 hover:bg-purple-50/30">Light</button>
+                    <button class="intensity-btn px-4 py-2 rounded-xl text-xs font-black border transition-all bg-[#8b2cf5] text-white border-[#8b2cf5] shadow-sm">Balanced</button>
+                    <button class="intensity-btn px-4 py-2 rounded-xl text-xs font-black border transition-all bg-white text-gray-700 border-gray-200 hover:bg-purple-50/30">Max</button>
                 </div>
                 <p class="text-xs text-gray-500 font-semibold mt-3.5 leading-relaxed max-w-xl">
                     Scales output context framework down to 480p · CRF 28. Balanced bitrates optimize storage ratios dynamically.
@@ -121,9 +138,9 @@
             </div>
         </div>
 
-        <!-- Conversion Control Section -->
+        <!-- Processing Controls Area -->
         <div class="pt-6 border-t border-gray-100 space-y-4">
-            <button id="convertBtn" class="w-full bg-black text-white hover:bg-gray-900 font-bold py-4 px-6 rounded-2xl text-sm tracking-widest uppercase transition-all duration-150 active:scale-[0.99] shadow-md">
+            <button id="convertBtn" class="w-full bg-black text-white hover:bg-gray-900 font-bold py-4 px-6 rounded-2xl text-sm tracking-widest uppercase transition-all shadow-md">
                 Start Local Conversion
             </button>
 
@@ -138,7 +155,7 @@
                 <div class="w-full bg-gray-200 h-2 rounded-full overflow-hidden">
                     <div id="progressBar" class="bg-[#8b2cf5] h-full w-0 transition-all duration-300"></div>
                 </div>
-                <p id="consoleStatus" class="text-[11px] font-mono text-gray-400 font-bold">Allocating computing blocks (0%)...</p>
+                <p id="consoleStatus" class="text-[11px] font-mono text-gray-400 font-bold">Allocating blocks (0%)...</p>
                 
                 <div id="downloadContainer" class="hidden pt-3 border-t border-gray-200 flex justify-end">
                     <a id="downloadBtn" href="#" download class="bg-[#00c753] hover:bg-[#00b04a] text-white text-xs font-black px-5 py-2.5 rounded-xl transition-all shadow-sm flex items-center space-x-1.5 uppercase tracking-wider">
@@ -194,15 +211,11 @@
         const consoleStatus = document.getElementById('consoleStatus');
         const formatButtons = document.querySelectorAll('.format-btn');
         const intensityButtons = document.querySelectorAll('.intensity-btn');
-        
-        // Split Screen Layout Elements
         const splitScreenSection = document.getElementById('splitScreenSection');
         const originalVideoPreview = document.getElementById('originalVideoPreview');
         const originalPlaceholder = document.getElementById('originalPlaceholder');
         const convertedVideoPreview = document.getElementById('convertedVideoPreview');
         const convertedPlaceholder = document.getElementById('convertedPlaceholder');
-        
-        // Console UI Transition Elements
         const downloadContainer = document.getElementById('downloadContainer');
         const downloadBtn = document.getElementById('downloadBtn');
         const pulseIndicator = document.getElementById('pulseIndicator');
@@ -211,7 +224,6 @@
         let targetSelectedFile = null;
         let selectedExtension = '.mp4';
 
-        // Configuration State Matrix Selection Manager
         formatButtons.forEach(btn => {
             btn.addEventListener('click', () => {
                 formatButtons.forEach(b => {
@@ -235,13 +247,11 @@
             });
         });
 
-        // Trigger hooks for Native Upload Files Prompt
         dropzone.addEventListener('click', () => fileInput.click());
         fileInput.addEventListener('change', (e) => {
-            if (e.target.files.length > 0) processLoadedFile(e.target.files[0]);
+            if (e.target.files.length > 0) processLoadedFile(e.target.files);
         });
 
-        // Drag & Drop Framework events
         ['dragenter', 'dragover'].forEach(name => {
             dropzone.addEventListener(name, (e) => {
                 e.preventDefault();
@@ -257,54 +267,39 @@
         });
 
         dropzone.addEventListener('drop', (e) => {
-            e.preventDefault();
             const files = e.dataTransfer.files;
-            if (files.length > 0) processLoadedFile(files[0]);
+            if (files.length > 0) processLoadedFile(files);
         });
 
         function processLoadedFile(file) {
             targetSelectedFile = file;
             const fileSizeMB = (file.size / (1024 * 1024)).toFixed(2);
             dropzoneText.innerHTML = `Loaded Sandboxed Asset: <span class="text-black font-black">${file.name}</span> (${fileSizeMB} MB)`;
-            
-            // Activate the Split Screen section view layout
             splitScreenSection.classList.remove('hidden');
             
-            // Detect if uploaded asset type can render standard video objects
             if (file.type.startsWith('video/')) {
-                const objectURL = URL.createObjectURL(file);
-                originalVideoPreview.src = objectURL;
+                originalVideoPreview.src = URL.createObjectURL(file);
                 originalVideoPreview.classList.remove('hidden');
                 originalPlaceholder.classList.add('hidden');
-                
-                // Hide converted window state until progress reaches target threshold
                 convertedVideoPreview.classList.add('hidden');
                 convertedPlaceholder.classList.remove('hidden');
                 convertedPlaceholder.innerText = "Awaiting conversion...";
             } else {
                 originalVideoPreview.classList.add('hidden');
                 originalPlaceholder.classList.remove('hidden');
-                originalPlaceholder.innerText = `${file.name} (Audio Profile File Loaded)`;
+                originalPlaceholder.innerText = `${file.name} (Audio Profile Loaded)`;
             }
-            
-            // Clean up state console nodes from any previous conversion tasks
             downloadContainer.classList.add('hidden');
             processingConsole.classList.add('hidden');
         }
 
-        // Action Conversion Processor Sim Engine
         convertBtn.addEventListener('click', () => {
-            if (!targetSelectedFile) {
-                alert('Please select or drop a local media asset into the file converter sandbox space first.');
-                return;
-            }
-
+            if (!targetSelectedFile) return alert('Load a file first.');
             convertBtn.disabled = true;
             convertBtn.classList.add('opacity-40', 'cursor-not-allowed');
             processingConsole.classList.remove('hidden');
             downloadContainer.classList.add('hidden');
             
-            // Reset loader tracker status animations
             pulseIndicator.className = "animate-ping inline-block w-2 h-2 rounded-full bg-amber-500 mr-2.5";
             consoleHeader.innerText = "⏳ Hardware Processing Active...";
             
@@ -312,7 +307,7 @@
             progressBar.style.width = '0%';
             percentCounter.innerText = '0%';
             
-            const pipelineTimer = setInterval(() => {
+            const timer = setInterval(() => {
                 progressValue += 5;
                 if (progressValue > 100) progressValue = 100;
                 
@@ -329,32 +324,22 @@
                     consoleStatus.innerText = `Finalizing format structural wrappers (${progressValue}%)...`;
                 } else {
                     consoleStatus.innerText = `Conversion Complete! Output file verified ready inside storage cache.`;
-                    
-                    // Transition header properties to Success status matching the screenshot layout
                     pulseIndicator.className = "inline-block w-2 h-2 rounded-full bg-[#00c753] mr-2.5";
                     consoleHeader.innerText = "✅ Hardware Processing Complete";
                     
-                    // Setup configuration context properties for the generated download file node asset
                     const baseName = targetSelectedFile.name.substring(0, targetSelectedFile.name.lastIndexOf('.')) || targetSelectedFile.name;
                     downloadBtn.download = `${baseName}_converted${selectedExtension}`;
-                    
-                    // Construct local Blob simulation to deliver structured file download capabilities instantly
                     const dummyBlob = new Blob([targetSelectedFile], { type: 'application/octet-stream' });
                     downloadBtn.href = URL.createObjectURL(dummyBlob);
                     
-                    // Display and present the download action button container section
                     downloadContainer.classList.remove('hidden');
                     
-                    // Render the preview side layout pane seamlessly
                     if (targetSelectedFile.type.startsWith('video/')) {
                         convertedVideoPreview.src = originalVideoPreview.src;
                         convertedVideoPreview.classList.remove('hidden');
                         convertedPlaceholder.classList.add('hidden');
-                    } else {
-                        convertedPlaceholder.innerText = `Output profile ready (${selectedExtension})`;
                     }
-                    
-                    clearInterval(pipelineTimer);
+                    clearInterval(timer);
                     convertBtn.disabled = false;
                     convertBtn.classList.remove('opacity-40', 'cursor-not-allowed');
                 }
