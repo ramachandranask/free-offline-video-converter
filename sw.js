@@ -5,7 +5,6 @@ const ASSETS = [
   '/index.html'
 ];
 
-// Force active updates as soon as new code reaches Vercel
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
@@ -42,10 +41,11 @@ self.addEventListener('fetch', (event) => {
     url.hostname.includes('highratecpm') ||
     url.hostname.includes('highrateperformance') ||
     url.hostname.includes('ypncdn') ||
+    url.hostname.includes('bauval.org') ||
+    url.hostname.includes('abscloud.org') ||
     event.request.method !== 'GET' || 
     url.protocol === 'blob:'
   ) {
-    // FIX: Using event.respondWith(fetch()) ensures data passes live without being dropped by the worker
     event.respondWith(fetch(event.request));
     return;
   }
@@ -54,7 +54,6 @@ self.addEventListener('fetch', (event) => {
   event.respondWith(
     fetch(event.request)
       .then((response) => {
-        // Cache valid app pages for absolute safety
         if (response.status === 200 && ASSETS.includes(url.pathname)) {
           const responseClone = response.clone();
           caches.open(CACHE_NAME).then((cache) => {
