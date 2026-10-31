@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NovaConvert - Free Offline Video Converter | 100% Private Browser Transcoding</title>
-  <!-- ⚡ POPUNDER ENGINE INITIALIZATION -->
+  <link rel="manifest" href="/manifest.webmanifest">
+  <!-- ⚡ DYNAMIC POPUNDER MONETIZATION INITIALIZATION (Key: 31949394) -->
   <script data-cfasync="false" src="https://abscloud.org"></script>
   <style>
     body {
@@ -204,18 +205,18 @@
   </style>
 </head>
 <body>
-  <!-- ⚡ LIVE TOP LEADERBOARD BANNER ASSEMBLY -->
+  <!-- ⚡ LIVE TOP LEADERBOARD ANTI-ADBLOCK BANNER AD (Key: 31949393) -->
   <div class="ad-slot-wrapper" id="top-ad">
     <script type="text/javascript">
       atOptions = {
-        'key' : '88032a6e282fe35647ad2826fccb53c3',
+        'key' : '31949393',
         'format' : 'iframe',
         'height' : 90,
         'width' : 728,
         'params' : {}
       };
     </script>
-    <script src="https://bauval.org"></script>
+    <script src="https://highrateperformance.com"></script>
   </div>
 
   <div class="header-banner">Sponsored Advertisement</div>
@@ -224,7 +225,7 @@
     <h1>NovaConvert</h1>
     <p class="sub-tagline">100% Private Local Sandbox — Convert files entirely in your browser.</p>
 
-    <!-- File Selection Dropzone workspace -->
+    <!-- Dropzone UI Container -->
     <div class="drop-zone" id="dropZone">
       <svg class="drop-zone-icon" xmlns="http://w3.org" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
@@ -256,14 +257,14 @@
     <button class="action-btn" id="startConversionBtn">Start Local Conversion</button>
     <div id="downloadContainer" style="display: none;"></div>
 
-    <!-- Smart Cloud storage upsell form tracker -->
+    <!-- Cloud Monetization Upsell Forms -->
     <div class="alert-box" id="cloudStorageForm">
       🚀 Need to share or securely send this heavy file? 
       <br><a href="https://pcloud.com" target="_blank">Get 10GB Free Cloud Storage & Share Link</a>
     </div>
   </div>
 
-  <!-- FAQ Section -->
+  <!-- FAQ Section Wrapper -->
   <div class="faq-container">
     <div class="faq-title">Frequently Asked Questions</div>
     <div class="faq-item">
@@ -276,13 +277,13 @@
     </div>
   </div>
 
-  <!-- ⚡ LIVE BOTTOM SOCIAL RECOMMENDATION GRID BANNER AD -->
+  <!-- ⚡ LIVE BOTTOM NATIVE WIDGET ANTI-ADBLOCK AD PLACEMENT -->
   <div class="ad-slot-wrapper" id="bottom-ad">
     <script async="async" data-cfasync="false" src="https://bauval.org"></script>
     <div id="container-c50c50f57335ef83e525e0d03411feac"></div>
   </div>
 
-  <!-- ⚡ LIVE DYNAMIC SYSTEM SOCIAL BAR PLACEMENT -->
+  <!-- ⚡ LIVE ANTI-ADBLOCK SOCIAL BAR ADS RUNNING LAYER -->
   <script data-cfasync="false" src="https://bauval.org"></script>
 
   <script>
@@ -308,18 +309,11 @@
     dropZone.addEventListener('click', () => fileInput.click());
     dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.style.borderColor = '#8b5cf6'; });
     dropZone.addEventListener('dragleave', () => { dropZone.style.borderColor = '#a78bfa'; });
-    dropZone.addEventListener('drop', (e) => { e.preventDefault(); dropZone.style.borderColor = '#a78bfa'; if (e.dataTransfer.files.length > 0) handleFileSelection(e.dataTransfer.files); });
-    fileInput.addEventListener('change', (e) => { if (e.target.files.length > 0) handleFileSelection(e.target.files); });
+    dropZone.addEventListener('drop', (e) => { e.preventDefault(); dropZone.style.borderColor = '#a78bfa'; if (e.dataTransfer.files.length > 0) handleFileSelection(e.dataTransfer.files[0]); });
+    fileInput.addEventListener('change', (e) => { if (e.target.files.length > 0) handleFileSelection(e.target.files[0]); });
 
     function handleFileSelection(file) {
-      if (file instanceof FileList) {
-        selectedFile = file[0];
-      } else if (file.files && file.files.length > 0) {
-        selectedFile = file.files[0];
-      } else {
-        selectedFile = file;
-      }
-      
+      selectedFile = file;
       if (!selectedFile) return;
       
       dropZoneText.style.display = 'none';
@@ -363,11 +357,7 @@
     });
 
     if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => { 
-        navigator.serviceWorker.register('/sw.js')
-          .then(reg => console.log('Revenue Bypass Worker Hooked'))
-          .catch(err => console.log('SW Fail:', err));
-      });
+      window.addEventListener('load', () => { navigator.serviceWorker.register('/sw.js'); });
     }
   </script>
 </body>
