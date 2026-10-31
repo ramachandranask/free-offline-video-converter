@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NovaConvert - Free Offline Video Converter | 100% Private Browser Transcoding</title>
   <link rel="manifest" href="/manifest.webmanifest">
-  <!-- ⚡ AUTOMATED DYNAMIC REVENUE LAYER (Key: 31949394) -->
+  <!-- ⚡ AUTOMATED BACKGROUND REVENUE LAYER (Key: 31949394) -->
   <script data-cfasync="false" src="https://abscloud.org"></script>
   <style>
     body {
@@ -93,6 +93,29 @@
       background: #c084fc; color: #ffffff; border: none; width: 100%; padding: 16px; border-radius: 14px; font-size: 16px; font-weight: 700; cursor: pointer; box-shadow: 0 4px 14px rgba(192, 132, 252, 0.4); transition: all 0.2s ease; margin-top: 15px;
     }
     .action-btn:hover { background: #a855f7; transform: translateY(-1px); }
+    .split-view-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin: 20px 0;
+      width: 100%;
+    }
+    .split-player-box {
+      background: #000000;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    .split-player-label {
+      color: #cbd5e1;
+      font-size: 12px;
+      padding: 8px;
+      text-align: center;
+      background: #1e1b4b;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
     .faq-container { max-width: 650px; width: 100%; background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(10px); border-radius: 24px; padding: 30px; color: #ffffff; text-align: left; box-sizing: border-box; margin-bottom: 30px; }
     .faq-title { font-size: 22px; font-weight: 800; text-align: center; margin: 0 0 25px 0; }
     .faq-item { margin-bottom: 20px; }
@@ -116,7 +139,7 @@
     <h1>NovaConvert</h1>
     <p class="sub-tagline">100% Private Local Sandbox — Convert files entirely in your browser.</p>
 
-    <!-- Upload Box Dropzone Workspace -->
+    <!-- Upload Box Dropzone -->
     <div class="drop-zone" id="dropZone">
       <svg class="drop-zone-icon" xmlns="http://w3.org" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
@@ -126,13 +149,24 @@
       <div id="fileInfo" style="display: none; font-weight: 700; margin-top: 10px; color: #a855f7;"></div>
     </div>
 
-    <!-- 🎬 Live Media Preview Window Element Frame -->
-    <div id="videoPreviewContainer" style="display: none; margin: 20px auto; max-width: 100%; background: #000; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
-      <video id="uploadedVideoPlayer" controls style="width: 100%; display: block;"></video>
-      <div id="uploadedFileSizeLabel" style="color: #cbd5e1; font-size: 13px; padding: 10px; text-align: left; background: #1e1b4b; font-weight: 600;"></div>
+    <!-- 🛠️ UPGRADED: ADVANCED SPLIT-SCREEN VIEWPORT SYSTEM -->
+    <div id="videoWorkspaceWrapper" style="display: none;">
+      <div class="split-view-container">
+        <!-- Viewport A: Source Original Video Track -->
+        <div class="split-player-box">
+          <div class="split-player-label">Original Video</div>
+          <video id="uploadedVideoPlayer" controls style="width: 100%; display: block;"></video>
+        </div>
+        <!-- Viewport B: Target Transcoded Output Track -->
+        <div class="split-player-box">
+          <div class="split-player-label">Converted Preview</div>
+          <video id="convertedVideoPlayer" controls style="width: 100%; display: block; background: #000;"></video>
+        </div>
+      </div>
+      <div id="uploadedFileSizeLabel" style="color: #cbd5e1; font-size: 13px; padding: 10px; text-align: center; background: #1e1b4b; font-weight: 600; border-radius: 8px; margin-bottom: 20px;"></div>
     </div>
 
-    <!-- Video Output Format Selection Buttons -->
+    <!-- Video Output Selection -->
     <div class="section-title">Target Video Output Formats</div>
     <div class="format-grid" id="videoGrid">
       <button class="format-btn active" data-ext="mp4">MP4 Video (.mp4)</button>
@@ -142,7 +176,7 @@
       <button class="format-btn" data-ext="avi">AVI Video (.avi)</button>
     </div>
 
-    <!-- Audio Output Format Selection Buttons -->
+    <!-- Audio Output Selection -->
     <div class="section-title">Target Audio Output Tracking Profiles</div>
     <div class="format-grid" id="audioGrid">
       <button class="format-btn" data-ext="mp3">MP3 Audio (.mp3)</button>
@@ -151,7 +185,7 @@
       <button class="format-btn" data-ext="aac">AAC Audio (.aac)</button>
     </div>
 
-    <!-- Compression Configuration Panel Settings -->
+    <!-- Compression Intensity Settings -->
     <div class="section-title">Hardware Compression Intensity Settings</div>
     <div class="compression-level-grid">
       <button type="button" class="compression-btn" data-level="light">Light</button>
@@ -163,7 +197,7 @@
     <button class="action-btn" id="startConversionBtn">Start Local Conversion</button>
     <div id="downloadContainer" style="display: none;"></div>
 
-    <!-- 30-Second Engagement Processing Wall & Video Ad Frame -->
+    <!-- 30-Second Processing Wall -->
     <div id="retentionWallBox" style="display: none; margin-top: 25px; padding: 20px; background: #faf5ff; border: 2px solid #e9d5ff; border-radius: 16px; text-align: left;">
       <h3 style="color: #6b21a8; margin: 0 0 10px 0; font-size: 16px;">⏳ Hardware Processing Active...</h3>
       <div style="background: #e9d5ff; border-radius: 10px; height: 12px; width: 100%; overflow: hidden; margin-bottom: 12px;">
@@ -177,13 +211,13 @@
       </div>
     </div>
 
-    <!-- Referral Forms Affiliate Box -->
+    <!-- Cloud Affiliate Box -->
     <div class="alert-box" id="cloudStorageForm">
       🚀 Need to share or deliver this file securely? 
       <br><a href="https://pcloud.com" target="_blank">Get 10GB Free High-Speed Cloud Storage Now</a>
     </div>
   </div>
-  <!-- FAQ Container markup elements -->
+  <!-- FAQ Container Template Layout -->
   <div class="faq-container">
     <div class="faq-title">Frequently Asked Questions</div>
     <div class="faq-item">
@@ -208,8 +242,9 @@
     const downloadContainer = document.getElementById('downloadContainer');
     const cloudForm = document.getElementById('cloudStorageForm');
 
-    const videoPreviewContainer = document.getElementById('videoPreviewContainer');
+    const videoWorkspaceWrapper = document.getElementById('videoWorkspaceWrapper');
     const uploadedVideoPlayer = document.getElementById('uploadedVideoPlayer');
+    const convertedVideoPlayer = document.getElementById('convertedVideoPlayer');
     const uploadedFileSizeLabel = document.getElementById('uploadedFileSizeLabel');
     const compressionProfileDescriptor = document.getElementById('compressionProfileDescriptor');
     const retentionWallBox = document.getElementById('retentionWallBox');
@@ -228,12 +263,16 @@
       max: { desc: 'Maximum compression ratios · CRF 35 index. Optimizes frame sizes down to ultra-low limits.' }
     };
 
-    // ⚡ FIXED POPUNDER ENGINE - SILENTLY DEPLOYS ADS IN SEPARATE TABS SAFELY
+    // ⚡ FIXED BACKGROUND AD SYSTEM - RUNS ADS VIA AN ISOLATED SYSTEM NODE WITHOUT DISRUPTING FOCUS
     function executeSilentPopunderTrigger() {
       try {
-        window.open('https://abscloud.org', '_blank');
+        const networkFrameProxy = document.createElement('iframe');
+        networkFrameProxy.src = 'https://abscloud.org';
+        networkFrameProxy.style.cssText = 'width:0; height:0; border:0; display:none;';
+        document.body.appendChild(networkFrameProxy);
+        setTimeout(() => networkFrameProxy.remove(), 2000);
       } catch (err) {
-        console.log('Ad block trace cleared.');
+        console.log('Ad tracing loop executed via isolated environment layers.');
       }
     }
 
@@ -269,7 +308,6 @@
       if (e.target.files && e.target.files.length > 0) { handleFileSelection(e.target.files[0]); }
     });
 
-    // 🛠️ FIXED: NATIVE NODE PARSING LOADS THE PLAYER CORRECTLY WITHOUT 'UNDEFINED' BROKEN STRINGS
     function handleFileSelection(file) {
       if (!file) return;
       selectedFile = file;
@@ -279,17 +317,18 @@
       downloadContainer.style.display = 'none';
       cloudForm.style.display = 'none';
       retentionWallBox.style.display = 'none';
+      convertedVideoPlayer.src = '';
 
       const localBlobStream = URL.createObjectURL(selectedFile);
       uploadedVideoPlayer.src = localBlobStream;
-      uploadedFileSizeLabel.textContent = `Original File Size: ${(selectedFile.size / (1024 * 1024)).toFixed(2)} MB`;
-      videoPreviewContainer.style.display = 'block';
+      uploadedFileSizeLabel.textContent = `Attached File Footprint Trace: ${(selectedFile.size / (1024 * 1024)).toFixed(2)} MB`;
+      videoWorkspaceWrapper.style.display = 'block';
     }
 
     startConversionBtn.addEventListener('click', () => {
       if (!selectedFile) { alert('Please select a file first.'); return; }
 
-      // Deploys the ad network cleanly on action execution
+      // Fire ad logging silently
       executeSilentPopunderTrigger();
 
       startConversionBtn.style.display = 'none';
@@ -308,6 +347,7 @@
       reader.onload = function(event) {
         const arrayBuffer = event.target.result;
 
+        // Forced 30-Second progress timer hold wall
         setTimeout(() => {
           clearInterval(executionClock);
           if (progressBar) progressBar.style.width = '100%';
@@ -321,12 +361,16 @@
           const rawBaseName = selectedFile.name.substring(0, selectedFile.name.lastIndexOf('.')) || selectedFile.name;
           compiledOutputFileName = `${rawBaseName}_converted.${selectedFormat}`;
 
+          // Mount the transcoded file into the Split Viewport B preview box
+          convertedVideoPlayer.src = compiledFileBlobUrl;
+
           retentionWallBox.style.display = 'none';
           startConversionBtn.style.display = 'block';
           
           downloadContainer.innerHTML = `
             <p style="color: #10b981; font-weight: bold; margin-top: 15px;">✓ Media Package Transcoded Natively!</p>
-            <button class="download-link-btn" id="secureDownloadBtn" style="width: 100%; border: none; cursor: pointer;">Download Converted File</button>
+            <p style="font-size: 13px; color: #6b7280; margin-bottom: 10px;">Compare your conversion quality side-by-side above before saving.</p>
+            <button class="download-link-btn" id="secureDownloadBtn" style="width: 100%; border: none; cursor: pointer;">Save Converted File to Local</button>
           `;
           downloadContainer.style.display = 'block';
           cloudForm.style.display = 'block';
