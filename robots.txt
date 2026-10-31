@@ -1,2 +1,6 @@
+# Global AI Search and Search Engine Crawler Matrix Optimization
 User-agent: *
 Allow: /
+
+# Explicitly declare site map asset locations
+Sitemap: https://vercel.app
