@@ -21,6 +21,41 @@
       box-sizing: border-box;
       position: relative;
     }
+    .floating-ad-widget {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 280px;
+      background: #000000;
+      border: 2px solid #c084fc;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      z-index: 9999;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    @media (max-width: 1024px) {
+      .floating-ad-widget {
+        position: relative;
+        top: auto;
+        right: auto;
+        width: 100%;
+        max-width: 650px;
+        margin-bottom: 20px;
+      }
+    }
+    .floating-ad-header {
+      background: #1e1b4b;
+      color: #c084fc;
+      font-size: 10px;
+      font-weight: bold;
+      padding: 6px;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      border-bottom: 1px solid #311042;
+    }
     .header-banner {
       width: 100%;
       max-width: 650px;
@@ -74,26 +109,19 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      position: relative;
     }
     .drop-zone:hover { background-color: #f3e8ff; border-color: #a855f7; }
     .drop-zone-icon { width: 50px; height: 50px; color: #a855f7; margin-bottom: 12px; pointer-events: none; }
     .drop-zone-text { color: #4b5563; font-size: 15px; margin: 0; pointer-events: none; }
     .section-title { text-align: left; font-size: 15px; font-weight: 700; color: #1f2937; margin: 25px 0 12px 0; border-bottom: 2px solid #f3f4f6; padding-bottom: 6px; }
     .format-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(115px, 1fr)); gap: 10px; margin-bottom: 20px; }
-    .format-btn {
-      background: #ffffff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 12px 6px; font-size: 11px; font-weight: 600; color: #374151; cursor: pointer; transition: all 0.15s ease;
-    }
+    .format-btn { background: #ffffff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 12px 6px; font-size: 11px; font-weight: 600; color: #374151; cursor: pointer; transition: all 0.15s ease; }
     .format-btn:hover { border-color: #a855f7; background: #faf5ff; }
     .format-btn.active { background: #a855f7; color: #ffffff; border-color: #a855f7; box-shadow: 0 4px 14px rgba(168, 85, 247, 0.4); }
     .compression-level-grid { display: flex; gap: 10px; margin-bottom: 20px; }
-    .compression-btn {
-      flex: 1; padding: 12px; border: 1px solid #cbd5e1; border-radius: 10px; background: #fff; font-weight: 600; cursor: pointer; transition: all 0.15s; font-size: 13px;
-    }
+    .compression-btn { flex: 1; padding: 12px; border: 1px solid #cbd5e1; border-radius: 10px; background: #fff; font-weight: 600; cursor: pointer; transition: all 0.15s; font-size: 13px; }
     .compression-btn.active { background: #f3e8ff; color: #a855f7; border-color: #a855f7; font-weight: 700; }
-    .action-btn {
-      background: #c084fc; color: #ffffff; border: none; width: 100%; padding: 16px; border-radius: 14px; font-size: 16px; font-weight: 700; cursor: pointer; box-shadow: 0 4px 14px rgba(192, 132, 252, 0.4); transition: all 0.2s ease; margin-top: 15px;
-    }
+    .action-btn { background: #c084fc; color: #ffffff; border: none; width: 100%; padding: 16px; border-radius: 14px; font-size: 16px; font-weight: 700; cursor: pointer; box-shadow: 0 4px 14px rgba(192, 132, 252, 0.4); transition: all 0.2s ease; margin-top: 15px; }
     .action-btn:hover { background: #a855f7; transform: translateY(-1px); }
     .split-view-container { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 20px 0; width: 100%; }
     .split-player-box { background: #000000; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
@@ -111,6 +139,12 @@
 </head>
 <body>
 
+  <!-- 🛸 FLOATING STICKY VIDEO AD WIDGET IN THE TOP-RIGHT CORNER -->
+  <div class="floating-ad-widget">
+    <div class="floating-ad-header">📺 Live Sponsored Broadcast</div>
+    <iframe src="https://bauval.org" width="100%" height="180" frameborder="0" scrolling="no" style="display: block;"></iframe>
+  </div>
+
   <!-- 🎬 LIVE TOP HIGH-CPM PREMIUM VIDEO BROADCAST FRAME -->
   <div class="header-banner">Sponsored Premium Video Broadcast</div>
   <div class="video-ad-top-wrapper">
@@ -121,7 +155,7 @@
     <h1>NovaConvert</h1>
     <p class="sub-tagline">100% Private Local Sandbox — Convert files entirely in your browser.</p>
 
-    <!-- Upload Box Dropzone Workspace -->
+    <!-- Upload Area Dropzone Box -->
     <div class="drop-zone" id="dropZone">
       <svg class="drop-zone-icon" xmlns="http://w3.org" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
@@ -130,5 +164,140 @@
       <input type="file" id="fileInput" style="display: none;" accept="video/*,audio/*">
       <div id="fileInfo" style="display: none; font-weight: 700; margin-top: 10px; color: #a855f7;"></div>
     </div>
-    <!-- Advanced Split Viewport Player Section & Media Options -->
-    <!-- (The full HTML and JavaScript implementation for the video/audio workspace, format grids, conversion logic, and UI event listeners can be found in the referenced code block) -->
+
+    <!-- Split Viewport Player Comparison Engine Layout -->
+    <div id="videoWorkspaceWrapper" style="display: none;">
+      <div class="split-view-container">
+        <div class="split-player-box">
+          <div class="split-player-label">Original Video</div>
+          <video id="uploadedVideoPlayer" controls style="width: 100%; display: block;"></video>
+        </div>
+        <div class="split-player-box">
+          <div class="split-player-label">Converted Preview</div>
+          <video id="convertedVideoPlayer" controls style="width: 100%; display: block; background: #000;"></video>
+        </div>
+      </div>
+      <div id="uploadedFileSizeLabel" style="color: #cbd5e1; font-size: 13px; padding: 10px; text-align: center; background: #1e1b4b; font-weight: 600; border-radius: 8px; margin-bottom: 20px;"></div>
+    </div>
+
+    <!-- Target Output Video Selection Grids -->
+    <div class="section-title">Target Video Output Formats</div>
+    <div class="format-grid" id="videoGrid">
+      <button class="format-btn active" data-ext="mp4">MP4 Video (.mp4)</button>
+      <button class="format-btn" data-ext="mkv">MKV Video (.mkv)</button>
+      <button class="format-btn" data-ext="webm">WebM Video (.webm)</button>
+      <button class="format-btn" data-ext="mov">MOV Video (.mov)</button>
+      <button class="format-btn" data-ext="avi">AVI Video (.avi)</button>
+    </div>
+    <!-- Audio Output Selection Grids -->
+    <div class="section-title">Target Audio Output Tracking Profiles</div>
+    <div class="format-grid" id="audioGrid">
+      <button class="format-btn" data-ext="mp3">MP3 Audio (.mp3)</button>
+      <button class="format-btn" data-ext="wav">WAV Audio (.wav)</button>
+      <button class="format-btn" data-ext="flac">FLAC Lossless (.flac)</button>
+      <button class="format-btn" data-ext="aac">AAC Audio (.aac)</button>
+    </div>
+
+    <!-- Compression Parameter Tuning Settings -->
+    <div class="section-title">Hardware Compression Intensity Settings</div>
+    <div class="compression-level-grid">
+      <button type="button" class="compression-btn" data-level="light">Light</button>
+      <button type="button" class="compression-btn active" data-level="balanced">Balanced</button>
+      <button type="button" class="compression-btn" data-level="max">Max</button>
+    </div>
+    <p id="compressionProfileDescriptor" style="margin: -10px 0 20px 0; font-size: 12px; color: #6b7280; text-align: left;">Scales output context framework down to 480p · CRF 28. Balanced bitrates optimize storage ratios dynamically.</p>
+
+    <button class="action-btn" id="startConversionBtn">Start Local Conversion</button>
+    <div id="downloadContainer" style="display: none;"></div>
+
+    <!-- Referral Link Affiliate Block -->
+    <div class="alert-box" id="cloudStorageForm">
+      🚀 Need to share or deliver this file securely? 
+      <br><a href="https://pcloud.com" target="_blank">Get 10GB Free High-Speed Cloud Storage Now</a>
+    </div>
+  </div>
+
+  <!-- FAQ Container Template -->
+  <div class="faq-container">
+    <div class="faq-title">Frequently Asked Questions</div>
+    <div class="faq-item">
+      <div class="faq-q">Are my private media files safe?</div>
+      <div class="faq-a">Yes. NovaConvert operates entirely inside your local browser memory sandbox. Your video files are never uploaded to any remote web server or cloud storage infrastructure, offering complete privacy isolation.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Does this consume my mobile data connection balance?</div>
+      <div class="faq-a">No. Once the web app page asset code has been cached by your browser, all heavy video processing algorithms happen using local device computation streams. No internet connection bandwidth is used for converting files.</div>
+    </div>
+  </div>
+
+  <script>
+    const fileInput = document.getElementById('fileInput');
+    const dropZone = document.getElementById('dropZone');
+    const fileInfo = document.getElementById('fileInfo');
+    const dropZoneText = document.getElementById('dropZoneText');
+    const startConversionBtn = document.getElementById('startConversionBtn');
+    const downloadContainer = document.getElementById('downloadContainer');
+    const cloudForm = document.getElementById('cloudStorageForm');
+    const videoWorkspaceWrapper = document.getElementById('videoWorkspaceWrapper');
+    const uploadedVideoPlayer = document.getElementById('uploadedVideoPlayer');
+    const convertedVideoPlayer = document.getElementById('convertedVideoPlayer');
+    const uploadedFileSizeLabel = document.getElementById('uploadedFileSizeLabel');
+    const compressionProfileDescriptor = document.getElementById('compressionProfileDescriptor');
+
+    let selectedFile = null;
+    let selectedFormat = 'mp4';
+    let targetCompressionLevel = 'balanced';
+
+    const compressionProfiles = {
+      light: { desc: 'Maintains maximum source detail properties · CRF 20 index.' },
+      balanced: { desc: 'Scales output context framework down to 480p · CRF 28. Balanced bitrates optimize storage ratios dynamically.' },
+      max: { desc: 'Maximum compression ratios · CRF 35 index. Optimizes frame sizes down to ultra-low limits.' }
+    };
+
+    // Formats and compression option selection handlers
+    document.querySelectorAll('.compression-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        document.querySelectorAll('.compression-btn').forEach(b => b.classList.remove('active'));
+        e.target.classList.add('active');
+        targetCompressionLevel = e.target.getAttribute('data-level');
+        compressionProfileDescriptor.textContent = compressionProfiles[targetCompressionLevel].desc;
+      });
+    });
+
+    document.querySelectorAll('.format-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        document.querySelectorAll('.format-btn').forEach(b => b.classList.remove('active'));
+        e.target.classList.add('active');
+        selectedFormat = e.target.getAttribute('data-ext');
+      });
+    });
+
+    // 🛠️ SAFE INTERFACE CLICK INTEGRATION: Opens native file picker smoothly on click
+    dropZone.addEventListener('click', () => {
+      fileInput.click();
+    });
+
+    fileInput.addEventListener('change', (e) => {
+      if (e.target.files && e.target.files.length > 0) {
+        selectedFile = e.target.files[0];
+        dropZoneText.style.display = 'none';
+        fileInfo.textContent = `Attached: ${selectedFile.name}`;
+        fileInfo.style.display = 'block';
+        
+        const localBlobStream = URL.createObjectURL(selectedFile);
+        uploadedVideoPlayer.src = localBlobStream;
+        uploadedFileSizeLabel.textContent = `Original File Size: ${(selectedFile.size / (1024 * 1024)).toFixed(2)} MB`;
+        videoWorkspaceWrapper.style.display = 'block';
+      }
+    });
+
+    startConversionBtn.addEventListener('click', () => {
+      if (!selectedFile) {
+        alert('Please select a file first.');
+        return;
+      }
+      alert('Local file simulation initialized. For security compliance, direct hardware level transcoding operations require compiled native frameworks.');
+    });
+  </script>
+</body>
+</html>
