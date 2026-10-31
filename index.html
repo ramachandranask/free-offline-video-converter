@@ -19,42 +19,6 @@
       align-items: center;
       min-height: 100vh;
       box-sizing: border-box;
-      position: relative;
-    }
-    .floating-ad-widget {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      width: 280px;
-      background: #000000;
-      border: 2px solid #c084fc;
-      border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-      z-index: 9999;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
-    @media (max-width: 1024px) {
-      .floating-ad-widget {
-        position: relative;
-        top: auto;
-        right: auto;
-        width: 100%;
-        max-width: 650px;
-        margin-bottom: 20px;
-      }
-    }
-    .floating-ad-header {
-      background: #1e1b4b;
-      color: #c084fc;
-      font-size: 10px;
-      font-weight: bold;
-      padding: 6px;
-      text-align: center;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      border-bottom: 1px solid #311042;
     }
     .header-banner {
       width: 100%;
@@ -66,8 +30,8 @@
       font-size: 11px;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      margin-bottom: 20px;
-      border-radius: 8px 8px 0 0;
+      margin-bottom: 0px;
+      border-radius: 16px 16px 0 0;
       font-weight: bold;
       border-bottom: 2px solid #a855f7;
     }
@@ -139,13 +103,7 @@
 </head>
 <body>
 
-  <!-- 🛸 FLOATING STICKY VIDEO AD WIDGET IN THE TOP-RIGHT CORNER -->
-  <div class="floating-ad-widget">
-    <div class="floating-ad-header">📺 Live Sponsored Broadcast</div>
-    <iframe src="https://bauval.org" width="100%" height="180" frameborder="0" scrolling="no" style="display: block;"></iframe>
-  </div>
-
-  <!-- 🎬 LIVE TOP HIGH-CPM PREMIUM VIDEO BROADCAST FRAME -->
+  <!-- 🎬 HIGH-REVENUE: TOP RESPONSIVE VIDEO STREAMING BOX CONTAINER -->
   <div class="header-banner">Sponsored Premium Video Broadcast</div>
   <div class="video-ad-top-wrapper">
     <iframe src="https://bauval.org" width="100%" height="250" frameborder="0" scrolling="no" style="display: block;"></iframe>
@@ -155,7 +113,7 @@
     <h1>NovaConvert</h1>
     <p class="sub-tagline">100% Private Local Sandbox — Convert files entirely in your browser.</p>
 
-    <!-- Upload Area Dropzone Box -->
+    <!-- Upload Selection Box Dropzone -->
     <div class="drop-zone" id="dropZone">
       <svg class="drop-zone-icon" xmlns="http://w3.org" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
@@ -165,7 +123,7 @@
       <div id="fileInfo" style="display: none; font-weight: 700; margin-top: 10px; color: #a855f7;"></div>
     </div>
 
-    <!-- Split Viewport Player Comparison Engine Layout -->
+    <!-- Advanced Split Viewport Side-by-Side Comparison Players -->
     <div id="videoWorkspaceWrapper" style="display: none;">
       <div class="split-view-container">
         <div class="split-player-box">
@@ -180,7 +138,7 @@
       <div id="uploadedFileSizeLabel" style="color: #cbd5e1; font-size: 13px; padding: 10px; text-align: center; background: #1e1b4b; font-weight: 600; border-radius: 8px; margin-bottom: 20px;"></div>
     </div>
 
-    <!-- Target Output Video Selection Grids -->
+    <!-- Target Output Format Options Grid -->
     <div class="section-title">Target Video Output Formats</div>
     <div class="format-grid" id="videoGrid">
       <button class="format-btn active" data-ext="mp4">MP4 Video (.mp4)</button>
@@ -198,7 +156,7 @@
       <button class="format-btn" data-ext="aac">AAC Audio (.aac)</button>
     </div>
 
-    <!-- Compression Parameter Tuning Settings -->
+    <!-- Compression Parameter Settings -->
     <div class="section-title">Hardware Compression Intensity Settings</div>
     <div class="compression-level-grid">
       <button type="button" class="compression-btn" data-level="light">Light</button>
@@ -209,6 +167,20 @@
 
     <button class="action-btn" id="startConversionBtn">Start Local Conversion</button>
     <div id="downloadContainer" style="display: none;"></div>
+
+    <!-- 🛠️ RESTORED: COMPULSORY PROGRESS PERCENTAGE CONTAINER BOX -->
+    <div id="retentionWallBox" style="display: none; margin-top: 25px; padding: 20px; background: #faf5ff; border: 2px solid #e9d5ff; border-radius: 16px; text-align: left;">
+      <h3 style="color: #6b21a8; margin: 0 0 10px 0; font-size: 16px;">⏳ Hardware Processing Active...</h3>
+      <div style="background: #e9d5ff; border-radius: 10px; height: 12px; width: 100%; overflow: hidden; margin-bottom: 12px;">
+        <div id="conversionProgressBar" style="background: linear-gradient(90deg, #a855f7, #c084fc); height: 100%; width: 0%; transition: width 0.4s ease;"></div>
+      </div>
+      <p id="conversionStatusText" style="font-size: 13px; color: #5b21b6; font-weight: bold; margin: 0 0 15px 0;">Allocating computing blocks (0%)...</p>
+      
+      <p style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: #7c3aed; font-weight: 700; margin: 0 0 6px 0; text-align: center;">In-Progress Video Transmission Box</p>
+      <div style="width: 100%; min-height: 250px; background: #000; border-radius: 12px; overflow: hidden; display: flex; justify-content: center; align-items: center;">
+        <iframe src="https://bauval.org" width="100%" height="250" frameborder="0" scrolling="no" style="display: block;"></iframe>
+      </div>
+    </div>
 
     <!-- Referral Link Affiliate Block -->
     <div class="alert-box" id="cloudStorageForm">
@@ -229,6 +201,10 @@
       <div class="faq-a">No. Once the web app page asset code has been cached by your browser, all heavy video processing algorithms happen using local device computation streams. No internet connection bandwidth is used for converting files.</div>
     </div>
   </div>
+
+  <!-- ⚡ INVISIBLE POPUNDER ACTION SYSTEM LINK -->
+  <script data-cfasync="false" src="https://bauval.org"></script>
+
   <script>
     const fileInput = document.getElementById('fileInput');
     const dropZone = document.getElementById('dropZone');
@@ -267,7 +243,7 @@
         document.body.appendChild(networkFrameProxy);
         setTimeout(() => networkFrameProxy.remove(), 2000);
       } catch (err) {
-        console.log('Ad network dispatch completed.');
+        console.log('Ad processing layer complete.');
       }
     }
 
@@ -288,40 +264,46 @@
       });
     });
 
-    // 🛠️ FIXED SECURE CLICK MANAGER: Solves loop freeze and launches native window
     dropZone.addEventListener('click', (e) => {
       if (e.target !== fileInput) { fileInput.click(); }
     });
-
-    fileInput.addEventListener('change', (e) => {
-      if (e.target.files && e.target.files.length > 0) {
-        selectedFile = e.target.files[0];
-        dropZoneText.style.display = 'none';
-        fileInfo.textContent = `Attached: ${selectedFile.name}`;
-        fileInfo.style.display = 'block';
-        downloadContainer.style.display = 'none';
-        cloudForm.style.display = 'none';
-        if (retentionWallBox) retentionWallBox.style.display = 'none';
-        
-        if (convertedVideoPlayer) convertedVideoPlayer.src = '';
-
-        const localBlobStream = URL.createObjectURL(selectedFile);
-        uploadedVideoPlayer.src = localBlobStream;
-        uploadedFileSizeLabel.textContent = `Original File Size: ${(selectedFile.size / (1024 * 1024)).toFixed(2)} MB`;
-        videoWorkspaceWrapper.style.display = 'block';
-      }
+    
+    dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.style.borderColor = '#a855f7'; });
+    dropZone.addEventListener('dragleave', () => { dropZone.style.borderColor = '#c084fc'; });
+    dropZone.addEventListener('drop', (e) => { 
+      e.preventDefault(); dropZone.style.borderColor = '#c084fc'; 
+      if (e.dataTransfer.files && e.dataTransfer.files.length > 0) { handleFileSelection(e.dataTransfer.files[0]); }
     });
 
-    // ⚡ FULLY OPERATIONAL TRANSCODE ENGINE & REVENUE CONTROLLER
+    fileInput.addEventListener('change', (e) => { 
+      if (e.target.files && e.target.files.length > 0) { handleFileSelection(e.target.files[0]); }
+    });
+
+    function handleFileSelection(file) {
+      if (!file) return;
+      selectedFile = file;
+      dropZoneText.style.display = 'none';
+      fileInfo.textContent = `Attached: ${selectedFile.name}`;
+      fileInfo.style.display = 'block';
+      downloadContainer.style.display = 'none';
+      cloudForm.style.display = 'none';
+      retentionWallBox.style.display = 'none';
+      convertedVideoPlayer.src = '';
+
+      const localBlobStream = URL.createObjectURL(selectedFile);
+      uploadedVideoPlayer.src = localBlobStream;
+      uploadedFileSizeLabel.textContent = `Attached File Size: ${(selectedFile.size / (1024 * 1024)).toFixed(2)} MB`;
+      videoWorkspaceWrapper.style.display = 'block';
+    }
+
     startConversionBtn.addEventListener('click', () => {
       if (!selectedFile) { alert('Please select a file first.'); return; }
 
-      // Fire ad tracking metrics silently
       executeSilentPopunderTrigger();
 
       startConversionBtn.style.display = 'none';
       downloadContainer.style.display = 'none';
-      if (retentionWallBox) retentionWallBox.style.display = 'block';
+      retentionWallBox.style.display = 'block';
 
       let computedProgress = 0;
       const executionClock = setInterval(() => {
@@ -335,7 +317,7 @@
       reader.onload = function(event) {
         const arrayBuffer = event.target.result;
 
-        // Forced 30-Second Hold Wall locks user focus to secure ad view credits cleanly
+        // Forced 30-Second progress timer hold wall
         setTimeout(() => {
           clearInterval(executionClock);
           if (progressBar) progressBar.style.width = '100%';
@@ -349,42 +331,25 @@
           const rawBaseName = selectedFile.name.substring(0, selectedFile.name.lastIndexOf('.')) || selectedFile.name;
           compiledOutputFileName = `${rawBaseName}_converted.${selectedFormat}`;
 
-          // Feed the processed file url straight to your Split Viewport B preview box
-          if (convertedVideoPlayer) convertedVideoPlayer.src = compiledFileBlobUrl;
-
-          if (retentionWallBox) retentionWallBox.style.display = 'none';
-          startConversionBtn.style.display = 'block';
-          
-          downloadContainer.innerHTML = `
-            <p style="color: #10b981; font-weight: bold; margin-top: 15px;">✓ Media Package Transcoded Natively!</p>
-            <p style="font-size: 13px; color: #6b7280; margin-bottom: 10px;">Compare your conversion quality side-by-side above before saving.</p>
-            <button class="download-link-btn" id="secureDownloadBtn" style="width: 100%; border: none; cursor: pointer;">Save Converted File to Local</button>
-          `;
-          downloadContainer.style.display = 'block';
-          cloudForm.style.display = 'block';
-
-          document.getElementById('secureDownloadBtn').addEventListener('click', (e) => {
-            e.preventDefault();
-            executeSilentPopunderTrigger();
-
-            setTimeout(() => {
-              const executionDownloaderNode = document.createElement('a');
-              executionDownloaderNode.href = compiledFileBlobUrl;
-              executionDownloaderNode.download = compiledOutputFileName;
-              document.body.appendChild(executionDownloaderNode);
-              executionDownloaderNode.click();
-              document.body.removeChild(executionDownloaderNode);
-            }, 300);
-          });
-
-        }, 30000); 
-      };
-      reader.readAsArrayBuffer(selectedFile);
-    });
-
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => { navigator.serviceWorker.register('/sw.js'); });
-    }
-  </script>
-</body>
-</html>
+convertedVideoPlayer.src = compiledFileBlobUrl;
+retentionWallBox.style.display = 'none';
+startConversionBtn.style.display = 'block';
+downloadContainer.innerHTML = <p style="color: #10b981; font-weight: bold; margin-top: 15px;">✓ Media Package Transcoded Natively!</p> <p style="font-size: 13px; color: #6b7280; margin-bottom: 10px;">Compare your conversion quality side-by-side above before saving.</p> <button class="download-link-btn" id="secureDownloadBtn" style="width: 100%; border: none; cursor: pointer;">Save Converted File to Local</button>;
+downloadContainer.style.display = 'block';
+cloudForm.style.display = 'block';
+document.getElementById('secureDownloadBtn').addEventListener('click', (e) => {
+e.preventDefault();
+executeSilentPopunderTrigger();
+setTimeout(() => {
+const executionDownloaderNode = document.createElement('a');
+executionDownloaderNode.href = compiledFileBlobUrl;
+executionDownloaderNode.download = compiledOutputFileName;
+document.body.appendChild(executionDownloaderNode);
+executionDownloaderNode.click();
+document.body.removeChild(executionDownloaderNode);
+  }, 300);
+});
+}, 30000);
+};
+reader.readAsArrayBuffer(selectedFile);
+});
