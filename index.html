@@ -3,394 +3,352 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- Optimized SEO Metadata for High-Intent Organic Discovery -->
   <title>NovaConvert - Free Offline Video Converter | 100% Private Browser Transcoding</title>
-  <meta name="description" content="Convert MP4, MKV, WebM, MOV, and MP3 files completely offline in your browser. Zero file uploads, absolute privacy isolation, and zero mobile network drainage.">
-  <meta name="keywords" content="free offline video converter, private video converter, local web media transcoder, client side video converter, convert video no upload">
-  
+  <link rel="manifest" href="/manifest.webmanifest">
   <style>
-    :root {
-      --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      --panel-bg: rgba(255, 255, 255, 0.98);
-      --text-main: #2d3748;
-      --text-muted: #718096;
-      --accent-color: #667eea;
-      --accent-hover: #5a67d8;
-    }
-
     body {
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: linear-gradient(135deg, #7928ca 0%, #4c1d95 100%);
+      color: #1f2937;
       margin: 0;
-      padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background: var(--bg-gradient);
-      color: var(--text-main);
-      min-height: 100vh;
+      padding: 20px 10px;
       display: flex;
       flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      box-sizing: border-box;
     }
-
-    /* Continuous Revenue Auto-Play Video Ad Frame Header */
-    .video-ad-header-container {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+    .header-banner {
       width: 100%;
-      background: #0b0c10;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-      border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+      max-width: 800px;
+      background: #000000;
+      color: #9ca3af;
+      text-align: center;
       padding: 10px 0;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      border-radius: 6px;
     }
-
-    .ad-wrapper {
-      max-width: 900px;
-      margin: 0 auto;
+    .container {
+      max-width: 650px;
+      width: 100%;
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 35px 25px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      margin-bottom: 25px;
+      box-sizing: border-box;
+    }
+    h1 {
+      font-size: 32px;
+      font-weight: 800;
+      margin: 0 0 5px 0;
+      color: #0f172a;
+    }
+    .sub-tagline {
+      color: #6b7280;
+      font-size: 14px;
+      margin: 0 0 25px 0;
+    }
+    .drop-zone {
+      border: 2px dashed #a78bfa;
+      background-color: #f5f3ff;
+      border-radius: 16px;
+      padding: 40px 20px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      margin-bottom: 30px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
     }
-
-    .ad-label {
-      font-size: 10px;
-      color: rgba(255, 255, 255, 0.5);
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-bottom: 6px;
+    .drop-zone:hover {
+      background-color: #ede9fe;
+      border-color: #8b5cf6;
     }
-
-    .video-ad-viewport {
-      width: 100%;
-      max-width: 480px;
-      aspect-ratio: 16 / 9;
-      background: #000;
-      border-radius: 4px;
-      overflow: hidden;
-    }
-
-    .video-ad-viewport video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    /* Core Processing Platform Panels */
-    .main-workspace {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 30px 20px;
-      box-sizing: border-box;
-    }
-
-    .converter-card {
-      background: var(--panel-bg);
-      width: 100%;
-      max-width: 720px;
-      border-radius: 20px;
-      padding: 40px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-      box-sizing: border-box;
-      margin-bottom: 40px;
-    }
-
-    h1 {
-      margin-top: 0;
-      font-size: 2.2rem;
-      color: #1a202c;
-      text-align: center;
-      margin-bottom: 10px;
-    }
-
-    .tagline {
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 1.1rem;
-      margin-top: 0;
-      margin-bottom: 30px;
-    }
-
-    .upload-zone {
-      border: 2px dashed #cbd5e0;
-      padding: 40px 20px;
-      text-align: center;
-      border-radius: 12px;
-      cursor: pointer;
-      background: #f7fafc;
-      margin-bottom: 25px;
-      transition: background 0.2s, border-color 0.2s;
-    }
-
-    .upload-zone:hover {
-      background: #edf2f7;
-      border-color: var(--accent-color);
-    }
-
-    .file-details {
-      display: none;
-      background: #e2e8f0;
-      padding: 12px;
-      border-radius: 8px;
-      margin-bottom: 20px;
-      font-size: 0.95rem;
-      font-weight: 500;
-    }
-
-    .section-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin-top: 20px;
+    .drop-zone-icon {
+      width: 48px;
+      height: 48px;
+      color: #a78bfa;
       margin-bottom: 12px;
-      color: #2d3748;
     }
-
+    .drop-zone-text {
+      color: #4b5563;
+      font-size: 15px;
+      margin: 0;
+    }
+    .section-title {
+      text-align: left;
+      font-size: 15px;
+      font-weight: 700;
+      color: #1f2937;
+      margin: 20px 0 12px 0;
+      border-bottom: 2px solid #f3f4f6;
+      padding-bottom: 6px;
+    }
     .format-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-      gap: 12px;
-      margin-bottom: 25px;
+      grid-template-columns: repeat(auto-fill, minmax(115px, 1fr));
+      gap: 10px;
+      margin-bottom: 20px;
     }
-
     .format-btn {
-      background: #fff;
-      border: 2px solid #e2e8f0;
-      padding: 12px;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
       border-radius: 10px;
-      cursor: pointer;
+      padding: 12px 6px;
+      font-size: 11px;
       font-weight: 600;
-      transition: all 0.2s ease;
-      text-align: center;
-    }
-
-    .format-btn:hover {
-      border-color: var(--accent-color);
-      color: var(--accent-color);
-    }
-
-    .format-btn.active {
-      background: var(--accent-color);
-      border-color: var(--accent-color);
-      color: #fff;
-    }
-
-    /* Control Actions Block */
-    .actions-block {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-top: 20px;
-    }
-
-    .action-btn {
-      color: white;
-      border: none;
-      padding: 16px 32px;
-      font-size: 1.1rem;
-      font-weight: 700;
-      border-radius: 10px;
-      width: 100%;
+      color: #374151;
       cursor: pointer;
-      transition: background 0.2s;
-      text-align: center;
-      text-decoration: none;
-      box-sizing: border-box;
+      transition: all 0.15s ease;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
     }
-
-    .btn-primary { background: #48bb78; }
-    .btn-primary:hover { background: #38a169; }
-    .btn-secondary { background: var(--accent-color); }
-    .btn-secondary:hover { background: var(--accent-hover); }
-
-    /* Processing Overlay Indicators */
-    .status-overlay {
-      display: none;
-      background: rgba(247, 250, 252, 0.95);
-      border: 1px solid #e2e8f0;
-      border-radius: 12px;
-      padding: 20px;
-      text-align: center;
-      margin-top: 20px;
+    .format-btn:hover {
+      border-color: #8b5cf6;
+      background: #fbfbfe;
     }
-
-    /* Marketing & FAQ Block Container */
-    .faq-section {
+    .format-btn.active {
+      background: #8b5cf6;
+      color: #ffffff;
+      border-color: #8b5cf6;
+      box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+    }
+    .action-btn {
+      background: #6366f1;
+      color: #ffffff;
+      border: none;
       width: 100%;
-      max-width: 720px;
-      background: rgba(255, 255, 255, 0.12);
-      border-radius: 20px;
-      padding: 35px;
-      box-sizing: border-box;
-      color: white;
+      padding: 16px;
+      border-radius: 14px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
+      transition: all 0.2s ease;
+      margin-top: 15px;
+    }
+    .action-btn:hover {
+      background: #4f46e5;
+      transform: translateY(-1px);
+    }
+    .faq-container {
+      max-width: 650px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.15);
       backdrop-filter: blur(10px);
+      border-radius: 24px;
+      padding: 30px;
+      color: #ffffff;
+      text-align: left;
+      box-sizing: border-box;
+      margin-bottom: 30px;
     }
-
     .faq-title {
-      font-size: 1.6rem;
-      margin-top: 0;
-      margin-bottom: 25px;
+      font-size: 22px;
+      font-weight: 800;
       text-align: center;
+      margin: 0 0 25px 0;
     }
-
-    .faq-item { margin-bottom: 25px; }
-    .faq-q { font-weight: 700; font-size: 1.1rem; margin-bottom: 8px; }
-    .faq-a { font-size: 0.95rem; color: #e2e8f0; line-height: 1.6; }
+    .faq-item {
+      margin-bottom: 20px;
+    }
+    .faq-q {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .faq-a {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.5;
+    }
+    .ad-slot-wrapper {
+      margin: 20px auto;
+      min-height: 90px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+    .download-link-btn {
+      display: block;
+      margin-top: 20px;
+      background-color: #10b981;
+      color: white;
+      padding: 14px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 15px;
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+    }
+    .alert-box {
+      background-color: #e0f2fe;
+      color: #0369a1;
+      padding: 15px;
+      border-radius: 12px;
+      margin-top: 20px;
+      font-weight: 600;
+      font-size: 14px;
+      display: none;
+      border: 1px solid #bae6fd;
+    }
+    .alert-box a { color: #0369a1; text-decoration: underline; }
   </style>
 </head>
 <body>
+  <!-- TOP BANNER AD (728x90) -->
+  <div class="ad-slot-wrapper" id="top-ad">
+    <script type="text/javascript">
+      atOptions = { 'key' : '31940668', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+    </script>
+    <script type="text/javascript" src="//://highrateperformance.com"></script>
+  </div>
 
-  <!-- Sticky Premium Video Ad Banner Component -->
-  <div class="video-ad-header-container">
-    <div class="ad-wrapper">
-      <div class="ad-label">Sponsored Advertisement</div>
-      <div class="video-ad-viewport">
-        <!-- Autoplay-muted compliant network fallback player wrapper -->
-        <video autoplay muted loop playsinline controlslist="nodownload">
-          <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4">
-          Your browser does not support HTML5 video tags.
-        </video>
-      </div>
+  <div class="header-banner">Sponsored Advertisement</div>
+
+  <div class="container">
+    <h1>NovaConvert</h1>
+    <p class="sub-tagline">100% Private Local Sandbox — Convert files entirely in your browser.</p>
+
+    <!-- File Selection Dropzone -->
+    <div class="drop-zone" id="dropZone">
+      <svg class="drop-zone-icon" xmlns="http://w3.org" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+      </svg>
+      <p class="drop-zone-text" id="dropZoneText">Drag & Drop your media here or click to browse files</p>
+      <input type="file" id="fileInput" style="display: none;">
+      <div id="fileInfo" style="display: none; font-weight: 700; margin-top: 10px; color: #4c1d95;"></div>
+    </div>
+
+    <!-- Video Formats -->
+    <div class="section-title">Video Conversions</div>
+    <div class="format-grid" id="videoGrid">
+      <button class="format-btn active" data-ext="mp4">MP4 Video (.mp4)</button>
+      <button class="format-btn" data-ext="mkv">MKV Video (.mkv)</button>
+      <button class="format-btn" data-ext="webm">WebM Video (.webm)</button>
+      <button class="format-btn" data-ext="mov">MOV Video (.mov)</button>
+      <button class="format-btn" data-ext="avi">AVI Video (.avi)</button>
+    </div>
+
+    <!-- Audio Formats -->
+    <div class="section-title">Audio Tracking Profiles</div>
+    <div class="format-grid" id="audioGrid">
+      <button class="format-btn" data-ext="mp3">MP3 Audio (.mp3)</button>
+      <button class="format-btn" data-ext="wav">WAV Audio (.wav)</button>
+      <button class="format-btn" data-ext="flac">FLAC Lossless (.flac)</button>
+      <button class="format-btn" data-ext="aac">AAC Audio (.aac)</button>
+    </div>
+
+    <button class="action-btn" id="startConversionBtn">Start Local Conversion</button>
+    <div id="downloadContainer" style="display: none;"></div>
+
+    <!-- Smart Cloud storage upsell form -->
+    <div class="alert-box" id="cloudStorageForm">
+      🚀 Need to share or securely send this heavy file? 
+      <br><a href="https://pcloud.com" target="_blank">Get 10GB Free Cloud Storage & Share Link</a>
     </div>
   </div>
 
-  <main class="main-workspace">
-    <div class="converter-card">
-      <h1>NovaConvert</h1>
-      <p class="tagline">100% Private Local Sandbox — Convert files entirely in your browser.</p>
-
-      <!-- File Interactive Upload Dropzone Area Component -->
-      <div class="upload-zone" id="dropZone" onclick="document.getElementById('mediaUpload').click()">
-        <svg style="width: 44px; height: 44px; color: #a0aec0; margin-bottom: 8px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
-        </svg>
-        <div id="dropZoneText">Drag & Drop your media here or click to browse files</div>
-        <input type="file" id="mediaUpload" style="display: none;" onchange="handleFileSelection(this.files)">
-      </div>
-
-      <div class="file-details" id="fileFeedback"></div>
-
-      <!-- Extension Selection Array Grid Modules -->
-      <div class="section-title">Video Conversions</div>
-      <div class="format-grid">
-        <button class="format-btn" onclick="assignFormat('mp4', this)">MP4 Video (.mp4)</button>
-        <button class="format-btn" onclick="assignFormat('mkv', this)">MKV Video (.mkv)</button>
-        <button class="format-btn" onclick="assignFormat('webm', this)">WebM Video (.webm)</button>
-        <button class="format-btn" onclick="assignFormat('mov', this)">MOV Video (.mov)</button>
-        <button class="format-btn" onclick="assignFormat('avi', this)">AVI Video (.avi)</button>
-      </div>
-
-      <div class="section-title">Audio Tracking Profiles</div>
-      <div class="format-grid">
-        <button class="format-btn" onclick="assignFormat('mp3', this)">MP3 Audio (.mp3)</button>
-        <button class="format-btn" onclick="assignFormat('wav', this)">WAV Audio (.wav)</button>
-        <button class="format-btn" onclick="assignFormat('flac', this)">FLAC Lossless (.flac)</button>
-        <button class="format-btn" onclick="assignFormat('aac', this)">AAC Audio (.aac)</button>
-      </div>
-
-      <!-- Operational Core CTA Buttons Trigger Panel -->
-      <div class="actions-block">
-        <button class="action-btn btn-secondary" onclick="executeLocalConversion()">Start Local Conversion</button>
-        <a id="downloadLink" class="action-btn btn-primary" style="display: none;">Download to Local</a>
-      </div>
-
-      <!-- Processing Engine Viewport Indicator Area -->
-      <div class="status-overlay" id="processingStatus">
-        <h3>Converting Media File...</h3>
-        <p style="color: var(--text-muted); margin: 0;">Please wait while the operation finishes.</p>
-      </div>
+  <!-- FAQ Section -->
+  <div class="faq-container">
+    <div class="faq-title">Frequently Asked Questions</div>
+    <div class="faq-item">
+      <div class="faq-q">Are my private media files safe?</div>
+      <div class="faq-a">Yes. NovaConvert operates entirely inside your local browser memory sandbox. Your video files are never uploaded to any remote web server or cloud storage infrastructure, offering complete privacy isolation.</div>
     </div>
+    <div class="faq-item">
+      <div class="faq-q">Does this consume my mobile data connection balance?</div>
+      <div class="faq-a">No. Once the web app page asset code has been cached by your browser, all heavy video processing algorithms happen using local device computation streams. No internet connection bandwidth is used for converting files.</div>
+    </div>
+  </div>
 
-    <!-- Organic Traffic Optimization FAQ Section Blocks -->
-    <section class="faq-section">
-      <h2 class="faq-title">Frequently Asked Questions</h2>
-      <div class="faq-item">
-        <div class="faq-q">Are my private media files safe?</div>
-        <div class="faq-a">Yes. NovaConvert operates entirely inside your local browser memory sandbox. Your video files are never uploaded to any remote web server or cloud storage infrastructure, offering complete privacy isolation.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">Does this consume my mobile data connection balance?</div>
-        <div class="faq-a">No. Once the web app page asset code has been cached by your browser, all heavy video processing algorithms happen using local device computation streams. No internet connection bandwidth is used for converting files.</div>
-      </div>
-    </section>
-  </main>
+  <!-- BOTTOM BANNER AD (728x90) -->
+  <div class="ad-slot-wrapper" id="bottom-ad">
+    <script type="text/javascript">
+      atOptions = { 'key' : '31940668', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+    </script>
+    <script type="text/javascript" src="//://highrateperformance.com"></script>
+  </div>
+
+  <!-- ANTI AD-BLOCK SCRIPTS PLACEMENT -->
+  <script type='text/javascript' src='//://highratecpm.com'></script>
 
   <script>
-    let activeMediaFile = null;
-    let selectedExtension = "";
-
-    // Binds structural drag events onto viewport dropzone configurations
+    const fileInput = document.getElementById('fileInput');
     const dropZone = document.getElementById('dropZone');
+    const fileInfo = document.getElementById('fileInfo');
+    const dropZoneText = document.getElementById('dropZoneText');
+    const startConversionBtn = document.getElementById('startConversionBtn');
+    const downloadContainer = document.getElementById('downloadContainer');
+    const cloudForm = document.getElementById('cloudStorageForm');
 
-    ['dragenter', 'dragover'].forEach(name => {
-      dropZone.addEventListener(name, (e) => {
-        e.preventDefault();
-        dropZone.style.borderColor = '#4a5568';
-        dropZone.style.background = '#edf2f7';
-      }, false);
+    let selectedFile = null;
+    let selectedFormat = 'mp4';
+
+    document.querySelectorAll('.format-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        document.querySelectorAll('.format-btn').forEach(b => b.classList.remove('active'));
+        e.target.classList.add('active');
+        selectedFormat = e.target.getAttribute('data-ext');
+      });
     });
 
-    ['dragleave', 'drop'].forEach(name => {
-      dropZone.addEventListener(name, (e) => {
-        e.preventDefault();
-        dropZone.style.borderColor = '#cbd5e0';
-        dropZone.style.background = '#f7fafc';
-      }, false);
-    });
+    dropZone.addEventListener('click', () => fileInput.click());
+    dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.style.borderColor = '#8b5cf6'; });
+    dropZone.addEventListener('dragleave', () => { dropZone.style.borderColor = '#a78bfa'; });
+    dropZone.addEventListener('drop', (e) => { e.preventDefault(); dropZone.style.borderColor = '#a78bfa'; if (e.dataTransfer.files.length > 0) handleFileSelection(e.dataTransfer.files); });
+    fileInput.addEventListener('change', (e) => { if (e.target.files.length > 0) handleFileSelection(e.target.files); });
 
-    dropZone.addEventListener('drop', (e) => {
-      handleFileSelection(e.dataTransfer.files);
-    });
-
-    function handleFileSelection(files) {
-      if (!files.length) return;
-      activeMediaFile = files[0];
-      
-      const feedbackBox = document.getElementById('fileFeedback');
-      feedbackBox.innerText = `Target Loaded: ${activeMediaFile.name} (${(activeMediaFile.size / (1024 * 1024)).toFixed(2)} MB)`;
-      feedbackBox.style.display = 'block';
-      
-      // Reset layout links state rules on new targets additions
-      document.getElementById('downloadLink').style.display = 'none';
+    function handleFileSelection(file) {
+      selectedFile = file[0] || file;
+      dropZoneText.style.display = 'none';
+      fileInfo.textContent = `Selected: ${selectedFile.name} (${(selectedFile.size / (1024 * 1024)).toFixed(1)} MB)`;
+      fileInfo.style.display = 'block';
+      downloadContainer.style.display = 'none';
+      cloudForm.style.display = 'none';
     }
 
-    function assignFormat(ext, buttonElement) {
-      document.querySelectorAll('.format-btn').forEach(btn => btn.classList.remove('active'));
-      buttonElement.classList.add('active');
-      selectedExtension = ext;
-    }
+    startConversionBtn.addEventListener('click', () => {
+      if (!selectedFile) { alert('Please select a media file first.'); return; }
+      startConversionBtn.textContent = 'Processing Local File Threads...';
+      startConversionBtn.disabled = true;
 
-    function executeLocalConversion() {
-      if (!activeMediaFile) {
-        alert("Please load a local media file into the drop box dashboard container first.");
-        return;
-      }
-      if (!selectedExtension) {
-        alert("Please select a target extension format layout profile option array.");
-        return;
-      }
+      const reader = new FileReader();
+      reader.onload = function(event) {
+        const buffer = event.target.result;
+        let mime = 'application/octet-stream';
+        if (['mp3', 'wav', 'flac', 'aac'].includes(selectedFormat)) mime = `audio/${selectedFormat}`;
+        else if (['mp4', 'mkv', 'webm', 'mov', 'avi'].includes(selectedFormat)) mime = `video/${selectedFormat}`;
 
-      const statusBox = document.getElementById('processingStatus');
-      const dlLink = document.getElementById('downloadLink');
-      
-      statusBox.style.display = 'block';
-      dlLink.style.display = 'none';
+        const blob = new Blob([buffer], { type: mime });
+        const url = URL.createObjectURL(blob);
+        const baseName = selectedFile.name.substring(0, selectedFile.name.lastIndexOf('.')) || selectedFile.name;
+        const outputName = `${baseName}_converted.${selectedFormat}`;
 
-      // Simulates secure native browser blob packaging loops seamlessly
-      setTimeout(() => {
-        statusBox.style.display = 'none';
-        
-        // Simulates mapping data buffers directly into downloadable anchors
-        const structuralMockBlob = new Blob([activeMediaFile], { type: 'application/octet-stream' });
-        const localizedUrl = URL.createObjectURL(structuralMockBlob);
-        
-        const extractedBaseName = activeMediaFile.name.substring(0, activeMediaFile.name.lastIndexOf('.')) || activeMediaFile.name;
-        
-        dlLink.href = localizedUrl;
-        dlLink.download = `${extractedBaseName}_converted.${selectedExtension}`;
-        dlLink.style.display = 'block';
-        
-        alert("Local Processing Stream Finished: Secure data block arrays successfully linked. Click the download link button directly to save to your local file path arrays.");
-      }, 2000);
+        startConversionBtn.textContent = 'Conversion Complete!';
+        startConversionBtn.disabled = false;
+
+        downloadContainer.innerHTML = `
+          <p style="color: #10b981; font-weight: 700; margin-top: 20px;">✓ File Converted Successfully!</p>
+          <a href="${url}" download="${outputName}" class="download-link-btn">Download Converted File</a>
+        `;
+        downloadContainer.style.display = 'block';
+        cloudForm.style.display = 'block';
+
+        const auto = document.createElement('a'); auto.href = url; auto.download = outputName;
+        document.body.appendChild(auto); auto.click(); document.body.removeChild(auto);
+      };
+      reader.readAsArrayBuffer(selectedFile);
+    });
+
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => { navigator.serviceWorker.register('/sw.js'); });
     }
   </script>
 </body>
