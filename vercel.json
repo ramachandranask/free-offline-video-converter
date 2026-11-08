@@ -1,16 +1,4 @@
 {
   "version": 2,
-  "routes": [
-    {
-      "src": "/sw.js",
-      "headers": {
-        "cache-control": "public, max-age=0, must-revalidate"
-      },
-      "dest": "/sw.js"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
-    }
-  ]
+  "cleanUrls": true
 }
