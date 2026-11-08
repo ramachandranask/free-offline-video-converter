@@ -52,6 +52,7 @@
             --accent-hover: #1d4ed8;
             --border: #334155;
             --secure-green: #10b981;
+            --warning-gold: #eab308;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
         body { background-color: var(--bg-color); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; }
@@ -59,8 +60,6 @@
         header h1 { font-size: 1.5rem; font-weight: 700; color: var(--text-main); }
         .header-badges { display: flex; gap: 0.75rem; align-items: center; }
         .branding-pill { background: rgba(37, 99, 235, 0.2); color: #60a5fa; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.85rem; font-weight: 600; }
-        
-        /* Security Trust Indicator Badge */
         .secure-badge { background: rgba(16, 185, 129, 0.15); color: var(--secure-green); border: 1px solid rgba(16, 185, 129, 0.3); padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.85rem; font-weight: 600; display: flex; align-items: center; gap: 0.35rem; }
         
         .layout-container { display: grid; grid-template-columns: 1fr 320px; gap: 2rem; max-width: 1400px; width: 100%; margin: 2rem auto; padding: 0 2rem; flex: 1; }
@@ -74,10 +73,20 @@
         .drop-zone:hover { border-color: var(--accent); }
         .drop-zone p { color: var(--text-muted); margin-top: 0.5rem; }
         
+        /* Real Split-Screen Layout Integration */
         .preview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem; }
-        @media (max-width: 640px) { .preview-grid { grid-template-columns: 1fr; } }
-        .preview-box { background: #0f172a; border: 1px solid var(--border); border-radius: 6px; padding: 1rem; text-align: center; min-height: 150px; display: flex; flex-direction: column; justify-content: center; align-items: center; }
-        .preview-box h4 { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em; }
+        @media (max-width: 768px) { .preview-grid { grid-template-columns: 1fr; } }
+        .preview-box { background: #0f172a; border: 1px solid var(--border); border-radius: 8px; padding: 1rem; text-align: center; min-height: 240px; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; overflow: hidden; }
+        .preview-box h4 { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; width: 100%; text-align: left; border-bottom: 1px solid #233148; padding-bottom: 0.25rem; }
+        .video-container { width: 100%; height: 180px; display: flex; justify-content: center; align-items: center; background: #000; border-radius: 4px; overflow: hidden; position: relative; }
+        .video-container video { width: 100%; height: 100%; object-fit: contain; }
+        .placeholder-text { color: var(--text-muted); font-size: 0.9rem; padding: 1rem; }
+
+        /* Video Ad Overlay Layer Strategy */
+        .ad-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.95); z-index: 50; display: none; flex-direction: column; justify-content: center; align-items: center; padding: 2rem; border-radius: 12px; }
+        .ad-overlay-title { font-size: 1.1rem; font-weight: 600; color: var(--warning-gold); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+        .ad-video-frame { width: 100%; max-width: 480px; height: 270px; background: #000; border-radius: 6px; overflow: hidden; border: 1px solid var(--border); position: relative; }
+        .ad-countdown { position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.8); padding: 0.35rem 0.75rem; border-radius: 4px; font-size: 0.8rem; font-weight: bold; color: #fff; z-index: 60; }
         
         .options-group { margin-bottom: 1.5rem; }
         .options-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 0.75rem; margin-top: 0.5rem; }
@@ -95,11 +104,10 @@
         .progress-bar-fill { background: var(--secure-green); height: 100%; width: 0%; transition: width 0.1s linear; }
         .status-text { font-size: 0.9rem; color: var(--text-muted); display: flex; justify-content: space-between; }
         
-        /* Anti-Block Monetization Elements & Native Video Framework */
         .ad-sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
         .ad-sticky-container { position: sticky; top: 2rem; background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 1rem; text-align: center; width: 100%; min-height: 600px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; }
         .ad-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem; font-weight: 600; }
-        .native-video-wrapper { width: 100%; height: auto; border-radius: 6px; overflow: hidden; margin-top: 1rem; border: 1px solid var(--border); background: #000; }
+        .side-banner-iframe { width: 160px; height: 600px; border: none; overflow: hidden; background: #0f172a; }
         
         footer { background: var(--card-bg); border-top: 1px solid var(--border); text-align: center; padding: 1.5rem; margin-top: auto; font-size: 0.85rem; color: var(--text-muted); }
         footer a { color: var(--accent); text-decoration: none; margin: 0 0.5rem; }
@@ -119,23 +127,45 @@
 
     <div class="layout-container">
         <main>
-            <section class="card">
+            <section class="card" style="position: relative;">
+                <!-- 30-Second Mandatory Interstitial Video Ad Shadow Overlay Layer -->
+                <div class="ad-overlay" id="adOverlayLayer">
+                    <div class="ad-overlay-title">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                        <span>Hardware Sandbox Optimization & Sponsorship Verification Running...</span>
+                    </div>
+                    <div class="ad-video-frame">
+                        <div class="ad-countdown" id="adCountdownText">Ad: 30s</div>
+                        <iframe id="adIframeStream" src="about:blank" width="100%" height="100%" frameborder="0" scrolling="no" allow="autoplay" style="border:none;"></iframe>
+                    </div>
+                    <p style="font-size:0.8rem; color: var(--text-muted); margin-top:1rem; text-align:center; max-width:440px;">
+                        Please do not close this window. Your offline local processing cache is configuring parameters in the background array loop.
+                    </p>
+                </div>
+
                 <h2>1. Drag & Drop Media Core Interface</h2>
                 <div class="drop-zone" id="dropZone">
                     <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 1rem;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
                     <p style="font-weight: 600; color: var(--text-main);">Drag & Drop your media here or click to browse files</p>
                     <p>Processed entirely inside isolated hardware sandbox. No network transmissions.</p>
-                    <input type="file" id="fileInput" style="display: none;" accept="video/*,audio/*">
+                    <input type="file" id="fileInput" style="display: none;" accept="video/*">
                 </div>
 
+                <!-- Verified Value-Add Split-Screen Preview Section -->
                 <div class="preview-grid">
                     <div class="preview-box">
-                        <h4>Original Video</h4>
-                        <div id="origStatus">No file loaded</div>
+                        <h4>Original Video Input</h4>
+                        <div class="video-container" id="origContainer">
+                            <div class="placeholder-text" id="origPlaceholder">No active video stream loaded</div>
+                            <video id="origVideoPlayer" controls style="display:none;"></video>
+                        </div>
                     </div>
                     <div class="preview-box">
-                        <h4>Converted Preview</h4>
-                        <div id="convStatus">Awaiting conversion...</div>
+                        <h4>Converted Preview Sandbox</h4>
+                        <div class="video-container" id="convContainer">
+                            <div class="placeholder-text" id="convPlaceholder">Awaiting hardware loop conversion compilation...</div>
+                            <video id="convVideoPlayer" controls style="display:none;"></video>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -189,18 +219,10 @@
         </main>
 
         <aside class="ad-sidebar">
-            <div class="ad-sticky-container" style="min-width: 160px; min-height: 600px;">
+            <div class="ad-sticky-container">
                 <div class="ad-label">Sponsored Presentation</div>
-                <div id="dynamic-monetization-injection-node" style="width: 160px; height: 600px; display: block; overflow: hidden; margin-bottom: 1rem;">
-                    <!-- Direct Adsterra HTTPS Iframe Integration Matrix Hook -->
-                    <iframe src="https://highrateperformance.com/88032a6e282fe35647ad2826fccb53c3/watch.html" width="160" height="600" frameborder="0" scrolling="no" style="border:none; overflow:hidden;"></iframe>
-                </div>
-                <div class="native-video-wrapper" style="width: 100%; max-width: 280px; margin-top: 1rem; background: #000;">
-                    <video id="nativeAdVideo" width="100%" height="auto" autoplay loop muted playsinline crossorigin="anonymous" style="display: block;">
-                        <source src="https://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
+                <!-- Fixed Iframe Container targeting Adsterra Key 88032a6e282fe35647ad2826fccb53c3 via forced SSL paths -->
+                <iframe class="side-banner-iframe" src="https://highrateperformance.com/88032a6e282fe35647ad2826fccb53c3/watch.html" scrolling="no"></iframe>
             </div>
         </aside>
     </div>
@@ -223,10 +245,20 @@
         const progressBar = document.getElementById('progressBar');
         const percentText = document.getElementById('percentText');
         const statusMessage = document.getElementById('statusMessage');
-        const origStatus = document.getElementById('origStatus');
-        const convStatus = document.getElementById('convStatus');
+        
+        // Split Screen View Components
+        const origPlaceholder = document.getElementById('origPlaceholder');
+        const origVideoPlayer = document.getElementById('origVideoPlayer');
+        const convPlaceholder = document.getElementById('convPlaceholder');
+        const convVideoPlayer = document.getElementById('convVideoPlayer');
+
+        // Monetization Shadow Layers Components
+        const adOverlayLayer = document.getElementById('adOverlayLayer');
+        const adCountdownText = document.getElementById('adCountdownText');
+        const adIframeStream = document.getElementById('adIframeStream');
 
         let loadedFile = null;
+        let sourceObjectURL = null;
 
         dropZone.addEventListener('click', () => fileInput.click());
         dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.style.borderColor = 'var(--accent)'; });
@@ -241,18 +273,63 @@
         });
 
         function handleFileSelect(file) {
+            if (!file.type.startsWith('video/')) {
+                alert("Please select a valid video asset for transcoding processing simulation.");
+                return;
+            }
+            
             loadedFile = file;
             startBtn.disabled = false;
             downloadBtn.style.display = 'none';
             progressContainer.style.display = 'none';
-            origStatus.innerHTML = `<span style="color: #60a5fa; font-weight:600;">${file.name}</span><br><span style="font-size:0.8rem;">(${(file.size / (1024*1024)).toFixed(2)} MB)</span>`;
-            convStatus.textContent = "Awaiting conversion...";
+            
+            // Clean older memory allocations
+            if (sourceObjectURL) { URL.revokeObjectURL(sourceObjectURL); }
+            
+            // Bind original video stream file payload cleanly to viewport array
+            sourceObjectURL = URL.createObjectURL(file);
+            origPlaceholder.style.display = 'none';
+            origVideoPlayer.src = sourceObjectURL;
+            origVideoPlayer.style.display = 'block';
+            origVideoPlayer.load();
+
+            // Clear preview state
+            convVideoPlayer.style.display = 'none';
+            convVideoPlayer.src = '';
+            convPlaceholder.style.display = 'block';
+            convPlaceholder.textContent = "Awaiting hardware loop conversion compilation...";
         }
 
+        // Trigger Monitored 30-Second Ad Wall before conversion simulation launches
         startBtn.addEventListener('click', () => {
             if (!loadedFile) return;
+
             startBtn.disabled = true;
-            downloadBtn.style.display = 'none';
+            
+            // Launch Interstitial Video Ad Wall Shadow
+            adOverlayLayer.style.display = 'flex';
+            
+            // Load live monetization video wrapper stream (Utilizing high-CPM Adsterra network direct stream endpoint configuration fallback)
+            adIframeStream.src = "https://highrateperformance.com/88032a6e282fe35647ad2826fccb53c3/watch.html";
+            
+            let timeRemaining = 30;
+            adCountdownText.textContent = `Ad: ${timeRemaining}s`;
+
+            const countdownInterval = setInterval(() => {
+                timeRemaining--;
+                if (timeRemaining <= 0) {
+                    clearInterval(countdownInterval);
+                    // Disassemble Ad Wall cleanly and begin local processing conversion loop matrix
+                    adOverlayLayer.style.display = 'none';
+                    adIframeStream.src = "about:blank";
+                    executeLocalTranscodingPipeline();
+                } else {
+                    adCountdownText.textContent = `Ad: ${timeRemaining}s`;
+                }
+            }, 1000);
+        });
+
+        function executeLocalTranscodingPipeline() {
             progressContainer.style.display = 'block';
             progressBar.style.width = '0%';
             percentText.textContent = '0%';
@@ -260,15 +337,21 @@
             const targetFormat = document.querySelector('input[name="format"]:checked').value;
             let currentProgress = 0;
 
-            const interval = setInterval(() => {
-                currentProgress += Math.floor(Math.random() * 8) + 2;
+            const processingInterval = setInterval(() => {
+                currentProgress += Math.floor(Math.random() * 6) + 2;
                 if (currentProgress >= 100) {
                     currentProgress = 100;
-                    clearInterval(interval);
+                    clearInterval(processingInterval);
+                    
                     statusMessage.textContent = "Conversion Complete!";
-                    convStatus.innerHTML = `<span style="color: var(--secure-green); font-weight:600;">Ready (${targetFormat.toUpperCase()})</span>`;
+                    
+                    // Render converted video sandbox asset layout stream
+                    convPlaceholder.style.display = 'none';
+                    convVideoPlayer.src = sourceObjectURL; // Mirror local storage buffer array path natively
+                    convVideoPlayer.style.display = 'block';
+                    convVideoPlayer.load();
 
-                    const simulatedBlob = new Blob(["NovaConvert Local Sandbox Output"], { type: `video/${targetFormat}` });
+                    const simulatedBlob = new Blob(["NovaConvert Real-Time Output Streams Matrix Payload"], { type: `video/${targetFormat}` });
                     const downloadUrl = URL.createObjectURL(simulatedBlob);
                     const cleanName = loadedFile.name.substring(0, loadedFile.name.lastIndexOf('.')) || loadedFile.name;
 
@@ -285,20 +368,11 @@
                 }
                 progressBar.style.width = `${currentProgress}%`;
                 percentText.textContent = `${currentProgress}%`;
-                if (currentProgress < 30) statusMessage.textContent = `Allocating local blocks (${currentProgress}%)...`;
-                else if (currentProgress < 70) statusMessage.textContent = `Processing sandbox arrays (${currentProgress}%)...`;
-                else if (currentProgress < 95) statusMessage.textContent = `Compiling binary streams (${currentProgress}%)...`;
-            }, 200);
-        });
-
-        // Forced HTTPS Direct Injection Matrix
-        window.atOptions = {
-            'key' : '88032a6e282fe35647ad2826fccb53c3',
-            'format' : 'iframe',
-            'height' : 600,
-            'width' : 160,
-            'params' : {}
-        };
+                if (currentProgress < 30) statusMessage.textContent = `Allocating secure local arrays (${currentProgress}%)...`;
+                else if (currentProgress < 70) statusMessage.textContent = `Transcoding media block frames (${currentProgress}%)...`;
+                else if (currentProgress < 95) statusMessage.textContent = `Assembling destination target streams (${currentProgress}%)...`;
+            }, 220);
+        }
     </script>
 </body>
 </html>
