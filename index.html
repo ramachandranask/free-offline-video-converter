@@ -42,7 +42,6 @@
     }
     </script>
 
-
     <style>
         :root {
             --bg-color: #0f172a;
@@ -63,7 +62,9 @@
         .branding-pill { background: rgba(37, 99, 235, 0.2); color: #60a5fa; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.85rem; font-weight: 600; }
         .secure-badge { background: rgba(16, 185, 129, 0.15); color: var(--secure-green); border: 1px solid rgba(16, 185, 129, 0.3); padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.85rem; font-weight: 600; display: flex; align-items: center; gap: 0.35rem; }
         
-        .layout-container { display: grid; grid-template-columns: 1fr 320px; gap: 2rem; max-width: 1400px; width: 100%; margin: 2rem auto; padding: 0 2rem; flex: 1; }
+        /* Layout Grid Configuration matching original viewports */
+        .top-ad-placement { width: 100%; max-width: 728px; height: 90px; margin: 1rem auto 0 auto; display: flex; justify-content: center; align-items: center; overflow: hidden; background: #0f172a; border-radius: 4px; }
+        .layout-container { display: grid; grid-template-columns: 1fr 320px; gap: 2rem; max-width: 1400px; width: 100%; margin: 1.5rem auto; padding: 0 2rem; flex: 1; }
         
         main { display: flex; flex-direction: column; gap: 2rem; }
         .card { background-color: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; position: relative; }
@@ -73,7 +74,7 @@
         .drop-zone:hover { border-color: var(--accent); }
         .drop-zone p { color: var(--text-muted); margin-top: 0.5rem; }
         
-        /* Value-Add Side-by-Side Live View Matrix Layout */
+        /* Your Unique Split Screen Live Preview CSS Grid */
         .preview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem; }
         .preview-box { background: #0f172a; border: 1px solid var(--border); border-radius: 8px; padding: 1rem; text-align: center; min-height: 240px; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; overflow: hidden; }
         .preview-box h4 { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; width: 100%; text-align: left; border-bottom: 1px solid #233148; padding-bottom: 0.25rem; }
@@ -81,10 +82,10 @@
         .video-container video { width: 100%; height: 100%; object-fit: contain; }
         .placeholder-text { color: var(--text-muted); font-size: 0.9rem; padding: 1rem; }
 
-        /* Conversion Shadow Ad Interstitial Layer Overlay Rules */
+        /* Conversion Progress Video Ad Overlay Styles */
         .ad-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.98); z-index: 100; display: none; flex-direction: column; justify-content: center; align-items: center; padding: 1.5rem; border-radius: 12px; }
         .ad-overlay-title { font-size: 1.1rem; font-weight: 600; color: var(--warning-gold); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; text-align: center; }
-        .ad-video-frame { width: 100%; max-width: 480px; height: 270px; background: #000; border-radius: 6px; overflow: hidden; border: 1px solid var(--border); position: relative; cursor: pointer; }
+        .ad-video-frame { width: 100%; max-width: 480px; height: 270px; background: #000; border-radius: 6px; overflow: hidden; border: 1px solid var(--border); position: relative; }
         .ad-countdown { position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.85); padding: 0.35rem 0.75rem; border-radius: 4px; font-size: 0.8rem; font-weight: bold; color: #fff; z-index: 110; }
         
         .options-group { margin-bottom: 1.5rem; }
@@ -106,15 +107,10 @@
         .ad-sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
         .ad-sticky-container { position: sticky; top: 2rem; background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 1rem; text-align: center; width: 100%; min-height: 620px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; }
         .ad-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem; font-weight: 600; }
-        
-        /* Anti-Block Native Fallback Card Visual Structures */
-        .fallback-ad-card { width: 160px; height: 600px; background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%); border-radius: 8px; border: 1px dashed var(--border); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 1rem; cursor: pointer; transition: border-color 0.2s; position: relative; }
-        .fallback-ad-card:hover { border-color: var(--accent); }
-        .fallback-ad-title { font-size: 0.85rem; font-weight: bold; color: var(--text-main); margin-top: 0.75rem; text-align: center; }
-        .fallback-ad-desc { font-size: 0.7rem; color: var(--text-muted); text-align: center; margin-top: 0.25rem; }
-        
+        .sidebar-ad-wrapper { width: 160px; height: 600px; overflow: hidden; display: block; background: #0f172a; border-radius: 6px; }
+
         .mobile-sticky-footer-ad { position: fixed; bottom: 0; left: 0; width: 100%; height: 50px; background: #1e293b; border-top: 1px solid var(--border); display: none; justify-content: center; align-items: center; z-index: 1000; box-shadow: 0 -2px 10px rgba(0,0,0,0.5); }
-        .fallback-mobile-card { width: 320px; height: 50px; display: flex; justify-content: center; align-items: center; cursor: pointer; font-size: 0.8rem; font-weight: bold; color: #fff; background: #0f172a; border-radius: 4px; border: 1px dashed var(--border); }
+        .mobile-ad-container { width: 320px; height: 50px; overflow: hidden; }
 
         footer { background: var(--card-bg); border-top: 1px solid var(--border); text-align: center; padding: 1.5rem; margin-top: auto; font-size: 0.85rem; color: var(--text-muted); }
         footer a { color: var(--accent); text-decoration: none; margin: 0 0.5rem; }
@@ -123,15 +119,14 @@
             .layout-container { grid-template-columns: 1fr; gap: 1.5rem; padding: 0 1rem; }
             .ad-sidebar { display: block; order: 3; width: 100%; max-width: 340px; margin: 0 auto; }
             .ad-sticky-container { position: static; min-height: auto; padding: 1.5rem; }
-            .fallback-ad-card, #adsterra-target-node { display: none; }
             .mobile-sticky-footer-ad { display: flex; }
         }
         @media (max-width: 768px) {
             .preview-grid { grid-template-columns: 1fr; gap: 1rem; }
+            .top-ad-placement { max-width: 100%; height: auto; padding: 0 1rem; }
         }
     </style>
 </head>
-
 
 <body>
     <header>
@@ -145,6 +140,20 @@
         </div>
     </header>
 
+    <!-- Top High-Revenue 728x90 Leaderboard Ad Code Unit Restored -->
+    <div class="top-ad-placement">
+        <script type="text/javascript">
+            atOptions = {
+                'key' : '88032a6e282fe35647ad2826fccb53c3',
+                'format' : 'iframe',
+                'height' : 90,
+                'width' : 728,
+                'params' : {}
+            };
+        </script>
+        <script type="text/javascript" src="https://highrateperformance.com"></script>
+    </div>
+
     <div class="layout-container">
         <main>
             <section class="card" style="position: relative;">
@@ -154,14 +163,11 @@
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
                         <span>Hardware Sandbox Calibration Running...</span>
                     </div>
-                    <div class="ad-video-frame" id="interstitialAdClickNode">
+                    <div class="ad-video-frame">
                         <div class="ad-countdown" id="adCountdownText">Ad: 30s</div>
                         <video id="interstitialVideo" width="100%" height="100%" autoplay muted loop playsinline style="object-fit: cover;">
                             <source src="https://googleapis.com" type="video/mp4">
                         </video>
-                        <div style="position:absolute; bottom:0; left:0; width:100%; background:rgba(37,99,235,0.95); color:#fff; text-align:center; font-size:0.8rem; padding:0.35rem; font-weight:bold;">
-                            👉 Click Here to Verify Browser Access Speed
-                        </div>
                     </div>
                     <p style="font-size:0.8rem; color: var(--text-muted); margin-top:1rem; text-align:center; max-width:440px;">
                         Please leave this window open. The serverless local hardware pipeline is parsing data allocations.
@@ -176,7 +182,7 @@
                     <input type="file" id="fileInput" style="display: none;" accept="video/*">
                 </div>
 
-                <!-- Unique Value-Add Split-Screen Features Rendering Matrix -->
+                <!-- Verified Split-Screen Feature Layer Preview Windows -->
                 <div class="preview-grid">
                     <div class="preview-box">
                         <h4>Original Video Input</h4>
@@ -194,7 +200,6 @@
                     </div>
                 </div>
             </section>
-
 
             <section class="card">
                 <h2>2. Target Output Formats & Profiles Matrix</h2>
@@ -247,27 +252,36 @@
         <aside class="ad-sidebar">
             <div class="ad-sticky-container">
                 <div class="ad-label">Sponsored Presentation</div>
-                
-                <!-- Explicit Insertion Target Holder Node Container -->
-                <div id="adsterra-target-node" style="width: 160px; height: 600px; display: block;">
-                    <!-- Permanent High-CPM Fallback Clickable Panel -->
-                    <div class="fallback-ad-card" id="desktopAdClickNode">
-                        <svg width="40" height="48" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" style="margin-bottom:1rem;"><rect x="2" y="2" width="20" height="20" rx="2" ry="2"></rect><line x1="7" y1="2" x2="7" y2="22"></line></svg>
-                        <div class="fallback-ad-title">Watch Recommended Video Content</div>
-                        <div class="fallback-ad-desc">Premium Partner Offers Active for All Viewports</div>
-                    </div>
+                <div class="sidebar-ad-wrapper">
+                    <!-- Right Skyscraper 160x600 Ad Unit Restored -->
+                    <script type="text/javascript">
+                        atOptions = {
+                            'key' : '88032a6e282fe35647ad2826fccb53c3',
+                            'format' : 'iframe',
+                            'height' : 600,
+                            'width' : 160,
+                            'params' : {}
+                        };
+                    </script>
+                    <script type="text/javascript" src="https://highrateperformance.com"></script>
                 </div>
             </div>
         </aside>
     </div>
 
-    <!-- Mobile-Sticky Footer Base Ad Dynamic Compartment -->
+    <!-- Mobile-Sticky Footer Base Ad Unit Restored -->
     <div class="mobile-sticky-footer-ad">
-        <div id="adsterra-mobile-node" style="width:100%; display:flex; justify-content:center;">
-            <div class="fallback-mobile-card" id="mobileStickyClickNode">
-                <span style="background:#ef4444; padding:0.15rem 0.4rem; border-radius:3px; font-size:0.7rem; margin-right:0.5rem;">LIVE</span>
-                <span>⚡ Click Here to Check Acceleration Stream Status</span>
-            </div>
+        <div class="mobile-ad-container">
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : '31949393',
+                    'format' : 'iframe',
+                    'height' : 50,
+                    'width' : 320,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="https://highrateperformance.com"></script>
         </div>
     </div>
 
@@ -280,11 +294,7 @@
         </div>
     </footer>
 
-
     <script>
-        // 🚨 CONFIGURATION PARAMETER: Paste your actual Adsterra Direct Link / SmartLink string inside the quotes
-        const ADSTERRA_DIRECT_LINK = "https://highrateperformance.com";
-
         const dropZone = document.getElementById('dropZone');
         const fileInput = document.getElementById('fileInput');
         const startBtn = document.getElementById('startBtn');
@@ -303,16 +313,6 @@
         const adCountdownText = document.getElementById('adCountdownText');
         const interstitialVideo = document.getElementById('interstitialVideo');
 
-        // Binds secure click redirection vectors cleanly to bypass script blacklists
-        const routeTraffic = (element) => {
-            if(element) {
-                element.addEventListener('click', () => { window.open(ADSTERRA_DIRECT_LINK, '_blank', 'noopener,noreferrer'); });
-            }
-        };
-        routeTraffic(document.getElementById('interstitialAdClickNode'));
-        routeTraffic(document.getElementById('desktopAdClickNode'));
-        routeTraffic(document.getElementById('mobileStickyClickNode'));
-
         let loadedFile = null;
         let sourceObjectURL = null;
 
@@ -330,7 +330,7 @@
 
         function handleFileSelect(file) {
             if (!file.type.startsWith('video/')) {
-                alert("Please select a valid video asset.");
+                alert("Please select a valid video asset file.");
                 return;
             }
             loadedFile = file;
@@ -350,7 +350,7 @@
             convVideoPlayer.style.display = 'none';
             convVideoPlayer.src = '';
             convPlaceholder.style.display = 'block';
-            convPlaceholder.textContent = "Awaiting hardware loop conversion compilation...";
+            convPlaceholder.textContent = "Awaiting hardware loop conversion compilation... ";
         }
 
         startBtn.addEventListener('click', () => {
@@ -360,7 +360,7 @@
 
             if (interstitialVideo) {
                 interstitialVideo.muted = true;
-                interstitialVideo.play().catch(err => console.log("Playback engine active..."));
+                interstitialVideo.play().catch(err => console.log("Overlay context ready..."));
             }
 
             let timeRemaining = 30;
@@ -411,10 +411,6 @@
                         document.body.appendChild(a);
                         a.click();
                         document.body.removeChild(a);
-                        
-                        // High-Revenue Popunder Trigger Matrix
-                        const fallbackPop = window.open(ADSTERRA_DIRECT_LINK, '_blank');
-                        if (fallbackPop) { fallbackPop.blur(); window.focus(); }
                     };
                     downloadBtn.style.display = 'block';
                     startBtn.disabled = false;
@@ -426,47 +422,6 @@
                 else if (currentProgress < 95) statusMessage.textContent = `Assembling destination target streams (${currentProgress}%)...`;
             }, 220);
         }
-
-        // Programmatic Adsterra Script Injector Matrix Setup Execution Loop
-        (function() {
-            try {
-                // Desktop Skyscraper 160x600 Pipeline Injection
-                const deskOptionsScript = document.createElement('script');
-                deskOptionsScript.type = 'text/javascript';
-                deskOptionsScript.text = "atOptions = { 'key' : '88032a6e282fe35647ad2826fccb53c3', 'format' : 'iframe', 'height' : 600, 'width' : 160, 'params' : {} };";
-
-                const deskMainScript = document.createElement('script');
-                deskMainScript.type = 'text/javascript';
-                deskMainScript.src = 'https://highrateperformance.com';
-
-                deskMainScript.onload = function() {
-                    const node = document.getElementById('adsterra-target-node');
-                    if(node) node.innerHTML = ''; // Safely drops fallback placeholder card once Adsterra elements successfully initialize
-                };
-
-                document.body.appendChild(deskOptionsScript);
-                document.body.appendChild(deskMainScript);
-
-                // Mobile Banner 320x50 Anchor Pipeline Injection
-                const mobOptionsScript = document.createElement('script');
-                mobOptionsScript.type = 'text/javascript';
-                mobOptionsScript.text = "atOptions = { 'key' : '31949393', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };";
-
-                const mobMainScript = document.createElement('script');
-                mobMainScript.type = 'text/javascript';
-                mobMainScript.src = 'https://highrateperformance.com';
-
-                mobMainScript.onload = function() {
-                    const mobNode = document.getElementById('adsterra-mobile-node');
-                    if(mobNode) mobNode.innerHTML = '';
-                };
-
-                document.body.appendChild(mobOptionsScript);
-                document.body.appendChild(mobMainScript);
-            } catch(e) {
-                console.log("Ad delivery system error checking complete. Fallback nodes running natively.");
-            }
-        })();
     </script>
 </body>
 </html>
