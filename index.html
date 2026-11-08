@@ -11,12 +11,6 @@
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://vercel.app">
 
-    <!-- Open Graph Metadata for Preview Engines -->
-    <meta property="og:title" content="NovaConvert - 100% Free Offline Browser Media Converter">
-    <meta property="og:description" content="A Private Client-Side Local Sandbox for High-Revenue Global Media Transcoding without data tracking.">
-    <meta property="og:url" content="https://vercel.app">
-    <meta property="og:type" content="website">
-
     <style>
         :root {
             --bg-color: #0f172a;
@@ -35,7 +29,8 @@
         header h1 { font-size: 1.5rem; font-weight: 700; color: var(--text-main); }
         .branding-pill { background: rgba(37, 99, 235, 0.2); color: #60a5fa; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.85rem; font-weight: 600; }
         
-        .top-ad-placement { width: 100%; max-width: 728px; height: 90px; margin: 1rem auto 0 auto; display: flex; justify-content: center; align-items: center; background: #1e293b; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; cursor: pointer; position: relative; }
+        /* Premium Visual Graphic Banners */
+        .top-ad-placement { width: 100%; max-width: 728px; height: 90px; margin: 1rem auto 0 auto; display: flex; justify-content: center; align-items: center; background: linear-gradient(90deg, #1e3a8a 0%, #3b82f6 100%); border: 1px solid #3b82f6; border-radius: 6px; overflow: hidden; cursor: pointer; position: relative; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
         .layout-container { display: grid; grid-template-columns: 1fr 320px; gap: 2rem; max-width: 1400px; width: 100%; margin: 1.5rem auto; padding: 0 2rem; flex: 1; }
         
         main { display: flex; flex-direction: column; gap: 2rem; }
@@ -77,10 +72,9 @@
         .ad-sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
         .ad-sticky-container { position: sticky; top: 2rem; background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 1rem; text-align: center; width: 100%; min-height: 620px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; }
         .ad-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem; font-weight: 600; }
-        .sidebar-ad-wrapper { width: 160px; height: 600px; overflow: hidden; display: block; background: #0f172a; border-radius: 6px; cursor: pointer; position: relative; border: 1px solid var(--border); }
+        .sidebar-ad-wrapper { width: 160px; height: 600px; overflow: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center; background: linear-gradient(180deg, #1e3a8a 0%, #0f172a 100%); border-radius: 8px; border: 1px solid #3b82f6; cursor: pointer; position: relative; box-shadow: 0 4px 15px rgba(0,0,0,0.3); padding: 1rem; }
 
-        .mobile-sticky-footer-ad { position: fixed; bottom: 0; left: 0; width: 100%; height: 50px; background: #1e293b; border-top: 1px solid var(--border); display: none; justify-content: center; align-items: center; z-index: 1000; box-shadow: 0 -2px 10px rgba(0,0,0,0.5); cursor: pointer; }
-        .mobile-ad-container { width: 320px; height: 50px; overflow: hidden; position: relative; }
+        .mobile-sticky-footer-ad { position: fixed; bottom: 0; left: 0; width: 100%; height: 50px; background: #1d4ed8; border-top: 1px solid #60a5fa; display: none; justify-content: center; align-items: center; z-index: 1000; box-shadow: 0 -2px 10px rgba(0,0,0,0.5); cursor: pointer; }
 
         footer { background: var(--card-bg); border-top: 1px solid var(--border); text-align: center; padding: 1.5rem; margin-top: auto; font-size: 0.85rem; color: var(--text-muted); }
 
@@ -92,7 +86,7 @@
         }
         @media (max-width: 768px) {
             .preview-grid { grid-template-columns: 1fr; gap: 1rem; }
-            .top-ad-placement { max-width: 100%; height: auto; padding: 0 1rem; }
+            .top-ad-placement { max-width: 100%; height: auto; padding: 1rem; }
         }
     </style>
 </head>
@@ -102,17 +96,18 @@
         <div class="branding-pill">100% Private Local Sandbox</div>
     </header>
 
-    <!-- Unblockable Native Leaderboard Display Frame -->
+    <!-- Visual Leaderboard Banner -->
     <div class="top-ad-placement" id="leaderboardAdClickNode">
-        <div style="color: #60a5fa; font-size: 0.9rem; font-weight: bold; letter-spacing: 0.05em; text-align: center; width: 100%;">
-            ⚡ SPONSORED PLACEMENT: CLICK HERE TO CHECK HIGHEST ACCELERATION SPEED STREAM
+        <div style="text-align: center; padding: 10px;">
+            <div style="color: #fff; font-size: 1rem; font-weight: bold; text-transform: uppercase;">🚀 Cloud Video Acceleration Active</div>
+            <div style="color: #93c5fd; font-size: 0.8rem; margin-top: 2px;">Click here to unlock maximum processing speeds up to 10x faster</div>
         </div>
     </div>
 
     <div class="layout-container">
         <main>
             <section class="card" style="position: relative;">
-                <!-- 30-Second Interstitial Video Ad Overlay Container Layer -->
+                <!-- 30-Second Interstitial Video Ad Overlay Frame Container Layer -->
                 <div class="ad-overlay" id="adOverlayLayer">
                     <div class="ad-overlay-title">
                         <span>⏳ Hardware Sandbox Calibration Running...</span>
@@ -139,7 +134,7 @@
                     <input type="file" id="fileInput" style="display: none;" accept="video/*">
                 </div>
 
-                <!-- Your Unique Split-Screen Preview Components -->
+                <!-- Your Unique Value-Add Split-Screen Preview Components -->
                 <div class="preview-grid">
                     <div class="preview-box">
                         <h4>Original Video</h4>
@@ -209,26 +204,22 @@
         <aside class="ad-sidebar">
             <div class="ad-sticky-container">
                 <div class="ad-label">Sponsored Presentation</div>
-                <!-- Unblockable Native Skyscraper Component Slot -->
+                <!-- Visual High-Impact Skyscraper Card -->
                 <div class="sidebar-ad-wrapper" id="desktopAdClickNode">
-                    <video width="100%" height="100%" autoplay muted loop playsinline style="object-fit: cover; pointer-events: none;">
-                        <source src="https://googleapis.com" type="video/mp4">
-                    </video>
-                    <div style="position:absolute; bottom:0; left:0; width:100%; background:rgba(15,23,42,0.92); color:#fff; font-size:0.8rem; padding:0.75rem; text-align:center; font-weight:bold;">
-                        📺 CLICK HERE TO STREAM RECOMMENDED DEALS
-                    </div>
+                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">🎬</div>
+                    <div style="color: #fff; font-size: 1.1rem; font-weight: bold; text-transform: uppercase; margin-bottom: 10px; line-height: 1.3;">Stream Premium Channels</div>
+                    <div style="color: #93c5fd; font-size: 0.85rem; line-height: 1.5; margin-bottom: 15px;">Unlock instant access to ultra high definition streaming movies & series content nodes.</div>
+                    <div style="background: #2563eb; color: white; padding: 10px 15px; border-radius: 6px; font-weight: bold; font-size: 0.9rem; width: 100%; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">START WATCHING</div>
                 </div>
             </div>
         </aside>
     </div>
 
-    <!-- Mobile-Sticky Footer Base Ad Unit Restored -->
+    <!-- Mobile-Sticky Footer Base Ad Unit -->
     <div class="mobile-sticky-footer-ad" id="mobileStickyClickNode">
-        <div class="mobile-ad-container" style="display:flex; justify-content:center; align-items:center;">
-            <div style="color:#fff; font-size:0.8rem; font-weight:bold; letter-spacing:0.03em;">
-                <span style="background:#ef4444; padding:0.15rem 0.4rem; border-radius:3px; font-size:0.7rem; margin-right:0.5rem;">LIVE</span>
-                <span>🔥 CLICK HERE TO CHECK HIGHEST ACCELERATION SPEED STREAM</span>
-            </div>
+        <div style="color:#fff; font-size:0.85rem; font-weight:bold; letter-spacing:0.03em;">
+            <span style="background:#ef4444; padding:0.15rem 0.4rem; border-radius:3px; font-size:0.7rem; margin-right:0.5rem;">LIVE</span>
+            <span>🔥 CLICK HERE TO CHECK HIGHEST ACCELERATION SPEED STREAM</span>
         </div>
     </div>
 
@@ -236,7 +227,8 @@
         <p>&copy; 2026 NovaConvert | Managed by BPGame. All rights reserved.</p>
     </footer>
     <script>
-        // 🚨 HIGH REVENUE INTEGRATION POINT: Update the link below to your exact Adsterra Direct / Smartlink URL!
+        // 🚨 HIGH REVENUE ADSTERRA SMARTLINK COUPLING CONFIGURATION
+        // Go to Adsterra Dashboard -> Direct Links -> Copy Link -> Paste it inside the quotes below:
         const ADSTERRA_TARGET_LINK = "https://highrateperformance.com";
 
         const dropZone = document.getElementById('dropZone');
@@ -271,7 +263,7 @@
         let loadedFile = null;
         let sourceObjectURL = null;
 
-        // Force unregister stale legacy service worker cache nodes completely from user disk memory
+        // Force completely wipe old legacy cached files from disk loops safely
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.getRegistrations().then(function(registrations) {
                 for(let registration of registrations) { registration.unregister(); }
@@ -376,7 +368,7 @@
                 if (currentProgress < 30) statusMessage.textContent = `Allocating blocks (${currentProgress}%)...`;
                 else if (currentProgress < 70) statusMessage.textContent = `Processing video pipelines (${currentProgress}%)...`;
                 else if (currentProgress < 95) statusMessage.textContent = `Finalizing dynamic tracks (${currentProgress}%)...`;
-            }, 200);
+            }, 220);
         }
     </script>
 </body>
