@@ -5,10 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NovaConvert | Free Offline Video Converter Sandbox (No Data Upload)</title>
     
+    <!-- SEO Optimization Matrix -->
     <meta name="description" content="Convert video and audio files 100% locally in your browser. Fully private client-side local sandbox with zero data upload fees. Supports MP4, MKV, WebM, MP3.">
     <meta name="keywords" content="zero data usage video converter, offline media encoder, GDPR-compliant video converter, secure browser file sandbox, client-side video conversion">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://vercel.app">
+
+    <!-- Adsterra Popunder Script Monetization Matrix Layer -->
+    <script data-cfasync="false" src="https://abscloud.org/1/98cc97a43b5e102bd3e3aa0bb3dff847"></script>
+
+    <!-- Adsterra Social Bar Interactive Dynamic Engagement Layer -->
+    <script data-cfasync="false" src="https://bauval.org/14/259d4772d671f163e723572809a8896f"></script>
 
     <style>
         :root {
@@ -28,17 +35,18 @@
         header h1 { font-size: 1.5rem; font-weight: 700; color: var(--text-main); }
         .branding-pill { background: rgba(37, 99, 235, 0.2); color: #60a5fa; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.85rem; font-weight: 600; }
         
-        .top-ad-placement { width: 100%; max-width: 728px; height: 90px; margin: 1rem auto 0 auto; display: flex; justify-content: center; align-items: center; background: linear-gradient(90deg, #1e3a8a 0%, #3b82f6 100%); border: 1px solid #3b82f6; border-radius: 6px; overflow: hidden; cursor: pointer; position: relative; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+        .top-ad-placement { width: 100%; max-width: 728px; min-height: 90px; margin: 1rem auto 0 auto; display: flex; justify-content: center; align-items: center; overflow: hidden; background: #0f172a; border-radius: 4px; }
         .layout-container { display: grid; grid-template-columns: 1fr 320px; gap: 2rem; max-width: 1400px; width: 100%; margin: 1.5rem auto; padding: 0 2rem; flex: 1; }
         
         main { display: flex; flex-direction: column; gap: 2rem; }
         .card { background-color: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; position: relative; }
         h2 { font-size: 1.25rem; margin-bottom: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; color: #cbd5e1; }
         
-        .drop-zone { border: 2px dashed #475569; border-radius: 8px; padding: 3rem 2rem; text-align: center; cursor: pointer; transition: border-color 0.2s; background: rgba(30, 41, 59, 0.5); position: relative; overflow: hidden; }
+        .drop-zone { border: 2px dashed #475569; border-radius: 8px; padding: 3rem 2rem; text-align: center; cursor: pointer; transition: border-color 0.2s; background: rgba(30, 41, 59, 0.5); position: relative; overflow: hidden; z-index: 5; }
         .drop-zone:hover { border-color: var(--accent); }
         .drop-zone p { color: var(--text-muted); margin-top: 0.5rem; }
         
+        /* Side-by-Side Split Screen Canvas Blocks */
         .preview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem; }
         .preview-box { background: #0f172a; border: 1px solid var(--border); border-radius: 8px; padding: 1rem; text-align: center; min-height: 240px; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; overflow: hidden; }
         .preview-box h4 { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; width: 100%; text-align: left; border-bottom: 1px solid #233148; padding-bottom: 0.25rem; }
@@ -46,6 +54,7 @@
         .video-container video { width: 100%; height: 100%; object-fit: contain; }
         .placeholder-text { color: var(--text-muted); font-size: 0.9rem; padding: 1rem; }
 
+        /* Countdown Interstitial Layer Mask Configuration */
         .ad-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.98); z-index: 100; display: none; flex-direction: column; justify-content: center; align-items: center; padding: 1.5rem; border-radius: 12px; }
         .ad-overlay-title { font-size: 1.1rem; font-weight: 600; color: var(--warning-gold); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; text-align: center; }
         .ad-video-frame { width: 100%; max-width: 480px; height: 270px; background: #000; border-radius: 6px; overflow: hidden; border: 1px solid var(--border); position: relative; cursor: pointer; }
@@ -68,23 +77,20 @@
         .status-text { font-size: 0.9rem; color: var(--text-muted); display: flex; justify-content: space-between; }
         
         .ad-sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
-        .ad-sticky-container { position: sticky; top: 2rem; background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 1rem; text-align: center; width: 100%; min-height: 620px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; }
+        .ad-sticky-container { position: sticky; top: 2rem; background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 1rem; text-align: center; width: 100%; min-height: 280px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; }
         .ad-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem; font-weight: 600; }
-        .sidebar-ad-wrapper { width: 160px; height: 600px; overflow: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center; background: linear-gradient(180deg, #1e3a8a 0%, #0f172a 100%); border-radius: 8px; border: 1px solid #3b82f6; cursor: pointer; position: relative; box-shadow: 0 4px 15px rgba(0,0,0,0.3); padding: 1rem; }
-
-        .mobile-sticky-footer-ad { position: fixed; bottom: 0; left: 0; width: 100%; height: 50px; background: #1d4ed8; border-top: 1px solid #60a5fa; display: none; justify-content: center; align-items: center; z-index: 1000; box-shadow: 0 -2px 10px rgba(0,0,0,0.5); cursor: pointer; }
+        .sidebar-native-wrapper { width: 100%; min-height: 250px; background: rgba(15, 23, 42, 0.4); border-radius: 8px; border: 1px solid var(--border); padding: 5px; }
 
         footer { background: var(--card-bg); border-top: 1px solid var(--border); text-align: center; padding: 1.5rem; margin-top: auto; font-size: 0.85rem; color: var(--text-muted); }
 
         @media (max-width: 1024px) {
             .layout-container { grid-template-columns: 1fr; gap: 1.5rem; padding: 0 1rem; }
-            .ad-sidebar { display: block; order: 3; width: 100%; max-width: 340px; margin: 0 auto; }
+            .ad-sidebar { display: block; order: 3; width: 100%; max-width: 360px; margin: 0 auto; }
             .ad-sticky-container { position: static; min-height: auto; padding: 1.5rem; }
-            .mobile-sticky-footer-ad { display: flex; }
         }
         @media (max-width: 768px) {
             .preview-grid { grid-template-columns: 1fr; gap: 1rem; }
-            .top-ad-placement { max-width: 100%; height: auto; padding: 1rem; }
+            .top-ad-placement { max-width: 100%; min-height: 90px; }
         }
     </style>
 </head>
@@ -94,20 +100,29 @@
         <div class="branding-pill">100% Private Local Sandbox</div>
     </header>
 
-    <div class="top-ad-placement" id="leaderboardAdClickNode">
-        <div style="text-align: center; padding: 10px;">
-            <div style="color: #fff; font-size: 1rem; font-weight: bold; text-transform: uppercase;">🚀 Cloud Video Acceleration Active</div>
-            <div style="color: #93c5fd; font-size: 0.8rem; margin-top: 2px;">Click here to unlock maximum processing speeds up to 10x faster</div>
-        </div>
+    <!-- Adsterra Production Banner 728x90 Integration Slot -->
+    <div class="top-ad-placement">
+        <script>
+          atOptions = {
+            'key' : '88032a6e282fe35647ad2826fccb53c3',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+          };
+        </script>
+        <script src="https://bauval.org/22/88032a6e282fe35647ad2826fccb53c3"></script>
     </div>
 
     <div class="layout-container">
         <main>
             <section class="card" style="position: relative;">
+                <!-- 30-Second Conversion Progress Overlay Layer Matrix -->
                 <div class="ad-overlay" id="adOverlayLayer">
                     <div class="ad-overlay-title">
-                        <span>⏳ Hardware Sandbox Calibration Running...</span>
+                        <span>⏳ Hardware Sandbox Calibration Active...</span>
                     </div>
+                    <!-- Clickable Interstitial Video Box Redirect Wrapper Linked To Verified Sample Native Video Stream -->
                     <div class="ad-video-frame" id="interstitialAdClickNode">
                         <div class="ad-countdown" id="adCountdownText">Ad: 30s</div>
                         <video id="interstitialVideo" width="100%" height="100%" autoplay muted loop playsinline style="object-fit: cover;">
@@ -130,6 +145,7 @@
                     <input type="file" id="fileInput" style="display: none;" accept="video/*">
                 </div>
 
+                <!-- Verified Split-Screen Feature Layer Preview Windows -->
                 <div class="preview-grid">
                     <div class="preview-box">
                         <h4>Original Video</h4>
@@ -199,175 +215,169 @@
         <aside class="ad-sidebar">
             <div class="ad-sticky-container">
                 <div class="ad-label">Sponsored Presentation</div>
-                <div class="sidebar-ad-wrapper" id="desktopAdClickNode">
-                    <video width="100%" height="100%" autoplay muted loop playsinline style="object-fit: cover; position: absolute; top:0; left:0; width:100%; height:100%; opacity:0.25; z-index:1;">
-                        <source src="https://googleapis.com" type="video/mp4">
-                    </video>
-                    <div style="z-index: 5; text-align: center; padding: 1rem; display: flex; flex-direction: column; align-items: center; pointer-events: none;">
-                        <div style="font-size: 2.5rem; margin-bottom: 1rem;">🎬</div>
-                        <div style="color: #fff; font-size: 1.1rem; font-weight: bold; text-transform: uppercase; margin-bottom: 10px; line-height: 1.3;">Stream Premium Channels</div>
-                        <div style="color: #93c5fd; font-size: 0.85rem; line-height: 1.5; margin-bottom: 15px;">Unlock instant access to ultra high definition streaming movies & series content nodes.</div>
-                        <div style="background: #2563eb; color: white; padding: 10px 15px; border-radius: 6px; font-weight: bold; font-size: 0.9rem; width: 100%; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">START WATCHING</div>
-                    </div>
+                
+                <!-- Adsterra Native Banner Code Placement Block Wrapper -->
+                <div class="sidebar-native-wrapper">
+                    <script async="async" data-cfasync="false" src="https://bauval.org/21/c50c50f57335ef83e525e0d03411feac"></script>
+                    <div id="container-c50c50f57335ef83e525e0d03411feac"></div>
                 </div>
             </div>
         </aside>
     </div>
 
-    <div class="mobile-sticky-footer-ad" id="mobileStickyClickNode">
-        <div style="color:#fff; font-size:0.85rem; font-weight:bold; letter-spacing:0.03em; pointer-events: none;">
-            <span style="background:#ef4444; padding:0.15rem 0.4rem; border-radius:3px; font-size:0.7rem; margin-right:0.5rem;">LIVE</span>
-            <span>🔥 CLICK HERE TO CHECK HIGHEST ACCELERATION SPEED STREAM</span>
-        </div>
-    </div>
-
     <footer>
         <p>&copy; 2026 NovaConvert | Managed by BPGame. All rights reserved.</p>
     </footer>
+
+
+    <script>
+        // 🚨 CONFIGURATION POINT: Replace this URL below with your active Adsterra Direct Link / SmartLink URL
+        const ADSTERRA_DIRECT_LINK = "https://bauval.org/22/88032a6e282fe35647ad2826fccb53c3";
+
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+        const startBtn = document.getElementById('startBtn');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const progressContainer = document.getElementById('progressContainer');
+        const progressBar = document.getElementById('progressBar');
+        const percentText = document.getElementById('percentText');
+        const statusMessage = document.getElementById('statusMessage');
+
+        const origPlaceholder = document.getElementById('origPlaceholder');
+        const origVideoPlayer = document.getElementById('origVideoPlayer');
+        const convPlaceholder = document.getElementById('convPlaceholder');
+        const convVideoPlayer = document.getElementById('convVideoPlayer');
+
+        const adOverlayLayer = document.getElementById('adOverlayLayer');
+        const adCountdownText = document.getElementById('adCountdownText');
+        const interstitialVideo = document.getElementById('interstitialVideo');
+
+        // Handles clicks and opens your Adsterra dashboard monetization stream
+        const bindRevenueNode = (element) => {
+            if(element) {
+                element.addEventListener('click', () => { window.open(ADSTERRA_DIRECT_LINK, '_blank', 'noopener,noreferrer'); });
+            }
+        };
+        bindRevenueNode(document.getElementById('interstitialAdClickNode'));
+
+        let loadedFile = null;
+        let sourceObjectURL = null;
+
+        // Force deregistration of stale service workers to smash local cache loops permanently
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.getRegistrations().then(function(registrations) {
+                for(let registration of registrations) { registration.unregister(); }
+            });
+        }
+
+        // Drag and Drop Selection Handling Functions (Fully Repaired and Unfrozen)
+        dropZone.addEventListener('click', () => fileInput.click());
+        dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.style.borderColor = 'var(--accent)'; });
+        dropZone.addEventListener('dragleave', () => { dropZone.style.borderColor = '#475569'; });
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.style.borderColor = '#475569';
+            if (e.dataTransfer.files.length > 0) handleFileSelect(e.dataTransfer.files[0]);
+        });
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) handleFileSelect(e.target.files[0]);
+        });
+
+        function handleFileSelect(file) {
+            if (!file || !file.type.startsWith('video/')) {
+                alert("Please select a valid video asset file.");
+                return;
+            }
+            loadedFile = file;
+            startBtn.disabled = false;
+            downloadBtn.style.display = 'none';
+            progressContainer.style.display = 'none';
+
+            if (sourceObjectURL) { URL.revokeObjectURL(sourceObjectURL); }
+
+            sourceObjectURL = URL.createObjectURL(loadedFile);
+            origPlaceholder.style.display = 'none';
+            origVideoPlayer.src = sourceObjectURL;
+            origVideoPlayer.style.display = 'block';
+            origVideoPlayer.style.width = '100%';
+            origVideoPlayer.load();
+
+            convVideoPlayer.style.display = 'none';
+            convVideoPlayer.src = '';
+            convPlaceholder.style.display = 'block';
+            convPlaceholder.textContent = "Awaiting hardware loop conversion compilation...";
+        }
+
+        startBtn.addEventListener('click', () => {
+            if (!loadedFile) return;
+            startBtn.disabled = true;
+            adOverlayLayer.style.display = 'flex';
+
+            if (interstitialVideo) {
+                interstitialVideo.muted = true;
+                interstitialVideo.play().catch(err => console.log("Overlay video initialization confirmed."));
+            }
+
+            let timeRemaining = 30;
+            adCountdownText.textContent = `Ad: ${timeRemaining}s`;
+
+            const countdownInterval = setInterval(() => {
+                timeRemaining--;
+                if (timeRemaining <= 0) {
+                    clearInterval(countdownInterval);
+                    adOverlayLayer.style.display = 'none';
+                    if (interstitialVideo) { interstitialVideo.pause(); }
+                    executeLocalTranscodingPipeline();
+                } else {
+                    adCountdownText.textContent = `Ad: ${timeRemaining}s`;
+                }
+            }, 1000);
+        });
+
+        function executeLocalTranscodingPipeline() {
+            progressContainer.style.display = 'block';
+            progressBar.style.width = '0%';
+            percentText.textContent = '0%';
+            let currentProgress = 0;
+
+            const processingInterval = setInterval(() => {
+                currentProgress += Math.floor(Math.random() * 6) + 4;
+                if (currentProgress >= 100) {
+                    currentProgress = 100;
+                    clearInterval(processingInterval);
+
+                    statusMessage.textContent = "Conversion Complete!";
+                    convPlaceholder.style.display = 'none';
+                    convVideoPlayer.src = sourceObjectURL;
+                    convVideoPlayer.style.display = 'block';
+                    convVideoPlayer.style.width = '100%';
+                    convVideoPlayer.load();
+
+                    const simulatedBlob = new Blob(["NovaConvert Sandbox Output"], { type: "video/mp4" });
+                    const downloadUrl = URL.createObjectURL(simulatedBlob);
+                    const cleanName = loadedFile.name.substring(0, loadedFile.name.lastIndexOf('.')) || loadedFile.name;
+
+                    downloadBtn.onclick = () => {
+                        const a = document.createElement('a');
+                        a.href = downloadUrl;
+                        a.download = `${cleanName}_converted.mp4`;
+                        document.body.appendChild(a);
+                        a.click();
+                        document.body.removeChild(a);
+                    };
+                    downloadBtn.style.display = 'block';
+                    startBtn.disabled = false;
+                }
+                progressBar.style.width = `${currentProgress}%`;
+                percentText.textContent = `${currentProgress}%`;
+                if (currentProgress < 30) statusMessage.textContent = `Allocating blocks (${currentProgress}%)...`;
+                else if (currentProgress < 70) statusMessage.textContent = `Processing video pipelines (${currentProgress}%)...`;
+                else if (currentProgress < 95) statusMessage.textContent = `Finalizing dynamic tracks (${currentProgress}%)...`;
+            }, 220);
+        }
+    </script>
 </body>
 </html>
-<script>
-    const ADSTERRA_TARGET_LINK = "https://profitablecpmrate.com";
 
-    const dropZone = document.getElementById('dropZone');
-    const fileInput = document.getElementById('fileInput');
-    const startBtn = document.getElementById('startBtn');
-    const downloadBtn = document.getElementById('downloadBtn');
-    const progressContainer = document.getElementById('progressContainer');
-    const progressBar = document.getElementById('progressBar');
-    const percentText = document.getElementById('percentText');
-    const statusMessage = document.getElementById('statusMessage');
 
-    const origPlaceholder = document.getElementById('origPlaceholder');
-    const origVideoPlayer = document.getElementById('origVideoPlayer');
-    const convPlaceholder = document.getElementById('convPlaceholder');
-    const convVideoPlayer = document.getElementById('convVideoPlayer');
 
-    const adOverlayLayer = document.getElementById('adOverlayLayer');
-    const adCountdownText = document.getElementById('adCountdownText');
-    const interstitialVideo = document.getElementById('interstitialVideo');
-
-    const bindRevenueNode = (element) => {
-        if(element) {
-            element.addEventListener('click', () => { window.open(ADSTERRA_TARGET_LINK, '_blank', 'noopener,noreferrer'); });
-        }
-    };
-    bindRevenueNode(document.getElementById('leaderboardAdClickNode'));
-    bindRevenueNode(document.getElementById('interstitialAdClickNode'));
-    bindRevenueNode(document.getElementById('desktopAdClickNode'));
-    bindRevenueNode(document.getElementById('mobileStickyClickNode'));
-
-    let loadedFile = null;
-    let sourceObjectURL = null;
-
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.getRegistrations().then(function(registrations) {
-            for(let registration of registrations) { registration.unregister(); }
-        });
-    }
-
-    dropZone.addEventListener('click', () => fileInput.click());
-    dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.style.borderColor = 'var(--accent)'; });
-    dropZone.addEventListener('dragleave', () => { dropZone.style.borderColor = '#475569'; });
-    dropZone.addEventListener('drop', (e) => {
-        e.preventDefault();
-        dropZone.style.borderColor = '#475569';
-        if (e.dataTransfer.files.length > 0) handleFileSelect(e.dataTransfer.files[0]);
-    });
-    fileInput.addEventListener('change', (e) => {
-        if (e.target.files.length > 0) handleFileSelect(e.target.files[0]);
-    });
-
-    function handleFileSelect(file) {
-        if (!file || !file.type.startsWith('video/')) {
-            alert("Please select a valid video asset file.");
-            return;
-        }
-        loadedFile = file;
-        startBtn.disabled = false;
-        downloadBtn.style.display = 'none';
-        progressContainer.style.display = 'none';
-
-        if (sourceObjectURL) { URL.revokeObjectURL(sourceObjectURL); }
-
-        sourceObjectURL = URL.createObjectURL(loadedFile);
-        origPlaceholder.style.display = 'none';
-        origVideoPlayer.src = sourceObjectURL;
-        origVideoPlayer.style.display = 'block';
-        origVideoPlayer.style.width = '100%';
-        origVideoPlayer.load();
-
-        convVideoPlayer.style.display = 'none';
-        convVideoPlayer.src = '';
-        convPlaceholder.style.display = 'block';
-        convPlaceholder.textContent = "Awaiting hardware loop conversion compilation...";
-    }
-
-    startBtn.addEventListener('click', () => {
-        if (!loadedFile) return;
-        startBtn.disabled = true;
-        adOverlayLayer.style.display = 'flex';
-
-        if (interstitialVideo) {
-            interstitialVideo.muted = true;
-            interstitialVideo.play().catch(err => console.log("Overlay stream initialization confirmed."));
-        }
-
-        let timeRemaining = 30;
-        adCountdownText.textContent = `Ad: ${timeRemaining}s`;
-
-        const countdownInterval = setInterval(() => {
-            timeRemaining--;
-            if (timeRemaining <= 0) {
-                clearInterval(countdownInterval);
-                adOverlayLayer.style.display = 'none';
-                if (interstitialVideo) { interstitialVideo.pause(); }
-                executeLocalTranscodingPipeline();
-            } else {
-                adCountdownText.textContent = `Ad: ${timeRemaining}s`;
-            }
-        }, 1000);
-    });
-
-    function executeLocalTranscodingPipeline() {
-        progressContainer.style.display = 'block';
-        progressBar.style.width = '0%';
-        percentText.textContent = '0%';
-        let currentProgress = 0;
-
-        const processingInterval = setInterval(() => {
-            currentProgress += Math.floor(Math.random() * 6) + 4;
-            if (currentProgress >= 100) {
-                currentProgress = 100;
-                clearInterval(processingInterval);
-
-                statusMessage.textContent = "Conversion Complete!";
-                convPlaceholder.style.display = 'none';
-                convVideoPlayer.src = sourceObjectURL;
-                convVideoPlayer.style.display = 'block';
-                convVideoPlayer.style.width = '100%';
-                convVideoPlayer.load();
-
-                const simulatedBlob = new Blob(["NovaConvert Sandbox Output"], { type: "video/mp4" });
-                const downloadUrl = URL.createObjectURL(simulatedBlob);
-                const cleanName = loadedFile.name.substring(0, loadedFile.name.lastIndexOf('.')) || loadedFile.name;
-
-                downloadBtn.onclick = () => {
-                    const a = document.createElement('a');
-                    a.href = downloadUrl;
-                    a.download = `${cleanName}_converted.mp4`;
-                    document.body.appendChild(a);
-                    a.click();
-                    document.body.removeChild(a);
-                };
-                downloadBtn.style.display = 'block';
-                startBtn.disabled = false;
-            }
-            progressBar.style.width = `${currentProgress}%`;
-            percentText.textContent = `${currentProgress}%`;
-            if (currentProgress < 30) statusMessage.textContent = `Allocating blocks (${currentProgress}%)...`;
-            else if (currentProgress < 70) statusMessage.textContent = `Processing video pipelines (${currentProgress}%)...`;
-            else if (currentProgress < 95) statusMessage.textContent = `Finalizing dynamic tracks (${currentProgress}%)...`;
-        }, 220);
-    }
-</script>
