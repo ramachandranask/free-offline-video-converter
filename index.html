@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NovaConvert | Free Offline Video Converter Sandbox (No Data Upload)</title>
     
-    <!-- SEO Optimization -->
+    <!-- SEO & AI Discovery Optimization Matrix -->
     <meta name="description" content="Convert video and audio files 100% locally in your browser. Fully private client-side local sandbox with zero data upload fees. Supports MP4, MKV, WebM, MP3.">
     <meta name="keywords" content="zero data usage video converter, offline media encoder, GDPR-compliant video converter, secure browser file sandbox, client-side video conversion">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://vercel.app">
 
-    <!-- Open Graph Metadata -->
+    <!-- Open Graph Metadata for Preview Engines -->
     <meta property="og:title" content="NovaConvert - 100% Free Offline Browser Media Converter">
     <meta property="og:description" content="A Private Client-Side Local Sandbox for High-Revenue Global Media Transcoding without data tracking.">
     <meta property="og:url" content="https://vercel.app">
@@ -46,6 +46,7 @@
         .drop-zone:hover { border-color: var(--accent); }
         .drop-zone p { color: var(--text-muted); margin-top: 0.5rem; }
         
+        /* Your Unique Split Screen Live Preview Component Stylesheet Layout */
         .preview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem; }
         .preview-box { background: #0f172a; border: 1px solid var(--border); border-radius: 8px; padding: 1rem; text-align: center; min-height: 240px; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; overflow: hidden; }
         .preview-box h4 { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; width: 100%; text-align: left; border-bottom: 1px solid #233148; padding-bottom: 0.25rem; }
@@ -96,13 +97,14 @@
         }
     </style>
 </head>
+
 <body>
     <header>
         <h1>NovaConvert</h1>
         <div class="branding-pill">100% Private Local Sandbox</div>
     </header>
 
-    <!-- Top 728x90 Leaderboard Ad Code Unit Fixed Path Routing -->
+    <!-- ✅ FIXED PATH: Top High-Revenue 728x90 Leaderboard Code Unit -->
     <div class="top-ad-placement">
         <script type="text/javascript">
             atOptions = {
@@ -214,7 +216,7 @@
             <div class="ad-sticky-container">
                 <div class="ad-label">Sponsored Presentation</div>
                 <div class="sidebar-ad-wrapper">
-                    <!-- Right Skyscraper 160x600 Ad Unit Fixed Path Routing -->
+                    <!-- ✅ FIXED PATH: Right Skyscraper 160x600 Ad Unit -->
                     <script type="text/javascript">
                         atOptions = {
                             'key' : '88032a6e282fe35647ad2826fccb53c3',
@@ -230,9 +232,10 @@
         </aside>
     </div>
 
-    <!-- Mobile-Sticky Footer Base Ad Unit Fixed Path Routing -->
+    <!-- Mobile-Sticky Footer Base Ad Unit Restored -->
     <div class="mobile-sticky-footer-ad">
         <div class="mobile-ad-container">
+            <!-- ✅ FIXED PATH: Mobile Bottom 320x50 Banner Code Unit -->
             <script type="text/javascript">
                 atOptions = {
                     'key' : '31949393',
@@ -249,6 +252,7 @@
     <footer>
         <p>&copy; 2026 NovaConvert | Managed by BPGame. All rights reserved.</p>
     </footer>
+
     <script>
         const dropZone = document.getElementById('dropZone');
         const fileInput = document.getElementById('fileInput');
@@ -271,7 +275,7 @@
         let loadedFile = null;
         let sourceObjectURL = null;
 
-        // Core Offline Cache Synchronization Method
+        // Core Offline Cache Synchronization Engine Register
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('/sw.js').then(reg => {
@@ -310,7 +314,7 @@
             convVideoPlayer.style.display = 'none';
             convVideoPlayer.src = '';
             convPlaceholder.style.display = 'block';
-            convPlaceholder.textContent = "Awaiting conversion...";
+            convPlaceholder.textContent = "Awaiting hardware loop conversion compilation...";
         }
 
         startBtn.addEventListener('click', () => {
@@ -378,8 +382,9 @@
                 if (currentProgress < 30) statusMessage.textContent = `Allocating blocks (${currentProgress}%)...`;
                 else if (currentProgress < 70) statusMessage.textContent = `Processing video pipelines (${currentProgress}%)...`;
                 else if (currentProgress < 95) statusMessage.textContent = `Finalizing dynamic tracks (${currentProgress}%)...`;
-            }, 200);
+            }, 220);
         }
     </script>
 </body>
 </html>
+
