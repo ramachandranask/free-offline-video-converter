@@ -1,4 +1,4 @@
-const CACHE_NAME = 'video-engine-v3'; // Incremented to clear broken browser caches
+const CACHE_NAME = 'video-engine-v4'; // Incremented to force dump previous layouts
 
 const ASSETS = [
   '/',
@@ -17,7 +17,10 @@ self.addEventListener('activate', (event) => {
     caches.keys().then((keys) => {
       return Promise.all(
         keys.map((key) => {
-          if (key !== CACHE_NAME) return caches.delete(key);
+          if (key !== CACHE_NAME) {
+            console.log("Removing broken legacy cache block...");
+            return caches.delete(key);
+          }
         })
       );
     })
@@ -27,6 +30,8 @@ self.addEventListener('activate', (event) => {
 
 self.addEventListener('fetch', (event) => {
   const url = new URL(event.request.url);
+  
+  // Direct live bypass rules for ad traffic networks
   if (
     url.hostname.includes('adsterra') || 
     url.hostname.includes('highrateperformance') ||
@@ -36,9 +41,17 @@ self.addEventListener('fetch', (event) => {
     event.respondWith(fetch(event.request));
     return;
   }
+  
+  // Force network-first mapping so your index updates load instantly
   event.respondWith(
-    caches.match(event.request).then((cachedResponse) => {
-      return cachedResponse || fetch(event.request);
-    })
+    fetch(event.request)
+      .then((response) => {
+        if (response.status === 200) {
+          const responseClone = response.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, responseClone));
+        }
+        return response;
+      })
+      .catch(() => caches.match(event.request))
   );
 });
