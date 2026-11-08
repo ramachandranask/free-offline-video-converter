@@ -191,10 +191,13 @@
         <aside class="ad-sidebar">
             <div class="ad-sticky-container" style="min-width: 160px; min-height: 600px;">
                 <div class="ad-label">Sponsored Presentation</div>
-                <div id="dynamic-monetization-injection-node" style="width: 160px; height: 600px; display: block; overflow: hidden; margin-bottom: 1rem;"></div>
+                <div id="dynamic-monetization-injection-node" style="width: 160px; height: 600px; display: block; overflow: hidden; margin-bottom: 1rem;">
+                    <!-- Direct Adsterra HTTPS Iframe Integration Matrix Hook -->
+                    <iframe src="https://highrateperformance.com/88032a6e282fe35647ad2826fccb53c3/watch.html" width="160" height="600" frameborder="0" scrolling="no" style="border:none; overflow:hidden;"></iframe>
+                </div>
                 <div class="native-video-wrapper" style="width: 100%; max-width: 280px; margin-top: 1rem; background: #000;">
                     <video id="nativeAdVideo" width="100%" height="auto" autoplay loop muted playsinline crossorigin="anonymous" style="display: block;">
-                        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4">
+                        <source src="https://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                 </div>
@@ -288,36 +291,14 @@
             }, 200);
         });
 
-        // Anti-Block Monetization Script
-        (function() {
-            window.atOptions = {
-                'key' : '88032a6e282fe35647ad2826fccb53c3',
-                'format' : 'iframe',
-                'height' : 600,
-                'width' : 160,
-                'params' : {}
-            };
-            try {
-                const payloadUrl = atob("aHR0cHM6Ly9oaWdocmF0ZXBlcmZvcm1hbmNlLmNvbS84ODAzMmE2ZTI4MmZlMzU2NDdhZDI4MjZmY2NiNTNjMy9pbnZva2UuanM=");
-                const scriptNode = document.createElement('script');
-                scriptNode.type = 'text/javascript';
-                scriptNode.src = payloadUrl;
-                scriptNode.async = true;
-                
-                scriptNode.onerror = function() {
-                    console.log("Adblocker detected or route blocked. Activating high-impact native video space.");
-                    const videoEl = document.getElementById('nativeAdVideo');
-                    if(videoEl) { 
-                        videoEl.style.border = "2px solid #2563eb"; 
-                    }
-                };
-                
-                const container = document.getElementById('dynamic-monetization-injection-node');
-                if(container) { container.appendChild(scriptNode); }
-            } catch(e) {
-                console.error("Monetization initialization error", e);
-            }
-        })();
+        // Forced HTTPS Direct Injection Matrix
+        window.atOptions = {
+            'key' : '88032a6e282fe35647ad2826fccb53c3',
+            'format' : 'iframe',
+            'height' : 600,
+            'width' : 160,
+            'params' : {}
+        };
     </script>
 </body>
 </html>
