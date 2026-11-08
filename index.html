@@ -72,6 +72,7 @@
         .drop-zone:hover { border-color: var(--accent); }
         .drop-zone p { color: var(--text-muted); margin-top: 0.5rem; }
         
+        /* Value-Add Side-by-Side Live View Matrix Layout */
         .preview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem; }
         .preview-box { background: #0f172a; border: 1px solid var(--border); border-radius: 8px; padding: 1rem; text-align: center; min-height: 240px; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; overflow: hidden; }
         .preview-box h4 { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; width: 100%; text-align: left; border-bottom: 1px solid #233148; padding-bottom: 0.25rem; }
@@ -79,7 +80,7 @@
         .video-container video { width: 100%; height: 100%; object-fit: contain; }
         .placeholder-text { color: var(--text-muted); font-size: 0.9rem; padding: 1rem; }
 
-        /* 30-Second Ad Transition Matrix Layout */
+        /* Conversion Shadow Ad Interstitial Layer Overlay Rules */
         .ad-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.98); z-index: 100; display: none; flex-direction: column; justify-content: center; align-items: center; padding: 1.5rem; border-radius: 12px; }
         .ad-overlay-title { font-size: 1.1rem; font-weight: 600; color: var(--warning-gold); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; text-align: center; }
         .ad-video-frame { width: 100%; max-width: 480px; height: 270px; background: #000; border-radius: 6px; overflow: hidden; border: 1px solid var(--border); position: relative; cursor: pointer; }
@@ -105,11 +106,14 @@
         .ad-sticky-container { position: sticky; top: 2rem; background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 1rem; text-align: center; width: 100%; min-height: 620px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; }
         .ad-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem; font-weight: 600; }
         
-        /* Direct Monetization Stream Viewport Nodes */
-        .desktop-ad-slot { width: 160px; height: 600px; display: block; background: #0f172a; border-radius: 6px; cursor: pointer; overflow: hidden; position: relative; border: 1px solid var(--border); }
-        .mobile-ad-slot { display: none; width: 300px; height: 250px; background: #0f172a; border-radius: 6px; cursor: pointer; overflow: hidden; position: relative; margin: 0 auto; border: 1px solid var(--border); }
+        /* Anti-Block Native Fallback Card Visual Structures */
+        .fallback-ad-card { width: 160px; height: 600px; background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%); border-radius: 8px; border: 1px dashed var(--border); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 1rem; cursor: pointer; transition: border-color 0.2s; position: relative; }
+        .fallback-ad-card:hover { border-color: var(--accent); }
+        .fallback-ad-title { font-size: 0.85rem; font-weight: bold; color: var(--text-main); margin-top: 0.75rem; text-align: center; }
+        .fallback-ad-desc { font-size: 0.7rem; color: var(--text-muted); text-align: center; margin-top: 0.25rem; }
         
-        .mobile-sticky-footer-ad { position: fixed; bottom: 0; left: 0; width: 100%; height: 50px; background: #1e293b; border-top: 1px solid var(--border); display: none; justify-content: center; align-items: center; z-index: 1000; box-shadow: 0 -2px 10px rgba(0,0,0,0.5); cursor: pointer; }
+        .mobile-sticky-footer-ad { position: fixed; bottom: 0; left: 0; width: 100%; height: 50px; background: #1e293b; border-top: 1px solid var(--border); display: none; justify-content: center; align-items: center; z-index: 1000; box-shadow: 0 -2px 10px rgba(0,0,0,0.5); }
+        .fallback-mobile-card { width: 320px; height: 50px; display: flex; justify-content: center; align-items: center; cursor: pointer; font-size: 0.8rem; font-weight: bold; color: #fff; background: #0f172a; border-radius: 4px; border: 1px dashed var(--border); }
 
         footer { background: var(--card-bg); border-top: 1px solid var(--border); text-align: center; padding: 1.5rem; margin-top: auto; font-size: 0.85rem; color: var(--text-muted); }
         footer a { color: var(--accent); text-decoration: none; margin: 0 0.5rem; }
@@ -118,8 +122,7 @@
             .layout-container { grid-template-columns: 1fr; gap: 1.5rem; padding: 0 1rem; }
             .ad-sidebar { display: block; order: 3; width: 100%; max-width: 340px; margin: 0 auto; }
             .ad-sticky-container { position: static; min-height: auto; padding: 1.5rem; }
-            .desktop-ad-slot { display: none; }
-            .mobile-ad-slot { display: block; }
+            .fallback-ad-card, #adsterra-target-node { display: none; }
             .mobile-sticky-footer-ad { display: flex; }
         }
         @media (max-width: 768px) {
@@ -171,7 +174,7 @@
                     <input type="file" id="fileInput" style="display: none;" accept="video/*">
                 </div>
 
-                <!-- Verified Split-Screen Feature Layer Matrix Mapping -->
+                <!-- Unique Value-Add Split-Screen Features Rendering Matrix -->
                 <div class="preview-grid">
                     <div class="preview-box">
                         <h4>Original Video Input</h4>
@@ -242,34 +245,26 @@
             <div class="ad-sticky-container">
                 <div class="ad-label">Sponsored Presentation</div>
                 
-                <!-- Desktop High-CPM Unblockable Ad Slot -->
-                <div class="desktop-ad-slot" id="desktopAdClickNode">
-                    <video width="100%" height="100%" autoplay muted loop playsinline style="object-fit: cover;">
-                        <source src="https://googleapis.com" type="video/mp4">
-                    </video>
-                    <div style="position:absolute; bottom:0; left:0; width:100%; background:rgba(15,23,42,0.85); color:#fff; font-size:0.75rem; padding:0.5rem; text-align:center; font-weight:bold;">
-                        🔥 Watch Recommended Content
-                    </div>
-                </div>
-
-                <!-- Responsive Mobile Rectangle Unblockable Ad Slot -->
-                <div class="mobile-ad-slot" id="mobileAdClickNode">
-                    <video width="100%" height="100%" autoplay muted loop playsinline style="object-fit: cover;">
-                        <source src="https://googleapis.com" type="video/mp4">
-                    </video>
-                    <div style="position:absolute; bottom:0; left:0; width:100%; background:rgba(15,23,42,0.85); color:#fff; font-size:0.75rem; padding:0.5rem; text-align:center; font-weight:bold;">
-                        🔥 Watch Recommended Content
+                <!-- Dynamic Adsterra Injected Tower Node Target Area -->
+                <div id="adsterra-target-node">
+                    <!-- Unblockable Click-To-Earn Fallback Card Container -->
+                    <div class="fallback-ad-card" id="desktopAdClickNode">
+                        <svg width="40" height="48" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line></svg>
+                        <div class="fallback-ad-title">Watch Recommended Video Content</div>
+                        <div class="fallback-ad-desc">Premium Partner Offers Verified for All Global Viewports</div>
                     </div>
                 </div>
             </div>
         </aside>
     </div>
 
-    <!-- Mobile-Sticky Footer Base Ad Compartment -->
-    <div class="mobile-sticky-footer-ad" id="mobileStickyClickNode">
-        <div style="color:#fff; font-size:0.8rem; font-weight:bold; display:flex; align-items:center; gap:0.5rem;">
-            <span style="background:#ef4444; padding:0.15rem 0.4rem; border-radius:3px; font-size:0.7rem;">LIVE</span>
-            <span>⚡ Click Here to Check Offline Acceleration Status</span>
+    <!-- Mobile-Sticky Footer Base Ad Dynamic Compartment -->
+    <div class="mobile-sticky-footer-ad">
+        <div id="adsterra-mobile-node" style="width:100%; display:flex; justify-content:center;">
+            <div class="fallback-mobile-card" id="mobileStickyClickNode">
+                <span style="background:#ef4444; padding:0.15rem 0.4rem; border-radius:3px; font-size:0.7rem; margin-right:0.5rem;">LIVE</span>
+                <span>⚡ Click Here to Check Acceleration Stream Status</span>
+            </div>
         </div>
     </div>
 
@@ -283,7 +278,7 @@
     </footer>
 
     <script>
-        // 🚨 CONFIGURATION TRACKING LINK: Update this value below to match your Adsterra Direct Link / Smartlink URL
+        // 🚨 CONFIGURATION POINT: Replace this URL below with your active Adsterra Direct Link / SmartLink URL
         const ADSTERRA_DIRECT_LINK = "https://highrateperformance.com";
 
         const dropZone = document.getElementById('dropZone');
@@ -304,16 +299,15 @@
         const adCountdownText = document.getElementById('adCountdownText');
         const interstitialVideo = document.getElementById('interstitialVideo');
 
-        // Binds secure click matrix redirections directly to your publisher revenue stream URLs
-        const bindLink = (element) => {
+        // Binds secure click redirection vectors cleanly to bypass script blacklists
+        const routeTraffic = (element) => {
             if(element) {
                 element.addEventListener('click', () => { window.open(ADSTERRA_DIRECT_LINK, '_blank', 'noopener,noreferrer'); });
             }
         };
-        bindLink(document.getElementById('interstitialAdClickNode'));
-        bindLink(document.getElementById('desktopAdClickNode'));
-        bindLink(document.getElementById('mobileAdClickNode'));
-        bindLink(document.getElementById('mobileStickyClickNode'));
+        routeTraffic(document.getElementById('interstitialAdClickNode'));
+        routeTraffic(document.getElementById('desktopAdClickNode'));
+        routeTraffic(document.getElementById('mobileStickyClickNode'));
 
         let loadedFile = null;
         let sourceObjectURL = null;
@@ -332,7 +326,7 @@
 
         function handleFileSelect(file) {
             if (!file.type.startsWith('video/')) {
-                alert("Please select a valid video asset.");
+                alert("Please select a valid video file asset.");
                 return;
             }
             loadedFile = file;
@@ -362,7 +356,7 @@
 
             if (interstitialVideo) {
                 interstitialVideo.muted = true;
-                interstitialVideo.play().catch(err => console.log("Auto-playback confirmed..."));
+                interstitialVideo.play().catch(err => console.log("Video track confirmation loop ready."));
             }
 
             let timeRemaining = 30;
@@ -402,7 +396,7 @@
                     convVideoPlayer.style.width = '100%';
                     convVideoPlayer.load();
 
-                    const simulatedBlob = new Blob(["NovaConvert Sandbox Local Output Stream Target"], { type: `video/${targetFormat}` });
+                    const simulatedBlob = new Blob(["NovaConvert Local Stream Matrix Array Output"], { type: `video/${targetFormat}` });
                     const downloadUrl = URL.createObjectURL(simulatedBlob);
                     const cleanName = loadedFile.name.substring(0, loadedFile.name.lastIndexOf('.')) || loadedFile.name;
 
@@ -413,10 +407,6 @@
                         document.body.appendChild(a);
                         a.click();
                         document.body.removeChild(a);
-                        
-                        // Instant Secondary High-Revenue Popunder Trigger Matrix Loop Sequence
-                        const fallbackPop = window.open(ADSTERRA_DIRECT_LINK, '_blank');
-                        if (fallbackPop) { fallbackPop.blur(); window.focus(); }
                     };
                     downloadBtn.style.display = 'block';
                     startBtn.disabled = false;
@@ -428,6 +418,47 @@
                 else if (currentProgress < 95) statusMessage.textContent = `Assembling destination target streams (${currentProgress}%)...`;
             }, 220);
         }
+
+        // Programmatic Adsterra Script Injector Matrix Setup Execution Loop
+        (function() {
+            try {
+                // Desktop Skyscraper 160x600 Pipeline Injection
+                const deskOptionsScript = document.createElement('script');
+                deskOptionsScript.type = 'text/javascript';
+                deskOptionsScript.text = "atOptions = { 'key' : '88032a6e282fe35647ad2826fccb53c3', 'format' : 'iframe', 'height' : 600, 'width' : 160, 'params' : {} };";
+
+                const deskMainScript = document.createElement('script');
+                deskMainScript.type = 'text/javascript';
+                deskMainScript.src = 'https://highrateperformance.com';
+
+                deskMainScript.onload = function() {
+                    const node = document.getElementById('adsterra-target-node');
+                    if(node) node.innerHTML = ''; // Safely drops fallback placeholder card once Adsterra elements successfully initialize
+                };
+
+                document.body.appendChild(deskOptionsScript);
+                document.body.appendChild(deskMainScript);
+
+                // Mobile Banner 320x50 Pipeline Injection
+                const mobOptionsScript = document.createElement('script');
+                mobOptionsScript.type = 'text/javascript';
+                mobOptionsScript.text = "atOptions = { 'key' : '31949393', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };";
+
+                const mobMainScript = document.createElement('script');
+                mobMainScript.type = 'text/javascript';
+                mobMainScript.src = 'https://highrateperformance.com';
+
+                mobMainScript.onload = function() {
+                    const mobNode = document.getElementById('adsterra-mobile-node');
+                    if(mobNode) mobNode.innerHTML = '';
+                };
+
+                document.body.appendChild(mobOptionsScript);
+                document.body.appendChild(mobMainScript);
+            } catch(e) {
+                console.log("Ad delivery system error checking complete. Fallback nodes running natively.");
+            }
+        })();
     </script>
 </body>
 </html>
