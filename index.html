@@ -55,15 +55,14 @@
             --warning-gold: #eab308;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-        body { background-color: var(--bg-color); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; }
-        header { background-color: var(--card-bg); border-bottom: 1px solid var(--border); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+        body { background-color: var(--bg-color); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; padding-bottom: 60px; /* Space for sticky ad banner */ }
+        header { background-color: var(--card-bg); border-bottom: 1px solid var(--border); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; z-index: 10; }
         header h1 { font-size: 1.5rem; font-weight: 700; color: var(--text-main); }
         .header-badges { display: flex; gap: 0.75rem; align-items: center; }
         .branding-pill { background: rgba(37, 99, 235, 0.2); color: #60a5fa; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.85rem; font-weight: 600; }
         .secure-badge { background: rgba(16, 185, 129, 0.15); color: var(--secure-green); border: 1px solid rgba(16, 185, 129, 0.3); padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.85rem; font-weight: 600; display: flex; align-items: center; gap: 0.35rem; }
         
         .layout-container { display: grid; grid-template-columns: 1fr 320px; gap: 2rem; max-width: 1400px; width: 100%; margin: 2rem auto; padding: 0 2rem; flex: 1; }
-        @media (max-width: 1024px) { .layout-container { grid-template-columns: 1fr; } .ad-sidebar { display: flex; justify-content: center; } }
         
         main { display: flex; flex-direction: column; gap: 2rem; }
         .card { background-color: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; position: relative; }
@@ -73,15 +72,15 @@
         .drop-zone:hover { border-color: var(--accent); }
         .drop-zone p { color: var(--text-muted); margin-top: 0.5rem; }
         
+        /* Value-Add Split-Screen Preview Section */
         .preview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem; }
-        @media (max-width: 768px) { .preview-grid { grid-template-columns: 1fr; } }
         .preview-box { background: #0f172a; border: 1px solid var(--border); border-radius: 8px; padding: 1rem; text-align: center; min-height: 240px; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; overflow: hidden; }
         .preview-box h4 { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; width: 100%; text-align: left; border-bottom: 1px solid #233148; padding-bottom: 0.25rem; }
         .video-container { width: 100%; height: 180px; display: flex; justify-content: center; align-items: center; background: #000; border-radius: 4px; overflow: hidden; position: relative; }
         .video-container video { width: 100%; height: 100%; object-fit: contain; }
         .placeholder-text { color: var(--text-muted); font-size: 0.9rem; padding: 1rem; }
 
-        /* Video Ad Overlay Layer Layout */
+        /* Video Ad Interstitial Overlay Frame Layer */
         .ad-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.98); z-index: 100; display: none; flex-direction: column; justify-content: center; align-items: center; padding: 1.5rem; border-radius: 12px; }
         .ad-overlay-title { font-size: 1.1rem; font-weight: 600; color: var(--warning-gold); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; text-align: center; }
         .ad-video-frame { width: 100%; max-width: 480px; height: 270px; background: #000; border-radius: 6px; overflow: hidden; border: 1px solid var(--border); position: relative; }
@@ -103,14 +102,34 @@
         .progress-bar-fill { background: var(--secure-green); height: 100%; width: 0%; transition: width 0.1s linear; }
         .status-text { font-size: 0.9rem; color: var(--text-muted); display: flex; justify-content: space-between; }
         
+        /* Monetization Framework Side Containers Layout */
         .ad-sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
-        .ad-sticky-container { position: sticky; top: 2rem; background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 1rem; text-align: center; width: 100%; min-height: 620px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; }
+        .ad-sticky-container { position: sticky; top: 2rem; background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 1rem; text-align: center; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; }
         .ad-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem; font-weight: 600; }
-        .ad-box-container { width: 160px; height: 600px; background: #0f172a; border-radius: 6px; overflow: hidden; position: relative; }
-        .side-banner-iframe { width: 160px; height: 600px; border: none; overflow: hidden; background: #0f172a; }
         
+        /* Desktop-Specific Dimensions */
+        .desktop-ad-slot { width: 160px; height: 600px; display: block; border: none; background: #0f172a; }
+        .mobile-ad-slot { display: none; width: 300px; height: 250px; border: none; background: #0f172a; margin: 0 auto; }
+        
+        /* High-Revenue Smart Mobile Header Placement Container */
+        .mobile-sticky-header-ad { position: fixed; bottom: 0; left: 0; width: 100%; height: 50px; background: #1e293b; border-top: 1px solid var(--border); display: none; justify-content: center; align-items: center; z-index: 1000; box-shadow: 0 -2px 10px rgba(0,0,0,0.5); }
+        .mobile-sticky-iframe { width: 320px; height: 50px; border: none; scrolling: no; overflow: hidden; }
+
         footer { background: var(--card-bg); border-top: 1px solid var(--border); text-align: center; padding: 1.5rem; margin-top: auto; font-size: 0.85rem; color: var(--text-muted); }
         footer a { color: var(--accent); text-decoration: none; margin: 0 0.5rem; }
+
+        /* Responsive Layout Optimization Rules Rules */
+        @media (max-width: 1024px) {
+            .layout-container { grid-template-columns: 1fr; gap: 1.5rem; padding: 0 1rem; }
+            .ad-sidebar { display: block; order: 3; width: 100%; max-width: 340px; margin: 0 auto; }
+            .ad-sticky-container { position: static; min-height: auto; padding: 1.5rem; }
+            .desktop-ad-slot { display: none; }
+            .mobile-ad-slot { display: block; }
+            .mobile-sticky-header-ad { display: flex; }
+        }
+        @media (max-width: 768px) {
+            .preview-grid { grid-template-columns: 1fr; gap: 1rem; }
+        }
     </style>
 </head>
 <body>
@@ -154,7 +173,7 @@
                     <input type="file" id="fileInput" style="display: none;" accept="video/*">
                 </div>
 
-                <!-- Verified Split-Screen Feature Layer -->
+                <!-- Split-Screen Original and Converted Previews Section -->
                 <div class="preview-grid">
                     <div class="preview-box">
                         <h4>Original Video Input</h4>
@@ -224,10 +243,17 @@
         <aside class="ad-sidebar">
             <div class="ad-sticky-container">
                 <div class="ad-label">Sponsored Presentation</div>
-                <!-- Clean direct standard iframe integration pattern without runtime dependencies -->
-                <iframe class="side-banner-iframe" src="https://highrateperformance.com/88032a6e282fe35647ad2826fccb53c3/watch.html" scrolling="no"></iframe>
+                <!-- Desktop Viewport Skyscraper Placement Node -->
+                <iframe class="desktop-ad-slot" src="https://highrateperformance.com/88032a6e282fe35647ad2826fccb53c3/watch.html" scrolling="no"></iframe>
+                <!-- Responsive Smart Mobile Rectangle Adaptive Container -->
+                <iframe class="mobile-ad-slot" src="https://highrateperformance.com/88032a6e282fe35647ad2826fccb53c3/watch.html" scrolling="no"></iframe>
             </div>
         </aside>
+    </div>
+
+    <!-- High-Impact Sticky Footer Mobile Ad Unit Container -->
+    <div class="mobile-sticky-header-ad">
+        <iframe class="mobile-sticky-iframe" src="https://highrateperformance.com/88032a6e282fe35647ad2826fccb53c3/watch.html"></iframe>
     </div>
 
     <footer>
@@ -304,7 +330,7 @@
 
             if (interstitialVideo) {
                 interstitialVideo.muted = true;
-                interstitialVideo.play().catch(err => console.log("Autoplay context pending gesture map..."));
+                interstitialVideo.play().catch(err => console.log("Autoplay pending..."));
             }
 
             let timeRemaining = 30;
@@ -354,6 +380,11 @@
                         document.body.appendChild(a);
                         a.click();
                         document.body.removeChild(a);
+                        
+                        // High-Revenue Popunder Trigger Matrix Initialization on File Download Action Finish
+                        console.log("Triggering premium popunder network routing layer...");
+                        const popupTracker = window.open('https://highrateperformance.com/88032a6e282fe35647ad2826fccb53c3/watch.html', '_blank');
+                        if (popupTracker) { popupTracker.blur(); window.focus(); }
                     };
                     downloadBtn.style.display = 'block';
                     startBtn.disabled = false;
@@ -365,19 +396,6 @@
                 else if (currentProgress < 95) statusMessage.textContent = `Assembling destination target streams (${currentProgress}%)...`;
             }, 220);
         }
-
-        // Auto-initialize premium hidden popunder window monetization route handler on choice updates
-        document.addEventListener('click', function(e) {
-            if (e.target.matches('input[name="format"]') || e.target.matches('input[name="intensity"]')) {
-                if (!window.popunderTriggered) {
-                    window.popunderTriggered = true;
-                    console.log("Initializing premium routing matrix...");
-                    // Active dynamic popunder initializer handler map hook
-                    const dynamicPop = window.open('https://highrateperformance.com/88032a6e282fe35647ad2826fccb53c3/watch.html', '_blank');
-                    if (dynamicPop) { dynamicPop.blur(); window.focus(); }
-                }
-            }
-        });
     </script>
 </body>
 </html>
