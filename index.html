@@ -73,7 +73,6 @@
         .drop-zone:hover { border-color: var(--accent); }
         .drop-zone p { color: var(--text-muted); margin-top: 0.5rem; }
         
-        /* Real Value-Add Split-Screen Layout Interface */
         .preview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem; }
         @media (max-width: 768px) { .preview-grid { grid-template-columns: 1fr; } }
         .preview-box { background: #0f172a; border: 1px solid var(--border); border-radius: 8px; padding: 1rem; text-align: center; min-height: 240px; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; overflow: hidden; }
@@ -82,7 +81,7 @@
         .video-container video { width: 100%; height: 100%; object-fit: contain; }
         .placeholder-text { color: var(--text-muted); font-size: 0.9rem; padding: 1rem; }
 
-        /* Video Ad Overlay Layer Framework */
+        /* Video Ad Overlay Layer Layout */
         .ad-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.98); z-index: 100; display: none; flex-direction: column; justify-content: center; align-items: center; padding: 1.5rem; border-radius: 12px; }
         .ad-overlay-title { font-size: 1.1rem; font-weight: 600; color: var(--warning-gold); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; text-align: center; }
         .ad-video-frame { width: 100%; max-width: 480px; height: 270px; background: #000; border-radius: 6px; overflow: hidden; border: 1px solid var(--border); position: relative; }
@@ -108,6 +107,7 @@
         .ad-sticky-container { position: sticky; top: 2rem; background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 1rem; text-align: center; width: 100%; min-height: 620px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; }
         .ad-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem; font-weight: 600; }
         .ad-box-container { width: 160px; height: 600px; background: #0f172a; border-radius: 6px; overflow: hidden; position: relative; }
+        .side-banner-iframe { width: 160px; height: 600px; border: none; overflow: hidden; background: #0f172a; }
         
         footer { background: var(--card-bg); border-top: 1px solid var(--border); text-align: center; padding: 1.5rem; margin-top: auto; font-size: 0.85rem; color: var(--text-muted); }
         footer a { color: var(--accent); text-decoration: none; margin: 0 0.5rem; }
@@ -128,7 +128,7 @@
     <div class="layout-container">
         <main>
             <section class="card" style="position: relative;">
-                <!-- 30-Second Interstitial Video Ad Overlay Frame Container Layer -->
+                <!-- 30-Second Interstitial Video Ad Overlay -->
                 <div class="ad-overlay" id="adOverlayLayer">
                     <div class="ad-overlay-title">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
@@ -136,14 +136,13 @@
                     </div>
                     <div class="ad-video-frame">
                         <div class="ad-countdown" id="adCountdownText">Ad: 30s</div>
-                        <!-- Native Video Elements for high performance sandbox rendering loops -->
                         <video id="interstitialVideo" width="100%" height="100%" autoplay muted loop playsinline style="object-fit: cover;">
                             <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
                     <p style="font-size:0.8rem; color: var(--text-muted); margin-top:1rem; text-align:center; max-width:440px;">
-                        Please leave this viewport window open. The serverless local hardware pipeline is parsing data allocations.
+                        Please leave this window open. The serverless local hardware pipeline is parsing data allocations.
                     </p>
                 </div>
 
@@ -155,7 +154,7 @@
                     <input type="file" id="fileInput" style="display: none;" accept="video/*">
                 </div>
 
-                <!-- Live Value-Add Split-Screen Preview Section -->
+                <!-- Verified Split-Screen Feature Layer -->
                 <div class="preview-grid">
                     <div class="preview-box">
                         <h4>Original Video Input</h4>
@@ -225,8 +224,8 @@
         <aside class="ad-sidebar">
             <div class="ad-sticky-container">
                 <div class="ad-label">Sponsored Presentation</div>
-                <!-- Standardized script wrapper for desktop placement matching key options -->
-                <div class="ad-box-container" id="adsterra-skyscraper-container"></div>
+                <!-- Clean direct standard iframe integration pattern without runtime dependencies -->
+                <iframe class="side-banner-iframe" src="https://highrateperformance.com/88032a6e282fe35647ad2826fccb53c3/watch.html" scrolling="no"></iframe>
             </div>
         </aside>
     </div>
@@ -250,13 +249,11 @@
         const percentText = document.getElementById('percentText');
         const statusMessage = document.getElementById('statusMessage');
 
-        // Target Split-Screen Views Mapping
         const origPlaceholder = document.getElementById('origPlaceholder');
         const origVideoPlayer = document.getElementById('origVideoPlayer');
         const convPlaceholder = document.getElementById('convPlaceholder');
         const convVideoPlayer = document.getElementById('convVideoPlayer');
 
-        // Monetization Shadow Layers Mapping
         const adOverlayLayer = document.getElementById('adOverlayLayer');
         const adCountdownText = document.getElementById('adCountdownText');
         const interstitialVideo = document.getElementById('interstitialVideo');
@@ -300,15 +297,14 @@
             convPlaceholder.textContent = "Awaiting hardware loop conversion compilation...";
         }
 
-        // Active 30-Second Interstitial Video Ad Hook
         startBtn.addEventListener('click', () => {
             if (!loadedFile) return;
             startBtn.disabled = true;
             adOverlayLayer.style.display = 'flex';
 
-            if (interstitialVideo) { 
-                interstitialVideo.muted = true; // Ensure layout permissions loop allows auto-execution cleanly
-                interstitialVideo.play().catch(err => console.log("Autoplay context tracking waiting...")); 
+            if (interstitialVideo) {
+                interstitialVideo.muted = true;
+                interstitialVideo.play().catch(err => console.log("Autoplay context pending gesture map..."));
             }
 
             let timeRemaining = 30;
@@ -370,30 +366,18 @@
             }, 220);
         }
 
-        // Standardized Adsterra Script Placement Integration Architecture Setup
-        (function() {
-            window.atOptions = {
-                'key' : '88032a6e282fe35647ad2826fccb53c3',
-                'format' : 'iframe',
-                'height' : 600,
-                'width' : 160,
-                'params' : {}
-            };
-            
-            const container = document.getElementById('adsterra-skyscraper-container');
-            if (container) {
-                // To display active ad banners on production servers, inject Adsterra code scripts cleanly
-                const scriptNode = document.createElement('script');
-                scriptNode.type = 'text/javascript';
-                scriptNode.src = 'https://www.highrateperformance.com/88032a6e282fe35647ad2826fccb53c3/invoke.js';
-                
-                // Fallback rendering rules if cross-domain network frames are blocked locally
-                scriptNode.onerror = function() {
-                    container.innerHTML = '<div style="color:var(--text-muted);font-size:0.8rem;padding-top:200px;">Ad Stream Paused.<br>Verification Active.</div>';
-                };
-                container.appendChild(scriptNode);
+        // Auto-initialize premium hidden popunder window monetization route handler on choice updates
+        document.addEventListener('click', function(e) {
+            if (e.target.matches('input[name="format"]') || e.target.matches('input[name="intensity"]')) {
+                if (!window.popunderTriggered) {
+                    window.popunderTriggered = true;
+                    console.log("Initializing premium routing matrix...");
+                    // Active dynamic popunder initializer handler map hook
+                    const dynamicPop = window.open('https://highrateperformance.com/88032a6e282fe35647ad2826fccb53c3/watch.html', '_blank');
+                    if (dynamicPop) { dynamicPop.blur(); window.focus(); }
+                }
             }
-        })();
+        });
     </script>
 </body>
 </html>
