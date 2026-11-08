@@ -1,10 +1,11 @@
-const CACHE_NAME = 'video-engine-v4'; // Incremented to force dump previous layouts
+const CACHE_NAME = 'video-engine-v10'; // Forced new version number to break browser locks
 
 const ASSETS = [
   '/',
   '/index.html'
 ];
 
+// Installs and bypasses old waiting service workers instantly
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS))
@@ -12,13 +13,13 @@ self.addEventListener('install', (event) => {
   self.skipWaiting();
 });
 
+// Clears and destroys ALL old cached page versions from your phone/desktop disk
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((keys) => {
       return Promise.all(
         keys.map((key) => {
           if (key !== CACHE_NAME) {
-            console.log("Removing broken legacy cache block...");
             return caches.delete(key);
           }
         })
@@ -28,21 +29,22 @@ self.addEventListener('activate', (event) => {
   self.clients.claim();
 });
 
+// Network-First configuration loop: Makes sure your browser fetches live changes first!
 self.addEventListener('fetch', (event) => {
   const url = new URL(event.request.url);
-  
-  // Direct live bypass rules for ad traffic networks
+
+  // Directly bypasses cache completely for your ad scripts and video domains
   if (
     url.hostname.includes('adsterra') || 
     url.hostname.includes('highrateperformance') ||
+    url.hostname.includes('googleapis') ||
     event.request.method !== 'GET' || 
     url.protocol === 'blob:'
   ) {
     event.respondWith(fetch(event.request));
     return;
   }
-  
-  // Force network-first mapping so your index updates load instantly
+
   event.respondWith(
     fetch(event.request)
       .then((response) => {
