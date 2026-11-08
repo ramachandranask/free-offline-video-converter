@@ -41,6 +41,7 @@
       ]
     }
     </script>
+
     <style>
         :root {
             --bg-color: #0f172a;
@@ -71,7 +72,6 @@
         .drop-zone:hover { border-color: var(--accent); }
         .drop-zone p { color: var(--text-muted); margin-top: 0.5rem; }
         
-        /* Unique Split-Screen Element Grid Layout Styles */
         .preview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem; }
         .preview-box { background: #0f172a; border: 1px solid var(--border); border-radius: 8px; padding: 1rem; text-align: center; min-height: 240px; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; overflow: hidden; }
         .preview-box h4 { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; width: 100%; text-align: left; border-bottom: 1px solid #233148; padding-bottom: 0.25rem; }
@@ -79,7 +79,7 @@
         .video-container video { width: 100%; height: 100%; object-fit: contain; }
         .placeholder-text { color: var(--text-muted); font-size: 0.9rem; padding: 1rem; }
 
-        /* 30s Video Interstitial Shadow Screen Wrapper */
+        /* 30-Second Ad Transition Matrix Layout */
         .ad-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.98); z-index: 100; display: none; flex-direction: column; justify-content: center; align-items: center; padding: 1.5rem; border-radius: 12px; }
         .ad-overlay-title { font-size: 1.1rem; font-weight: 600; color: var(--warning-gold); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; text-align: center; }
         .ad-video-frame { width: 100%; max-width: 480px; height: 270px; background: #000; border-radius: 6px; overflow: hidden; border: 1px solid var(--border); position: relative; cursor: pointer; }
@@ -105,7 +105,7 @@
         .ad-sticky-container { position: sticky; top: 2rem; background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 1rem; text-align: center; width: 100%; min-height: 620px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; }
         .ad-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem; font-weight: 600; }
         
-        /* High-Revenue Direct Link Element Styles */
+        /* Direct Monetization Stream Viewport Nodes */
         .desktop-ad-slot { width: 160px; height: 600px; display: block; background: #0f172a; border-radius: 6px; cursor: pointer; overflow: hidden; position: relative; border: 1px solid var(--border); }
         .mobile-ad-slot { display: none; width: 300px; height: 250px; background: #0f172a; border-radius: 6px; cursor: pointer; overflow: hidden; position: relative; margin: 0 auto; border: 1px solid var(--border); }
         
@@ -127,7 +127,8 @@
         }
     </style>
 </head>
-    <body>
+
+<body>
     <header>
         <h1>NovaConvert</h1>
         <div class="header-badges">
@@ -170,7 +171,7 @@
                     <input type="file" id="fileInput" style="display: none;" accept="video/*">
                 </div>
 
-                <!-- Unique Split-Screen Preview Windows -->
+                <!-- Verified Split-Screen Feature Layer Matrix Mapping -->
                 <div class="preview-grid">
                     <div class="preview-box">
                         <h4>Original Video Input</h4>
@@ -188,6 +189,7 @@
                     </div>
                 </div>
             </section>
+
             <section class="card">
                 <h2>2. Target Output Formats & Profiles Matrix</h2>
                 <div class="options-group">
@@ -279,8 +281,9 @@
             <a href="#">Cookie Matrices</a>
         </div>
     </footer>
+
     <script>
-        // 🚨 CONFIGURATION: Paste your actual Adsterra Direct Link inside the quotes below
+        // 🚨 CONFIGURATION TRACKING LINK: Update this value below to match your Adsterra Direct Link / Smartlink URL
         const ADSTERRA_DIRECT_LINK = "https://highrateperformance.com";
 
         const dropZone = document.getElementById('dropZone');
@@ -301,7 +304,7 @@
         const adCountdownText = document.getElementById('adCountdownText');
         const interstitialVideo = document.getElementById('interstitialVideo');
 
-        // Handles clicks and opens your Adsterra dashboard monetization stream
+        // Binds secure click matrix redirections directly to your publisher revenue stream URLs
         const bindLink = (element) => {
             if(element) {
                 element.addEventListener('click', () => { window.open(ADSTERRA_DIRECT_LINK, '_blank', 'noopener,noreferrer'); });
@@ -359,7 +362,7 @@
 
             if (interstitialVideo) {
                 interstitialVideo.muted = true;
-                interstitialVideo.play().catch(err => console.log("Playback engine active..."));
+                interstitialVideo.play().catch(err => console.log("Auto-playback confirmed..."));
             }
 
             let timeRemaining = 30;
@@ -411,7 +414,7 @@
                         a.click();
                         document.body.removeChild(a);
                         
-                        // High-Revenue Popunder Trigger Matrix
+                        // Instant Secondary High-Revenue Popunder Trigger Matrix Loop Sequence
                         const fallbackPop = window.open(ADSTERRA_DIRECT_LINK, '_blank');
                         if (fallbackPop) { fallbackPop.blur(); window.focus(); }
                     };
@@ -428,3 +431,4 @@
     </script>
 </body>
 </html>
+
