@@ -35,7 +35,7 @@
         header h1 { font-size: 1.5rem; font-weight: 700; color: var(--text-main); }
         .branding-pill { background: rgba(37, 99, 235, 0.2); color: #60a5fa; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.85rem; font-weight: 600; }
         
-        .top-ad-placement { width: 100%; max-width: 728px; height: 90px; margin: 1rem auto 0 auto; display: flex; justify-content: center; align-items: center; background: #0f172a; border-radius: 4px; overflow: hidden; }
+        .top-ad-placement { width: 100%; max-width: 728px; height: 90px; margin: 1rem auto 0 auto; display: flex; justify-content: center; align-items: center; background: #1e293b; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; cursor: pointer; position: relative; }
         .layout-container { display: grid; grid-template-columns: 1fr 320px; gap: 2rem; max-width: 1400px; width: 100%; margin: 1.5rem auto; padding: 0 2rem; flex: 1; }
         
         main { display: flex; flex-direction: column; gap: 2rem; }
@@ -46,7 +46,6 @@
         .drop-zone:hover { border-color: var(--accent); }
         .drop-zone p { color: var(--text-muted); margin-top: 0.5rem; }
         
-        /* Side-by-Side Split Screen Viewport Design Layout */
         .preview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem; }
         .preview-box { background: #0f172a; border: 1px solid var(--border); border-radius: 8px; padding: 1rem; text-align: center; min-height: 240px; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; overflow: hidden; }
         .preview-box h4 { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; width: 100%; text-align: left; border-bottom: 1px solid #233148; padding-bottom: 0.25rem; }
@@ -54,10 +53,9 @@
         .video-container video { width: 100%; height: 100%; object-fit: contain; }
         .placeholder-text { color: var(--text-muted); font-size: 0.9rem; padding: 1rem; }
 
-        /* Conversion Progress Video Interstitial Overlays */
         .ad-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.98); z-index: 100; display: none; flex-direction: column; justify-content: center; align-items: center; padding: 1.5rem; border-radius: 12px; }
         .ad-overlay-title { font-size: 1.1rem; font-weight: 600; color: var(--warning-gold); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; text-align: center; }
-        .ad-video-frame { width: 100%; max-width: 480px; height: 270px; background: #000; border-radius: 6px; overflow: hidden; border: 1px solid var(--border); position: relative; }
+        .ad-video-frame { width: 100%; max-width: 480px; height: 270px; background: #000; border-radius: 6px; overflow: hidden; border: 1px solid var(--border); position: relative; cursor: pointer; }
         .ad-countdown { position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.85); padding: 0.35rem 0.75rem; border-radius: 4px; font-size: 0.8rem; font-weight: bold; color: #fff; z-index: 110; }
         
         .options-group { margin-bottom: 1.5rem; }
@@ -79,10 +77,10 @@
         .ad-sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
         .ad-sticky-container { position: sticky; top: 2rem; background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 1rem; text-align: center; width: 100%; min-height: 620px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; }
         .ad-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem; font-weight: 600; }
-        .sidebar-ad-wrapper { width: 160px; height: 600px; overflow: hidden; display: block; background: #0f172a; border-radius: 6px; }
+        .sidebar-ad-wrapper { width: 160px; height: 600px; overflow: hidden; display: block; background: #0f172a; border-radius: 6px; cursor: pointer; position: relative; border: 1px solid var(--border); }
 
-        .mobile-sticky-footer-ad { position: fixed; bottom: 0; left: 0; width: 100%; height: 50px; background: #1e293b; border-top: 1px solid var(--border); display: none; justify-content: center; align-items: center; z-index: 1000; box-shadow: 0 -2px 10px rgba(0,0,0,0.5); }
-        .mobile-ad-container { width: 320px; height: 50px; overflow: hidden; }
+        .mobile-sticky-footer-ad { position: fixed; bottom: 0; left: 0; width: 100%; height: 50px; background: #1e293b; border-top: 1px solid var(--border); display: none; justify-content: center; align-items: center; z-index: 1000; box-shadow: 0 -2px 10px rgba(0,0,0,0.5); cursor: pointer; }
+        .mobile-ad-container { width: 320px; height: 50px; overflow: hidden; position: relative; }
 
         footer { background: var(--card-bg); border-top: 1px solid var(--border); text-align: center; padding: 1.5rem; margin-top: auto; font-size: 0.85rem; color: var(--text-muted); }
 
@@ -104,33 +102,29 @@
         <div class="branding-pill">100% Private Local Sandbox</div>
     </header>
 
-    <!-- Top 728x90 Leaderboard Code Unit Restored -->
-    <div class="top-ad-placement">
-        <script type="text/javascript">
-            atOptions = {
-                'key' : '88032a6e282fe35647ad2826fccb53c3',
-                'format' : 'iframe',
-                'height' : 90,
-                'width' : 728,
-                'params' : {}
-            };
-        </script>
-        <script type="text/javascript" src="https://highrateperformance.com"></script>
+    <!-- Unblockable Native Leaderboard Display Frame -->
+    <div class="top-ad-placement" id="leaderboardAdClickNode">
+        <div style="color: #60a5fa; font-size: 0.9rem; font-weight: bold; letter-spacing: 0.05em; text-align: center; width: 100%;">
+            ⚡ SPONSORED PLACEMENT: CLICK HERE TO CHECK HIGHEST ACCELERATION SPEED STREAM
+        </div>
     </div>
 
     <div class="layout-container">
         <main>
             <section class="card" style="position: relative;">
-                <!-- 30-Second Interstitial Video Ad Overlay Frame Container Layer -->
+                <!-- 30-Second Interstitial Video Ad Overlay Container Layer -->
                 <div class="ad-overlay" id="adOverlayLayer">
                     <div class="ad-overlay-title">
                         <span>⏳ Hardware Sandbox Calibration Running...</span>
                     </div>
-                    <div class="ad-video-frame">
+                    <div class="ad-video-frame" id="interstitialAdClickNode">
                         <div class="ad-countdown" id="adCountdownText">Ad: 30s</div>
                         <video id="interstitialVideo" width="100%" height="100%" autoplay muted loop playsinline style="object-fit: cover;">
                             <source src="https://googleapis.com" type="video/mp4">
                         </video>
+                        <div style="position:absolute; bottom:0; left:0; width:100%; background:rgba(37,99,235,0.95); color:#fff; text-align:center; font-size:0.8rem; padding:0.35rem; font-weight:bold;">
+                            👉 CLICK HERE TO VERIFY ACCELERATED BROWSER BUFFER CHANNELS
+                        </div>
                     </div>
                     <p style="font-size:0.8rem; color: var(--text-muted); margin-top:1rem; text-align:center; max-width:440px;">
                         Please leave this window open. The serverless local hardware pipeline is parsing data allocations.
@@ -145,7 +139,7 @@
                     <input type="file" id="fileInput" style="display: none;" accept="video/*">
                 </div>
 
-                <!-- Verified Split-Screen Feature Layer Preview Windows -->
+                <!-- Your Unique Split-Screen Preview Components -->
                 <div class="preview-grid">
                     <div class="preview-box">
                         <h4>Original Video</h4>
@@ -215,36 +209,26 @@
         <aside class="ad-sidebar">
             <div class="ad-sticky-container">
                 <div class="ad-label">Sponsored Presentation</div>
-                <div class="sidebar-ad-wrapper">
-                    <!-- Right Skyscraper 160x600 Ad Unit Restored -->
-                    <script type="text/javascript">
-                        atOptions = {
-                            'key' : '88032a6e282fe35647ad2826fccb53c3',
-                            'format' : 'iframe',
-                            'height' : 600,
-                            'width' : 160,
-                            'params' : {}
-                        };
-                    </script>
-                    <script type="text/javascript" src="https://highrateperformance.com"></script>
+                <!-- Unblockable Native Skyscraper Component Slot -->
+                <div class="sidebar-ad-wrapper" id="desktopAdClickNode">
+                    <video width="100%" height="100%" autoplay muted loop playsinline style="object-fit: cover; pointer-events: none;">
+                        <source src="https://googleapis.com" type="video/mp4">
+                    </video>
+                    <div style="position:absolute; bottom:0; left:0; width:100%; background:rgba(15,23,42,0.92); color:#fff; font-size:0.8rem; padding:0.75rem; text-align:center; font-weight:bold;">
+                        📺 CLICK HERE TO STREAM RECOMMENDED DEALS
+                    </div>
                 </div>
             </div>
         </aside>
     </div>
 
     <!-- Mobile-Sticky Footer Base Ad Unit Restored -->
-    <div class="mobile-sticky-footer-ad">
-        <div class="mobile-ad-container">
-            <script type="text/javascript">
-                atOptions = {
-                    'key' : '31949393',
-                    'format' : 'iframe',
-                    'height' : 50,
-                    'width' : 320,
-                    'params' : {}
-                };
-            </script>
-            <script type="text/javascript" src="https://highrateperformance.com"></script>
+    <div class="mobile-sticky-footer-ad" id="mobileStickyClickNode">
+        <div class="mobile-ad-container" style="display:flex; justify-content:center; align-items:center;">
+            <div style="color:#fff; font-size:0.8rem; font-weight:bold; letter-spacing:0.03em;">
+                <span style="background:#ef4444; padding:0.15rem 0.4rem; border-radius:3px; font-size:0.7rem; margin-right:0.5rem;">LIVE</span>
+                <span>🔥 CLICK HERE TO CHECK HIGHEST ACCELERATION SPEED STREAM</span>
+            </div>
         </div>
     </div>
 
@@ -252,6 +236,9 @@
         <p>&copy; 2026 NovaConvert | Managed by BPGame. All rights reserved.</p>
     </footer>
     <script>
+        // 🚨 HIGH REVENUE INTEGRATION POINT: Update the link below to your exact Adsterra Direct / Smartlink URL!
+        const ADSTERRA_TARGET_LINK = "https://highrateperformance.com";
+
         const dropZone = document.getElementById('dropZone');
         const fileInput = document.getElementById('fileInput');
         const startBtn = document.getElementById('startBtn');
@@ -270,16 +257,24 @@
         const adCountdownText = document.getElementById('adCountdownText');
         const interstitialVideo = document.getElementById('interstitialVideo');
 
+        // Binds secure click redirection vectors cleanly to bypass all network script firewalls
+        const bindRevenueNode = (element) => {
+            if(element) {
+                element.addEventListener('click', () => { window.open(ADSTERRA_TARGET_LINK, '_blank', 'noopener,noreferrer'); });
+            }
+        };
+        bindRevenueNode(document.getElementById('leaderboardAdClickNode'));
+        bindRevenueNode(document.getElementById('interstitialAdClickNode'));
+        bindRevenueNode(document.getElementById('desktopAdClickNode'));
+        bindRevenueNode(document.getElementById('mobileStickyClickNode'));
+
         let loadedFile = null;
         let sourceObjectURL = null;
 
-        // Force deregistration of stale service workers to smash local cache loops permanently
+        // Force unregister stale legacy service worker cache nodes completely from user disk memory
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.getRegistrations().then(function(registrations) {
-                for(let registration of registrations) {
-                    registration.unregister();
-                    console.log('Legacy cache block dropped successfully.');
-                }
+                for(let registration of registrations) { registration.unregister(); }
             });
         }
 
@@ -313,7 +308,7 @@
             convVideoPlayer.style.display = 'none';
             convVideoPlayer.src = '';
             convPlaceholder.style.display = 'block';
-            convPlaceholder.textContent = "Awaiting hardware loop conversion compilation... ";
+            convPlaceholder.textContent = "Awaiting conversion...";
         }
 
         startBtn.addEventListener('click', () => {
@@ -323,7 +318,7 @@
 
             if (interstitialVideo) {
                 interstitialVideo.muted = true;
-                interstitialVideo.play().catch(err => console.log("Overlay context ready..."));
+                interstitialVideo.play().catch(err => console.log("Overlay container calibrated..."));
             }
 
             let timeRemaining = 30;
