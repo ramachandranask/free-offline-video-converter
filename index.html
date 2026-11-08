@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NovaConvert | Free Offline Video Converter Sandbox (No Data Upload)</title>
     
-    <!-- SEO & AI Discovery Optimization Matrix -->
+    <!-- SEO Optimization Matrix -->
     <meta name="description" content="Convert video and audio files 100% locally in your browser. Fully private client-side local sandbox with zero data upload fees. Supports MP4, MKV, WebM, MP3.">
     <meta name="keywords" content="zero data usage video converter, offline media encoder, GDPR-compliant video converter, secure browser file sandbox, client-side video conversion">
     <meta name="robots" content="index, follow">
@@ -90,13 +90,14 @@
         }
     </style>
 </head>
+
 <body>
     <header>
         <h1>NovaConvert</h1>
         <div class="branding-pill">100% Private Local Sandbox</div>
     </header>
 
-    <!-- Visual Leaderboard Banner -->
+    <!-- Visual Leaderboard Banner Block -->
     <div class="top-ad-placement" id="leaderboardAdClickNode">
         <div style="text-align: center; padding: 10px;">
             <div style="color: #fff; font-size: 1rem; font-weight: bold; text-transform: uppercase;">🚀 Cloud Video Acceleration Active</div>
@@ -134,7 +135,7 @@
                     <input type="file" id="fileInput" style="display: none;" accept="video/*">
                 </div>
 
-                <!-- Your Unique Value-Add Split-Screen Preview Components -->
+                <!-- Verified Split-Screen Feature Layer Preview Windows -->
                 <div class="preview-grid">
                     <div class="preview-box">
                         <h4>Original Video</h4>
@@ -204,7 +205,7 @@
         <aside class="ad-sidebar">
             <div class="ad-sticky-container">
                 <div class="ad-label">Sponsored Presentation</div>
-                <!-- Visual High-Impact Skyscraper Card -->
+                <!-- Visual High-Impact Skyscraper Card Module -->
                 <div class="sidebar-ad-wrapper" id="desktopAdClickNode">
                     <div style="font-size: 2.5rem; margin-bottom: 1rem;">🎬</div>
                     <div style="color: #fff; font-size: 1.1rem; font-weight: bold; text-transform: uppercase; margin-bottom: 10px; line-height: 1.3;">Stream Premium Channels</div>
@@ -226,10 +227,11 @@
     <footer>
         <p>&copy; 2026 NovaConvert | Managed by BPGame. All rights reserved.</p>
     </footer>
+
     <script>
-        // 🚨 HIGH REVENUE ADSTERRA SMARTLINK COUPLING CONFIGURATION
-        // Go to Adsterra Dashboard -> Direct Links -> Copy Link -> Paste it inside the quotes below:
-        const ADSTERRA_TARGET_LINK = "https://highrateperformance.com";
+        // 🚨 HIGH REVENUE ADSTERRA SMARTLINK REPLACEMENT NODE
+        // Go to your Adsterra dashboard, copy your active Direct Link / SmartLink URL, and paste it below:
+        const ADSTERRA_TARGET_LINK = "https://your-new-working-smartlink-here.com";
 
         const dropZone = document.getElementById('dropZone');
         const fileInput = document.getElementById('fileInput');
@@ -263,7 +265,7 @@
         let loadedFile = null;
         let sourceObjectURL = null;
 
-        // Force completely wipe old legacy cached files from disk loops safely
+        // Force completely wipe old legacy cached service worker structures from local disk memory
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.getRegistrations().then(function(registrations) {
                 for(let registration of registrations) { registration.unregister(); }
@@ -276,10 +278,10 @@
         dropZone.addEventListener('drop', (e) => {
             e.preventDefault();
             dropZone.style.borderColor = '#475569';
-            if (e.dataTransfer.files.length > 0) handleFileSelect(e.dataTransfer.files);
+            if (e.dataTransfer.files.length > 0) handleFileSelect(e.dataTransfer.files[0]);
         });
         fileInput.addEventListener('change', (e) => {
-            if (e.target.files.length > 0) handleFileSelect(e.target.files);
+            if (e.target.files.length > 0) handleFileSelect(e.target.files[0]);
         });
 
         function handleFileSelect(file) {
@@ -300,7 +302,7 @@
             convVideoPlayer.style.display = 'none';
             convVideoPlayer.src = '';
             convPlaceholder.style.display = 'block';
-            convPlaceholder.textContent = "Awaiting conversion...";
+            convPlaceholder.textContent = "Awaiting hardware loop conversion compilation...";
         }
 
         startBtn.addEventListener('click', () => {
@@ -310,7 +312,7 @@
 
             if (interstitialVideo) {
                 interstitialVideo.muted = true;
-                interstitialVideo.play().catch(err => console.log("Overlay container calibrated..."));
+                interstitialVideo.play().catch(err => console.log("Overlay video initialization confirmed."));
             }
 
             let timeRemaining = 30;
@@ -373,3 +375,4 @@
     </script>
 </body>
 </html>
+
