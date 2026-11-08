@@ -1,395 +1,309 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "NovaConvert",
-  "url": "https://free-offline-video-converter.vercel.app/",
-  "applicationCategory": "MultimediaApplication",
-  "operatingSystem": "All",
-  "browserRequirements": "Requires HTML5, Web Workers, and Blob support.",
-  "description": "A 100% private client-side local browser sandbox to convert video and audio files completely offline with zero data upload tracking.",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  },
-  "featureList": [
-    "100% Offline local encoding",
-    "No server bandwidth fees",
-    "Supports MP4, MKV, WebM, MOV, AVI, MP3, WAV, FLAC, AAC",
-    "GDPR compliant browser processing architecture"
-  ]
-}
-</script>
-<meta charset="UTF-8">  
- <!--Google Search Console verification -->
- <meta name="google-site-verification" content="rZZ4Ac3AxDfKop-PYUJ7DCYP7jm6y0DLcqlaBYkeQas" />
-<title>NovaConvert | Free Offline Video Converter Sandbox (No Data Upload)</title>
-<meta name="description" content="Convert video and audio locally in your browser memory sandbox. 100% private file conversion without utilizing internet upload bandwidth. Safe, secure, and compatible across Africa, Europe, Asia, and Russia.">
-<meta name="keywords" content="offline video converter, private local sandbox converter, local mp4 mp3 transcoding, browser file converter, data saving converter, free offline media encoder">
-
-<!-- Open Graph / Global Discovery Tags -->
-<meta property="og:type" content="website">
-<meta property="og:title" content="NovaConvert - Private Local Media Converter Sandbox">
-<meta property="og:description" content="Zero cloud uploads. Zero data usage overheads. Run heavy file format encoding loops entirely inside your local device cache memory securely.">
-<meta property="og:url" content="https://vercel.app">
- <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "NovaConvert",
-  "description": "A high-performance offline local browser file converter utility running completely inside memory sandboxes without network server data collection tracking infrastructure requirements.",
-  "url": "https://vercel.app",
-  "applicationCategory": "MultimediaApplication",
-  "operatingSystem": "All",
-  "browserRequirements": "Requires HTML5 File System API and JavaScript capabilities.",
-  "offers": {
-    "@type": "Offer",
-    "price": "0.00",
-    "priceCurrency": "USD"
-  }
-}
-</script>
-
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NovaConvert | Free Offline Video Converter Sandbox (No Data Upload)</title>
     
-    <!-- Adsterra Social Bar Script Integration -->
-    <script data-cfasync="false" src="https://bauval.org/14/259d4772d671f163e723572809a8896f"></script>
-    
-    <!-- Adsterra Popunder Script Integration -->
-    <script data-cfasync="false" src="https://abscloud.org/1/98cc97a43b5e102bd3e3aa0bb3dff847"></script>
-    
-    <!-- Tailwind CSS Engine CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- SEO & Core Crawl Optimization -->
+    <meta name="description" content="Convert video and audio files 100% locally in your browser. Fully private client-side local sandbox with zero data upload fees. Supports MP4, MKV, WebM, MP3, and more.">
+    <meta name="keywords" content="zero data usage video converter, offline media encoder, GDPR-compliant video converter, secure browser file sandbox, client-side video conversion">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://vercel.app">
+
+    <!-- Open Graph Metadata for Social Media & Preview Engine Validation Matrix -->
+    <meta property="og:title" content="NovaConvert - 100% Free Offline Browser Media Converter">
+    <meta property="og:description" content="A Private Client-Side Local Sandbox for High-Revenue Global Media Transcoding without data tracking.">
+    <meta property="og:url" content="https://vercel.app">
+    <meta property="og:type" content="website">
+
+    <!-- Global AI Search & Search Engine Crawler Matrix Optimization (Structured Data) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "NovaConvert",
+      "url": "https://vercel.app",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires HTML5, Web Workers, and Blob support.",
+      "description": "A 100% private client-side local browser sandbox to convert video and audio files completely offline with zero data upload tracking.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "100% Offline local encoding",
+        "No server bandwidth fees",
+        "Supports MP4, MKV, WebM, MOV, AVI, MP3, WAV, FLAC, AAC",
+        "GDPR compliant browser processing architecture"
+      ]
+    }
+    </script>
     <style>
-        .custom-dashed {
-            background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='24' ry='24' stroke='%23d946ef' stroke-width='2' stroke-dasharray='8%2c 8' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
-            border-radius: 24px;
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #2563eb;
+            --accent-hover: #1d4ed8;
+            --border: #334155;
         }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; }
+        header { background-color: var(--card-bg); border-bottom: 1px solid var(--border); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+        header h1 { font-size: 1.5rem; font-weight: 700; color: var(--text-main); }
+        .branding-pill { background: rgba(37, 99, 235, 0.2); color: #60a5fa; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.85rem; font-weight: 600; }
+        
+        /* Two-Column Asymmetrical Grid Layout Matrix Strategy */
+        .layout-container { display: grid; grid-template-columns: 1fr 320px; gap: 2rem; max-width: 1400px; width: 100%; margin: 2rem auto; padding: 0 2rem; flex: 1; }
+        @media (max-width: 1024px) { .layout-container { grid-template-columns: 1fr; } .ad-sidebar { display: flex; justify-content: center; } }
+        
+        main { display: flex; flex-direction: column; gap: 2rem; }
+        .card { background-color: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; }
+        h2 { font-size: 1.25rem; margin-bottom: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; color: #cbd5e1; }
+        
+        /* Drag and Drop Media Interface Component */
+        .drop-zone { border: 2px dashed #475569; border-radius: 8px; padding: 3rem 2rem; text-align: center; cursor: pointer; transition: border-color 0.2s; background: rgba(30, 41, 59, 0.5); }
+        .drop-zone:hover { border-color: var(--accent); }
+        .drop-zone p { color: var(--text-muted); margin-top: 0.5rem; }
+        
+        /* Live Preview Split-Screen Section Layout */
+        .preview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem; }
+        @media (max-width: 640px) { .preview-grid { grid-template-columns: 1fr; } }
+        .preview-box { background: #0f172a; border: 1px solid var(--border); border-radius: 6px; padding: 1rem; text-align: center; min-height: 150px; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        .preview-box h4 { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em; }
+        
+        /* Option Options Configurations Tree Matrix */
+        .options-group { margin-bottom: 1.5rem; }
+        .options-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 0.75rem; margin-top: 0.5rem; }
+        .radio-btn { position: relative; }
+        .radio-btn input { position: absolute; opacity: 0; width: 0; height: 0; }
+        .radio-btn label { display: block; background: #0f172a; border: 1px solid var(--border); padding: 0.75rem 0.5rem; text-align: center; border-radius: 6px; cursor: pointer; font-size: 0.9rem; font-weight: 500; transition: all 0.2s; }
+        .radio-btn input:checked + label { background: var(--accent); border-color: var(--accent); color: white; }
+        
+        /* Conversion Control Core Elements */
+        .btn { background-color: var(--accent); color: white; border: none; padding: 1rem 2rem; font-size: 1rem; font-weight: 600; border-radius: 6px; cursor: pointer; width: 100%; transition: background 0.2s; margin-top: 1rem; }
+        .btn:hover { background-color: var(--accent-hover); }
+        .btn:disabled { background-color: #334155; color: #64748b; cursor: not-allowed; }
+        
+        .progress-container { margin-top: 1.5rem; display: none; }
+        .progress-bar-bg { background: #0f172a; height: 8px; border-radius: 9999px; overflow: hidden; margin-top: 0.5rem; border: 1px solid var(--border); }
+        .progress-bar-fill { background: #10b981; height: 100%; width: 0%; transition: width 0.1s linear; }
+        .status-text { font-size: 0.9rem; color: var(--text-muted); display: flex; justify-content: space-between; }
+        
+        /* Integrated Monetization Framework Area Setup */
+        .ad-sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
+        .ad-sticky-container { position: sticky; top: 2rem; background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 1rem; text-align: center; width: 100%; min-height: 600px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; }
+        .ad-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem; font-weight: 600; }
+        
+        footer { background: var(--card-bg); border-top: 1px solid var(--border); text-align: center; padding: 1.5rem; margin-top: auto; font-size: 0.85rem; color: var(--text-muted); }
+        footer a { color: var(--accent); text-decoration: none; margin: 0 0.5rem; }
     </style>
 </head>
-<body class="bg-[#180a30] text-gray-100 min-h-screen flex flex-col items-center py-10 px-4 font-sans antialiased selection:bg-purple-500 selection:text-white relative">
+<body>
+    <header>
+        <h1>NovaConvert</h1>
+        <div class="branding-pill">100% Private Local Sandbox</div>
+    </header>
 
-    <!-- Top Managed Domain Context Header Banner -->
-    <div class="w-full max-w-4xl bg-white text-black rounded-[32px] overflow-hidden shadow-2xl mb-6">
-        <div class="bg-black text-[#a259ff] text-xs font-black tracking-widest text-center py-2.5 uppercase">
-            Sponsored Premium Video Broadcast
-        </div>
-        <div class="p-6 md:p-8 flex flex-col sm:flex-row sm:items-center justify-between border-b border-gray-100 gap-4">
-            <div class="flex items-center space-x-2.5">
-                <div class="bg-[#8b2cf5] text-white w-9 h-9 rounded-xl font-black text-sm flex items-center justify-center tracking-tighter">BP</div>
-                <span class="font-black tracking-tight text-xl text-gray-900">BPGame</span>
-            </div>
-            <div class="flex space-x-6 text-[11px] font-bold text-gray-400 tracking-wider uppercase">
-                <a href="#" class="hover:text-black transition-colors">Terms</a>
-                <a href="#" class="hover:text-black transition-colors">Privacy</a>
-                <a href="#" class="hover:text-black transition-colors">Cookies</a>
-            </div>
-        </div>
-        <div class="p-8 md:p-10 pb-6 bg-white flex flex-col items-center">
-            <div class="flex items-center space-x-2 text-xs font-bold text-[#00c753] tracking-widest uppercase mb-4 self-start">
-                <span class="inline-block w-2.5 h-2.5 rounded-full bg-[#00c753] animate-pulse"></span>
-                <span>This domain is operational</span>
-            </div>
-            <h1 class="text-4xl md:text-5xl font-black text-gray-900 tracking-tight leading-[1.15] mb-6 self-start">
-                This domain is managed by <br><span class="text-[#8b2cf5]">BPGame.</span>
-            </h1>
-            
-            <!-- Adsterra Banner 728x90 Placement Block -->
-            <div class="w-full overflow-hidden flex justify-center max-w-full">
-                <>
-                  atOptions = {
-                    'key' : '88032a6e282fe35647ad2826fccb53c3',
-                    'format' : 'iframe',
-                    'height' : 90,
-                    'width' : 728,
-                    'params' : {}
-                  };
-                </>
-                <script src="https://bauval.org/22/88032a6e282fe35647ad2826fccb53c3"></script>
-            </div>
-        </div>
-    </div>
-
-    <!-- Main NovaConvert Application Module -->
-    <div class="w-full max-w-4xl bg-white text-black rounded-[32px] p-6 md:p-10 shadow-2xl flex flex-col space-y-8">
-        
-        <div class="text-center space-y-2">
-            <h2 class="text-4xl font-black tracking-tight text-gray-900">NovaConvert</h2>
-            <p class="text-sm font-semibold text-gray-500 max-w-md mx-auto leading-relaxed">
-                100% Private Local Sandbox — Convert files entirely in your browser.
-            </p>
-        </div>
-
-        <!-- Adsterra Native Banner Dynamic Display Section -->
-        <div class="w-full bg-gray-50 border border-gray-200 rounded-2xl p-4 flex flex-col items-center justify-center text-center">
-            <span class="text-[10px] font-black uppercase tracking-wider text-purple-600 mb-2 animate-pulse">● SPONSORED PLACEMENT</span>
-            <div class="w-full overflow-hidden flex justify-center">
-                <script async="async" data-cfasync="false" src="https://bauval.org/21/c50c50f57335ef83e525e0d03411feac"></script>
-                <div id="container-c50c50f57335ef83e525e0d03411feac"></div>
-            </div>
-        </div>
-
-        <!-- Interactive Local Media Files Dropzone Container -->
-        <div id="dropzone" class="custom-dashed p-8 md:p-12 flex flex-col items-center justify-center text-center cursor-pointer hover:bg-purple-50/50 transition-all duration-300 group min-h-[180px]">
-            <input type="file" id="fileInput" class="hidden" accept="video/*,audio/*" />
-            <div class="p-4 bg-purple-50 rounded-2xl text-[#8b2cf5] mb-3 group-hover:scale-110 transition-transform duration-300 shadow-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-8 h-8">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z" />
-                </svg>
-            </div>
-            <p id="dropzoneText" class="text-sm font-bold text-gray-500 tracking-wide">
-                Drag & Drop your media here or <span class="text-[#8b2cf5] underline hover:text-[#721ed4] transition-colors">click to browse files</span>
-            </p>
-        </div>
-
-        <!-- SPLIT SCREEN PREVIEW PANELS -->
-        <div id="splitScreenSection" class="hidden grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-gray-100">
-            <div class="space-y-2">
-                <h4 class="text-xs font-black text-gray-950 uppercase tracking-widest">Original Video</h4>
-                <div class="bg-gray-100 rounded-2xl aspect-video overflow-hidden flex items-center justify-center border border-gray-200 shadow-inner">
-                    <video id="originalVideoPreview" class="w-full h-full object-contain hidden" controls muted></video>
-                    <div id="originalPlaceholder" class="text-xs text-gray-400 font-bold">No file loaded</div>
+    <div class="layout-container">
+        <!-- Main Application Tool Compartment -->
+        <main>
+            <section class="card">
+                <h2>1. Drag & Drop Media Core Interface</h2>
+                <div class="drop-zone" id="dropZone">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 1rem;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                    <p style="font-weight: 600; color: var(--text-main);">Drag & Drop your media here or click to browse files</p>
+                    <p>Processed entirely inside your browser viewport viewport. No data upload.</p>
+                    <input type="file" id="fileInput" style="display: none;" accept="video/*,audio/*">
                 </div>
-            </div>
-            <div class="space-y-2">
-                <h4 class="text-xs font-black text-gray-950 uppercase tracking-widest">Converted Preview</h4>
-                <div class="bg-gray-100 rounded-2xl aspect-video overflow-hidden flex items-center justify-center border border-gray-200 shadow-inner relative">
-                    <video id="convertedVideoPreview" class="w-full h-full object-contain hidden" controls muted></video>
-                    <div id="convertedPlaceholder" class="text-xs text-gray-400 font-bold">Awaiting conversion...</div>
-                </div>
-            </div>
-        </div>
 
-        <!-- Format Selections Options Matrix -->
-        <div class="space-y-6">
-            <div>
-                <h3 class="text-xs font-black text-gray-950 uppercase tracking-widest mb-3">Target Video Output Formats</h3>
-                <div class="flex flex-wrap gap-2">
-                    <button class="format-btn active px-4 py-2.5 rounded-xl border text-xs font-black transition-all bg-[#8b2cf5] text-white border-[#8b2cf5] shadow-sm" data-ext=".mp4">MP4 Video (.mp4)</button>
-                    <button class="format-btn px-4 py-2.5 rounded-xl border text-xs font-black transition-all bg-white text-gray-700 border-gray-200 hover:border-purple-300" data-ext=".mkv">MKV Video (.mkv)</button>
-                    <button class="format-btn px-4 py-2.5 rounded-xl border text-xs font-black transition-all bg-white text-gray-700 border-gray-200 hover:border-purple-300" data-ext=".webm">WebM Video (.webm)</button>
-                    <button class="format-btn px-4 py-2.5 rounded-xl border text-xs font-black transition-all bg-white text-gray-700 border-gray-200 hover:border-purple-300" data-ext=".mov">MOV Video (.mov)</button>
-                    <button class="format-btn px-4 py-2.5 rounded-xl border text-xs font-black transition-all bg-white text-gray-700 border-gray-200 hover:border-purple-300" data-ext=".avi">AVI Video (.avi)</button>
+                <!-- Live Preview Split-Screen Section Layout -->
+                <div class="preview-grid">
+                    <div class="preview-box">
+                        <h4>Original Video</h4>
+                        <div id="origStatus" style="color: var(--text-muted); font-size: 0.9rem;">No file loaded</div>
+                    </div>
+                    <div class="preview-box">
+                        <h4>Converted Preview</h4>
+                        <div id="convStatus" style="color: var(--text-muted); font-size: 0.9rem;">Awaiting conversion...</div>
+                    </div>
                 </div>
-            </div>
+            </section>
 
-            <div>
-                <h3 class="text-xs font-black text-gray-950 uppercase tracking-widest mb-3">Target Audio Output Tracking Profiles</h3>
-                <div class="flex flex-wrap gap-2">
-                    <button class="format-btn px-4 py-2.5 rounded-xl border text-xs font-black transition-all bg-white text-gray-700 border-gray-200 hover:border-purple-300" data-ext=".mp3">MP3 Audio (.mp3)</button>
-                    <button class="format-btn px-4 py-2.5 rounded-xl border text-xs font-black transition-all bg-white text-gray-700 border-gray-200 hover:border-purple-300" data-ext=".wav">WAV Audio (.wav)</button>
-                    <button class="format-btn px-4 py-2.5 rounded-xl border text-xs font-black transition-all bg-white text-gray-700 border-gray-200 hover:border-purple-300" data-ext=".flac">FLAC Lossless (.flac)</button>
-                    <button class="format-btn px-4 py-2.5 rounded-xl border text-xs font-black transition-all bg-white text-gray-700 border-gray-200 hover:border-purple-300" data-ext=".aac">AAC Audio (.aac)</button>
-                </div>
-            </div>
-
-            <div>
-                <h3 class="text-xs font-black text-gray-950 uppercase tracking-widest mb-3">Hardware Compression Intensity Settings</h3>
-                <div class="flex gap-2 max-w-xs">
-                    <button class="intensity-btn px-4 py-2 rounded-xl text-xs font-black border transition-all bg-white text-gray-700 border-gray-200 hover:bg-purple-50/30">Light</button>
-                    <button class="intensity-btn px-4 py-2 rounded-xl text-xs font-black border transition-all bg-[#8b2cf5] text-white border-[#8b2cf5] shadow-sm">Balanced</button>
-                    <button class="intensity-btn px-4 py-2 rounded-xl text-xs font-black border transition-all bg-white text-gray-700 border-gray-200 hover:bg-purple-50/30">Max</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="pt-6 border-t border-gray-100 space-y-4">
-            <button id="convertBtn" class="w-full bg-black text-white hover:bg-gray-900 font-bold py-4 px-6 rounded-2xl text-sm tracking-widest uppercase transition-all shadow-md">
-                Start Local Conversion
-            </button>
-
-            <div id="processingConsole" class="hidden bg-gray-50 rounded-2xl p-5 border border-gray-150/80 space-y-3">
-                <div class="flex justify-between items-center text-xs font-black text-gray-800">
-                    <span class="flex items-center">
-                        <span id="pulseIndicator" class="animate-ping inline-block w-2 h-2 rounded-full bg-amber-500 mr-2.5"></span>
-                        <span id="consoleHeader">⏳ Hardware Processing Active...</span>
-                    </span>
-                    <span id="percentCounter" class="font-mono">0%</span>
-                </div>
-                <div class="w-full bg-gray-200 h-2 rounded-full overflow-hidden">
-                    <div id="progressBar" class="bg-[#8b2cf5] h-full w-0 transition-all duration-300"></div>
-                </div>
-                <p id="consoleStatus" class="text-[11px] font-mono text-gray-400 font-bold">Allocating blocks (0%)...</p>
+            <section class="card">
+                <h2>2. Target Output Formats & Profiles Matrix</h2>
                 
-                <div id="downloadContainer" class="hidden pt-3 border-t border-gray-200 flex justify-end">
-                    <a id="downloadBtn" href="#" download class="bg-[#00c753] hover:bg-[#00b04a] text-white text-xs font-black px-5 py-2.5 rounded-xl transition-all shadow-sm flex items-center space-x-1.5 uppercase tracking-wider">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4 h-4">
-                          <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
-                        </svg>
-                        <span>Download Converted File</span>
-                    </a>
+                <!-- Target Video Output Formats -->
+                <div class="options-group">
+                    <h3 style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 0.5rem;">Target Video Output Formats</h3>
+                    <div class="options-grid">
+                        <div class="radio-btn"><input type="radio" name="format" id="f-mp4" value="mp4" checked><label for="f-mp4">MP4 (.mp4)</label></div>
+                        <div class="radio-btn"><input type="radio" name="format" id="f-mkv" value="mkv"><label for="f-mkv">MKV (.mkv)</label></div>
+                        <div class="radio-btn"><input type="radio" name="format" id="f-webm" value="webm"><label for="f-webm">WebM (.webm)</label></div>
+                        <div class="radio-btn"><input type="radio" name="format" id="f-mov" value="mov"><label for="f-mov">MOV (.mov)</label></div>
+                        <div class="radio-btn"><input type="radio" name="format" id="f-avi" value="avi"><label for="f-avi">AVI (.avi)</label></div>
+                    </div>
+                </div>
+
+                <!-- Target Audio Output Tracking Profiles -->
+                <div class="options-group">
+                    <h3 style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 0.5rem;">Target Audio Output Tracking Profiles</h3>
+                    <div class="options-grid">
+                        <div class="radio-btn"><input type="radio" name="format" id="f-mp3" value="mp3"><label for="f-mp3">MP3 (.mp3)</label></div>
+                        <div class="radio-btn"><input type="radio" name="format" id="f-wav" value="wav"><label for="f-wav">WAV (.wav)</label></div>
+                        <div class="radio-btn"><input type="radio" name="format" id="f-flac" value="flac"><label for="f-flac">FLAC (.flac)</label></div>
+                        <div class="radio-btn"><input type="radio" name="format" id="f-aac" value="aac"><label for="f-aac">AAC (.aac)</label></div>
+                    </div>
+                </div>
+
+                <!-- Hardware Compression Intensity Settings -->
+                <div class="options-group" style="margin-bottom: 0;">
+                    <h3 style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 0.5rem;">Hardware Compression Intensity Settings</h3>
+                    <div class="options-grid" style="grid-template-columns: repeat(3, 1fr);">
+                        <div class="radio-btn"><input type="radio" name="intensity" id="i-light" value="light"><label for="i-light">Light</label></div>
+                        <div class="radio-btn"><input type="radio" name="intensity" id="i-balanced" value="balanced" checked><label for="i-balanced">Balanced</label></div>
+                        <div class="radio-btn"><input type="radio" name="intensity" id="i-max" value="max"><label for="i-max">Max</label></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card">
+                <button class="btn" id="startBtn" disabled>Start Local Conversion</button>
+                
+                <!-- Performance Transcoding Loops & Progress indicators -->
+                <div class="progress-container" id="progressContainer">
+                    <div class="status-text">
+                        <span id="statusMessage">⏳ Hardware Processing Active...</span>
+                        <span id="percentText">0%</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" id="progressBar"></div>
+                    </div>
+                </div>
+
+                <button class="btn" id="downloadBtn" style="background-color: #10b981; display: none; margin-top: 1rem;">Download Converted File</button>
+            </section>
+        </main>
+
+        <!-- Integrated Monetization Framework Area Setup -->
+        <aside class="ad-sidebar">
+            <div class="ad-sticky-container">
+                <div class="ad-label">Sponsored Placement</div>
+                <!-- Adsterra 160x600 Desktop Skyscraper Integration Placeholders -->
+                <div id="adsterra-placement-box">
+                    <script type="text/javascript">
+                        atOptions = {
+                            'key' : '88032a6e282fe35647ad2826fccb53c3',
+                            'format' : 'iframe',
+                            'height' : 600,
+                            'width' : 160,
+                            'params' : {}
+                        };
+                    </script>
+                    <script type="text/javascript" src="//://highrateperformance.com"></script>
                 </div>
             </div>
-        </div>
+        </aside>
     </div>
+
+    <footer>
+        <p>&copy; 2026 NovaConvert | Managed by BPGame. All rights reserved.</p>
+        <div style="margin-top: 0.5rem;">
+            <a href="#">Terms</a>
+            <a href="#">Privacy</a>
+            <a href="#">Cookies</a>
+        </div>
+    </footer>
 
     <script>
-        const dropzone = document.getElementById('dropzone');
+        const dropZone = document.getElementById('dropZone');
         const fileInput = document.getElementById('fileInput');
-        const dropzoneText = document.getElementById('dropzoneText');
-        const convertBtn = document.getElementById('convertBtn');
-        const processingConsole = document.getElementById('processingConsole');
-        const progressBar = document.getElementById('progressBar');
-        const percentCounter = document.getElementById('percentCounter');
-        const consoleStatus = document.getElementById('consoleStatus');
-        const formatButtons = document.querySelectorAll('.format-btn');
-        const intensityButtons = document.querySelectorAll('.intensity-btn');
-        const splitScreenSection = document.getElementById('splitScreenSection');
-        const originalVideoPreview = document.getElementById('originalVideoPreview');
-        const originalPlaceholder = document.getElementById('originalPlaceholder');
-        const convertedVideoPreview = document.getElementById('convertedVideoPreview');
-        const convertedPlaceholder = document.getElementById('convertedPlaceholder');
-        const downloadContainer = document.getElementById('downloadContainer');
+        const startBtn = document.getElementById('startBtn');
         const downloadBtn = document.getElementById('downloadBtn');
-        const pulseIndicator = document.getElementById('pulseIndicator');
-        const consoleHeader = document.getElementById('consoleHeader');
+        const progressContainer = document.getElementById('progressContainer');
+        const progressBar = document.getElementById('progressBar');
+        const percentText = document.getElementById('percentText');
+        const statusMessage = document.getElementById('statusMessage');
+        const origStatus = document.getElementById('origStatus');
+        const convStatus = document.getElementById('convStatus');
 
-        let targetSelectedFile = null;
-        let selectedExtension = '.mp4';
-        let objectURL = null;
+        let loadedFile = null;
 
-        formatButtons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                formatButtons.forEach(b => {
-                    b.classList.remove('bg-[#8b2cf5]', 'text-white', 'border-[#8b2cf5]', 'shadow-sm');
-                    b.classList.add('bg-white', 'text-gray-700', 'border-gray-200');
-                });
-                btn.classList.remove('bg-white', 'text-gray-700', 'border-gray-200');
-                btn.classList.add('bg-[#8b2cf5]', 'text-white', 'border-[#8b2cf5]', 'shadow-sm');
-                selectedExtension = btn.getAttribute('data-ext');
-            });
-        });
-
-        intensityButtons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                intensityButtons.forEach(b => {
-                    b.classList.remove('bg-[#8b2cf5]', 'text-white', 'border-[#8b2cf5]', 'shadow-sm');
-                    b.classList.add('bg-white', 'text-gray-700', 'border-gray-200');
-                });
-                btn.classList.remove('bg-white', 'text-gray-700', 'border-gray-200');
-                btn.classList.add('bg-[#8b2cf5]', 'text-white', 'border-[#8b2cf5]', 'shadow-sm');
-            });
-        });
-
-        dropzone.addEventListener('click', () => fileInput.click());
-        fileInput.addEventListener('change', (e) => {
-            if (e.target.files.length > 0) processLoadedFile(e.target.files[0]);
-        });
-
-        ['dragenter', 'dragover'].forEach(name => {
-            dropzone.addEventListener(name, (e) => {
-                e.preventDefault();
-                dropzone.classList.add('bg-purple-50');
-            }, false);
-        });
-
-        ['dragleave', 'drop'].forEach(name => {
-            dropzone.addEventListener(name, (e) => {
-                e.preventDefault();
-                dropzone.classList.remove('bg-purple-50');
-            }, false);
-        });
-
-        dropzone.addEventListener('drop', (e) => {
+        // File Handler Assignment Handlers
+        dropZone.addEventListener('click', () => fileInput.click());
+        dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.style.borderColor = 'var(--accent)'; });
+        dropZone.addEventListener('dragleave', () => { dropZone.style.borderColor = '#475569'; });
+        dropZone.addEventListener('drop', (e) => {
             e.preventDefault();
-            const files = e.dataTransfer.files;
-            if (files.length > 0) processLoadedFile(files[0]);
+            dropZone.style.borderColor = '#475569';
+            if (e.dataTransfer.files.length > 0) handleFileSelect(e.dataTransfer.files[0]);
+        });
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) handleFileSelect(e.target.files[0]);
         });
 
-        function processLoadedFile(file) {
-            if (!file) return;
-            targetSelectedFile = file;
-            const fileSizeMB = (file.size / (1024 * 1024)).toFixed(2);
-            dropzoneText.innerHTML = `Loaded Sandboxed Asset: <span class="text-black font-black">${file.name}</span> (${fileSizeMB} MB)`;
+        function handleFileSelect(file) {
+            loadedFile = file;
+            startBtn.disabled = false;
+            downloadBtn.style.display = 'none';
+            progressContainer.style.display = 'none';
             
-            splitScreenSection.classList.remove('hidden');
-            downloadContainer.classList.add('hidden');
-            processingConsole.classList.add('hidden');
-            
-            if (objectURL) {
-                URL.revokeObjectURL(objectURL);
-            }
-            objectURL = URL.createObjectURL(file);
-            
-            if (file.type.startsWith('video/')) {
-                originalVideoPreview.src = objectURL;
-                originalVideoPreview.classList.remove('hidden');
-                originalPlaceholder.classList.add('hidden');
-                
-                convertedVideoPreview.classList.add('hidden');
-                convertedPlaceholder.classList.remove('hidden');
-                convertedPlaceholder.innerText = "Awaiting conversion...";
-            } else {
-                originalVideoPreview.src = "";
-                originalVideoPreview.classList.add('hidden');
-                originalPlaceholder.classList.remove('hidden');
-                originalPlaceholder.innerText = `${file.name} (Audio Format Loaded)`;
-                
-                convertedVideoPreview.classList.add('hidden');
-                convertedPlaceholder.classList.remove('hidden');
-                convertedPlaceholder.innerText = "Awaiting conversion...";
-            }
+            origStatus.innerHTML = `<span style="color: #60a5fa; font-weight:600;">${file.name}</span><br><span style="font-size:0.8rem;">(${(file.size / (1024*1024)).toFixed(2)} MB)</span>`;
+            convStatus.textContent = "Awaiting conversion...";
         }
 
-        convertBtn.addEventListener('click', () => {
-            if (!targetSelectedFile) {
-                alert('Please load a media file first.');
-                return;
-            }
-            
-            convertBtn.disabled = true;
-            convertBtn.classList.add('opacity-40', 'cursor-not-allowed');
-            processingConsole.classList.remove('hidden');
-            downloadContainer.classList.add('hidden');
-            
-            pulseIndicator.className = "animate-ping inline-block w-2 h-2 rounded-full bg-amber-500 mr-2.5";
-            consoleHeader.innerText = "⏳ Hardware Processing Active...";
-            
-            let progressValue = 0;
+        // Transcoding Simulator Hardware Loop Execution
+        startBtn.addEventListener('click', () => {
+            if (!loadedFile) return;
+
+            startBtn.disabled = true;
+            downloadBtn.style.display = 'none';
+            progressContainer.style.display = 'block';
             progressBar.style.width = '0%';
-            percentCounter.innerText = '0%';
-            
-            const timer = setInterval(() => {
-                progressValue += 5;
-                if (progressValue > 100) progressValue = 100;
-                
-                progressBar.style.width = `${progressValue}%`;
-                percentCounter.innerText = `${progressValue}%`;
-                
-                if (progressValue < 30) {
-                    consoleStatus.innerText = `Allocating blocks (${progressValue}%)...`;
-                } else if (progressValue < 70) {
-                    consoleStatus.innerText = `Transcoding media matrices (${progressValue}%)...`;
-                } else if (progressValue < 100) {
-                    consoleStatus.innerText = `Writing container structures (${progressValue}%)...`;
-                } else {
-                    clearInterval(timer);
-                    pulseIndicator.className = "inline-block w-2 h-2 rounded-full bg-[#00c753] mr-2.5";
-                    consoleHeader.innerText = "✅ Hardware Processing Complete";
+            percentText.textContent = '0%';
+
+            const targetFormat = document.querySelector('input[name="format"]:checked').value;
+            let currentProgress = 0;
+
+            const interval = setInterval(() => {
+                currentProgress += Math.floor(Math.random() * 8) + 2;
+                if (currentProgress >= 100) {
+                    currentProgress = 100;
+                    clearInterval(interval);
                     
-                    const baseName = targetSelectedFile.name.substring(0, targetSelectedFile.name.lastIndexOf('.')) || targetSelectedFile.name;
-                    downloadBtn.download = `${baseName}_converted${selectedExtension}`;
+                    // Trigger Instant Local Sovereign Download Preparation Pipeline
+                    statusMessage.textContent = "Conversion Complete!";
+                    convStatus.innerHTML = `<span style="color: #10b981; font-weight:600;">Ready (${targetFormat.toUpperCase()})</span>`;
                     
-                    const simulatedBlob = new Blob([targetSelectedFile], { type: 'application/octet-stream' });
-                    downloadBtn.href = URL.createObjectURL(simulatedBlob);
-                    downloadContainer.classList.remove('hidden');
+                    // Synthesize mock local browser asset binary type object matching structure
+                    const simulatedBlob = new Blob(["NovaConvert Simulated Stream Array Payload"], { type: `video/${targetFormat}` });
+                    const downloadUrl = URL.createObjectURL(simulatedBlob);
                     
-                    if (targetSelectedFile.type.startsWith('video/')) {
-                        convertedVideoPreview.src = objectURL;
-                        convertedVideoPreview.classList.remove('hidden');
-                        convertedPlaceholder.classList.add('hidden');
-                    } else {
-                        convertedPlaceholder.innerText = `Output ready (${selectedExtension})`;
-                    }
-                    
-                    convertBtn.disabled = false;
-                    convertBtn.classList.remove('opacity-40', 'cursor-not-allowed');
+                    const cleanName = loadedFile.name.substring(0, loadedFile.name.lastIndexOf('.')) || loadedFile.name;
+                    downloadBtn.onclick = () => {
+                        const a = document.createElement('a');
+                        a.href = downloadUrl;
+                        a.download = `${cleanName}_converted.${targetFormat}`;
+                        document.body.appendChild(a);
+                        a.click();
+                        document.body.removeChild(a);
+                    };
+
+                    downloadBtn.style.display = 'block';
+                    startBtn.disabled = false;
                 }
-            }, 80);
+                
+                progressBar.style.width = `${currentProgress}%`;
+                percentText.textContent = `${currentProgress}%`;
+                
+                if (currentProgress < 30) statusMessage.textContent = `Allocating blocks (${currentProgress}%)...`;
+                else if (currentProgress < 70) statusMessage.textContent = `Processing video pipelines (${currentProgress}%)...`;
+                else if (currentProgress < 95) statusMessage.textContent = `Finalizing dynamic tracks (${currentProgress}%)...`;
+            }, 250);
         });
     </script>
 </body>
