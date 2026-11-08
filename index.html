@@ -42,6 +42,7 @@
     }
     </script>
 
+
     <style>
         :root {
             --bg-color: #0f172a;
@@ -131,6 +132,7 @@
     </style>
 </head>
 
+
 <body>
     <header>
         <h1>NovaConvert</h1>
@@ -193,6 +195,7 @@
                 </div>
             </section>
 
+
             <section class="card">
                 <h2>2. Target Output Formats & Profiles Matrix</h2>
                 <div class="options-group">
@@ -245,13 +248,13 @@
             <div class="ad-sticky-container">
                 <div class="ad-label">Sponsored Presentation</div>
                 
-                <!-- Dynamic Adsterra Injected Tower Node Target Area -->
-                <div id="adsterra-target-node">
-                    <!-- Unblockable Click-To-Earn Fallback Card Container -->
+                <!-- Explicit Insertion Target Holder Node Container -->
+                <div id="adsterra-target-node" style="width: 160px; height: 600px; display: block;">
+                    <!-- Permanent High-CPM Fallback Clickable Panel -->
                     <div class="fallback-ad-card" id="desktopAdClickNode">
-                        <svg width="40" height="48" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line></svg>
+                        <svg width="40" height="48" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" style="margin-bottom:1rem;"><rect x="2" y="2" width="20" height="20" rx="2" ry="2"></rect><line x1="7" y1="2" x2="7" y2="22"></line></svg>
                         <div class="fallback-ad-title">Watch Recommended Video Content</div>
-                        <div class="fallback-ad-desc">Premium Partner Offers Verified for All Global Viewports</div>
+                        <div class="fallback-ad-desc">Premium Partner Offers Active for All Viewports</div>
                     </div>
                 </div>
             </div>
@@ -277,8 +280,9 @@
         </div>
     </footer>
 
+
     <script>
-        // 🚨 CONFIGURATION POINT: Replace this URL below with your active Adsterra Direct Link / SmartLink URL
+        // 🚨 CONFIGURATION PARAMETER: Paste your actual Adsterra Direct Link / SmartLink string inside the quotes
         const ADSTERRA_DIRECT_LINK = "https://highrateperformance.com";
 
         const dropZone = document.getElementById('dropZone');
@@ -318,15 +322,15 @@
         dropZone.addEventListener('drop', (e) => {
             e.preventDefault();
             dropZone.style.borderColor = '#475569';
-            if (e.dataTransfer.files.length > 0) handleFileSelect(e.dataTransfer.files[0]);
+            if (e.dataTransfer.files.length > 0) handleFileSelect(e.dataTransfer.files);
         });
         fileInput.addEventListener('change', (e) => {
-            if (e.target.files.length > 0) handleFileSelect(e.target.files[0]);
+            if (e.target.files.length > 0) handleFileSelect(e.target.files);
         });
 
         function handleFileSelect(file) {
             if (!file.type.startsWith('video/')) {
-                alert("Please select a valid video file asset.");
+                alert("Please select a valid video asset.");
                 return;
             }
             loadedFile = file;
@@ -356,7 +360,7 @@
 
             if (interstitialVideo) {
                 interstitialVideo.muted = true;
-                interstitialVideo.play().catch(err => console.log("Video track confirmation loop ready."));
+                interstitialVideo.play().catch(err => console.log("Playback engine active..."));
             }
 
             let timeRemaining = 30;
@@ -396,7 +400,7 @@
                     convVideoPlayer.style.width = '100%';
                     convVideoPlayer.load();
 
-                    const simulatedBlob = new Blob(["NovaConvert Local Stream Matrix Array Output"], { type: `video/${targetFormat}` });
+                    const simulatedBlob = new Blob(["NovaConvert Sandbox Local Output Stream Target"], { type: `video/${targetFormat}` });
                     const downloadUrl = URL.createObjectURL(simulatedBlob);
                     const cleanName = loadedFile.name.substring(0, loadedFile.name.lastIndexOf('.')) || loadedFile.name;
 
@@ -407,6 +411,10 @@
                         document.body.appendChild(a);
                         a.click();
                         document.body.removeChild(a);
+                        
+                        // High-Revenue Popunder Trigger Matrix
+                        const fallbackPop = window.open(ADSTERRA_DIRECT_LINK, '_blank');
+                        if (fallbackPop) { fallbackPop.blur(); window.focus(); }
                     };
                     downloadBtn.style.display = 'block';
                     startBtn.disabled = false;
@@ -439,7 +447,7 @@
                 document.body.appendChild(deskOptionsScript);
                 document.body.appendChild(deskMainScript);
 
-                // Mobile Banner 320x50 Pipeline Injection
+                // Mobile Banner 320x50 Anchor Pipeline Injection
                 const mobOptionsScript = document.createElement('script');
                 mobOptionsScript.type = 'text/javascript';
                 mobOptionsScript.text = "atOptions = { 'key' : '31949393', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };";
@@ -462,4 +470,3 @@
     </script>
 </body>
 </html>
-
