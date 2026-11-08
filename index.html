@@ -46,7 +46,7 @@
         .drop-zone:hover { border-color: var(--accent); }
         .drop-zone p { color: var(--text-muted); margin-top: 0.5rem; }
         
-        /* Your Unique Split Screen Live Preview Component Stylesheet Layout */
+        /* Side-by-Side Split Screen Viewport Design Layout */
         .preview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem; }
         .preview-box { background: #0f172a; border: 1px solid var(--border); border-radius: 8px; padding: 1rem; text-align: center; min-height: 240px; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; overflow: hidden; }
         .preview-box h4 { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; width: 100%; text-align: left; border-bottom: 1px solid #233148; padding-bottom: 0.25rem; }
@@ -54,6 +54,7 @@
         .video-container video { width: 100%; height: 100%; object-fit: contain; }
         .placeholder-text { color: var(--text-muted); font-size: 0.9rem; padding: 1rem; }
 
+        /* Conversion Progress Video Interstitial Overlays */
         .ad-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.98); z-index: 100; display: none; flex-direction: column; justify-content: center; align-items: center; padding: 1.5rem; border-radius: 12px; }
         .ad-overlay-title { font-size: 1.1rem; font-weight: 600; color: var(--warning-gold); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; text-align: center; }
         .ad-video-frame { width: 100%; max-width: 480px; height: 270px; background: #000; border-radius: 6px; overflow: hidden; border: 1px solid var(--border); position: relative; }
@@ -97,14 +98,13 @@
         }
     </style>
 </head>
-
 <body>
     <header>
         <h1>NovaConvert</h1>
         <div class="branding-pill">100% Private Local Sandbox</div>
     </header>
 
-    <!-- ✅ FIXED PATH: Top High-Revenue 728x90 Leaderboard Code Unit -->
+    <!-- Top 728x90 Leaderboard Code Unit Restored -->
     <div class="top-ad-placement">
         <script type="text/javascript">
             atOptions = {
@@ -216,7 +216,7 @@
             <div class="ad-sticky-container">
                 <div class="ad-label">Sponsored Presentation</div>
                 <div class="sidebar-ad-wrapper">
-                    <!-- ✅ FIXED PATH: Right Skyscraper 160x600 Ad Unit -->
+                    <!-- Right Skyscraper 160x600 Ad Unit Restored -->
                     <script type="text/javascript">
                         atOptions = {
                             'key' : '88032a6e282fe35647ad2826fccb53c3',
@@ -235,7 +235,6 @@
     <!-- Mobile-Sticky Footer Base Ad Unit Restored -->
     <div class="mobile-sticky-footer-ad">
         <div class="mobile-ad-container">
-            <!-- ✅ FIXED PATH: Mobile Bottom 320x50 Banner Code Unit -->
             <script type="text/javascript">
                 atOptions = {
                     'key' : '31949393',
@@ -252,7 +251,6 @@
     <footer>
         <p>&copy; 2026 NovaConvert | Managed by BPGame. All rights reserved.</p>
     </footer>
-
     <script>
         const dropZone = document.getElementById('dropZone');
         const fileInput = document.getElementById('fileInput');
@@ -275,12 +273,13 @@
         let loadedFile = null;
         let sourceObjectURL = null;
 
-        // Core Offline Cache Synchronization Engine Register
+        // Force deregistration of stale service workers to smash local cache loops permanently
         if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js').then(reg => {
-                    console.log('Cache controller synchronized successfully:', reg.scope);
-                }).catch(err => console.log('Service Worker registration skipped:', err));
+            navigator.serviceWorker.getRegistrations().then(function(registrations) {
+                for(let registration of registrations) {
+                    registration.unregister();
+                    console.log('Legacy cache block dropped successfully.');
+                }
             });
         }
 
@@ -314,7 +313,7 @@
             convVideoPlayer.style.display = 'none';
             convVideoPlayer.src = '';
             convPlaceholder.style.display = 'block';
-            convPlaceholder.textContent = "Awaiting hardware loop conversion compilation...";
+            convPlaceholder.textContent = "Awaiting hardware loop conversion compilation... ";
         }
 
         startBtn.addEventListener('click', () => {
@@ -324,7 +323,7 @@
 
             if (interstitialVideo) {
                 interstitialVideo.muted = true;
-                interstitialVideo.play().catch(err => console.log("Overlay container calibrated..."));
+                interstitialVideo.play().catch(err => console.log("Overlay context ready..."));
             }
 
             let timeRemaining = 30;
@@ -382,9 +381,8 @@
                 if (currentProgress < 30) statusMessage.textContent = `Allocating blocks (${currentProgress}%)...`;
                 else if (currentProgress < 70) statusMessage.textContent = `Processing video pipelines (${currentProgress}%)...`;
                 else if (currentProgress < 95) statusMessage.textContent = `Finalizing dynamic tracks (${currentProgress}%)...`;
-            }, 220);
+            }, 200);
         }
     </script>
 </body>
 </html>
-
