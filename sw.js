@@ -5,6 +5,7 @@ const ASSETS = [
   '/index.html'
 ];
 
+// Handles the service worker installation sequence and precaches the static core UI assets
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
@@ -14,6 +15,7 @@ self.addEventListener('install', (event) => {
   self.skipWaiting();
 });
 
+// Handles cache clearing migrations during script updates to prevent old UI layouts from persisting
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((keys) => {
@@ -29,11 +31,11 @@ self.addEventListener('activate', (event) => {
   self.clients.claim();
 });
 
-// Network Interceptor - Correctly routes monetization networks and app scripts
+// Network Interceptor - Correctly routes monetization networks and app scripts without breakages
 self.addEventListener('fetch', (event) => {
   const url = new URL(event.request.url);
   
-  // ⚡ LIVE PASSTHROUGH RULES (Ads, Cloud Services, Blobs, Forms)
+  // ⚡ LIVE PASSTHROUGH RULES (Bypasses caching completely for monetization traffic and ad-scripts)
   if (
     url.hostname.includes('adsterra') || 
     url.hostname.includes('display-ads') || 
