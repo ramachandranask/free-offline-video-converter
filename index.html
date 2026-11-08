@@ -9,12 +9,12 @@
     <meta name="description" content="Convert video and audio files 100% locally in your browser. Fully private client-side local sandbox with zero data upload fees. Supports MP4, MKV, WebM, MP3.">
     <meta name="keywords" content="zero data usage video converter, offline media encoder, GDPR-compliant video converter, secure browser file sandbox, client-side video conversion">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://vercel.app">
+    <link rel="canonical" href="https://free-offline-video-converter.vercel.app/">
 
     <!-- Open Graph Metadata for Preview Engines -->
     <meta property="og:title" content="NovaConvert - 100% Free Offline Browser Media Converter">
     <meta property="og:description" content="A Private Client-Side Local Sandbox for High-Revenue Global Media Transcoding without data tracking.">
-    <meta property="og:url" content="https://vercel.app">
+    <meta property="og:url" content="https://free-offline-video-converter.vercel.app/">
     <meta property="og:type" content="website">
 
     <!-- Schema Structured Data for AI Engine Recommendations -->
@@ -23,7 +23,7 @@
       "@context": "https://schema.org",
       "@type": "WebApplication",
       "name": "NovaConvert",
-      "url": "https://vercel.app",
+      "url": "https://free-offline-video-converter.vercel.app/",
       "applicationCategory": "MultimediaApplication",
       "operatingSystem": "All",
       "browserRequirements": "Requires HTML5, Web Workers, and Blob support.",
@@ -189,12 +189,12 @@
         </main>
 
         <aside class="ad-sidebar">
-            <div class="ad-sticky-container">
+            <div class="ad-sticky-container" style="min-width: 160px; min-height: 600px;">
                 <div class="ad-label">Sponsored Presentation</div>
-                <div id="dynamic-monetization-injection-node"></div>
-                <div class="native-video-wrapper">
-                    <video id="nativeAdVideo" width="100%" height="auto" autoplay loop muted playsinline>
-                        <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-laser-lights-background-31782-large.mp4" type="video/mp4">
+                <div id="dynamic-monetization-injection-node" style="width: 160px; height: 600px; display: block; overflow: hidden; margin-bottom: 1rem;"></div>
+                <div class="native-video-wrapper" style="width: 100%; max-width: 280px; margin-top: 1rem; background: #000;">
+                    <video id="nativeAdVideo" width="100%" height="auto" autoplay loop muted playsinline crossorigin="anonymous" style="display: block;">
+                        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                 </div>
@@ -297,17 +297,26 @@
                 'width' : 160,
                 'params' : {}
             };
-            const payloadUrl = atob("aHR0cHM6Ly9oaWdocmF0ZXBlcmZvcm1hbmNlLmNvbS84ODAzMmE2ZTI4MmZlMzU2NDdhZDI4MjZmY2NiNTNjMy9pbnZva2UuanM=");
-            const scriptNode = document.createElement('script');
-            scriptNode.type = 'text/javascript';
-            scriptNode.src = payloadUrl;
-            scriptNode.async = true;
-            scriptNode.onerror = function() {
-                console.log("Routing traffic optimization fallbacks sequentially...");
-                const videoEl = document.getElementById('nativeAdVideo');
-                if(videoEl) { videoEl.style.border = "2px solid var(--accent)"; }
-            };
-            document.getElementById('dynamic-monetization-injection-node').appendChild(scriptNode);
+            try {
+                const payloadUrl = atob("aHR0cHM6Ly9oaWdocmF0ZXBlcmZvcm1hbmNlLmNvbS84ODAzMmE2ZTI4MmZlMzU2NDdhZDI4MjZmY2NiNTNjMy9pbnZva2UuanM=");
+                const scriptNode = document.createElement('script');
+                scriptNode.type = 'text/javascript';
+                scriptNode.src = payloadUrl;
+                scriptNode.async = true;
+                
+                scriptNode.onerror = function() {
+                    console.log("Adblocker detected or route blocked. Activating high-impact native video space.");
+                    const videoEl = document.getElementById('nativeAdVideo');
+                    if(videoEl) { 
+                        videoEl.style.border = "2px solid #2563eb"; 
+                    }
+                };
+                
+                const container = document.getElementById('dynamic-monetization-injection-node');
+                if(container) { container.appendChild(scriptNode); }
+            } catch(e) {
+                console.error("Monetization initialization error", e);
+            }
         })();
     </script>
 </body>
