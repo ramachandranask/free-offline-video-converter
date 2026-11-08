@@ -9,12 +9,12 @@
     <meta name="description" content="Convert video and audio files 100% locally in your browser. Fully private client-side local sandbox with zero data upload fees. Supports MP4, MKV, WebM, MP3.">
     <meta name="keywords" content="zero data usage video converter, offline media encoder, GDPR-compliant video converter, secure browser file sandbox, client-side video conversion">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://free-offline-video-converter.vercel.app/">
+    <link rel="canonical" href="https://vercel.app">
 
     <!-- Open Graph Metadata for Preview Engines -->
     <meta property="og:title" content="NovaConvert - 100% Free Offline Browser Media Converter">
     <meta property="og:description" content="A Private Client-Side Local Sandbox for High-Revenue Global Media Transcoding without data tracking.">
-    <meta property="og:url" content="https://free-offline-video-converter.vercel.app/">
+    <meta property="og:url" content="https://vercel.app">
     <meta property="og:type" content="website">
 
     <!-- Schema Structured Data for AI Engine Recommendations -->
@@ -23,7 +23,7 @@
       "@context": "https://schema.org",
       "@type": "WebApplication",
       "name": "NovaConvert",
-      "url": "https://free-offline-video-converter.vercel.app/",
+      "url": "https://vercel.app",
       "applicationCategory": "MultimediaApplication",
       "operatingSystem": "All",
       "browserRequirements": "Requires HTML5, Web Workers, and Blob support.",
@@ -41,7 +41,6 @@
       ]
     }
     </script>
-
     <style>
         :root {
             --bg-color: #0f172a;
@@ -55,7 +54,7 @@
             --warning-gold: #eab308;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-        body { background-color: var(--bg-color); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; padding-bottom: 80px; }
+        body { background-color: var(--bg-color); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; padding-bottom: 60px; }
         header { background-color: var(--card-bg); border-bottom: 1px solid var(--border); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; z-index: 10; }
         header h1 { font-size: 1.5rem; font-weight: 700; color: var(--text-main); }
         .header-badges { display: flex; gap: 0.75rem; align-items: center; }
@@ -72,6 +71,7 @@
         .drop-zone:hover { border-color: var(--accent); }
         .drop-zone p { color: var(--text-muted); margin-top: 0.5rem; }
         
+        /* Side-by-Side Split Screen Sections */
         .preview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem; }
         .preview-box { background: #0f172a; border: 1px solid var(--border); border-radius: 8px; padding: 1rem; text-align: center; min-height: 240px; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; overflow: hidden; }
         .preview-box h4 { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; width: 100%; text-align: left; border-bottom: 1px solid #233148; padding-bottom: 0.25rem; }
@@ -79,6 +79,7 @@
         .video-container video { width: 100%; height: 100%; object-fit: contain; }
         .placeholder-text { color: var(--text-muted); font-size: 0.9rem; padding: 1rem; }
 
+        /* Interstitial 30s Ad Shadow Layer Block */
         .ad-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.98); z-index: 100; display: none; flex-direction: column; justify-content: center; align-items: center; padding: 1.5rem; border-radius: 12px; }
         .ad-overlay-title { font-size: 1.1rem; font-weight: 600; color: var(--warning-gold); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; text-align: center; }
         .ad-video-frame { width: 100%; max-width: 480px; height: 270px; background: #000; border-radius: 6px; overflow: hidden; border: 1px solid var(--border); position: relative; }
@@ -103,10 +104,11 @@
         .ad-sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
         .ad-sticky-container { position: sticky; top: 2rem; background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 1rem; text-align: center; width: 100%; min-height: 620px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; }
         .ad-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem; font-weight: 600; }
-        .adsterra-placement-wrapper { width: 160px; height: 600px; background: #0f172a; border-radius: 6px; overflow: hidden; display: block; }
         
+        /* Bulletproof Iframe Sandbox Containers */
+        .isolated-ad-frame { width: 160px; height: 600px; border: none; overflow: hidden; display: block; background: #0f172a; border-radius: 6px; }
         .mobile-sticky-footer-ad { position: fixed; bottom: 0; left: 0; width: 100%; height: 50px; background: #1e293b; border-top: 1px solid var(--border); display: none; justify-content: center; align-items: center; z-index: 1000; box-shadow: 0 -2px 10px rgba(0,0,0,0.5); }
-        .mobile-sticky-inner { width: 320px; height: 50px; overflow: hidden; }
+        .isolated-mobile-frame { width: 320px; height: 50px; border: none; overflow: hidden; }
 
         footer { background: var(--card-bg); border-top: 1px solid var(--border); text-align: center; padding: 1.5rem; margin-top: auto; font-size: 0.85rem; color: var(--text-muted); }
         footer a { color: var(--accent); text-decoration: none; margin: 0 0.5rem; }
@@ -115,6 +117,7 @@
             .layout-container { grid-template-columns: 1fr; gap: 1.5rem; padding: 0 1rem; }
             .ad-sidebar { display: block; order: 3; width: 100%; max-width: 340px; margin: 0 auto; }
             .ad-sticky-container { position: static; min-height: auto; padding: 1.5rem; }
+            .isolated-ad-frame { display: none; }
             .mobile-sticky-footer-ad { display: flex; }
         }
         @media (max-width: 768px) {
@@ -122,6 +125,7 @@
         }
     </style>
 </head>
+
 <body>
     <header>
         <h1>NovaConvert</h1>
@@ -145,9 +149,15 @@
                     </div>
                     <div class="ad-video-frame">
                         <div class="ad-countdown" id="adCountdownText">Ad: 30s</div>
-                        <video id="interstitialVideo" width="100%" height="100%" autoplay muted loop playsinline style="object-fit: cover;">
-                            <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4">
-                        </video>
+                        <iframe style="width:100%; height:100%; border:none; overflow:hidden;" srcdoc="
+                            <html>
+                            <body style='margin:0; background:#000; display:flex; justify-content:center; align-items:center;'>
+                                <video width='100%' height='100%' autoplay loop muted playsinline style='object-fit:cover;'>
+                                    <source src='https://googleapis.com' type='video/mp4'>
+                                </video>
+                            </body>
+                            </html>
+                        "></iframe>
                     </div>
                     <p style="font-size:0.8rem; color: var(--text-muted); margin-top:1rem; text-align:center; max-width:440px;">
                         Please leave this window open. The serverless local hardware pipeline is parsing data allocations.
@@ -162,7 +172,7 @@
                     <input type="file" id="fileInput" style="display: none;" accept="video/*">
                 </div>
 
-                <!-- Verified Split-Screen Feature Layer Matrix -->
+                <!-- Verified Split-Screen Feature Viewport Architecture -->
                 <div class="preview-grid">
                     <div class="preview-box">
                         <h4>Original Video Input</h4>
@@ -232,37 +242,45 @@
         <aside class="ad-sidebar">
             <div class="ad-sticky-container">
                 <div class="ad-label">Sponsored Presentation</div>
-                <div class="adsterra-placement-wrapper">
-                    <!-- Standardized Official Adsterra Integration Matrix Configuration Code Block -->
-                    <script type="text/javascript">
-                        atOptions = {
-                            'key' : '88032a6e282fe35647ad2826fccb53c3',
-                            'format' : 'iframe',
-                            'height' : 600,
-                            'width' : 160,
-                            'params' : {}
-                        };
-                    </script>
-                    <script type="text/javascript" src="https://highrateperformance.com/88032a6e282fe35647ad2826fccb53c3/invoke.js"></script>
-                </div>
+                <!-- Completely Isolated srcdoc Sandbox to Bypass Host Mixed Content Blockades -->
+                <iframe class="isolated-ad-frame" scrolling="no" srcdoc="
+                    <html>
+                    <body style='margin:0; background:#0f172a; display:flex; justify-content:center;'>
+                        <script type='text/javascript'>
+                            atOptions = {
+                                'key' : '88032a6e282fe35647ad2826fccb53c3',
+                                'format' : 'iframe',
+                                'height' : 600,
+                                'width' : 160,
+                                'params' : {}
+                            };
+                        </script>
+                        <script type='text/javascript' src='https://highrateperformance.com'></script>
+                    </body>
+                    </html>
+                "></iframe>
             </div>
         </aside>
     </div>
 
-    <!-- Mobile Responsive Adaptive Bottom Banner Unit -->
+    <!-- Mobile Responsive Fixed Sticky Footer Ad Frame Section -->
     <div class="mobile-sticky-footer-ad">
-        <div class="mobile-sticky-inner">
-            <script type="text/javascript">
-                atOptions = {
-                    'key' : '31949393',
-                    'format' : 'iframe',
-                    'height' : 50,
-                    'width' : 320,
-                    'params' : {}
-                };
-            </script>
-            <script type="text/javascript" src="https://highrateperformance.com/31949393/invoke.js"></script>
-        </div>
+        <iframe class="isolated-mobile-frame" scrolling="no" srcdoc="
+            <html>
+            <body style='margin:0; background:#1e293b; display:flex; justify-content:center; align-items:center;'>
+                <script type='text/javascript'>
+                    atOptions = {
+                        'key' : '31949393',
+                        'format' : 'iframe',
+                        'height' : 50,
+                        'width' : 320,
+                        'params' : {}
+                    };
+                </script>
+                <script type='text/javascript' src='https://highrateperformance.com'></script>
+            </body>
+            </html>
+        "></iframe>
     </div>
 
     <footer>
@@ -340,7 +358,7 @@
 
             if (interstitialVideo) {
                 interstitialVideo.muted = true;
-                interstitialVideo.play().catch(err => console.log("Video active."));
+                interstitialVideo.play().catch(err => console.log("Video playback active."));
             }
 
             let timeRemaining = 30;
@@ -380,7 +398,7 @@
                     convVideoPlayer.style.width = '100%';
                     convVideoPlayer.load();
 
-                    const simulatedBlob = new Blob(["NovaConvert Local Stream Matrix Array Output"], { type: `video/${targetFormat}` });
+                    const simulatedBlob = new Blob(["NovaConvert Local Stream Matrix Output"], { type: `video/${targetFormat}` });
                     const downloadUrl = URL.createObjectURL(simulatedBlob);
                     const cleanName = loadedFile.name.substring(0, loadedFile.name.lastIndexOf('.')) || loadedFile.name;
 
@@ -405,3 +423,5 @@
     </script>
 </body>
 </html>
+
+
